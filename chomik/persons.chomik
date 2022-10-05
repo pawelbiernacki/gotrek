@@ -1,0 +1,17 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/persons_random_generators.chomik"
+include "../chomik/persons_attributes.chomik"
+include "../chomik/persons_relationships.chomik"
+include "../chomik/persons_auxilliary_variables.chomik"
+include "../chomik/persons_initialize.chomik"
+include "../chomik/persons_rules.chomik"
+include "../chomik/persons_relationships_initialize.chomik"
+include "../chomik/persons_relationships_update.chomik"
+include "../chomik/persons_update.chomik"
+include "../chomik/persons_reset.chomik"
+include "../chomik/actions_on_it_is_some_action.chomik"
+include "../chomik/actions_check_whether.chomik"
+include "../chomik/persons_decisions_generate.chomik"
+
+

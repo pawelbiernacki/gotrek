@@ -1,0 +1,39 @@
+#!/usr/local/bin/chomik 
+
+variable current place:place;
+
+
+include "../chomik/places_attributes.chomik"
+include "../chomik/places_relationships.chomik"
+include "../chomik/places_update.chomik"
+
+
+
+variable connect (A:place) with (B:place):code;
+
+let variable connect (A:place) with (B:place) = value code
+{
+    let variable current place 1 = value place [(A:place)];
+    let variable current place 2 = value place [(B:place)];
+    let variable <current place 1> is connected with <current place 2> = value boolean true;
+    let variable <current place 2> is connected with <current place 1> = value boolean true;
+};
+
+
+
+variable initialize the places:code;
+let variable initialize the places = value code
+{
+    let variable (X:place) is connected with (Y:place) = value boolean false;
+    
+    execute <connect Krakow with Warszawa>;
+    execute <connect Krakow with Wroclaw>;
+    execute <connect Warszawa with Poznan>;
+    execute <connect Poznan with Wroclaw>;
+    execute <connect Warszawa with Gdansk>;
+        
+    execute <print (X:place) "is connected with" (Y:place) "=" <(X:place) is connected with (Y:place)>>;
+};
+
+
+

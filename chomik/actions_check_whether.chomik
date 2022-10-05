@@ -1,0 +1,145 @@
+#!/usr/local/bin/chomik
+
+
+variable check whether current possible decision is goto (P:place):code;
+
+let variable check whether current possible decision is goto (P:place)=value code
+{
+    let variable current target=value place [(P:place)];
+    let variable current pattern=value action goto <current target>;
+
+    execute <compare "action" <current possible decision> <current pattern>>;
+    execute <on it is goto current target <the compare result>>;            
+};
+
+variable check whether current possible decision is tell (P:person) (I:information):code;
+
+let variable check whether current possible decision is tell (P:person) (I:information) = value code
+{
+    let variable current guest=value person [(P:person)];   # the person we try to talk to
+    let variable current information=value information [(I:information)];
+    let variable current pattern=value action tell <current guest> that <current information>;
+    execute <compare "action" <current possible decision> <current pattern>>;
+    execute <on it is tell current guest current information <the compare result>>;
+};
+ 
+
+variable check whether current possible decision is ask (P:person) to (A:action):code;
+let variable check whether current possible decision is ask (P:person) to (A:action) = value code
+{
+    let variable current guest=value person [(P:person)];   # the person we try to talk to
+    let variable current action=value action [(A:action)];
+    let variable current pattern=value action ask <current guest> to <current action>;
+    execute <compare "action" <current possible decision> <current pattern>>;
+    execute <on it is ask current guest current action <the compare result>>;
+};
+
+
+variable check whether current possible decision is attack (P:person):code;
+let variable check whether current possible decision is attack (P:person) = value code
+{
+    let variable current guest=value person [(P:person)];   # the person we try to talk to
+    let variable current pattern=value action attack <current guest>;
+    execute <compare "action" <current possible decision> <current pattern>>;
+    execute <on it is attack current guest <the compare result>>;
+};
+
+
+variable check whether current possible decision is propose (P:person) to exchange weapons:code;
+let check whether current possible decision is propose (P:person) to exchange weapons=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current pattern=value action propose <current guest> to exchange weapons;
+    <compare "action" <current possible decision> <current pattern>>;
+    <on it is propose current guest to exchange weapons <the compare result>>;
+};
+
+variable check whether current possible decision is ask (P:person) what is his function:code;
+let check whether current possible decision is ask (P:person) what is his function=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current pattern=value action ask <current guest> what is his function;
+    <compare "action" <current possible decision> <current pattern>>;
+    <on it is ask current guest what is his function <the compare result>>;
+};
+
+variable check whether current possible decision is ask (P:person) what is his weapon:code;
+let check whether current possible decision is ask (P:person) what is his weapon=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current pattern=value action ask <current guest> what is his weapon;
+    <compare "action" <current possible decision> <current pattern>>;
+    <on it is ask current guest what is his weapon <the compare result>>;
+};
+
+
+variable check whether current possible decision is ask (P:person) whether he is a liar:code;
+let check whether current possible decision is ask (P:person) whether he is a liar=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current pattern=value action ask <current guest> whether he is a liar;
+    <compare "action" <current possible decision> <current pattern>>;
+    <on it is ask current guest whether he is a liar <the compare result>>;    
+};
+
+
+############
+
+variable the result of check whether (X:person) possible decision (Y:possible_decisions_range) is correct:boolean;
+
+variable replace decision by no action if it is illegal (X:boolean):code;
+let variable replace decision by no action if it is illegal false=value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action no_action;
+};
+
+variable check whether (X:person) possible decision (Y:possible_decisions_range) is correct:code;
+let variable check whether (X:person) possible decision (Y:possible_decisions_range) is correct=value code
+{
+    let variable current person = value person [(X:person)];
+    let variable current possible decision index = value integer [(Y:possible_decisions_range)];
+    
+    # let us initialize the result variable with true and later if something is wrong with the action
+    # we can change it to false
+    let variable the result of check whether current person possible decision is correct=value boolean true;    
+    
+    # initialize the auxilliary variable current location    
+    let variable current location = <location of <current person>>;
+    #execute <print "current location of" <current person> "is" <current location>>;
+    
+    # initialize the auxilliary variable current possible decision
+    let variable current possible decision = <<current person> possible decision <current possible decision index>>;
+    
+    
+    
+    # goto (A:place) is legal only if the current location is connected with the target        
+    execute <check whether current possible decision is goto (P:place)>;
+            
+    # tell (A:person) that (Y:information) is legal only if current person can see A
+    execute <check whether current possible decision is tell (A:person) (B:information)>;    
+
+    # ask (A:person) to (B:action) is legal only if current person can see A    
+    execute <check whether current possible decision is ask (A:person) to (B:action)>;
+    
+    # attack (A:person) is legal only if current person can see A
+    execute <check whether current possible decision is attack (P:person)>;
+    
+    # one cannot propose to exchange weapons to himself
+    <check whether current possible decision is propose (P:person) to exchange weapons>;
+    
+    # one cannot ask himself what his function is
+    <check whether current possible decision is ask (P:person) what is his function>;
+    
+    # one cannot ask himself what his weapon is
+    <check whether current possible decision is ask (P:person) what is his weapon>;
+    
+    # it makes no sense to ask oneself whether he is a liar
+    <check whether current possible decision is ask (P:person) whether he is a liar>;
+    
+    execute <replace decision by no action if it is illegal <the result of check whether current person possible decision is correct>>;
+    
+    
+    <print <current person> "decision" <current possible decision index> "is" <current possible decision> ": correct" 
+        <the result of check whether current person possible decision is correct>
+        >;    
+};

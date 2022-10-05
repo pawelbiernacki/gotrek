@@ -1,0 +1,16 @@
+#!/usr/local/bin/chomik
+
+# auxilliary variables
+variable current person: person, 
+        current person 1:person, current person 2:person,
+        current possible decision index:integer,
+        current location:place,
+        current possible decision:action,
+        current decision:action;
+ 
+variable current pattern:action,
+        current target:place,
+        current guest:person,
+        current action:action,
+        current action class:action_class,
+        current information:information;

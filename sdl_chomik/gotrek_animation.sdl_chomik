@@ -1,0 +1,61 @@
+#!/usr/local/bin/sdl_chomik
+
+variable Gotrek animation frame index:integer;
+let Gotrek animation frame index=value integer 1;
+
+variable Gotrek animation direction:integer;
+let Gotrek animation direction=value integer 1;
+
+
+variable change Gotrek animation frame index on forward (X:compare_result):code;
+
+let change Gotrek animation frame index on forward lower=value code
+{
+    <add "integer" <Gotrek animation frame index> <Gotrek animation direction>>;
+    let Gotrek animation frame index=<the add result "integer">;
+};
+
+
+let change Gotrek animation frame index on forward equal=value code
+{
+    let Gotrek animation direction=value integer -1;
+};
+
+variable change Gotrek animation frame index on backward (X:compare_result):code;
+
+let change Gotrek animation frame index on backward greater=value code
+{
+    <add "integer" <Gotrek animation frame index> <Gotrek animation direction>>;
+    let Gotrek animation frame index=<the add result "integer">;
+};
+
+
+let change Gotrek animation frame index on backward equal=value code
+{
+    let Gotrek animation direction=value integer 1;
+};
+
+variable move Gotrek animation forward or backward (X:compare_result):code;
+let move Gotrek animation forward or backward lower=value code
+{
+    <compare "integer" <Gotrek animation frame index> 1>;
+    <change Gotrek animation frame index on backward <the compare result>>;
+};
+let move Gotrek animation forward or backward equal=value code
+{
+    <compare "integer" <Gotrek animation frame index> 20>;
+    <change Gotrek animation frame index on forward <the compare result>>;
+};
+
+let move Gotrek animation forward or backward greater=value code {};
+
+variable move Gotrek animation:code;
+let move Gotrek animation=value code
+{
+    <compare "integer" <Gotrek animation direction> 1>;
+
+    <move Gotrek animation forward or backward <the compare result>>;
+    
+    #<print "frame" <Gotrek animation frame index>>;
+};
+

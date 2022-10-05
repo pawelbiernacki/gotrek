@@ -1,0 +1,151 @@
+#!/usr/local/bin/chomik
+
+variable on it is goto current target but it is not connected (X:compare_result_type):code;
+let variable on it is goto current target but it is not connected lower=value code{};
+let variable on it is goto current target but it is not connected greater=value code{};
+let variable on it is goto current target but it is not connected equal=value code
+{
+    execute <print "there is a problem - the current target (" <current target> ") is not connected to current location (" <current location> ")">;
+    
+    let variable the result of check whether current person possible decision is correct=value boolean false;    
+};
+
+
+variable on it is tell current guest current information but the current guest is not seen (X:compare_result_type):code;
+let variable on it is tell current guest current information but the current guest is not seen lower = value code {};
+let variable on it is tell current guest current information but the current guest is not seen greater = value code {};
+let variable on it is tell current guest current information but the current guest is not seen equal = value code 
+{
+    execute <print "there is a problem - the current person (" <current person> ") cannot see the current guest (" <current guest> ")">;    
+    let variable the result of check whether current person possible decision is correct=value boolean false;    
+};
+
+
+variable on it is ask current guest current action but the current guest is not seen (X:compare_result_type):code;
+let variable on it is ask current guest current action but the current guest is not seen lower = value code {};
+let variable on it is ask current guest current action but the current guest is not seen greater = value code {};
+let variable on it is ask current guest current action but the current guest is not seen equal = value code
+{
+    execute <print "there is a problem - the current person (" <current person> ") cannot see the current guest (" <current guest> ")">;    
+    let variable the result of check whether current person possible decision is correct=value boolean false;    
+};
+
+variable on it is attack current guest but the current guest is not seen (X:compare_result_type):code;
+let variable on it is attack current guest but the current guest is not seen lower = value code {};
+let variable on it is attack current guest but the current guest is not seen greater = value code {};
+let variable on it is attack current guest but the current guest is not seen equal = value code 
+{
+    execute <print "there is a problem - the current person (" <current person> ") cannot see the current guest (" <current guest> ")">;    
+    let variable the result of check whether current person possible decision is correct=value boolean false;
+};
+
+
+variable on it is found but the current guest is equal the current person (X:compare_result_type):code;
+let variable on it is found but the current guest is equal the current person lower = value code {};
+let variable on it is found but the current guest is equal the current person greater = value code {};
+let variable on it is found but the current guest is equal the current person equal = value code
+{
+    let the result of check whether current person possible decision is correct=value boolean false;
+};
+
+
+
+
+##################
+ 
+variable on it is goto current target (X:compare_result_type):code;
+let variable on it is goto current target lower = value code {};
+let variable on it is goto current target greater = value code {};
+let variable on it is goto current target equal = value code 
+{
+    #execute <print "yes, the action" <current possible decision> "is goto" <current target>>;
+    execute <compare "boolean" <<current location> is connected with <current target>> false>;
+    execute <on it is goto current target but it is not connected <the compare result>>;
+};
+
+
+variable on it is tell current guest current information (X:compare_result_type):code;
+let variable on it is tell current guest current information lower = value code {};
+let variable on it is tell current guest current information greater = value code {};
+let variable on it is tell current guest current information equal = value code 
+{
+    #execute <print "yes, the action" <current possible decision> "is tell" <current guest> that <current information>>;        
+    execute <compare "boolean" <<current person> can see <current guest>> false>;
+    execute <on it is tell current guest current information but the current guest is not seen <the compare result>>;
+    
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;
+};
+
+
+variable on it is ask current guest current action (X:compare_result_type):code;
+let variable on it is ask current guest current action lower = value code {};
+let variable on it is ask current guest current action greater = value code {};
+let variable on it is ask current guest current action equal = value code 
+{
+    #execute <print "yes, the action" <current possible decision> "is ask" <current guest> to <current action>>;        
+    execute <compare "boolean" <<current person> can see <current guest>> false>;
+    execute <on it is ask current guest current action but the current guest is not seen <the compare result>>;
+    
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;    
+};
+
+variable on it is attack current guest (X:compare_result_type):code;
+let variable on it is attack current guest lower = value code {};
+let variable on it is attack current guest greater = value code {};
+let variable on it is attack current guest equal = value code
+{
+    #execute <print "yes, the action" <current possible decision> "is attack" <current guest>>;        
+    execute <compare "boolean" <<current person> can see <current guest>> false>;
+    execute <on it is attack current guest but the current guest is not seen <the compare result>>;
+    
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+
+variable on it is propose current guest to exchange weapons (X:compare_result_type):code;
+let on it is propose current guest to exchange weapons lower = value code {};
+let on it is propose current guest to exchange weapons greater = value code {};
+let on it is propose current guest to exchange weapons equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+
+variable on it is ask current guest what is his function (X:compare_result_type):code;
+let on it is ask current guest what is his function lower = value code {};
+let on it is ask current guest what is his function greater = value code {};
+let on it is ask current guest what is his function equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+
+
+variable on it is ask current guest what is his weapon (X:compare_result_type):code;
+let on it is ask current guest what is his weapon lower = value code {};
+let on it is ask current guest what is his weapon greater = value code {};
+let on it is ask current guest what is his weapon equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+
+
+variable on it is ask current guest whether he is a liar (X:compare_result_type):code;
+let on it is ask current guest whether he is a liar lower = value code {};
+let on it is ask current guest whether he is a liar greater = value code {};
+let on it is ask current guest whether he is a liar equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+

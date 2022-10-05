@@ -1,0 +1,41 @@
+#!/usr/local/bin/chomik
+
+
+# the below streams are in fact random generators
+
+execute <create new input random enum stream "place">;  # to choose randomly a place
+let variable my place generator index = <the created stream index>;
+
+execute <create new input random enum stream "person">;
+let variable my person generator index = <the created stream index>;
+
+execute <create new input random enum stream "weapon">;
+let variable my weapon generator index = <the created stream index>;
+
+execute <create new input random enum stream "function">;
+let variable my function generator index = <the created stream index>;
+
+execute <create new input random enum stream "action">;
+let variable my action generator index = <the created stream index>;
+
+execute <create new input random enum stream "action_class">;
+let variable my action_class generator index = <the created stream index>;
+
+execute <create new input random enum stream "action_depending_on_person_subclass">;
+let variable my action_depending_on_person_subclass generator index = <the created stream index>;
+
+execute <create new input random enum stream "information">;
+let variable my information generator index = <the created stream index>;
+
+execute <create new input random enum stream "boolean">;
+let variable my boolean generator index = <the created stream index>;
+
+
+execute <create new input random number stream "integer" 1 10>;
+let variable my strength generator index = <the created stream index>;
+let variable my wisdom generator index = <the created stream index>;
+let variable my efficiency bonus generator index = <the created stream index>;
+ 
+execute <create new input random number stream "integer" 1 5>;  # choosing randomly a legal decision (it is not very smart)
+let variable my ai generator index = <the created stream index>;
+

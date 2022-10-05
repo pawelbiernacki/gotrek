@@ -1,0 +1,36 @@
+#!/usr/local/bin/sdl_chomik
+
+execute <print "Pawel Biernacki presents:">;
+execute <print "Gotrek">;
+execute <print "A fantasy game written in sdl_chomik.">;
+execute <print "Vantaa 2022">;
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/global_variables.chomik"
+include "../chomik/global_streams.chomik"
+include "../chomik/persons.chomik"
+include "../chomik/places.chomik"
+include "./output_stringstream.sdl_chomik"
+include "./gotrek_result_text.sdl_chomik"
+include "../chomik/decisions.chomik"
+include "./create_new_images.sdl_chomik"
+include "./create_new_fonts.sdl_chomik"
+include "./gotrek_location_text.sdl_chomik"
+include "./gotrek_equipment_text.sdl_chomik"
+include "./gotrek_points_text.sdl_chomik"
+include "./gotrek_guests_text.sdl_chomik"
+include "./god_mode_text.sdl_chomik"
+include "./on_game_mode.sdl_chomik"
+include "./gotrek_options.sdl_chomik"
+include "./gotrek_animation.sdl_chomik"
+
+let variable game mode = value game_mode_type title;
+
+let variable sdl loop body = value code 
+{
+    execute <on game mode <game mode>>;
+};
+
+<sdl loop>;
+
+

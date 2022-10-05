@@ -1,0 +1,124 @@
+#!/usr/local/bin/sdl_chomik
+
+
+execute <create new image "../image/title.png">;
+variable title image index: integer;
+let variable title image index = <the created image index>;
+
+execute <create new image "../image/background.png">;
+variable background image index: integer;
+let variable background image index = <the created image index>;
+
+execute <create new image "../image/chomik.png">;
+variable chomik image index: integer;
+let variable chomik image index = <the created image index>;
+
+execute <create new image "../image/frame.png">;
+variable frame image index: integer;
+let variable frame image index = <the created image index>;
+
+execute <create new image "../image/options_frame.png">;
+variable options frame image index: integer;
+let variable options frame image index = <the created image index>;
+
+
+execute <create new image "../image/small_frame.png">;
+variable small frame image index: integer;
+let variable small frame image index = <the created image index>;
+
+
+execute <create new image "../image/arrow.png">;
+variable arrow image index: integer;
+let variable arrow image index = <the created image index>;
+
+execute <create new image "../image/map.png">;
+variable map image index: integer;
+let variable map image index = <the created image index>;
+
+
+variable Gotrek animated image index (X:integer): integer;
+
+variable load Gotrek animation images first ten (X:integer):code;
+variable load Gotrek animation images other ten (X:integer):code;
+
+variable map Gotrek animated image index to image index (X:Gotrek_animation_range):integer;
+
+
+variable stop iteration if (X:compare_result):code;
+let stop iteration if equal=value code
+{
+    let the break flag=value boolean true;
+};
+let stop iteration if lower=value code {};
+let stop iteration if greater=value code 
+{
+    let the break flag=value boolean true;
+};
+
+
+let load Gotrek animation images first ten (X:integer)=value code
+{
+    let image index = value integer [(X:integer)];
+        
+    <add "integer" <image index> 1>;
+    let image index = <the add result "integer">;
+
+    let the set to stream stream index=<my output stringstream index>;
+    <set to stream "">;
+    
+    let the print target stream index = <my output stringstream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print "../image/000" <image index> ".png">;
+        
+    let the print target stream index = value integer 0; # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+    
+    let the get from stream stream index = <my output stringstream index>;
+    <get from stream>;
+    
+    execute <create new image <the get from stream result>>;
+    let map Gotrek animated image index to image index <image index> = <the created image index>;
+        
+    <compare "integer" <image index> 9>;
+    <stop iteration if <the compare result>>;
+};
+
+
+let load Gotrek animation images other ten (X:integer)=value code
+{
+    let image index = value integer [(X:integer)];
+        
+    <add "integer" <image index> 10>;
+    let image index = <the add result "integer">;
+
+    let the set to stream stream index=<my output stringstream index>;
+    <set to stream "">;
+    
+    let the print target stream index = <my output stringstream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print "../image/00" <image index> ".png">;
+        
+    let the print target stream index = value integer 0; # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+    
+    let the get from stream stream index = <my output stringstream index>;
+    <get from stream>;
+    
+    execute <create new image <the get from stream result>>;
+    let map Gotrek animated image index to image index <image index> = <the created image index>;
+        
+    <compare "integer" <image index> 20>;
+    <stop iteration if <the compare result>>;
+};
+
+
+
+<load Gotrek animation images first ten (X:integer)>;
+let the break flag=value boolean false;
+
+<load Gotrek animation images other ten (X:integer)>;
+let the break flag=value boolean false;

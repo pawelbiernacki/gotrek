@@ -1,0 +1,32 @@
+#!/usr/local/bin/sdl_chomik
+
+
+variable Gotrek result text:string;
+let Gotrek result text=value string " ";
+
+variable Gotrek result timer:integer;
+let Gotrek result timer=value integer 100;
+
+
+variable decrease Gotrek result timer if (X:compare_result):code;
+let decrease Gotrek result timer if lower=value code {};
+let decrease Gotrek result timer if equal=value code 
+{
+    let Gotrek result text=value string " ";
+};
+
+let decrease Gotrek result timer if greater=value code 
+{
+    <substract "integer" <Gotrek result timer> 1>;
+    let Gotrek result timer=<the substract result "integer">;
+};
+
+
+
+
+variable update Gotrek result timer:code;
+let update Gotrek result timer=value code
+{
+    <compare "integer" <Gotrek result timer> 0>;
+    <decrease Gotrek result timer if <the compare result>>;
+};

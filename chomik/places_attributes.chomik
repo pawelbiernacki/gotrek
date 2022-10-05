@@ -1,0 +1,6 @@
+#!/usr/local/bin/chomik 
+
+# attributes
+variable amount of characters in (X:place):integer;
+ 
+variable (X:place) is connected with the current place:boolean;

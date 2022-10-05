@@ -1,0 +1,48 @@
+#!/usr/local/bin/chomik
+
+
+variable Gotrek guests text:string; # the text is used to tell Gotrek which guests he can see
+
+let Gotrek guests text=value string "";
+
+
+
+variable update Gotrek guests text for current guest if (X:boolean):code;
+
+let update Gotrek guests text for current guest if false=value code {};
+let update Gotrek guests text for current guest if true=value code 
+{
+    <print <from the computer talking to Gotrek point of view who is <current guest>> " ">;
+};
+
+
+
+variable update Gotrek guests text for (X:person):code;
+let update Gotrek guests text for (X:person)=value code
+{
+    let current guest=value person [(X:person)];
+    <update Gotrek guests text for current guest if <Gotrek can see <current guest>>>;
+};
+
+
+
+variable recalculate Gotrek guests text:code;
+let recalculate Gotrek guests text=value code
+{
+    let the set to stream stream index=<my output stringstream index>;
+    <set to stream "">;
+
+    let the print target stream index = <my output stringstream index>;
+    let the print end of line = value string "";
+    <print "You can see ">;
+    
+    <update Gotrek guests text for (X:person)>;
+        
+    let the print target stream index = value integer 0; # standard output
+    let the print end of line = value string "\n";
+
+    # read the result from the stringstream
+    let the get from stream stream index = <my output stringstream index>;
+    <get from stream>;    
+    let Gotrek guests text=<the get from stream result>;        
+};

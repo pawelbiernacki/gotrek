@@ -1,0 +1,33 @@
+#!/usr/local/bin/chomik
+
+
+variable make decision for (X:person):code;
+let variable make decision for (X:person)=value code
+{
+    let variable current person = value person [(X:person)];
+        
+    let variable the read from stream source stream index = <my ai generator index>;
+    execute <read from stream "integer">;
+    
+        
+    let variable decision of <current person> = <<current person> possible decision <the read from stream result "integer">>;
+    
+    #<print <current person> "got decision number" <the read from stream result "integer"> ", which is" <decision of <current person>>>;
+    
+    
+};
+
+variable make all the decisions:code;
+let variable make all the decisions=value code
+{
+    execute <print "make all the decisions">;    
+    
+    execute <make decision for (X:person)>;    # first we make a random decision for all persons
+    
+    # and then we replace the Gotrek's decision with the one chosen by the player
+    let variable decision of Gotrek = <Gotrek possible decision <current option number>>;
+
+    execute <print (X:person) "chooses to" <decision of (X:person)>>;   # here we print out all the decisions made
+    
+};
+

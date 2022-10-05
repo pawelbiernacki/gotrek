@@ -1,0 +1,26 @@
+#!/usr/local/bin/chomik
+
+variable update the relationship between persons (X:person) (Y:person):code;
+
+let variable update the relationship between persons (X:person) (Y:person) = value code
+{
+    let variable current person 1 = value person [(X:person)];
+    let variable current person 2 = value person [(Y:person)];
+    
+    <print "updating the relationship" <current person 1> "(" <location of <current person 1>> ") with" <current person 2> "(" <location of <current person 2>> ")">;
+    
+    
+    execute <compare "person" <current person 1> <current person 2>>;
+    execute <everyone can see himself <current person 1> <the compare result>>;        
+    
+    execute <compare "place" <location of <current person 1>> <location of <current person 2>>>;
+    execute <everyone can see all the others being in the same city <the compare result>>;
+    
+    
+    execute <print "relationship" <current person 1> <current person 2>>;
+    execute <print <current person 1> "can see" <current person 2> "=" <<current person 1> can see <current person 2>>>;
+    execute <print <current person 1> "can hear" <current person 2> "=" <<current person 1> can hear <current person 2>>>;
+    
+};
+
+ 

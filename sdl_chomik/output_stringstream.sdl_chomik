@@ -1,0 +1,6 @@
+#!/usr/local/bin/sdl_chomik
+
+<create new output stringstream>;
+variable my output stringstream index:integer;
+let my output stringstream index = <the created stream index>;
+ 

@@ -1,0 +1,19 @@
+#!/usr/local/bin/chomik
+
+# attributes
+variable strength of (X:person):integer;
+variable wisdom of (X:person):integer;
+variable location of (X:person):place;
+variable function of (X:person):function;
+variable weapon of (X:person):weapon;
+variable decision of (X:person):action;
+variable is (X:person) a liar:boolean;
+variable points of (X:person):integer;
+
+# these variables are used only temporarily, they are not attributes as such
+variable (X:person) is seen by the current person:boolean;
+
+
+# "array" of possible decisions
+variable (X:person) possible decision (Y:possible_decisions_range):action;
+ 

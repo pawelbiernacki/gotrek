@@ -1,0 +1,3 @@
+#!/usr/local/bin/chomik
+
+variable game mode: game_mode_type;

@@ -1,0 +1,62 @@
+#!/usr/local/bin/chomik
+
+variable initialize the person (X:person):code;
+
+let variable initialize the person (X:person) = value code
+{
+    let variable current person = value person [(X:person)];
+    execute <print "initializing" <current person>>;
+    
+    
+    let variable the read from stream source stream index = <my place generator index>;
+    execute <read from stream "place">;
+    let variable location of <current person> = <the read from stream result "place">;
+    
+        
+    let variable the read from stream source stream index = <my weapon generator index>;
+    execute <read from stream "weapon">;
+    let variable weapon of <current person> = <the read from stream result "weapon">;    
+
+    let variable the read from stream source stream index = <my function generator index>;
+    execute <read from stream "function">;
+    let variable function of <current person> = <the read from stream result "function">;    
+    
+    let variable the read from stream source stream index = <my boolean generator index>;
+    execute <read from stream "boolean">;
+    let variable is <current person> a liar = <the read from stream result "boolean">;
+    
+    
+    
+    let variable the read from stream source stream index = <my strength generator index>;
+    execute <read from stream "integer">;
+    let variable strength of <current person> = <the read from stream result "integer">;
+
+    let variable the read from stream source stream index = <my wisdom generator index>;
+    execute <read from stream "integer">;
+    let variable wisdom of <current person> = <the read from stream result "integer">;
+    
+    
+    let variable points of <current person> = value integer 0;
+    
+    
+    execute <print <current person> "is in" <location of <current person>>>;
+    execute <print <current person> "has" <weapon of <current person>>>;
+    execute <print <current person> "has function" <function of <current person>>>;
+    execute <print <current person> "strength" <strength of <current person>>>;
+    execute <print <current person> "wisdom" <wisdom of <current person>>>;
+    execute <print <current person> "is a liar" <<current person> is a liar>>;
+};
+ 
+
+ 
+variable initialize the persons:code;
+
+let variable initialize the persons= value code
+{
+    execute <initialize the person (X:person)>;    
+    
+    
+    let variable (X:person) likes (Y:person) = value boolean false;
+    let variable (X:person) dislikes (Y:person) = value boolean false;    
+    execute <initialize the relationship (X:person) (Y:person)>;
+};

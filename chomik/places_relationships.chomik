@@ -1,0 +1,5 @@
+#!/usr/local/bin/chomik 
+
+# relationships
+variable (X:place) is connected with (Y:place):boolean;
+ 

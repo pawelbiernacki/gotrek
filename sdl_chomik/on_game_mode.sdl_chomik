@@ -1,0 +1,139 @@
+#!/usr/local/bin/sdl_chomik
+
+
+variable move current option number down if (X:compare_result):code;
+let variable move current option number down if equal=value code
+{
+    let variable current option number = value integer 1;
+};
+let variable move current option number down if lower=value code
+{
+    execute <add "integer" <current option number> 1>;
+    let variable current option number = <the add result "integer">;
+};
+let variable move current option number down if greater=<move current option number down if equal>;
+
+
+variable move current option number up if (X:compare_result):code;
+let variable move current option number up if equal = value code
+{
+    let variable current option number = value integer 5;
+};
+let variable move current option number up if lower = <move current option number up if equal>;
+let variable move current option number up if greater=value code
+{
+    execute <substract "integer" <current option number> 1>;
+    let variable current option number = <the substract result "integer">;
+};
+
+
+variable on key return in game mode (X:game_mode_type):code;
+let variable on key return in game mode title=value code
+{
+    let variable game mode = value game_mode_type game;
+    execute <initialize the persons>;
+    execute <initialize the places>;
+    execute <update the persons>;
+    execute <update the places>;
+    execute <reset the persons>;
+    execute <generate (X:person) possible decisions>;    
+    <check whether (X:person) possible decision (Y:possible_decisions_range) is correct>;
+    execute <recalculate Gotrek choice options>;    
+    let variable current option number = value integer 1;
+    execute <recalculate arrow coordinate>;    
+    execute <recalculate Gotrek location text>;
+    execute <recalculate Gotrek equipment text>;
+    execute <recalculate Gotrek points text>;
+    <recalculate Gotrek guests text>;
+    execute <recalculate god mode texts>;
+};
+
+let variable on key return in game mode game=value code
+{
+    execute <print "return pressed">;
+    execute <make all the decisions>;
+    execute <perform all the decisions>;        
+    execute <update the persons>;
+    execute <update the places>;
+    execute <generate (X:person) possible decisions>;
+    <check whether (X:person) possible decision (Y:possible_decisions_range) is correct>;
+    execute <recalculate Gotrek choice options>;    
+    let variable current option number = value integer 1;
+    execute <recalculate arrow coordinate>;    
+    execute <recalculate Gotrek location text>;
+    execute <recalculate Gotrek equipment text>;
+    execute <recalculate Gotrek points text>;
+    <recalculate Gotrek guests text>;
+    execute <recalculate god mode texts>;
+};
+
+
+let variable on key return = value code
+{
+    execute <on key return in game mode <game mode>>;
+};
+
+
+
+
+let variable on key down = value code
+{    
+    # if it is equal 5 then set it to 1
+    execute <compare "integer" <current option number> 5>;
+    execute <move current option number down if <the compare result>>;
+    
+    execute <recalculate arrow coordinate>;
+};
+
+let variable on key up = value code
+{    
+    # if it is equal 1 then set it to 5
+    execute <compare "integer" <current option number> 1>;
+    execute <move current option number up if <the compare result>>;
+    
+    execute <recalculate arrow coordinate>;
+};
+
+
+variable on game mode (X:game_mode_type):code;
+let variable on game mode title = value code
+{
+    execute <show image <title image index> 0 0>;     
+    execute <show image <chomik image index> 0 0>;    
+    
+    execute <show text <my large font index> "GOTREK" 100 100>;
+    execute <show text <my small font index> "by Pawel Biernacki <pawel.f.biernacki@gmail.com>" 100 140>;
+    execute <show text <my small font index> "press return" 100 200>;    
+};
+
+let variable on game mode game = value code
+{
+    <show image <background image index> 0 0>;     
+    <show image <options frame image index> 60 40>;
+    <show image <small frame image index> 60 250>;
+    <show image <frame image index> 60 320>;
+    <show image <map image index> 670 40>;
+    <show image <chomik image index> 0 0>;
+    
+    execute <show text <my small font index> 
+        <possible choice option number (X:possible_decisions_range) of Gotrek> 70 
+        <possible choice coordinate number (X:possible_decisions_range) of Gotrek>>; 
+        
+    <show text <my large font index> <Gotrek result text> 60 540>;                
+        
+    execute <show text <my small font index> <Gotrek location text> 70 260>;
+    execute <show text <my small font index> <Gotrek equipment text> 300 260>;
+    execute <show text <my small font index> <Gotrek points text> 480 260>;
+    <show text <my small font index> <Gotrek guests text> 70 276>;
+    
+    execute <show god mode texts>;
+    
+    execute <show image <arrow image index> 10 <arrow coordinate>>;
+    
+    <show image <map Gotrek animated image index to image index <Gotrek animation frame index>> 60 140>;
+    
+        
+    <update Gotrek result timer>;
+    <move Gotrek animation>;
+};
+ 

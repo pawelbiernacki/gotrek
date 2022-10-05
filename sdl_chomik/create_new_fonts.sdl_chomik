@@ -1,0 +1,10 @@
+#!/usr/local/bin/sdl_chomik
+
+execute <create new font "../font/PlayfairDisplay-Bold.ttf" 32>;
+variable my large font index:integer;
+let variable my large font index = <the created font index>;
+ 
+execute <create new font "../font/PlayfairDisplay-Regular.ttf" 16>;
+variable my small font index:integer;
+let variable my small font index = <the created font index>;
+

@@ -1,0 +1,44 @@
+#!/usr/local/bin/chomik 
+
+
+variable increment the amount for each (P:person) in current place:code;
+
+variable increment the amount of characters in current place on (X:compare_result):code;
+
+let variable increment the amount of characters in current place on lower = value code {};
+let variable increment the amount of characters in current place on greater = value code {};
+let variable increment the amount of characters in current place on equal = value code {
+    execute <add "integer" <amount of characters in <current place>> 1>;
+    let variable amount of characters in <current place> = <the add result "integer">;
+};
+
+
+let variable increment the amount for each (P:person) in current place=value code
+{
+    let variable current person = value person [(P:person)];    
+    execute <compare "location" <current place> <location of <current person>>>;                
+    execute <increment the amount of characters in current place on <the compare result>>;        
+};  
+
+
+variable calculate amount of characters in (X:place):code;
+
+
+let variable calculate amount of characters in (X:place) = value code
+{
+    let variable current place = value place [(X:place)];
+    let variable amount of characters in <current place> = value integer 0;
+    
+    execute <increment the amount for each (P:person) in current place>;    
+        
+    execute <print "amount of characters in" <current place> "=" <amount of characters in <current place>>>;
+};
+
+
+variable update the places:code;
+
+let variable update the places = value code
+{
+    execute <calculate amount of characters in (X:place)>;
+};
+ 

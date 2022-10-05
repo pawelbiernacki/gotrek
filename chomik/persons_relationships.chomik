@@ -1,0 +1,10 @@
+#!/usr/local/bin/chomik
+ 
+# tuples attributes
+variable (X:person) likes (Y:person):boolean;
+variable (X:person) dislikes (Y:person):boolean;
+
+# these attributes are updated all the time:
+variable (X:person) can see (Y:person):boolean;
+variable (X:person) can hear (Y:person):boolean;
+

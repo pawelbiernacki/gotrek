@@ -1,0 +1,359 @@
+#!/usr/local/bin/chomik
+
+
+variable current person goto current place (X:compare_result):code;
+let variable current person goto current place lower=value code {};
+let variable current person goto current place greater=value code {};
+let variable current person goto current place equal=value code 
+{
+    let variable location of <current person>=<current place>;
+    
+    execute <print <current person> "has moved to" <location of <current person>>>;
+    
+    let variable decision of <current person>=value action no_action;    
+};
+
+
+variable current person tells current guest that current information (X:compare_result):code;
+let variable current person tells current guest that current information lower = value code {};
+let variable current person tells current guest that current information greater = value code {};
+let variable current person tells current guest that current information equal = value code 
+{
+    execute <print <current person> "tells" <current guest> "that" <current information>>;
+    
+    let variable decision of <current person>=value action no_action;
+};
+
+
+variable current person asks current guest to current action (X:compare_result):code;
+let variable current person asks current guest to current action lower = value code {};
+let variable current person asks current guest to current action greater = value code {};
+let variable current person asks current guest to current action equal = value code 
+{
+    execute <print <current person> "asks" <current guest> "to" <current action>>;
+    
+    let variable decision of <current person>=value action no_action;
+};
+
+
+variable current person asks current guest what is his function (X:compare_result):code;
+let variable current person asks current guest what is his function lower = value code {};
+let variable current person asks current guest what is his function greater = value code {};
+let variable current person asks current guest what is his function equal = value code 
+{
+    execute <print <current person> "asks" <current guest> "what is his function">;
+    
+    let variable decision of <current person>=value action no_action;
+};
+
+
+variable current person asks current guest what is his weapon (X:compare_result):code;
+let variable current person asks current guest what is his weapon lower = value code {};
+let variable current person asks current guest what is his weapon greater = value code {};
+let variable current person asks current guest what is his weapon equal = value code 
+{
+    execute <print <current person> "asks" <current guest> "what is his weapon">;
+    
+    let variable decision of <current person>=value action no_action;
+};
+
+variable current person asks current guest whether he is a liar (X:compare_result):code;
+let variable current person asks current guest whether he is a liar lower = value code {};
+let variable current person asks current guest whether he is a liar greater = value code {};
+let variable current person asks current guest whether he is a liar equal = value code 
+{
+    execute <print <current person> "asks" <current guest> "whether he is a liar">;
+    
+    let variable decision of <current person>=value action no_action;
+};
+
+
+variable notify Gotrek he has lost (X:compare_result):code;
+let notify Gotrek he has lost equal=value code
+{
+    let Gotrek result text=value string "You have lost.";
+    let Gotrek result timer=value integer 100;    
+};
+
+let notify Gotrek he has lost lower=value code {};
+let notify Gotrek he has lost greater=value code {};
+
+
+variable notify Gotrek he has won (X:compare_result):code;
+let notify Gotrek he has won equal=value code
+{
+    let Gotrek result text=value string "You have won.";
+    let Gotrek result timer=value integer 100;
+};
+let notify Gotrek he has won lower=value code {};
+let notify Gotrek he has won greater=value code {};
+
+
+variable notify Gotrek it is a draw (X:compare_result):code;
+let notify Gotrek it is a draw equal=value code
+{
+    let Gotrek result text=value string "It is a draw.";
+    let Gotrek result timer=value integer 100;
+};
+let notify Gotrek it is a draw lower=value code {};
+let notify Gotrek it is a draw greater=value code {};
+
+variable notify Gotrek he has been attacked and won (X:compare_result):code;
+variable notify Gotrek he has been attacked and it is a draw (X:compare_result):code;
+variable notify Gotrek he has been attacked and lost (X:compare_result):code;
+
+let notify Gotrek he has been attacked and won lower=value code {};
+let notify Gotrek he has been attacked and won greater=value code {};
+let notify Gotrek he has been attacked and won equal=value code 
+{
+    let Gotrek result text=value string "You have been attacked and won.";
+    let Gotrek result timer=value integer 100;
+};
+
+let notify Gotrek he has been attacked and it is a draw lower=value code {};
+let notify Gotrek he has been attacked and it is a draw greater=value code {};
+let notify Gotrek he has been attacked and it is a draw equal=value code 
+{
+    let Gotrek result text=value string "You have been attacked and it is a draw.";
+    let Gotrek result timer=value integer 100;
+};
+
+let notify Gotrek he has been attacked and lost lower=value code {};
+let notify Gotrek he has been attacked and lost greater=value code {};
+let notify Gotrek he has been attacked and lost equal=value code 
+{
+    let Gotrek result text=value string "You have been attacked and lost.";
+    let Gotrek result timer=value integer 100;
+};
+
+
+variable efficiency of (X:person):integer;  # efficiency is strength + a random number (for this particular fight)
+                                            # we may need to add bonus from a weapon or helping persons
+variable current efficiency bonus:integer;
+
+variable resolve the fight (X:compare_result):code;
+
+let resolve the fight lower=value code
+{
+    <print <current person> "lost against" <current guest>>;
+    <add "integer" <points of <current guest>> 1>;    
+    let points of <current guest>=<the add result "integer">;
+            
+    # check if current person is Gotrek
+    <compare "person" <current person> Gotrek>;
+    <notify Gotrek he has lost <the compare result>>;  
+    
+    # check if current guest is Gotrek
+    <compare "person" <current guest> Gotrek>;
+    <notify Gotrek he has been attacked and won <the compare result>>;
+    
+};
+let resolve the fight equal=value code
+{
+    <print "the fight between" <current person> "and" <current guest> "is a draw">;
+    
+    # check if current person is Gotrek
+    <compare "person" <current person> Gotrek>;
+    <notify Gotrek it is a draw <the compare result>>;            
+    
+    # check if current guest is Gotrek
+    <compare "person" <current guest> Gotrek>;
+    <notify Gotrek he has been attacked and it is a draw <the compare result>>;    
+};
+
+let resolve the fight greater= value code
+{
+    <print <current person> "won against" <current guest>>;
+    <add "integer" <points of <current person>> 1>;    
+    let points of <current person>=<the add result "integer">;
+
+    # check if current person is Gotrek
+    <compare "person" <current person> Gotrek>;
+    <notify Gotrek he has won <the compare result>>;    
+    
+    # check if current guest is Gotrek
+    <compare "person" <current guest> Gotrek>;
+    <notify Gotrek he has been attacked and lost <the compare result>>;
+
+};
+
+
+variable current person attacks current guest (X:compare_result):code;
+let variable current person attacks current guest lower = value code {};
+let variable current person attacks current guest greater = value code {};
+let variable current person attacks current guest equal = value code 
+{
+    execute <print <current person> "attacks" <current guest>>;
+    
+    # calculate the efficiency of both fighters    
+    
+    # first current person
+    let the read from stream source stream index = <my efficiency bonus generator index>;
+    <read from stream "integer">;            
+    let current efficiency bonus = <the read from stream result "integer">;
+        
+    <print <current person> "uses" <weapon of <current person>>>;
+    
+    <add "integer" <current efficiency bonus> <weapon bonus for <weapon of <current person>>>>;
+    let current efficiency bonus = <the add result "integer">;    
+    
+            
+    <add "integer" <strength of <current person>> <current efficiency bonus>>;
+    let efficiency of <current person>=<the add result "integer">;
+        
+    
+    # now current guest
+    <read from stream "integer">; 
+    let current efficiency bonus = <the read from stream result "integer">;
+        
+    <print <current guest> "uses" <weapon of <current guest>>>;
+    
+    <add "integer" <current efficiency bonus> <weapon bonus for <weapon of <current guest>>>>;
+    let current efficiency bonus = <the add result "integer">;    
+            
+    <add "integer" <strength of <current guest>> <current efficiency bonus>>;
+    let efficiency of <current guest>=<the add result "integer">;
+    
+    # now compare the efficiencies of both fighters
+    <compare "integer" <efficiency of <current person>> <efficiency of <current guest>>>;
+        
+    <resolve the fight <the compare result>>;
+                
+    let decision of <current person>=value action no_action;
+};
+
+variable current person proposes current guest to exchange weapons (X:compare_result):code;
+let variable current person proposes current guest to exchange weapons lower = value code {};
+let variable current person proposes current guest to exchange weapons greater = value code {};
+let variable current person proposes current guest to exchange weapons equal = value code 
+{
+    execute <print <current person> "proposes" <current guest> "to exchange weapons">;
+    
+    let variable decision of <current person>=value action no_action;
+};
+
+###################
+
+
+
+variable perform current person decision goto (A:place):code;
+let variable perform current person decision goto (A:place)=value code
+{
+    let variable current decision = <decision of <current person>>;
+    let variable current place = value place [(A:place)];
+    let variable current pattern = value action goto <current place>;
+    
+    #execute <print "check whether" <current person> "decision" <current decision> "equals" <current pattern>>;
+        
+    execute <compare "action" <current decision> <current pattern>>;
+    execute <current person goto current place <the compare result>>;
+};
+
+
+variable perform current person decision tell (A:person) that (B:information):code;
+let variable perform current person decision tell (A:person) that (B:information)=value code
+{
+    let variable current decision = <decision of <current person>>;
+    let variable current guest = value person [(A:person)];
+    let variable current information = value place [(B:information)];
+    let variable current pattern = value action tell <current guest> that <current information>;
+
+    #execute <print "check whether" <current person> "decision" <current decision> "equals" <current pattern>>;    
+    
+    execute <compare "action" <current decision> <current pattern>>;
+    execute <current person tells current guest that current information <the compare result>>;
+};
+
+variable perform current person decision ask (A:person) to (B:action):code;
+let variable perform current person decision ask (A:person) to (B:action)=value code
+{
+    let variable current decision = <decision of <current person>>;
+    let variable current guest = value person [(A:person)];
+    let variable current action = value action [(B:action)];
+    let variable current pattern = value action ask <current guest> to <current action>;
+
+    execute <compare "action" <current decision> <current pattern>>;
+    execute <current person asks current guest to current action <the compare result>>;    
+};
+
+variable perform current person decision ask (A:person) what is his function:code;
+let variable perform current person decision ask (A:person) what is his function=value code
+{
+    let variable current decision = <decision of <current person>>;
+    let variable current guest = value person [(A:person)];
+    let variable current pattern = value action ask <current guest> what is his function;
+    
+    execute <compare "action" <current decision> <current pattern>>;
+    execute <current person asks current guest what is his function <the compare result>>;    
+};
+
+variable perform current person decision ask (A:person) what is his weapon:code;
+let variable perform current person decision ask (A:person) what is his weapon=value code
+{
+    let variable current decision = <decision of <current person>>;
+    let variable current guest = value person [(A:person)];
+    let variable current pattern = value action ask <current guest> what is his weapon;
+    
+    execute <compare "action" <current decision> <current pattern>>;
+    execute <current person asks current guest what is his weapon <the compare result>>;    
+};
+
+variable perform current person decision ask (A:person) whether he is a liar:code;
+let variable perform current person decision ask (A:person) whether he is a liar=value code
+{
+    let variable current decision = <decision of <current person>>;
+    let variable current guest = value person [(A:person)];
+    let variable current pattern = value action ask <current guest> whether he is a liar;
+    
+    execute <compare "action" <current decision> <current pattern>>;
+    execute <current person asks current guest whether he is a liar <the compare result>>;    
+};
+
+
+variable perform current person decision attack (A:person):code;
+let variable perform current person decision attack (A:person)=value code
+{
+    let variable current decision = <decision of <current person>>;
+    let variable current guest = value person [(A:person)];
+    let variable current pattern = value action attack <current guest>;
+    
+    execute <compare "action" <current decision> <current pattern>>;
+    execute <current person attacks current guest <the compare result>>;    
+};
+
+
+variable perform current person decision propose (A:person) to exchange weapons:code;
+let variable perform current person decision propose (A:person) to exchange weapons=value code
+{
+    let variable current decision = <decision of <current person>>;
+    let variable current guest = value person [(A:person)];
+    let variable current pattern = value action propose <current guest> to exchange weapons;
+    
+    execute <compare "action" <current decision> <current pattern>>;
+    execute <current person proposes current guest to exchange weapons <the compare result>>;    
+};
+
+
+variable perform decision for (X:person):code;
+let variable perform decision for (X:person)=value code
+{
+    let variable current person = value person [(X:person)];
+    execute <print "perform decision for" <current person>>;
+        
+    execute <perform current person decision goto (A:place)>;
+    execute <perform current person decision tell (A:person) that (B:information)>;
+    execute <perform current person decision ask (A:person) to (B:action)>;
+    execute <perform current person decision ask (A:person) what is his function>;
+    execute <perform current person decision ask (A:person) what is his weapon>;
+    execute <perform current person decision ask (A:person) whether he is a liar>;
+    execute <perform current person decision attack (A:person)>;
+    execute <perform current person decision propose (A:person) to exchange weapons>;
+};
+
+
+variable perform all the decisions:code;
+let variable perform all the decisions=value code
+{
+    execute <print "performing all the decisions">;    
+    execute <perform decision for (X:person)>;            
+};

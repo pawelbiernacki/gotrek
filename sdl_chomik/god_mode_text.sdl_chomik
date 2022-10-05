@@ -1,0 +1,123 @@
+#!/usr/local/bin/sdl_chomik
+
+
+variable god mode text for person (X:person):string;
+let god mode text for person (X:person) = value string "";
+
+variable god mode text for person coordinate (X:person):integer;
+let god mode text for person coordinate Gotrek=value integer 336;
+let god mode text for person coordinate Gwaigilion=value integer 352;
+let god mode text for person coordinate Gerrudir=value integer 368;
+let god mode text for person coordinate Pregor=value integer 384;
+
+
+variable god mode text for place (X:place):string;
+let god mode text for place (X:place)= value string "";
+
+variable god mode text for place coordinate (X:person):integer;
+let god mode text for place coordinate Krakow=value integer 400;
+let god mode text for place coordinate Warszawa=value integer 416;
+let god mode text for place coordinate Wroclaw=value integer 432;
+let god mode text for place coordinate Poznan=value integer 448;
+let god mode text for place coordinate Gdansk=value integer 464;
+
+
+
+variable make a god mode text for current person:code;
+let make a god mode text for current person=value code 
+{
+    let the set to stream stream index=<my output stringstream index>;
+    <set to stream "">;
+
+    let the print target stream index = <my output stringstream index>;
+    let the print end of line = value string "";
+    <print <current person> "is in" <location of <current person>> 
+        ", you can see him" <Gotrek can see <current person>> 
+        ", he has" <points of <current person>> "points">;
+        
+    let the print target stream index = value integer 0; # standard output
+    let the print end of line = value string "\n";
+    
+    let the get from stream stream index = <my output stringstream index>;
+    <get from stream>;
+        
+    let god mode text for person <current person>=<the get from stream result>;
+    
+};
+
+
+
+variable make a god mode text for current place:code;
+let make a god mode text for current place=value code
+{
+    let the set to stream stream index=<my output stringstream index>;
+    <set to stream "">;
+
+    let the print target stream index = <my output stringstream index>;
+    let the print end of line = value string "";
+    <print "In" <current place> " there are " <amount of characters in <current place>> " persons">;
+        
+    let the print target stream index = value integer 0; # standard output
+    let the print end of line = value string "\n";
+    
+    let the get from stream stream index = <my output stringstream index>;
+    <get from stream>;
+        
+    let god mode text for place <current place>=<the get from stream result>;
+};
+
+
+
+variable for each person (X:person) make a god mode text:code;
+
+let for each person (X:person) make a god mode text=value code
+{
+    let current person=value person [(X:person)];        
+    <make a god mode text for current person>;    
+};
+
+
+variable for each place (X:place) make a god mode text:code;
+let for each place (X:place) make a god mode text=value code
+{
+    let current place=value place [(X:place)];        
+    <make a god mode text for current place>;    
+};
+
+
+
+variable recalculate god mode texts:code;
+
+let recalculate god mode texts=value code
+{
+    <for each person (X:person) make a god mode text>;
+    <for each place (X:place) make a god mode text>;
+};
+
+variable show god mode text for person (X:person):code;
+let show god mode text for person (X:person)=value code
+{
+    let current person=value person [(X:person)];
+    execute <show text <my small font index> 
+        <god mode text for person <current person>> 70 
+        <god mode text for person coordinate <current person>>>; 
+};
+
+
+variable show god mode text for place (X:place):code;
+let show god mode text for place (X:place)=value code
+{
+    let current place=value place [(X:place)];
+    execute <show text <my small font index> 
+        <god mode text for place <current place>> 70 
+        <god mode text for place coordinate <current place>>>; 
+};
+
+
+variable show god mode texts: code;
+let show god mode texts = value code
+{
+    <show god mode text for person (X:person)>;
+    <show god mode text for place (X:place)>;
+};
+ 

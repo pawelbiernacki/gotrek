@@ -1,0 +1,6 @@
+#!/usr/local/bin/chomik
+
+
+execute <create new output stringstream>;  
+let variable my concatenating stream index = <the created stream index>;
+ 

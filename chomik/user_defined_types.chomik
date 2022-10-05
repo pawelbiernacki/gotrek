@@ -1,0 +1,100 @@
+#!/usr/local/bin/chomik
+
+type person={Gotrek, Gwaigilion, Gerrudir, Pregor};
+type place={Krakow, Warszawa, Wroclaw, Poznan, Gdansk};
+type function={no_function,Czesnik, Krajczy, Skarbnik, Starosta, Kasztelan};
+type weapon={no_weapon, sword, axe};
+
+
+type information={(X:person) is in (Y:place),
+                    (X:person) has function (Y:function), 
+                    (X:person) has a (Y:weapon),                 
+                    (X:person) can see (Y:person),
+                    (X:person) can hear (Y:person),
+                    (X:person) has told (Y:person) that (Z:information),
+                    (X:person) has asked (Y:person) to (Z:action),
+                    (X:person) has asked (Y:person) what is his function,
+                    (X:person) has asked (Y:person) what is his weapon,
+                    (X:person) has asked (Y:person) whether he is a liar,
+                    (X:person) thinks that (Y:information),                    
+                    (X:person) is a liar};
+                    
+type action={no_action,                             # does not depend on anything
+            goto (X:place),                         # depends on a place (that must be connected)
+            tell (X:person) that (Y:information),   # depends on a person (that must be present)
+            ask (X:person) to (Y:action),           # depends on a person (that must be present)
+            ask (X:person) what is his function,    # ...
+            ask (X:person) what is his weapon,
+            ask (X:person) whether he is a liar,
+            attack (X:person),
+            propose (X:person) to exchange weapons
+            };
+            
+type game_mode_type={title, game},
+        possible_decisions_range=1..5,
+        places_range=1..5,
+        persons_range=1..4,
+        Gotrek_animation_range=1..10;
+        
+        
+type action_class={ actions that do not depend on anything, 
+                    actions that depend on a place, 
+                    actions that depend on a person };
+
+                    
+# once we identified the random person present we can use this "subclass" to generate the actual actions
+type action_depending_on_person_subclass={  actions tell person that information, 
+                                            actions ask person to action,
+                                            actions ask person what is his function,
+                                            actions ask person what is his weapon,
+                                            actions ask person whether he is a liar,
+                                            actions attack person,
+                                            actions propose person to exchange weapons 
+                                            };
+
+expand(3);
+
+variable (X:place) successor:place;
+variable (X:person) successor:person;
+
+# these variables are used to have an order on the type place, they are never modified
+let variable Krakow successor=value place Warszawa;
+let variable Warszawa successor=value place Wroclaw;
+let variable Wroclaw successor=value place Poznan;
+let variable Poznan successor=value place Gdansk;
+let variable Gdansk successor=value place Krakow;
+
+let variable Gotrek successor= value person Gwaigilion;
+let variable Gwaigilion successor = value person Gerrudir;
+let variable Gerrudir successor= value person Pregor;
+let variable Pregor successor= value person Gotrek;
+
+
+variable weapon bonus for (X:weapon):integer;
+let weapon bonus for no_weapon=value integer 0;
+let weapon bonus for axe=value integer 3;
+let weapon bonus for sword=value integer 4;
+
+variable from the computer talking to Gotrek point of view who is (X:person):string;
+let from the computer talking to Gotrek point of view who is Gotrek=value string "yourself";
+let from the computer talking to Gotrek point of view who is Gwaigilion=value string "Gwaigilion";
+let from the computer talking to Gotrek point of view who is Gerrudir=value string "Gerrudir";
+let from the computer talking to Gotrek point of view who is Pregor=value string "Pregor";
+
+variable from the Gotrek point of view who is (X:person):string;
+let from the Gotrek point of view who is Gotrek=value string "myself";
+let from the Gotrek point of view who is Gwaigilion=value string "Gwaigilion";
+let from the Gotrek point of view who is Gerrudir=value string "Gerrudir";
+let from the Gotrek point of view who is Pregor=value string "Pregor";
+
+variable from the Gotrek point of view how to say whether (X:person) is a liar:string;
+let from the Gotrek point of view how to say whether (X:person) is a liar=value string "whether he is a liar";
+let from the Gotrek point of view how to say whether Gotrek is a liar=value string "whether I am a liar";
+
+variable from the Gotrek point of view how to say what (X:person) weapon is:string;
+let from the Gotrek point of view how to say what (X:person) weapon is=value string "what his weapon is";
+let from the Gotrek point of view how to say what Gotrek weapon is=value string "what my weapon is";
+
+variable from the Gotrek point of view how to say what (X:person) function is:string;
+let from the Gotrek point of view how to say what (X:person) function is=value string "what his function is";
+let from the Gotrek point of view how to say what Gotrek function is=value string "what my function is";

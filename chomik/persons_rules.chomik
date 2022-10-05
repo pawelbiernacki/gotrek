@@ -1,0 +1,41 @@
+#!/usr/local/bin/chomik
+
+variable everyone can see himself (X:person) (Y:compare_result):code;
+
+let variable everyone can see himself (X:person) lower = value code {};
+let variable everyone can see himself (X:person) greater = value code {};
+let variable everyone can see himself (X:person) equal = value code 
+{ 
+    let variable current person = value person [(X:person)];
+    let variable <current person> can see <current person> = value boolean true;
+    let variable <current person> can hear <current person> = value boolean true;
+    let variable <current person> likes <current person> = value boolean true;
+};
+
+
+
+variable everyone can see all the others being in the same city (X:compare_result):code;
+let variable everyone can see all the others being in the same city lower = value code {};
+let variable everyone can see all the others being in the same city greater = value code {};
+let variable everyone can see all the others being in the same city equal = value code 
+{
+    let variable <current person 1> can see <current person 2> = value boolean true;
+    let variable <current person 2> can see <current person 1> = value boolean true;
+
+    let variable <current person 1> can hear <current person 2> = value boolean true;
+    let variable <current person 2> can hear <current person 1> = value boolean true;    
+};
+ 
+
+ 
+variable everyone likes himself (X:person) (Y:compare_result):code;
+ 
+let variable everyone likes himself (X:person) lower = value code {};
+let variable everyone likes himself (X:person) greater = value code {};
+let variable everyone likes himself (X:person) equal = value code 
+{ 
+    let variable current person = value person [(X:person)];
+    let variable <current person> likes <current person> = value boolean true;
+};
+ 
+ 

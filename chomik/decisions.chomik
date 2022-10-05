@@ -1,0 +1,5 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/decisions_make.chomik"
+include "../chomik/decisions_perform.chomik"
+ 
