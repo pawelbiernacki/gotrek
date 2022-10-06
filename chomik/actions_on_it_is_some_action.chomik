@@ -48,6 +48,13 @@ let variable on it is found but the current guest is equal the current person eq
     let the result of check whether current person possible decision is correct=value boolean false;
 };
 
+variable on it is found but the current guest has not proposed the exchange (X:compare_result_type):code;
+let on it is found but the current guest has not proposed the exchange lower = value code {};
+let on it is found but the current guest has not proposed the exchange greater = value code {};
+let on it is found but the current guest has not proposed the exchange equal = value code
+{
+    let the result of check whether current person possible decision is correct=value boolean false;
+};
 
 
 
@@ -116,6 +123,23 @@ let on it is propose current guest to exchange weapons equal = value code
     <compare "person" <current person> <current guest>>; 
     <on it is found but the current guest is equal the current person <the compare result>>;        
 };
+
+
+variable on it is accept current guest proposal to exchange weapons (X:compare_result_type):code;
+let on it is accept current guest proposal to exchange weapons lower = value code {};
+let on it is accept current guest proposal to exchange weapons greater = value code {};
+let on it is accept current guest proposal to exchange weapons equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;
+    
+    # it also makes no sense if current person does not think it has been proposed exchange by the current guest
+    <compare "boolean" <<current person> thinks that <current guest> has proposed him to exchange weapons> false>;
+    <on it is found but the current guest has not proposed the exchange <the compare result>>;
+    
+};
+
 
 variable on it is ask current guest what is his function (X:compare_result_type):code;
 let on it is ask current guest what is his function lower = value code {};

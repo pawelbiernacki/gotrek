@@ -5,14 +5,15 @@ variable initialize the relationship (X:person) (Y:person):code;
 
 let variable initialize the relationship (X:person) (Y:person) = value code
 {
-    let variable current person 1 = value person [(X:person)];
-    let variable current person 2 = value person [(Y:person)];
-    
-    execute <compare "person" <current person 1> <current person 2>>;
-    execute <everyone likes himself <current person 1> <the compare result>>;
-    
-    execute <print "relationship" <current person 1> <current person 2>>;
-    execute <print <current person 1> "likes" <current person 2> "=" <<current person 1> likes <current person 2>>>;    
+    let variable current person = value person [(X:person)];
+    let variable current guest = value person [(Y:person)];
+
+    let <current person> thinks that <current guest> has proposed him to exchange weapons=value boolean false;
         
+    execute <compare "person" <current person> <current guest>>;
+    execute <everyone likes himself <current person> <the compare result>>;
+    
+    execute <print "relationship" <current person> <current guest>>;
+    execute <print <current person> "likes" <current guest> "=" <<current person> likes <current guest>>>;            
 };
  

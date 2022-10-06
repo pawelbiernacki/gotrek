@@ -127,6 +127,29 @@ let notify Gotrek he has been attacked and lost equal=value code
 };
 
 
+variable notify Gotrek he has been proposed to exchange weapons (X:compare_result):code;
+let notify Gotrek he has been proposed to exchange weapons lower=value code {};
+let notify Gotrek he has been proposed to exchange weapons greater=value code {};
+let notify Gotrek he has been proposed to exchange weapons equal=value code 
+{
+    let Gotrek result text=value string "You have been proposed to exchange weapons.";
+    let Gotrek result timer=value integer 100;
+};
+
+
+variable notify Gotrek he has exchanged weapons (X:compare_result):code;
+let notify Gotrek he has exchanged weapons lower=value code {};
+let notify Gotrek he has exchanged weapons greater=value code {};
+let notify Gotrek he has exchanged weapons equal=value code 
+{
+    let Gotrek result text=value string "You have exchanged weapons.";
+    let Gotrek result timer=value integer 100;
+};
+
+
+
+
+
 variable efficiency of (X:person):integer;  # efficiency is strength + a random number (for this particular fight)
                                             # we may need to add bonus from a weapon or helping persons
 variable current efficiency bonus:integer;
@@ -176,6 +199,25 @@ let resolve the fight greater= value code
     <notify Gotrek he has been attacked and lost <the compare result>>;
 
 };
+
+
+
+variable resolve the proposal to exchange weapons:code;
+let resolve the proposal to exchange weapons=value code 
+{
+    # check if current guest is Gotrek
+    <compare "person" <current guest> Gotrek>;
+    <notify Gotrek he has been proposed to exchange weapons <the compare result>>;
+};
+
+
+variable resolve the acceptance of the proposal to exchange weapons:code;
+let resolve the acceptance of the proposal to exchange weapons=value code
+{
+    <compare "person" <current person> Gotrek>;
+    <notify Gotrek he has exchanged weapons <the compare result>>;
+};
+
 
 
 variable current person attacks current guest (X:compare_result):code;
@@ -229,8 +271,38 @@ let variable current person proposes current guest to exchange weapons equal = v
 {
     execute <print <current person> "proposes" <current guest> "to exchange weapons">;
     
+    let variable <current guest> thinks that <current person> has proposed him to exchange weapons=value boolean true;
+        
     let variable decision of <current person>=value action no_action;
+    
+    <resolve the proposal to exchange weapons>;
 };
+
+
+variable current person accepts current guest proposal to exchange weapons (X:compare_result):code;
+let current person accepts current guest proposal to exchange weapons lower = value code {};
+let current person accepts current guest proposal to exchange weapons greater = value code {};
+let current person accepts current guest proposal to exchange weapons equal = value code 
+{
+    <print <current person> "(" <weapon of <current person>> ") accepts" <current guest> "(" <weapon of <current guest>> ") proposal to exchange weapons">;
+    
+    
+    # here we exchange the weapons
+    let current weapon=<weapon of <current person>>;
+    let weapon of <current person>=<weapon of <current guest>>;
+    let weapon of <current guest>=<current weapon>;
+
+    let variable <current person> thinks that <current guest> has proposed him to exchange weapons=value boolean false;    
+    
+    <print <current person> "exchanges weapons with" <current guest>>;
+    
+    let variable decision of <current person>=value action no_action;
+    
+    <resolve the acceptance of the proposal to exchange weapons>;
+};
+
+
+
 
 ###################
 
@@ -328,10 +400,23 @@ let variable perform current person decision propose (A:person) to exchange weap
     let variable current decision = <decision of <current person>>;
     let variable current guest = value person [(A:person)];
     let variable current pattern = value action propose <current guest> to exchange weapons;
-    
-    execute <compare "action" <current decision> <current pattern>>;
-    execute <current person proposes current guest to exchange weapons <the compare result>>;    
+            
+    <compare "action" <current decision> <current pattern>>;
+    <current person proposes current guest to exchange weapons <the compare result>>;    
 };
+
+
+variable perform current person decision accept (A:person) proposal to exchange weapons:code;
+let perform current person decision accept (A:person) proposal to exchange weapons=value code
+{
+    let current decision = <decision of <current person>>;
+    let current guest = value person [(A:person)];
+    let current pattern = value action accept <current guest> proposal to exchange weapons;
+
+    <compare "action" <current decision> <current pattern>>;
+    <current person accepts current guest proposal to exchange weapons <the compare result>>;        
+};
+
 
 
 variable perform decision for (X:person):code;
@@ -348,6 +433,7 @@ let variable perform decision for (X:person)=value code
     execute <perform current person decision ask (A:person) whether he is a liar>;
     execute <perform current person decision attack (A:person)>;
     execute <perform current person decision propose (A:person) to exchange weapons>;
+    execute <perform current person decision accept (A:person) proposal to exchange weapons>;
 };
 
 

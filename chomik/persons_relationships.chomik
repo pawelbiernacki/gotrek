@@ -8,3 +8,4 @@ variable (X:person) dislikes (Y:person):boolean;
 variable (X:person) can see (Y:person):boolean;
 variable (X:person) can hear (Y:person):boolean;
 
+variable (X:person) thinks that (Y:person) has proposed him to exchange weapons:boolean;

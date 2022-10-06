@@ -47,8 +47,7 @@ let variable generate possible decisions for the current person and action class
 };
 
 let variable generate possible decisions for the current person and action class actions that depend on a place=value code
-{
-    
+{    
     #execute <print "find all connected places to" <current place>>;
     
     let variable (X:place) is connected with the current place=<(X:place) is connected with <current place>>;    
@@ -104,6 +103,11 @@ let variable generate possible decisions for the current person and actions subc
     let variable <current person> possible decision <current possible decision index> = value action propose <current guest> to exchange weapons;
 };
 
+let generate possible decisions for the current person and actions subclass actions accept person proposal to exchange weapons=value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action accept <current guest> proposal to exchange weapons;
+};
+
 
 let variable generate possible decisions for the current person and action class actions that depend on a person=value code
 {
@@ -128,7 +132,7 @@ let variable generate possible decisions for the current person and action class
     
     execute <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_subclass">>;
     
-    execute <print "selected action for" <current person> "index" <current possible decision index> "is" <<current person> possible decision <current possible decision index>>>;
+    <print "selected action for" <current person> "index" <current possible decision index> "is" <<current person> possible decision <current possible decision index>>>;
     
 };
 
@@ -140,7 +144,8 @@ let variable generate possible decisions for the current person (X:possible_deci
 
     let variable the read from stream source stream index = <my action_class generator index>;
     execute <read from stream "action_class">;
-    let variable current action class = <the read from stream result "action_class">;
+    let current action class = <the read from stream result "action_class">;            
+    
     
     execute <print "current action class" <current action class>>;    
     execute <generate possible decisions for the current person and action class <current action class>>;

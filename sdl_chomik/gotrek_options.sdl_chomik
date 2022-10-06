@@ -87,6 +87,29 @@ let variable on Gotrek propose current guest to exchange weapons equal = value c
     #execute <print "concatenation result" <the get from stream result>>;
 };
 
+
+variable on Gotrek accept current guest proposal to exchange weapons (X:compare_result):code;
+let on Gotrek accept current guest proposal to exchange weapons lower = value code {};
+let on Gotrek accept current guest proposal to exchange weapons greater = value code {};
+let on Gotrek accept current guest proposal to exchange weapons equal = value code 
+{
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will accept" <from the Gotrek point of view who is <current guest>> "'s proposal to exchange weapons.">;    
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
+    
+};
+
+
+
 variable on Gotrek tell current guest that current information (Y:compare_result):code;
 let variable on Gotrek tell current guest that current information lower = value code {};
 let variable on Gotrek tell current guest that current information greater = value code {};
@@ -226,6 +249,16 @@ let variable check if Gotrek is going to propose (A:person) to exchange weapons=
     execute <on Gotrek propose current guest to exchange weapons <the compare result>>;
 };
 
+variable check if Gotrek is going to accept (A:person) proposal to exchange weapons:code;
+let check if Gotrek is going to accept (A:person) proposal to exchange weapons=value code
+{
+    let variable current guest = value place [(A:person)];
+    let variable current pattern = value action accept <current guest> proposal to exchange weapons;
+    execute <compare "action" <current possible decision> <current pattern>>;
+    execute <on Gotrek accept current guest proposal to exchange weapons <the compare result>>;
+};
+
+
 
 variable check if Gotrek is going to tell (A:person) that (B:information):code;
 let variable check if Gotrek is going to tell (A:person) that (B:information)=value code
@@ -287,7 +320,8 @@ let variable recalculate Gotrek choice option number (X:possible_decisions_range
     
     execute <check if Gotrek is going to go to (A:place)>;
     execute <check if Gotrek is going to attack (A:person)>;
-    execute <check if Gotrek is going to propose (A:person) to exchange weapons>;
+    <check if Gotrek is going to propose (A:person) to exchange weapons>;
+    <check if Gotrek is going to accept (A:person) proposal to exchange weapons>;
     execute <check if Gotrek is going to tell (A:person) that (B:information)>;
     execute <check if Gotrek is going to ask (A:person) to (B:action)>;
     execute <check if Gotrek is going to ask (A:person) what his function is>;

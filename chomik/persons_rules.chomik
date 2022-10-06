@@ -19,11 +19,11 @@ let variable everyone can see all the others being in the same city lower = valu
 let variable everyone can see all the others being in the same city greater = value code {};
 let variable everyone can see all the others being in the same city equal = value code 
 {
-    let variable <current person 1> can see <current person 2> = value boolean true;
-    let variable <current person 2> can see <current person 1> = value boolean true;
+    let variable <current person> can see <current guest> = value boolean true;
+    let variable <current guest> can see <current person> = value boolean true;
 
-    let variable <current person 1> can hear <current person 2> = value boolean true;
-    let variable <current person 2> can hear <current person 1> = value boolean true;    
+    let variable <current person> can hear <current guest> = value boolean true;
+    let variable <current guest> can hear <current person> = value boolean true;    
 };
  
 
