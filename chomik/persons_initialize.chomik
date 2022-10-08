@@ -58,5 +58,7 @@ let variable initialize the persons= value code
     
     let variable (X:person) likes (Y:person) = value boolean false;
     let variable (X:person) dislikes (Y:person) = value boolean false;    
-    execute <initialize the relationship (X:person) (Y:person)>;
+        
+    <initialize the relationship (X:person) (Y:person)>;
+    <initialize the persons informations relationships (X:person) (Y:information) (V:boolean)>;
 };

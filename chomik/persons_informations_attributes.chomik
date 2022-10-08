@@ -1,0 +1,29 @@
+#!/usr/local/bin/chomik
+
+
+# here is a family of variables that denote for each person and each information AND each boolean value (true or false)
+# whether the person believes the information to be true or false.
+
+# for example for the person "Gotrek" and the information "Gwaigilion is in Krakow" we have two such variables:
+#
+# variable Gotrek thinks that Gwaigilion is in Krakow is false:boolean;
+# variable Gotrek thinks that Gwaigilion is in Krakow is true:boolean;
+#
+# note that depending on the situation the correct value can be obvious (observable) or not
+
+# for each person and each information we have two such variables (one for true and one for false)
+# they can both be false, but they cannot both be true
+
+variable (X:person) thinks that (Y:information) is (V:boolean):boolean; 
+
+
+variable initialize the persons informations relationships (X:person) (Y:information) (V:boolean):code;
+let initialize the persons informations relationships (X:person) (Y:information) (V:boolean)=value code
+{
+    let current person = value person [(X:person)];
+    let current information = value information [(Y:information)];
+    let current boolean = value boolean [(V:boolean)];
+    
+    let <current person> thinks that <current information> is <current boolean>=value boolean false;    
+    <print <current person> "thinks that" <current information> "is" <current boolean> "= false">;
+};

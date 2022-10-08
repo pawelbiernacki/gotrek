@@ -3,6 +3,7 @@
 include "../chomik/persons_random_generators.chomik"
 include "../chomik/persons_attributes.chomik"
 include "../chomik/persons_relationships.chomik"
+include "../chomik/persons_informations_attributes.chomik"
 include "../chomik/persons_auxilliary_variables.chomik"
 include "../chomik/persons_initialize.chomik"
 include "../chomik/persons_rules.chomik"
