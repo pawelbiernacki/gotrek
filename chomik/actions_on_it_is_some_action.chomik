@@ -56,6 +56,23 @@ let on it is found but the current guest has not proposed the exchange equal = v
     let the result of check whether current person possible decision is correct=value boolean false;
 };
 
+variable on it is found but the current guest has not asked (X:compare_result_type):code;
+let on it is found but the current guest has not asked lower = value code {};
+let on it is found but the current guest has not asked greater = value code {};
+let on it is found but the current guest has not asked equal = value code 
+{
+    let the result of check whether current person possible decision is correct=value boolean false;
+};
+
+variable on it is found but the current person is not a liar and so cannot say he is (X:compare_result_type):code;
+let on it is found but the current person is not a liar and so cannot say he is lower = value code {};
+let on it is found but the current person is not a liar and so cannot say he is greater = value code {};
+let on it is found but the current person is not a liar and so cannot say he is equal = value code 
+{
+    let the result of check whether current person possible decision is correct=value boolean false;
+};
+
+
 
 
 ##################
@@ -171,5 +188,37 @@ let on it is ask current guest whether he is a liar equal = value code
     # it makes no sense if current person equals current guest
     <compare "person" <current person> <current guest>>; 
     <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+
+variable on it is answer current guest whether I am a liar (ANSWER:boolean) (X:compare_result_type):code;
+let on it is answer current guest whether I am a liar false lower = value code {};
+let on it is answer current guest whether I am a liar false greater = value code {};
+let on it is answer current guest whether I am a liar false equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+    
+    # it also makes no sense if current person does not think it has been asked by the current guest
+    <compare "boolean" <<current person> thinks that <current guest> has asked him whether he is a liar> false>;
+    <on it is found but the current guest has not asked <the compare result>>;        
+};
+
+let on it is answer current guest whether I am a liar true lower = value code {};
+let on it is answer current guest whether I am a liar true greater = value code {};
+let on it is answer current guest whether I am a liar true equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+        
+    # it also makes no sense if current person does not think it has been asked by the current guest
+    <compare "boolean" <<current person> thinks that <current guest> has asked him whether he is a liar> false>;
+    <on it is found but the current guest has not asked <the compare result>>; 
+    
+    # it is also impossible if the current person is not a liar, because he cannot admit he is a liar then
+    <compare "boolean" <is <current person> a liar> false>;
+    <on it is found but the current person is not a liar and so cannot say he is <the compare result>>;
+    
 };
 

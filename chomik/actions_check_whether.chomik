@@ -63,6 +63,17 @@ let check whether current possible decision is accept (P:person) proposal to exc
     <on it is accept current guest proposal to exchange weapons <the compare result>>;
 };
 
+variable check whether current possible decision is answer (P:person) whether I am a liar (ANSWER:boolean):code;
+let check whether current possible decision is answer (P:person) whether I am a liar (ANSWER:boolean)=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current answer=value boolean [(ANSWER:boolean)];    
+    let current pattern=value action answer <current guest> whether I am a liar <current answer>;
+    <compare "action" <current possible decision> <current pattern>>;
+    <on it is answer current guest whether I am a liar <current answer> <the compare result>>;
+};
+
+
 
 variable check whether current possible decision is ask (P:person) what is his function:code;
 let check whether current possible decision is ask (P:person) what is his function=value code
@@ -145,6 +156,9 @@ let variable check whether (X:person) possible decision (Y:possible_decisions_ra
     
     # it makes no sense to ask oneself whether he is a liar
     <check whether current possible decision is ask (P:person) whether he is a liar>;
+    
+    # sometimes it makes no sense to answer oneself whether I am a liar
+    <check whether current possible decision is answer (P:person) whether I am a liar (ANSWER:boolean)>;
     
     # one cannot accept his own proposal to exchange weapons
     <check whether current possible decision is accept (P:person) proposal to exchange weapons>;

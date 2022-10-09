@@ -1,6 +1,6 @@
 
 
-SUBDIRS = chomik font image sdl_chomik
+SUBDIRS = chomik font image sdl_chomik tests
 
 
 size:

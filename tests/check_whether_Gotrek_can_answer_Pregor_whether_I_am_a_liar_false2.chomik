@@ -1,0 +1,39 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/global_variables.chomik"
+include "../chomik/global_streams.chomik"
+include "../chomik/persons.chomik"
+include "../chomik/places.chomik"
+
+variable fail if (X:comparison_result_type):code;
+let fail if lower = value code
+{
+    let the program return = value integer 1;
+};
+let fail if greater = value code
+{
+    let the program return = value integer 1;
+};
+let fail if equal = value code
+{
+    let the program return = value integer 0;
+};
+
+let the result of check whether current person possible decision is correct = value boolean false;
+
+let location of Gotrek = value place Krakow;
+let location of Pregor = value place Krakow;
+
+let Gotrek possible decision 1 = value action answer Pregor whether I am a liar false;
+let Gotrek thinks that Pregor has asked him whether he is a liar = value boolean true;  # Pregor did ask, so Gotrek could answer
+let is Gotrek a liar=value boolean true;                                                # and he is a liar, se he can lie he is not one
+
+<check whether Gotrek possible decision 1 is correct>;
+
+<compare "boolean" <the result of check whether current person possible decision is correct> true>;
+
+<fail if <the compare result>>;
+
+
+ 

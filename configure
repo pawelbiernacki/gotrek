@@ -2323,7 +2323,7 @@ fi
 
 # Checks for library functions.
 
-ac_config_files="$ac_config_files Makefile chomik/Makefile font/Makefile image/Makefile sdl_chomik/Makefile"
+ac_config_files="$ac_config_files Makefile chomik/Makefile font/Makefile image/Makefile sdl_chomik/Makefile tests/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3047,6 +3047,7 @@ do
     "font/Makefile") CONFIG_FILES="$CONFIG_FILES font/Makefile" ;;
     "image/Makefile") CONFIG_FILES="$CONFIG_FILES image/Makefile" ;;
     "sdl_chomik/Makefile") CONFIG_FILES="$CONFIG_FILES sdl_chomik/Makefile" ;;
+    "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

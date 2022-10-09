@@ -1,0 +1,5 @@
+#!/usr/local/bin/chomik
+
+let the program return = value integer 1; # this should cause the test to fail
+
+

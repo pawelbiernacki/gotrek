@@ -270,7 +270,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-SUBDIRS = chomik font image sdl_chomik
+SUBDIRS = chomik font image sdl_chomik tests
 all: all-recursive
 
 .SUFFIXES:

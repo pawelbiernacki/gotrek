@@ -19,5 +19,6 @@ AC_CONFIG_FILES([Makefile
                  chomik/Makefile
                  font/Makefile
                  image/Makefile
-                 sdl_chomik/Makefile])
+                 sdl_chomik/Makefile
+                 tests/Makefile])
 AC_OUTPUT

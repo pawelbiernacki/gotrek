@@ -1,0 +1,44 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/user_defined_types.chomik"
+
+variable counter:integer;
+let counter=value integer 0;
+
+variable increment the counter:code;
+let increment the counter=value code
+{
+    <add "integer" <counter> 1>;
+    let counter = <the add result "integer">;
+};
+
+variable iterate over the (A:action):code;
+let iterate over the (A:action)=value code
+{
+    <increment the counter>;
+};
+
+<iterate over the (A:action)>;
+
+<print "amount of actions" <counter>>;
+
+
+
+variable fail if (X:comparison_result_type):code;
+let fail if lower = value code
+{
+    let the program return = value integer 1;
+};
+let fail if greater = value code
+{
+    let the program return = value integer 1;
+};
+let fail if equal = value code
+{
+    let the program return = value integer 0;
+};
+
+
+<compare "integer" <counter> 42>;
+<fail if <the compare result>>;
+ 
