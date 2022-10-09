@@ -5,7 +5,8 @@ variable current person: person,
         current possible decision index:integer,
         current location:place,
         current possible decision:action,
-        current decision:action;
+        current decision:action,
+        current answer:boolean;
  
 variable current pattern:action,
         current target:place,

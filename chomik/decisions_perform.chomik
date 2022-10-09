@@ -67,157 +67,8 @@ let variable current person asks current guest whether he is a liar equal = valu
     let variable decision of <current person>=value action no_action;
 };
 
-
-variable notify Gotrek he has lost (X:compare_result):code;
-let notify Gotrek he has lost equal=value code
-{
-    let Gotrek result text=value string "You have lost.";
-    let Gotrek result timer=value integer 100;    
-};
-
-let notify Gotrek he has lost lower=value code {};
-let notify Gotrek he has lost greater=value code {};
-
-
-variable notify Gotrek he has won (X:compare_result):code;
-let notify Gotrek he has won equal=value code
-{
-    let Gotrek result text=value string "You have won.";
-    let Gotrek result timer=value integer 100;
-};
-let notify Gotrek he has won lower=value code {};
-let notify Gotrek he has won greater=value code {};
-
-
-variable notify Gotrek it is a draw (X:compare_result):code;
-let notify Gotrek it is a draw equal=value code
-{
-    let Gotrek result text=value string "It is a draw.";
-    let Gotrek result timer=value integer 100;
-};
-let notify Gotrek it is a draw lower=value code {};
-let notify Gotrek it is a draw greater=value code {};
-
-variable notify Gotrek he has been attacked and won (X:compare_result):code;
-variable notify Gotrek he has been attacked and it is a draw (X:compare_result):code;
-variable notify Gotrek he has been attacked and lost (X:compare_result):code;
-
-let notify Gotrek he has been attacked and won lower=value code {};
-let notify Gotrek he has been attacked and won greater=value code {};
-let notify Gotrek he has been attacked and won equal=value code 
-{
-    let Gotrek result text=value string "You have been attacked and won.";
-    let Gotrek result timer=value integer 100;
-};
-
-let notify Gotrek he has been attacked and it is a draw lower=value code {};
-let notify Gotrek he has been attacked and it is a draw greater=value code {};
-let notify Gotrek he has been attacked and it is a draw equal=value code 
-{
-    let Gotrek result text=value string "You have been attacked and it is a draw.";
-    let Gotrek result timer=value integer 100;
-};
-
-let notify Gotrek he has been attacked and lost lower=value code {};
-let notify Gotrek he has been attacked and lost greater=value code {};
-let notify Gotrek he has been attacked and lost equal=value code 
-{
-    let Gotrek result text=value string "You have been attacked and lost.";
-    let Gotrek result timer=value integer 100;
-};
-
-
-variable notify Gotrek he has been proposed to exchange weapons (X:compare_result):code;
-let notify Gotrek he has been proposed to exchange weapons lower=value code {};
-let notify Gotrek he has been proposed to exchange weapons greater=value code {};
-let notify Gotrek he has been proposed to exchange weapons equal=value code 
-{
-    let Gotrek result text=value string "You have been proposed to exchange weapons.";
-    let Gotrek result timer=value integer 100;
-};
-
-
-variable notify Gotrek he has exchanged weapons (X:compare_result):code;
-let notify Gotrek he has exchanged weapons lower=value code {};
-let notify Gotrek he has exchanged weapons greater=value code {};
-let notify Gotrek he has exchanged weapons equal=value code 
-{
-    let Gotrek result text=value string "You have exchanged weapons.";
-    let Gotrek result timer=value integer 100;
-};
-
-
-
-
-
-variable efficiency of (X:person):integer;  # efficiency is strength + a random number (for this particular fight)
-                                            # we may need to add bonus from a weapon or helping persons
-variable current efficiency bonus:integer;
-
-variable resolve the fight (X:compare_result):code;
-
-let resolve the fight lower=value code
-{
-    <print <current person> "lost against" <current guest>>;
-    <add "integer" <points of <current guest>> 1>;    
-    let points of <current guest>=<the add result "integer">;
-            
-    # check if current person is Gotrek
-    <compare "person" <current person> Gotrek>;
-    <notify Gotrek he has lost <the compare result>>;  
-    
-    # check if current guest is Gotrek
-    <compare "person" <current guest> Gotrek>;
-    <notify Gotrek he has been attacked and won <the compare result>>;
-    
-};
-let resolve the fight equal=value code
-{
-    <print "the fight between" <current person> "and" <current guest> "is a draw">;
-    
-    # check if current person is Gotrek
-    <compare "person" <current person> Gotrek>;
-    <notify Gotrek it is a draw <the compare result>>;            
-    
-    # check if current guest is Gotrek
-    <compare "person" <current guest> Gotrek>;
-    <notify Gotrek he has been attacked and it is a draw <the compare result>>;    
-};
-
-let resolve the fight greater= value code
-{
-    <print <current person> "won against" <current guest>>;
-    <add "integer" <points of <current person>> 1>;    
-    let points of <current person>=<the add result "integer">;
-
-    # check if current person is Gotrek
-    <compare "person" <current person> Gotrek>;
-    <notify Gotrek he has won <the compare result>>;    
-    
-    # check if current guest is Gotrek
-    <compare "person" <current guest> Gotrek>;
-    <notify Gotrek he has been attacked and lost <the compare result>>;
-
-};
-
-
-
-variable resolve the proposal to exchange weapons:code;
-let resolve the proposal to exchange weapons=value code 
-{
-    # check if current guest is Gotrek
-    <compare "person" <current guest> Gotrek>;
-    <notify Gotrek he has been proposed to exchange weapons <the compare result>>;
-};
-
-
-variable resolve the acceptance of the proposal to exchange weapons:code;
-let resolve the acceptance of the proposal to exchange weapons=value code
-{
-    <compare "person" <current person> Gotrek>;
-    <notify Gotrek he has exchanged weapons <the compare result>>;
-};
-
+include "../chomik/notify_gotrek.chomik"
+include "../chomik/resolve_the_events.chomik"
 
 
 variable current person attacks current guest (X:compare_result):code;
@@ -417,7 +268,17 @@ let perform current person decision accept (A:person) proposal to exchange weapo
     <current person accepts current guest proposal to exchange weapons <the compare result>>;        
 };
 
-
+variable perform current person decision answer (A:person) whether I am a liar (ANSWER:boolean):code;
+let perform current person decision answer (A:person) whether I am a liar (ANSWER:boolean)=value code
+{
+    let current decision = <decision of <current person>>;
+    let current guest = value person [(A:person)];
+    let current answer = value boolean [(ANSWER:boolean)];    
+    let current pattern = value action answer <current guest> whether I am a liar <current answer>;
+        
+    <compare "action" <current decision> <current pattern>>;
+    <current person answers current guest whether he is a liar <the compare result>>;
+};
 
 variable perform decision for (X:person):code;
 let variable perform decision for (X:person)=value code
@@ -431,6 +292,7 @@ let variable perform decision for (X:person)=value code
     execute <perform current person decision ask (A:person) what is his function>;
     execute <perform current person decision ask (A:person) what is his weapon>;
     execute <perform current person decision ask (A:person) whether he is a liar>;
+    execute <perform current person decision answer (A:person) whether I am a liar (ANSWER:boolean)>;
     execute <perform current person decision attack (A:person)>;
     execute <perform current person decision propose (A:person) to exchange weapons>;
     execute <perform current person decision accept (A:person) proposal to exchange weapons>;

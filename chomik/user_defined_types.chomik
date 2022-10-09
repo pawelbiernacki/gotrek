@@ -26,6 +26,7 @@ type action={no_action,                             # does not depend on anythin
             ask (X:person) what is his function,    # ...
             ask (X:person) what is his weapon,
             ask (X:person) whether he is a liar,
+            answer (X:person) whether I am a liar (ANSWER:boolean),
             attack (X:person),
             propose (X:person) to exchange weapons,
             accept (X:person) proposal to exchange weapons
@@ -49,12 +50,13 @@ type action_depending_on_person_subclass={  actions tell person that information
                                             actions ask person what is his function,
                                             actions ask person what is his weapon,
                                             actions ask person whether he is a liar,
+                                            actions answer person whether I am a liar,
                                             actions attack person,
                                             actions propose person to exchange weapons,
                                             actions accept person proposal to exchange weapons
                                             };
 
-expand(3);
+expand(2);
 
 variable (X:place) successor:place;
 variable (X:person) successor:person;

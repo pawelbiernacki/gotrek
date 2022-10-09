@@ -1,0 +1,226 @@
+#!/usr/local/bin/sdl_chomik
+
+
+
+variable on Gotrek no_action (X:compare_result):code;
+let variable on Gotrek no_action lower=value code {};
+let variable on Gotrek no_action greater=value code {};
+let variable on Gotrek no_action equal=value code 
+{
+    let variable possible choice option number <current option number> of Gotrek = value string "I will wait.";
+};
+
+variable on Gotrek goto current target (Y:compare_result):code;
+let variable on Gotrek goto current target lower = value code {};
+let variable on Gotrek goto current target greater = value code {};
+let variable on Gotrek goto current target equal = value code 
+{
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+    
+    let variable the print target stream index =  <my concatenating stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will go to" <current target> ".">;    
+        
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+    
+    let variable the get from stream stream index = <my concatenating stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;
+        
+    execute <print "concatenation result" <the get from stream result>>;
+};
+
+
+variable on Gotrek attack current guest (Y:compare_result):code;
+let variable on Gotrek attack current guest lower = value code {};
+let variable on Gotrek attack current guest greater = value code {};
+let variable on Gotrek attack current guest equal = value code 
+{
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+    
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will attack" <from the Gotrek point of view who is <current guest>> ".">;    
+        
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
+    
+    #execute <print "concatenation result" <the get from stream result>>;
+};
+
+variable on Gotrek propose current guest to exchange weapons (Y:compare_result):code;
+let variable on Gotrek propose current guest to exchange weapons lower = value code {};
+let variable on Gotrek propose current guest to exchange weapons greater = value code {};
+let variable on Gotrek propose current guest to exchange weapons equal = value code 
+{
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will propose" <from the Gotrek point of view who is <current guest>> "to exchange weapons.">;    
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
+    
+    #execute <print "concatenation result" <the get from stream result>>;
+};
+
+
+variable on Gotrek accept current guest proposal to exchange weapons (X:compare_result):code;
+let on Gotrek accept current guest proposal to exchange weapons lower = value code {};
+let on Gotrek accept current guest proposal to exchange weapons greater = value code {};
+let on Gotrek accept current guest proposal to exchange weapons equal = value code 
+{
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will accept" <from the Gotrek point of view who is <current guest>> "'s proposal to exchange weapons.">;    
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
+    
+};
+
+
+
+variable on Gotrek tell current guest that current information (Y:compare_result):code;
+let variable on Gotrek tell current guest that current information lower = value code {};
+let variable on Gotrek tell current guest that current information greater = value code {};
+let variable on Gotrek tell current guest that current information equal = value code 
+{
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will tell" <from the Gotrek point of view who is <current guest>> "that" <current information> ".">;    
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
+    
+    #execute <print "concatenation result" <the get from stream result>>;
+};
+
+variable on Gotrek ask current guest to current action (Y:compare_result):code;
+let variable on Gotrek ask current guest to current action lower = value code {};
+let variable on Gotrek ask current guest to current action greater = value code {};
+let variable on Gotrek ask current guest to current action equal = value code 
+{
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will ask" <from the Gotrek point of view who is <current guest>> "to" <current action> ".">;    
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;        
+};
+
+
+variable on Gotrek ask current guest what is his function (Y:compare_result):code;
+let variable on Gotrek ask current guest what is his function lower = value code {};
+let variable on Gotrek ask current guest what is his function greater = value code {};
+let variable on Gotrek ask current guest what is his function equal = value code 
+{
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will ask" <from the Gotrek point of view who is <current guest>> 
+        <from the Gotrek point of view how to say what <current guest> function is> ".">;    
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
+    
+    #execute <print "concatenation result" <the get from stream result>>;
+};
+
+variable on Gotrek ask current guest what is his weapon (Y:compare_result):code;
+let variable on Gotrek ask current guest what is his weapon lower = value code {};
+let variable on Gotrek ask current guest what is his weapon greater = value code {};
+let variable on Gotrek ask current guest what is his weapon equal = value code 
+{
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will ask" <from the Gotrek point of view who is <current guest>> 
+        <from the Gotrek point of view how to say what <current guest> weapon is> ".">;    
+        
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
+    
+    #execute <print "concatenation result" <the get from stream result>>;
+};
+
+
+variable on Gotrek ask current guest whether he is a liar (Y:compare_result):code;
+let variable on Gotrek ask current guest whether he is a liar lower = value code {};
+let variable on Gotrek ask current guest whether he is a liar greater = value code {};
+let variable on Gotrek ask current guest whether he is a liar equal = value code 
+{
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will ask" <from the Gotrek point of view who is <current guest>> 
+        <from the Gotrek point of view how to say whether <current guest> is a liar> ".">;    
+        
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
+    
+    #execute <print "concatenation result" <the get from stream result>>;
+};
+
+variable on Gotrek answer current guest whether I am a liar (ANSWER:boolean) (Y:compare_result):code;
+let variable on Gotrek answer current guest whether I am a liar false lower=value code {};
+let variable on Gotrek answer current guest whether I am a liar false greater=value code {};
+let variable on Gotrek answer current guest whether I am a liar false equal=value code 
+{
+    let variable possible choice option number <current option number> of Gotrek = value string "I will answer I am not a liar!";
+};
+
+let variable on Gotrek answer current guest whether I am a liar true lower=value code {};
+let variable on Gotrek answer current guest whether I am a liar true greater=value code {};
+let variable on Gotrek answer current guest whether I am a liar true equal=value code 
+{
+    let variable possible choice option number <current option number> of Gotrek = value string "I will answer I am a liar.";
+};
+ 

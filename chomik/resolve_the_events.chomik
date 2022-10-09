@@ -1,0 +1,74 @@
+#!/usr/local/bin/chomik
+
+
+
+
+variable efficiency of (X:person):integer;  # efficiency is strength + a random number (for this particular fight)
+                                            # we may need to add bonus from a weapon or helping persons
+variable current efficiency bonus:integer;
+
+variable resolve the fight (X:compare_result):code;
+
+let resolve the fight lower=value code
+{
+    <print <current person> "lost against" <current guest>>;
+    <add "integer" <points of <current guest>> 1>;    
+    let points of <current guest>=<the add result "integer">;
+            
+    # check if current person is Gotrek
+    <compare "person" <current person> Gotrek>;
+    <notify Gotrek he has lost <the compare result>>;  
+    
+    # check if current guest is Gotrek
+    <compare "person" <current guest> Gotrek>;
+    <notify Gotrek he has been attacked and won <the compare result>>;
+    
+};
+let resolve the fight equal=value code
+{
+    <print "the fight between" <current person> "and" <current guest> "is a draw">;
+    
+    # check if current person is Gotrek
+    <compare "person" <current person> Gotrek>;
+    <notify Gotrek it is a draw <the compare result>>;            
+    
+    # check if current guest is Gotrek
+    <compare "person" <current guest> Gotrek>;
+    <notify Gotrek he has been attacked and it is a draw <the compare result>>;    
+};
+
+let resolve the fight greater= value code
+{
+    <print <current person> "won against" <current guest>>;
+    <add "integer" <points of <current person>> 1>;    
+    let points of <current person>=<the add result "integer">;
+
+    # check if current person is Gotrek
+    <compare "person" <current person> Gotrek>;
+    <notify Gotrek he has won <the compare result>>;    
+    
+    # check if current guest is Gotrek
+    <compare "person" <current guest> Gotrek>;
+    <notify Gotrek he has been attacked and lost <the compare result>>;
+
+};
+
+
+
+variable resolve the proposal to exchange weapons:code;
+let resolve the proposal to exchange weapons=value code 
+{
+    # check if current guest is Gotrek
+    <compare "person" <current guest> Gotrek>;
+    <notify Gotrek he has been proposed to exchange weapons <the compare result>>;
+};
+
+
+variable resolve the acceptance of the proposal to exchange weapons:code;
+let resolve the acceptance of the proposal to exchange weapons=value code
+{
+    <compare "person" <current person> Gotrek>;
+    <notify Gotrek he has exchanged weapons <the compare result>>;
+};
+
+ 

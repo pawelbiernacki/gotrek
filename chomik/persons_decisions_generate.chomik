@@ -94,6 +94,14 @@ let variable generate possible decisions for the current person and actions subc
 {
     let variable <current person> possible decision <current possible decision index> = value action ask <current guest> whether he is a liar;
 };
+let variable generate possible decisions for the current person and actions subclass actions answer person whether I am a liar=value code
+{
+    let variable the read from stream source stream index = <my action generator index>;
+    execute <read from stream "action">;
+    let variable <current person> possible decision <current possible decision index> = value action answer <current guest> whether I am a liar <the read from stream result "boolean">;
+};
+
+
 let variable generate possible decisions for the current person and actions subclass actions attack person=value code
 {   
     let variable <current person> possible decision <current possible decision index> = value action attack <current guest>;

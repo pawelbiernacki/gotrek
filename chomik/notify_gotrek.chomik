@@ -1,0 +1,83 @@
+#!/usr/local/bin/chomik
+
+
+variable notify Gotrek he has lost (X:compare_result):code;
+let notify Gotrek he has lost equal=value code
+{
+    let Gotrek result text=value string "You have lost.";
+    let Gotrek result timer=value integer 100;    
+};
+
+let notify Gotrek he has lost lower=value code {};
+let notify Gotrek he has lost greater=value code {};
+
+
+variable notify Gotrek he has won (X:compare_result):code;
+let notify Gotrek he has won equal=value code
+{
+    let Gotrek result text=value string "You have won.";
+    let Gotrek result timer=value integer 100;
+};
+let notify Gotrek he has won lower=value code {};
+let notify Gotrek he has won greater=value code {};
+
+
+variable notify Gotrek it is a draw (X:compare_result):code;
+let notify Gotrek it is a draw equal=value code
+{
+    let Gotrek result text=value string "It is a draw.";
+    let Gotrek result timer=value integer 100;
+};
+let notify Gotrek it is a draw lower=value code {};
+let notify Gotrek it is a draw greater=value code {};
+
+variable notify Gotrek he has been attacked and won (X:compare_result):code;
+variable notify Gotrek he has been attacked and it is a draw (X:compare_result):code;
+variable notify Gotrek he has been attacked and lost (X:compare_result):code;
+
+let notify Gotrek he has been attacked and won lower=value code {};
+let notify Gotrek he has been attacked and won greater=value code {};
+let notify Gotrek he has been attacked and won equal=value code 
+{
+    let Gotrek result text=value string "You have been attacked and won.";
+    let Gotrek result timer=value integer 100;
+};
+
+let notify Gotrek he has been attacked and it is a draw lower=value code {};
+let notify Gotrek he has been attacked and it is a draw greater=value code {};
+let notify Gotrek he has been attacked and it is a draw equal=value code 
+{
+    let Gotrek result text=value string "You have been attacked and it is a draw.";
+    let Gotrek result timer=value integer 100;
+};
+
+let notify Gotrek he has been attacked and lost lower=value code {};
+let notify Gotrek he has been attacked and lost greater=value code {};
+let notify Gotrek he has been attacked and lost equal=value code 
+{
+    let Gotrek result text=value string "You have been attacked and lost.";
+    let Gotrek result timer=value integer 100;
+};
+
+
+variable notify Gotrek he has been proposed to exchange weapons (X:compare_result):code;
+let notify Gotrek he has been proposed to exchange weapons lower=value code {};
+let notify Gotrek he has been proposed to exchange weapons greater=value code {};
+let notify Gotrek he has been proposed to exchange weapons equal=value code 
+{
+    let Gotrek result text=value string "You have been proposed to exchange weapons.";
+    let Gotrek result timer=value integer 100;
+};
+
+
+variable notify Gotrek he has exchanged weapons (X:compare_result):code;
+let notify Gotrek he has exchanged weapons lower=value code {};
+let notify Gotrek he has exchanged weapons greater=value code {};
+let notify Gotrek he has exchanged weapons equal=value code 
+{
+    let Gotrek result text=value string "You have exchanged weapons.";
+    let Gotrek result timer=value integer 100;
+};
+
+
+ 
