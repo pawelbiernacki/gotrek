@@ -1,0 +1,32 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/global_streams.chomik"
+include "../sdl_chomik/on_gotrek_actions.sdl_chomik"
+
+variable fail if (X:comparison_result_type):code;
+let fail if lower = value code
+{
+    let the program return = value integer 1;
+};
+let fail if greater = value code
+{
+    let the program return = value integer 1;
+};
+let fail if equal = value code
+{
+    let the program return = value integer 0;
+};
+
+let location of Gotrek = value place Krakow;
+let location of Pregor = value place Krakow;
+let current person = value person Gotrek;
+let current guest = value person Pregor;
+let current option number = value integer 1;
+
+<on Gotrek answer current guest whether I am a liar false equal>;
+
+<print <possible choice option number <current option number> of Gotrek>>;
+
+<compare "string" <possible choice option number <current option number> of Gotrek> "I will answer Pregor that I am not a liar . ">;
+<fail if <the compare result>>;

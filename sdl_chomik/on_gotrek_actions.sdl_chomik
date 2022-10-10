@@ -214,13 +214,39 @@ let variable on Gotrek answer current guest whether I am a liar false lower=valu
 let variable on Gotrek answer current guest whether I am a liar false greater=value code {};
 let variable on Gotrek answer current guest whether I am a liar false equal=value code 
 {
-    let variable possible choice option number <current option number> of Gotrek = value string "I will answer I am not a liar!";
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will answer" <from the Gotrek point of view who is <current guest>> 
+        <from the Gotrek point of view how to say that Gotrek is not a liar> ".">;    
+        
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
 };
 
 let variable on Gotrek answer current guest whether I am a liar true lower=value code {};
 let variable on Gotrek answer current guest whether I am a liar true greater=value code {};
 let variable on Gotrek answer current guest whether I am a liar true equal=value code 
 {
-    let variable possible choice option number <current option number> of Gotrek = value string "I will answer I am a liar.";
+    let variable the set to stream stream index = <my concatenating stream index>;
+    execute <set to stream "">;
+
+    let variable the print target stream index =  <the set to stream stream index>;
+    let variable the print end of line = value string "";
+    execute <print "I will answer" <from the Gotrek point of view who is <current guest>> 
+        <from the Gotrek point of view how to say that Gotrek is a liar> ".">;    
+        
+    let variable the print target stream index = value integer 0;    # standard output
+    let variable the print end of line = value string "\n";
+
+    let variable the get from stream stream index = <the set to stream stream index>;
+    execute <get from stream>;
+    let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
 };
  

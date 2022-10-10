@@ -58,6 +58,8 @@ type action_depending_on_person_subclass={  actions tell person that information
 
 expand(2);
 
+# additional variables related with the types
+
 variable (X:place) successor:place;
 variable (X:person) successor:person;
 
@@ -77,7 +79,7 @@ let variable Pregor successor= value person Gotrek;
 variable weapon bonus for (X:weapon):integer;
 let weapon bonus for no_weapon=value integer 0;
 let weapon bonus for axe=value integer 3;
-let weapon bonus for sword=value integer 4;
+let weapon bonus for sword=value integer 4; # sword is a little better than axe
 
 variable from the computer talking to Gotrek point of view who is (X:person):string;
 let from the computer talking to Gotrek point of view who is Gotrek=value string "yourself";
@@ -94,6 +96,15 @@ let from the Gotrek point of view who is Pregor=value string "Pregor";
 variable from the Gotrek point of view how to say whether (X:person) is a liar:string;
 let from the Gotrek point of view how to say whether (X:person) is a liar=value string "whether he is a liar";
 let from the Gotrek point of view how to say whether Gotrek is a liar=value string "whether I am a liar";
+
+variable from the Gotrek point of view how to say that (X:person) is a liar:string;
+let from the Gotrek point of view how to say that (X:person) is a liar=value string "that he is a liar";
+let from the Gotrek point of view how to say that Gotrek is a liar=value string "that I am a liar";
+
+variable from the Gotrek point of view how to say that (X:person) is not a liar:string;
+let from the Gotrek point of view how to say that (X:person) is not a liar=value string "that he is not a liar";
+let from the Gotrek point of view how to say that Gotrek is not a liar=value string "that I am not a liar";
+
 
 variable from the Gotrek point of view how to say what (X:person) weapon is:string;
 let from the Gotrek point of view how to say what (X:person) weapon is=value string "what his weapon is";
