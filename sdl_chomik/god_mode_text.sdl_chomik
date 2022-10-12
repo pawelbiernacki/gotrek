@@ -116,10 +116,14 @@ let show god mode text for place (X:place)=value code
 };
 
 
-variable show god mode texts: code;
-let show god mode texts = value code
+variable show god mode texts on (X:explanation_mode_type): code;
+let show god mode texts on normal explanation= value code
+{
+    <show text <my small font index> "press backspace to change mode" 70 336>;
+};
+ 
+let show god mode texts on god mode explanation= value code
 {
     <show god mode text for person (X:person)>;
     <show god mode text for place (X:place)>;
 };
- 

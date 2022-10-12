@@ -56,12 +56,15 @@ type action_depending_on_person_subclass={  actions tell person that information
                                             actions accept person proposal to exchange weapons
                                             };
 
+type explanation_mode_type = { normal explanation, god mode explanation};                                            
+                                                                                        
 expand(2);
 
 # additional variables related with the types
 
 variable (X:place) successor:place;
 variable (X:person) successor:person;
+variable (X:explanation_mode_type) successor:explanation_mode_type;
 
 # these variables are used to have an order on the type place, they are never modified
 let variable Krakow successor=value place Warszawa;
@@ -75,6 +78,9 @@ let variable Gwaigilion successor = value person Gerrudir;
 let variable Gerrudir successor= value person Pregor;
 let variable Pregor successor= value person Gotrek;
 
+
+let variable normal explanation successor = value explanation_mode_type god mode explanation;
+let variable god mode explanation successor = value explanation_mode_type normal explanation;
 
 variable weapon bonus for (X:weapon):integer;
 let weapon bonus for no_weapon=value integer 0;

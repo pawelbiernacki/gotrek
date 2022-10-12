@@ -1,3 +1,7 @@
 #!/usr/local/bin/chomik
 
 variable game mode: game_mode_type;
+variable explanation mode: explanation_mode_type;
+
+let explanation mode = value explanation_mode_type normal explanation;
+
