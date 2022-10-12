@@ -14,13 +14,13 @@ let show explanation texts on asking about being a liar explanation=value code
 
 let show explanation texts on asking about weapon explanation=value code
 {
-    <show text <my small font index> "did anybody ask you whether you what your weapon is?" 70 320>;
+    <show text <my small font index> "did anybody ask you what your weapon is?" 70 320>;
     <show asking about weapon text for person (X:person)>;
 };
 
 let show explanation texts on asking about function explanation=value code
 {
-    <show text <my small font index> "did anybody ask you whether you what your function is?" 70 320>;
+    <show text <my small font index> "did anybody ask you what your function is?" 70 320>;
     <show asking about function text for person (X:person)>;
 };
 
