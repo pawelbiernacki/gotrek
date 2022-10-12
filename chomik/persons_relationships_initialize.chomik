@@ -9,7 +9,10 @@ let variable initialize the relationship (X:person) (Y:person) = value code
     let variable current guest = value person [(Y:person)];
 
     let <current person> thinks that <current guest> has proposed him to exchange weapons=value boolean false;
-        
+    let <current person> thinks that <current guest> has asked him whether he is a liar=value boolean false;
+    let <current person> thinks that <current guest> has asked him what is his function=value boolean false;
+    let <current person> thinks that <current guest> has asked him what is his weapon=value boolean false;
+    
     execute <compare "person" <current person> <current guest>>;
     execute <everyone likes himself <current person> <the compare result>>;
     

@@ -1,0 +1,68 @@
+#!/usr/local/bin/sdl_chomik
+
+ 
+variable asking about being a liar text for person (X:person):string;
+let asking about being a liar text for person (X:person)= value string "";
+
+
+variable asking about being a liar text for person coordinate (X:person):integer;
+let asking about being a liar text for person coordinate Gotrek=value integer 336;
+let asking about being a liar text for person coordinate Gwaigilion=value integer 352;
+let asking about being a liar text for person coordinate Gerrudir=value integer 368;
+let asking about being a liar text for person coordinate Pregor=value integer 384;
+
+
+variable make an asking about being a liar text for current person:code;
+let make an asking about being a liar text for current person=value code
+{
+    let the set to stream stream index=<my output stringstream index>;
+    <set to stream "">;
+
+    let the print target stream index = <my output stringstream index>;
+    let the print end of line = value string "";
+    <print <current person> 
+        "thinks that you have asked him:" <<current person> thinks that Gotrek has asked him whether he is a liar> 
+        "/you think that he asked you:" <Gotrek thinks that <current person> has asked him whether he is a liar>>;
+        
+    let the print target stream index = value integer 0; # standard output
+    let the print end of line = value string "\n";
+    
+    let the get from stream stream index = <my output stringstream index>;
+    <get from stream>;
+        
+    let asking about being a liar text for person <current person>=<the get from stream result>;    
+};
+
+
+variable for each person (X:person) make an asking about being a liar text:code;
+let for each person (X:person) make an asking about being a liar text=value code
+{
+    let current person = value person [(X:person)];
+    <make an asking about being a liar text for current person>;
+};
+
+
+variable recalculate asking about being a liar texts:code;
+
+let recalculate asking about being a liar texts=value code
+{
+    <for each person (X:person) make an asking about being a liar text>;
+};
+
+
+variable show asking about being a liar text for person:code;
+let show asking about being a liar text for current person=value code
+{
+    execute <show text <my small font index> 
+        <asking about being a liar text for person <current person>> 70 
+        <asking about being a liar text for person coordinate <current person>>>; 
+};
+
+
+variable show asking about being a liar text for person (X:person):code;
+let show asking about being a liar text for person (X:person)=value code
+{
+    let current person=value person [(X:person)];        
+    <show asking about being a liar text for current person>;
+};
+

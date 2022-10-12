@@ -45,7 +45,10 @@ let variable on key return in game mode title=value code
     execute <recalculate Gotrek equipment text>;
     execute <recalculate Gotrek points text>;
     <recalculate Gotrek guests text>;
-    execute <recalculate god mode texts>;
+    <recalculate god mode texts>;
+    <recalculate asking about being a liar texts>;
+    <recalculate asking about function texts>;
+    <recalculate asking about weapon texts>;
 };
 
 let variable on key return in game mode game=value code
@@ -64,7 +67,10 @@ let variable on key return in game mode game=value code
     execute <recalculate Gotrek equipment text>;
     execute <recalculate Gotrek points text>;
     <recalculate Gotrek guests text>;
-    execute <recalculate god mode texts>;
+    <recalculate god mode texts>;
+    <recalculate asking about being a liar texts>;
+    <recalculate asking about function texts>;
+    <recalculate asking about weapon texts>;
 };
 
 
@@ -142,7 +148,7 @@ let variable on game mode game = value code
     execute <show text <my small font index> <Gotrek points text> 480 260>;
     <show text <my small font index> <Gotrek guests text> 70 276>;
     
-    execute <show god mode texts on <explanation mode>>;
+    execute <show explanation texts on <explanation mode>>;
     
     execute <show image <arrow image index> 10 <arrow coordinate>>;
     
