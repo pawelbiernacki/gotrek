@@ -55,7 +55,7 @@ let variable on key return in game mode game=value code
 {
     execute <print "return pressed">;
     execute <make all the decisions>;
-    execute <perform all the decisions>;        
+    execute <perform all the decisions>;  
     execute <update the persons>;
     execute <update the places>;
     execute <generate (X:person) possible decisions>;

@@ -10,7 +10,8 @@ TESTS = check_whether_we_can_fail.chomik \
 	check_whether_Gotrek_can_answer_Pregor_whether_I_am_a_liar_false.chomik \
 	check_whether_Gotrek_can_answer_Pregor_whether_I_am_a_liar_false2.chomik \
 	check_how_Gotrek_tells_Pregor_he_is_a_liar.chomik \
-	check_how_Gotrek_tells_Pregor_he_is_not_a_liar.chomik
+	check_how_Gotrek_tells_Pregor_he_is_not_a_liar.chomik \
+	check_what_Pregor_believes_Gotrek_has_asked_him_about_being_a_liar.chomik
 
 XFAIL_TESTS = check_whether_we_can_fail.chomik
 

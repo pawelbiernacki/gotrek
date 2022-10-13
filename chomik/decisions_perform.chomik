@@ -64,6 +64,9 @@ let variable current person asks current guest whether he is a liar equal = valu
 {
     execute <print <current person> "asks" <current guest> "whether he is a liar">;
     
+    let <current guest> thinks that <current person> has asked him whether he is a liar = value boolean true;
+    
+    
     let variable decision of <current person>=value action no_action;
 };
 
@@ -263,6 +266,9 @@ let perform current person decision accept (A:person) proposal to exchange weapo
     let current decision = <decision of <current person>>;
     let current guest = value person [(A:person)];
     let current pattern = value action accept <current guest> proposal to exchange weapons;
+    
+    <for each person <current person> make an asking about weapon text>;
+    <for each person <current guest> make an asking about weapon text>;
 
     <compare "action" <current decision> <current pattern>>;
     <current person accepts current guest proposal to exchange weapons <the compare result>>;        
@@ -275,6 +281,9 @@ let perform current person decision answer (A:person) whether I am a liar (ANSWE
     let current guest = value person [(A:person)];
     let current answer = value boolean [(ANSWER:boolean)];    
     let current pattern = value action answer <current guest> whether I am a liar <current answer>;
+    
+    <for each person <current person> make an asking about being a liar text>;
+    <for each person <current guest> make an asking about being a liar text>;    
         
     <compare "action" <current decision> <current pattern>>;
     <current person answers current guest whether he is a liar <the compare result>>;

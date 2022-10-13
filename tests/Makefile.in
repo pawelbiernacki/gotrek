@@ -402,7 +402,8 @@ TESTS = check_whether_we_can_fail.chomik \
 	check_whether_Gotrek_can_answer_Pregor_whether_I_am_a_liar_false.chomik \
 	check_whether_Gotrek_can_answer_Pregor_whether_I_am_a_liar_false2.chomik \
 	check_how_Gotrek_tells_Pregor_he_is_a_liar.chomik \
-	check_how_Gotrek_tells_Pregor_he_is_not_a_liar.chomik
+	check_how_Gotrek_tells_Pregor_he_is_not_a_liar.chomik \
+	check_what_Pregor_believes_Gotrek_has_asked_him_about_being_a_liar.chomik
 
 XFAIL_TESTS = check_whether_we_can_fail.chomik
 all: all-am
@@ -659,6 +660,13 @@ check_how_Gotrek_tells_Pregor_he_is_a_liar.chomik.log: check_how_Gotrek_tells_Pr
 check_how_Gotrek_tells_Pregor_he_is_not_a_liar.chomik.log: check_how_Gotrek_tells_Pregor_he_is_not_a_liar.chomik
 	@p='check_how_Gotrek_tells_Pregor_he_is_not_a_liar.chomik'; \
 	b='check_how_Gotrek_tells_Pregor_he_is_not_a_liar.chomik'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+check_what_Pregor_believes_Gotrek_has_asked_him_about_being_a_liar.chomik.log: check_what_Pregor_believes_Gotrek_has_asked_him_about_being_a_liar.chomik
+	@p='check_what_Pregor_believes_Gotrek_has_asked_him_about_being_a_liar.chomik'; \
+	b='check_what_Pregor_believes_Gotrek_has_asked_him_about_being_a_liar.chomik'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
