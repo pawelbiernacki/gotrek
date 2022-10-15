@@ -17,8 +17,8 @@ let decrease Gotrek result timer if equal=value code
 
 let decrease Gotrek result timer if greater=value code 
 {
-    <substract "integer" <Gotrek result timer> 1>;
-    let Gotrek result timer=<the substract result "integer">;
+    <subtract "integer" <Gotrek result timer> 1>;
+    let Gotrek result timer=<the subtract result "integer">;
 };
 
 

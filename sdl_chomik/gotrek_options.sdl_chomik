@@ -149,6 +149,6 @@ let variable recalculate arrow coordinate = value code
 {
     let variable arrow coordinate = <possible choice coordinate number <current option number> of Gotrek>;    
     
-    execute <substract "integer" <arrow coordinate> 16>;
-    let variable arrow coordinate = <the substract result "integer">;
+    execute <subtract "integer" <arrow coordinate> 16>;
+    let variable arrow coordinate = <the subtract result "integer">;
 };

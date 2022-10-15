@@ -22,8 +22,8 @@ let variable move current option number up if equal = value code
 let variable move current option number up if lower = <move current option number up if equal>;
 let variable move current option number up if greater=value code
 {
-    execute <substract "integer" <current option number> 1>;
-    let variable current option number = <the substract result "integer">;
+    execute <subtract "integer" <current option number> 1>;
+    let variable current option number = <the subtract result "integer">;
 };
 
 
