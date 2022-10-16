@@ -130,9 +130,7 @@ let variable current person proposes current guest to exchange weapons equal = v
     <print <current person> "proposes" <current guest> "to exchange weapons">;
     
     let <current guest> thinks that <current person> has proposed him to exchange weapons=value boolean true;
-                
-    <print "CONSEQUENCE:" <<current guest> thinks that <current person> has proposed him to exchange weapons>>;
-        
+                        
     let decision of <current person>=value action no_action;
     
     <resolve the proposal to exchange weapons>;
@@ -261,9 +259,6 @@ let variable perform current person decision propose (A:person) to exchange weap
     let variable current guest = value person [(A:person)];
     let variable current pattern = value action propose <current guest> to exchange weapons;
             
-    <print "CURRENT PERSON IS" <current person> ", HIS DECISION IS" <decision of <current person>>>;
-    <print "PATTERN IS" <current pattern>>;
-    <print "CHECK WHETHER IT WAS EXCHANGE WEAPONS TO" <current guest>>;
     <compare "action" <current decision> <current pattern>>;
     <current person proposes current guest to exchange weapons <the compare result>>;    
 };

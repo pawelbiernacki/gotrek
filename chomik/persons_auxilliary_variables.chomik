@@ -2,6 +2,7 @@
 
 # auxilliary variables
 variable current person: person, 
+        current person 2: person,
         current possible decision index:integer,
         current location:place,
         current possible decision:action,
