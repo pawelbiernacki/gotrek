@@ -35,6 +35,11 @@ execute <create new image "../image/map.png">;
 variable map image index: integer;
 let variable map image index = <the created image index>;
 
+<create new image "../image/notifications_window.png">;
+variable notifications window image index: integer;
+let notifications window image index = <the created image index>;
+
+
 
 variable Gotrek animated image index (X:integer): integer;
 

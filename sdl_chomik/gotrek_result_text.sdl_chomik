@@ -12,7 +12,6 @@ variable decrease Gotrek result timer if (X:compare_result):code;
 let decrease Gotrek result timer if lower=value code {};
 let decrease Gotrek result timer if equal=value code 
 {
-    let Gotrek result text=value string " ";
 };
 
 let decrease Gotrek result timer if greater=value code 

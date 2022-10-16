@@ -1,7 +1,9 @@
 #!/usr/local/bin/sdl_chomik
 
+
+
 variable on game mode (X:game_mode_type):code;
-let variable on game mode title = value code
+let on game mode title = value code
 {
     execute <show image <title image index> 0 0>;     
     execute <show image <chomik image index> 0 0>;    
@@ -11,7 +13,7 @@ let variable on game mode title = value code
     execute <show text <my small font index> "press return" 100 200>;    
 };
 
-let variable on game mode game = value code
+let on game mode game = value code
 {
     <show image <background image index> 0 0>;     
     <show image <options frame image index> 60 40>;
@@ -23,8 +25,7 @@ let variable on game mode game = value code
     execute <show text <my small font index> 
         <possible choice option number (X:possible_decisions_range) of Gotrek> 70 
         <possible choice coordinate number (X:possible_decisions_range) of Gotrek>>; 
-        
-    <show text <my large font index> <Gotrek result text> 60 540>;                
+
         
     execute <show text <my small font index> <Gotrek location text> 70 260>;
     execute <show text <my small font index> <Gotrek equipment text> 300 260>;
@@ -36,9 +37,9 @@ let variable on game mode game = value code
     execute <show image <arrow image index> 10 <arrow coordinate>>;
     
     <show image <map Gotrek animated image index to image index <Gotrek animation frame index>> 60 140>;
-    
+
+    <show notifications>;    
         
     <update Gotrek result timer>;
     <move Gotrek animation>;
 };
- 

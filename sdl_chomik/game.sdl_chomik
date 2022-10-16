@@ -30,8 +30,10 @@ include "./on_key.sdl_chomik"
 include "./on_game_mode.sdl_chomik"
 include "./gotrek_options.sdl_chomik"
 include "./gotrek_animation.sdl_chomik"
+include "./notifications.sdl_chomik"
 
 let variable game mode = value game_mode_type title;
+let Gotrek result timer = value integer 0;
 
 let variable sdl loop body = value code 
 {

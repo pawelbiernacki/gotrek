@@ -110,4 +110,10 @@ let on key up = value code
     
     execute <recalculate arrow coordinate>;
 };
- 
+
+
+let on key space = value code
+{    
+    let Gotrek result timer=value integer 100;
+};
+

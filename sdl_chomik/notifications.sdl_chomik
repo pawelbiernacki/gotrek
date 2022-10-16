@@ -1,0 +1,21 @@
+#!/usr/local/bin/sdl_chomik
+
+
+variable show notifications on (X:compare_result):code;
+let show notifications on greater=value code
+{
+    <show image <notifications window image index> 50 50>;    
+    <show text <my large font index> <Gotrek result text> 60 60>;
+};
+
+let show notifications on equal=value code {};
+let show notifications on lower=value code {};
+
+variable show notifications:code;
+let show notifications=value code
+{
+    <compare "integer" <Gotrek result timer> 0>;
+    <show notifications on <the compare result>>;
+};
+
+ 
