@@ -49,6 +49,8 @@ let variable on key return in game mode title=value code
     <recalculate asking about being a liar texts>;
     <recalculate asking about function texts>;
     <recalculate asking about weapon texts>;
+    <recalculate proposing weapon exchange to anybody texts>;
+    <recalculate proposing weapon exchange from anybody texts>;
 };
 
 let variable on key return in game mode game=value code
@@ -71,6 +73,8 @@ let variable on key return in game mode game=value code
     <recalculate asking about being a liar texts>;
     <recalculate asking about function texts>;
     <recalculate asking about weapon texts>;
+    <recalculate proposing weapon exchange to anybody texts>;
+    <recalculate proposing weapon exchange from anybody texts>;
 };
 
 

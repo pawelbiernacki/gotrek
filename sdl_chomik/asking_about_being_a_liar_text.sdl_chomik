@@ -50,7 +50,7 @@ let recalculate asking about being a liar texts=value code
 };
 
 
-variable show asking about being a liar text for person:code;
+variable show asking about being a liar text for current person:code;
 let show asking about being a liar text for current person=value code
 {
     execute <show text <my small font index> 

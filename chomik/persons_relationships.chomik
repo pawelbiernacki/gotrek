@@ -8,7 +8,7 @@ variable (X:person) dislikes (Y:person):boolean;
 variable (X:person) can see (Y:person):boolean;
 variable (X:person) can hear (Y:person):boolean;
 
-# these attributes are related to the belief
+# these attributes are related to the person's belief
 variable (X:person) thinks that (Y:person) has proposed him to exchange weapons:boolean;
 variable (X:person) thinks that (Y:person) has asked him whether he is a liar:boolean;
 variable (X:person) thinks that (Y:person) has asked him what is his function:boolean;

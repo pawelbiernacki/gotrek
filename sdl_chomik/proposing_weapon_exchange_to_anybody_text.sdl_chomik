@@ -1,0 +1,66 @@
+#!/usr/local/bin/sdl_chomik
+
+variable proposing weapon exchange to anybody text for person (X:person):string;
+let proposing weapon exchange to anybody text for person (X:person)= value string "";
+
+
+variable proposing weapon exchange to anybody text for person coordinate (X:person):integer;
+let proposing weapon exchange to anybody text for person coordinate Gotrek=value integer 336;
+let proposing weapon exchange to anybody text for person coordinate Gwaigilion=value integer 352;
+let proposing weapon exchange to anybody text for person coordinate Gerrudir=value integer 368;
+let proposing weapon exchange to anybody text for person coordinate Pregor=value integer 384;
+
+variable make a proposing weapon exchange to anybody text for current person:code;
+let make a proposing weapon exchange to anybody text for current person=value code
+{
+    let the set to stream stream index=<my output stringstream index>;
+    <set to stream "">;
+
+    let the print target stream index = <my output stringstream index>;
+    let the print end of line = value string "";
+    <print <current person> 
+        "thinks that you have proposed him to exchange weapons:" <<current person> thinks that Gotrek has proposed him to exchange weapons>>;
+        
+    let the print target stream index = value integer 0; # standard output
+    let the print end of line = value string "\n";
+    
+    let the get from stream stream index = <my output stringstream index>;
+    <get from stream>;
+        
+    let proposing weapon exchange to anybody text for person <current person>=<the get from stream result>;    
+};
+
+
+variable for each person (X:person) make a proposing weapon exchange to anybody text:code;
+let for each person (X:person) make a proposing weapon exchange to anybody text=value code
+{
+    let current person = value person [(X:person)];
+    <make a proposing weapon exchange to anybody text for current person>;
+};
+
+
+variable recalculate proposing weapon exchange to anybody texts:code;
+
+let recalculate proposing weapon exchange to anybody texts=value code
+{
+    <for each person (X:person) make a proposing weapon exchange to anybody text>;
+};
+
+variable show proposing weapon exchange text to anybody for current person:code;
+let show proposing weapon exchange text to anybody for current person=value code
+{
+    execute <show text <my small font index> 
+        <proposing weapon exchange to anybody text for person <current person>> 70 
+        <proposing weapon exchange to anybody text for person coordinate <current person>>>; 
+};
+
+
+variable show proposing weapon exchange text to anybody for person (X:person):code;
+let show proposing weapon exchange text to anybody for person (X:person)=value code
+{
+    let current person=value person [(X:person)];
+    <show proposing weapon exchange text to anybody for current person>;
+};
+
+ 
+

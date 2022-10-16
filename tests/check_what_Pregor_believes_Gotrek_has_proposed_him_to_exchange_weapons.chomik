@@ -1,0 +1,36 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/global_streams.chomik"
+include "../chomik/decisions_perform.chomik"
+include "../sdl_chomik/on_gotrek_actions.sdl_chomik"
+
+variable fail if (X:comparison_result_type):code;
+let fail if lower = value code
+{
+    let the program return = value integer 1;
+};
+let fail if greater = value code
+{
+    let the program return = value integer 1;
+};
+let fail if equal = value code
+{
+    let the program return = value integer 0;
+};
+
+let location of Gotrek = value place Krakow;
+let location of Pregor = value place Krakow;
+let current person = value person Gotrek;
+let current guest = value person Pregor;
+let current option number = value integer 1;
+
+# initially Pregor does not believe Gotrek has proposed him to exchange weapons
+let <current guest> thinks that <current person> has proposed him to exchange weapons = value boolean false;
+
+<current person proposes current guest to exchange weapons equal>;
+
+<print "Pregor believes Gotrek proposed him to exchange weapons=" <<current guest> thinks that <current person> has proposed him to exchange weapons>>;
+
+<compare "boolean" <<current guest> thinks that <current person> has proposed him to exchange weapons> true>;
+<fail if <the compare result>>;

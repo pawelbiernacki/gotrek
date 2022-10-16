@@ -61,6 +61,8 @@ type explanation_mode_type = {
     asking about being a liar explanation, 
     asking about weapon explanation,
     asking about function explanation,
+    proposing weapon exchange to anybody explanation,
+    proposing weapon exchange from anybody explanation,
     god mode explanation};                                            
                                                                                         
 expand(2);
@@ -87,7 +89,9 @@ let variable Pregor successor= value person Gotrek;
 let normal explanation successor = value explanation_mode_type asking about being a liar explanation;
 let asking about being a liar explanation successor = value explanation_mode_type asking about weapon explanation;
 let asking about weapon explanation successor = value explanation_mode_type asking about function explanation;
-let asking about function explanation successor = value explanation_mode_type god mode explanation;
+let asking about function explanation successor = value explanation_mode_type proposing weapon exchange to anybody explanation;
+let proposing weapon exchange to anybody explanation successor = value explanation_mode_type proposing weapon exchange from anybody explanation;
+let proposing weapon exchange from anybody explanation successor = value explanation_mode_type god mode explanation;
 let god mode explanation successor = value explanation_mode_type normal explanation;
 
 variable weapon bonus for (X:weapon):integer;

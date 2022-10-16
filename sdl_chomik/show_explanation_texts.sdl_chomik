@@ -24,6 +24,18 @@ let show explanation texts on asking about function explanation=value code
     <show asking about function text for person (X:person)>;
 };
 
+let show explanation texts on proposing weapon exchange to anybody explanation=value code
+{
+    <show text <my small font index> "did you propose anybody to exchange weapons?" 70 320>;
+    <show proposing weapon exchange text to anybody for person (X:person)>;
+};
+
+let show explanation texts on proposing weapon exchange from anybody explanation=value code
+{
+    <show text <my small font index> "did anybody propose you to exchange weapons?" 70 320>;
+    <show proposing weapon exchange text from anybody for person (X:person)>;
+};
+
 let show explanation texts on god mode explanation= value code
 {
     <show text <my small font index> "GOD MODE KNOWLEDGE" 70 320>;
