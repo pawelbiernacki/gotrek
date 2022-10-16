@@ -33,9 +33,7 @@ let make a god mode text for current person=value code
     let the print end of line = value string "";
     <print <current person> "is in" <location of <current person>> 
         ", can see him" <Gotrek can see <current person>> 
-        ", has" <points of <current person>> "points"
-        ", exchange" <<current person> thinks that Gotrek has proposed him to exchange weapons> "/" 
-                    <Gotrek thinks that <current person> has proposed him to exchange weapons>>;
+        ", has" <points of <current person>> "points">;
         
     let the print target stream index = value integer 0; # standard output
     let the print end of line = value string "\n";
