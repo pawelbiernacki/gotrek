@@ -1,0 +1,121 @@
+#!/usr/local/bin/sdl_chomik
+
+variable move current option number down if (X:compare_result):code;
+let variable move current option number down if equal=value code
+{
+    let variable current option number = value integer 1;
+};
+let variable move current option number down if lower=value code
+{
+    execute <add "integer" <current option number> 1>;
+    let variable current option number = <the add result "integer">;
+};
+let variable move current option number down if greater=<move current option number down if equal>;
+
+
+variable move current option number up if (X:compare_result):code;
+let variable move current option number up if equal = value code
+{
+    let variable current option number = value integer 5;
+};
+let variable move current option number up if lower = <move current option number up if equal>;
+let variable move current option number up if greater=value code
+{
+    execute <subtract "integer" <current option number> 1>;
+    let variable current option number = <the subtract result "integer">;
+};
+
+
+variable on key return in game mode (X:game_mode_type):code;
+let variable on key return in game mode title=value code
+{
+    let variable game mode = value game_mode_type game;
+    execute <initialize the persons>;
+    execute <initialize the places>;
+    execute <update the persons>;
+    execute <update the places>;
+    execute <reset the persons>;
+    execute <generate (X:person) possible decisions>;    
+    <check whether (X:person) possible decision (Y:possible_decisions_range) is correct>;
+    execute <recalculate Gotrek choice options>;    
+    let variable current option number = value integer 1;
+    execute <recalculate arrow coordinate>;    
+    execute <recalculate Gotrek location text>;
+    execute <recalculate Gotrek equipment text>;
+    execute <recalculate Gotrek points text>;
+    <recalculate Gotrek guests text>;
+    <recalculate god mode texts>;
+    <recalculate asking about being a liar texts>;
+    <recalculate asking about function texts>;
+    <recalculate asking about weapon texts>;
+    <recalculate proposing weapon exchange to anybody texts>;
+    <recalculate proposing weapon exchange from anybody texts>;
+};
+
+let variable on key return in game mode game=value code
+{
+    execute <print "return pressed">;
+    execute <make all the decisions>;
+    execute <perform all the decisions>;  
+    execute <update the persons>;
+    execute <update the places>;
+    execute <generate (X:person) possible decisions>;
+    <check whether (X:person) possible decision (Y:possible_decisions_range) is correct>;
+    execute <recalculate Gotrek choice options>;    
+    let variable current option number = value integer 1;
+    execute <recalculate arrow coordinate>;    
+    execute <recalculate Gotrek location text>;
+    execute <recalculate Gotrek equipment text>;
+    execute <recalculate Gotrek points text>;
+    <recalculate Gotrek guests text>;
+    <recalculate god mode texts>;
+    <recalculate asking about being a liar texts>;
+    <recalculate asking about function texts>;
+    <recalculate asking about weapon texts>;
+    <recalculate proposing weapon exchange to anybody texts>;
+    <recalculate proposing weapon exchange from anybody texts>;
+};
+
+
+let variable on key return = value code
+{
+    execute <on key return in game mode <game mode>>;
+};
+
+variable on key backspace in game mode (X:game_mode_type):code;
+let on key backspace in game mode title = value code
+{
+    # intentionally empty
+};
+
+let on key backspace in game mode game = value code
+{
+    let explanation mode = <<explanation mode> successor>;
+};
+
+
+let variable on key backspace = value code
+{
+    execute <on key backspace in game mode <game mode>>;
+};
+
+
+
+let variable on key down = value code
+{    
+    # if it is equal 5 then set it to 1
+    execute <compare "integer" <current option number> 5>;
+    execute <move current option number down if <the compare result>>;
+    
+    execute <recalculate arrow coordinate>;
+};
+
+let variable on key up = value code
+{    
+    # if it is equal 1 then set it to 5
+    execute <compare "integer" <current option number> 1>;
+    execute <move current option number up if <the compare result>>;
+    
+    execute <recalculate arrow coordinate>;
+};
+ 

@@ -406,7 +406,8 @@ TESTS = check_whether_we_can_fail.chomik \
 	check_what_Pregor_believes_Gotrek_has_asked_him_about_being_a_liar.chomik \
 	check_what_Pregor_believes_Gotrek_has_asked_him_about_his_weapon.chomik \
 	check_what_Pregor_believes_Gotrek_has_asked_him_about_his_function.chomik \
-	check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik
+	check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik \
+	check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik
 
 XFAIL_TESTS = check_whether_we_can_fail.chomik
 all: all-am
@@ -691,6 +692,13 @@ check_what_Pregor_believes_Gotrek_has_asked_him_about_his_function.chomik.log: c
 check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik.log: check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik
 	@p='check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik'; \
 	b='check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik.log: check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik
+	@p='check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik'; \
+	b='check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

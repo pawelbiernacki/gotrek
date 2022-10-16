@@ -14,7 +14,8 @@ TESTS = check_whether_we_can_fail.chomik \
 	check_what_Pregor_believes_Gotrek_has_asked_him_about_being_a_liar.chomik \
 	check_what_Pregor_believes_Gotrek_has_asked_him_about_his_weapon.chomik \
 	check_what_Pregor_believes_Gotrek_has_asked_him_about_his_function.chomik \
-	check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik
+	check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik \
+	check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik
 
 XFAIL_TESTS = check_whether_we_can_fail.chomik
 
