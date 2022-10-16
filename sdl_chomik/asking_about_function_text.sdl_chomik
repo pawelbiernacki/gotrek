@@ -11,17 +11,17 @@ let asking about function text for person coordinate Gerrudir=value integer 368;
 let asking about function text for person coordinate Pregor=value integer 384;
 
 
-variable make an asking about function text for current person:code;
-let make an asking about function text for current person=value code
+variable make an asking about function text for current person 2:code;
+let make an asking about function text for current person 2=value code
 {
     let the set to stream stream index=<my output stringstream index>;
     <set to stream "">;
 
     let the print target stream index = <my output stringstream index>;
     let the print end of line = value string "";
-    <print <current person> 
-        "thinks that you have asked him:" <<current person> thinks that Gotrek has asked him what is his function> 
-        "/you think that he asked you:" <Gotrek thinks that <current person> has asked him what is his function>>;
+    <print <current person 2> 
+        "thinks that you have asked him:" <<current person 2> thinks that Gotrek has asked him what is his function> 
+        "/you think that he asked you:" <Gotrek thinks that <current person 2> has asked him what is his function>>;
         
     let the print target stream index = value integer 0; # standard output
     let the print end of line = value string "\n";
@@ -29,15 +29,15 @@ let make an asking about function text for current person=value code
     let the get from stream stream index = <my output stringstream index>;
     <get from stream>;
         
-    let asking about function text for person <current person>=<the get from stream result>;    
+    let asking about function text for person <current person 2>=<the get from stream result>;    
 };
 
 
 variable for each person (X:person) make an asking about function text:code;
 let for each person (X:person) make an asking about function text=value code
 {
-    let current person = value person [(X:person)];
-    <make an asking about function text for current person>;
+    let current person 2 = value person [(X:person)];
+    <make an asking about function text for current person 2>;
 };
 
 

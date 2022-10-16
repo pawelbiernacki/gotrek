@@ -19,9 +19,9 @@ let variable current person tells current guest that current information lower =
 let variable current person tells current guest that current information greater = value code {};
 let variable current person tells current guest that current information equal = value code 
 {
-    execute <print <current person> "tells" <current guest> "that" <current information>>;
+    <print <current person> "tells" <current guest> "that" <current information>>;
     
-    let variable decision of <current person>=value action no_action;
+    let decision of <current person>=value action no_action;
 };
 
 
@@ -127,11 +127,13 @@ let variable current person proposes current guest to exchange weapons lower = v
 let variable current person proposes current guest to exchange weapons greater = value code {};
 let variable current person proposes current guest to exchange weapons equal = value code 
 {
-    execute <print <current person> "proposes" <current guest> "to exchange weapons">;
+    <print <current person> "proposes" <current guest> "to exchange weapons">;
     
-    let variable <current guest> thinks that <current person> has proposed him to exchange weapons=value boolean true;
+    let <current guest> thinks that <current person> has proposed him to exchange weapons=value boolean true;
+                
+    <print "CONSEQUENCE:" <<current guest> thinks that <current person> has proposed him to exchange weapons>>;
         
-    let variable decision of <current person>=value action no_action;
+    let decision of <current person>=value action no_action;
     
     <resolve the proposal to exchange weapons>;
 };
@@ -259,6 +261,9 @@ let variable perform current person decision propose (A:person) to exchange weap
     let variable current guest = value person [(A:person)];
     let variable current pattern = value action propose <current guest> to exchange weapons;
             
+    <print "CURRENT PERSON IS" <current person> ", HIS DECISION IS" <decision of <current person>>>;
+    <print "PATTERN IS" <current pattern>>;
+    <print "CHECK WHETHER IT WAS EXCHANGE WEAPONS TO" <current guest>>;
     <compare "action" <current decision> <current pattern>>;
     <current person proposes current guest to exchange weapons <the compare result>>;    
 };
@@ -307,6 +312,9 @@ let variable perform decision for (X:person)=value code
     execute <perform current person decision ask (A:person) whether he is a liar>;
     execute <perform current person decision answer (A:person) whether I am a liar (ANSWER:boolean)>;
     execute <perform current person decision attack (A:person)>;
+    
+    
+    let variable current person = value person [(X:person)];    
     execute <perform current person decision propose (A:person) to exchange weapons>;
     execute <perform current person decision accept (A:person) proposal to exchange weapons>;
 };

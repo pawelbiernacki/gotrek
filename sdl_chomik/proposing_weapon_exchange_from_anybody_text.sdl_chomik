@@ -10,15 +10,15 @@ let proposing weapon exchange from anybody text for person coordinate Gwaigilion
 let proposing weapon exchange from anybody text for person coordinate Gerrudir=value integer 368;
 let proposing weapon exchange from anybody text for person coordinate Pregor=value integer 384;
 
-variable make a proposing weapon exchange from anybody text for current person:code;
-let make a proposing weapon exchange from anybody text for current person=value code
+variable make a proposing weapon exchange from anybody text for current person 2:code;
+let make a proposing weapon exchange from anybody text for current person 2=value code
 {
     let the set to stream stream index=<my output stringstream index>;
     <set to stream "">;
 
     let the print target stream index = <my output stringstream index>;
     let the print end of line = value string "";
-    <print "you think that " <current person> "has proposed you to exchange weapons:" <Gotrek thinks that <current person> has proposed him to exchange weapons>>;
+    <print "you think that " <current person 2> "has proposed you to exchange weapons:" <Gotrek thinks that <current person 2> has proposed him to exchange weapons>>;
         
     let the print target stream index = value integer 0; # standard output
     let the print end of line = value string "\n";
@@ -26,15 +26,15 @@ let make a proposing weapon exchange from anybody text for current person=value 
     let the get from stream stream index = <my output stringstream index>;
     <get from stream>;
         
-    let proposing weapon exchange from anybody text for person <current person>=<the get from stream result>;    
+    let proposing weapon exchange from anybody text for person <current person 2>=<the get from stream result>;    
 };
 
 
 variable for each person (X:person) make a proposing weapon exchange from anybody text:code;
 let for each person (X:person) make a proposing weapon exchange from anybody text=value code
 {
-    let current person = value person [(X:person)];
-    <make a proposing weapon exchange from anybody text for current person>;
+    let current person 2 = value person [(X:person)];
+    <make a proposing weapon exchange from anybody text for current person 2>;
 };
 
 

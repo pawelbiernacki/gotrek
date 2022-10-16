@@ -26,23 +26,19 @@ let variable move current option number up if greater=value code
 };
 
 
-variable on key return in game mode (X:game_mode_type):code;
-let variable on key return in game mode title=value code
+variable do all the necessary stuff for the next move:code;
+let do all the necessary stuff for the next move=value code
 {
-    let variable game mode = value game_mode_type game;
-    execute <initialize the persons>;
-    execute <initialize the places>;
-    execute <update the persons>;
-    execute <update the places>;
-    execute <reset the persons>;
-    execute <generate (X:person) possible decisions>;    
+    <update the persons>;
+    <update the places>;
+    <generate (X:person) possible decisions>;    
     <check whether (X:person) possible decision (Y:possible_decisions_range) is correct>;
-    execute <recalculate Gotrek choice options>;    
+    <recalculate Gotrek choice options>;    
     let variable current option number = value integer 1;
-    execute <recalculate arrow coordinate>;    
-    execute <recalculate Gotrek location text>;
-    execute <recalculate Gotrek equipment text>;
-    execute <recalculate Gotrek points text>;
+    <recalculate arrow coordinate>;    
+    <recalculate Gotrek location text>;
+    <recalculate Gotrek equipment text>;
+    <recalculate Gotrek points text>;
     <recalculate Gotrek guests text>;
     <recalculate god mode texts>;
     <recalculate asking about being a liar texts>;
@@ -52,34 +48,30 @@ let variable on key return in game mode title=value code
     <recalculate proposing weapon exchange from anybody texts>;
 };
 
+
+
+variable on key return in game mode (X:game_mode_type):code;
+let variable on key return in game mode title=value code
+{
+    let variable game mode = value game_mode_type game;
+    <initialize the persons>;
+    <initialize the places>;
+    <reset the persons>;
+    <do all the necessary stuff for the next move>;
+};
+
 let variable on key return in game mode game=value code
 {
-    execute <print "return pressed">;
-    execute <make all the decisions>;
-    execute <perform all the decisions>;  
-    execute <update the persons>;
-    execute <update the places>;
-    execute <generate (X:person) possible decisions>;
-    <check whether (X:person) possible decision (Y:possible_decisions_range) is correct>;
-    execute <recalculate Gotrek choice options>;    
-    let variable current option number = value integer 1;
-    execute <recalculate arrow coordinate>;    
-    execute <recalculate Gotrek location text>;
-    execute <recalculate Gotrek equipment text>;
-    execute <recalculate Gotrek points text>;
-    <recalculate Gotrek guests text>;
-    <recalculate god mode texts>;
-    <recalculate asking about being a liar texts>;
-    <recalculate asking about function texts>;
-    <recalculate asking about weapon texts>;
-    <recalculate proposing weapon exchange to anybody texts>;
-    <recalculate proposing weapon exchange from anybody texts>;
+    <print "return pressed">;
+    <make all the decisions>;
+    <perform all the decisions>;  
+    <do all the necessary stuff for the next move>;    
 };
 
 
 let variable on key return = value code
 {
-    execute <on key return in game mode <game mode>>;
+    <on key return in game mode <game mode>>;
 };
 
 variable on key backspace in game mode (X:game_mode_type):code;
@@ -94,14 +86,14 @@ let on key backspace in game mode game = value code
 };
 
 
-let variable on key backspace = value code
+let on key backspace = value code
 {
-    execute <on key backspace in game mode <game mode>>;
+    <on key backspace in game mode <game mode>>;
 };
 
 
 
-let variable on key down = value code
+let on key down = value code
 {    
     # if it is equal 5 then set it to 1
     execute <compare "integer" <current option number> 5>;
@@ -110,7 +102,7 @@ let variable on key down = value code
     execute <recalculate arrow coordinate>;
 };
 
-let variable on key up = value code
+let on key up = value code
 {    
     # if it is equal 1 then set it to 5
     execute <compare "integer" <current option number> 1>;
