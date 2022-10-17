@@ -10,7 +10,7 @@ let on game mode title = value code
     
     execute <show text <my large font index> "GOTREK" 100 100>;
     execute <show text <my small font index> "by Pawel Biernacki <pawel.f.biernacki@gmail.com>" 100 140>;
-    execute <show text <my small font index> "press return" 100 200>;    
+    execute <show text <my small font index> "press return" 100 180>;    
 };
 
 let on game mode game = value code
