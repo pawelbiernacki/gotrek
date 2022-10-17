@@ -3,42 +3,42 @@
 variable show explanation texts on (X:explanation_mode_type): code;
 let show explanation texts on normal explanation= value code
 {
-    <show text <my small font index> "Press backspace to change mode" 70 320>;
+    <show text <my small font index> "Press backspace to change mode" 90 320>;
 };
 
 let show explanation texts on asking about being a liar explanation=value code
 {
-    <show text <my small font index> "Did anybody ask you whether you are a liar?" 70 320>;
+    <show text <my small font index> "Did anybody ask you whether you are a liar?" 90 320>;
     <show asking about being a liar text for person (X:person)>;
 };
 
 let show explanation texts on asking about weapon explanation=value code
 {
-    <show text <my small font index> "Did anybody ask you what your weapon is?" 70 320>;
+    <show text <my small font index> "Did anybody ask you what your weapon is?" 90 320>;
     <show asking about weapon text for person (X:person)>;
 };
 
 let show explanation texts on asking about function explanation=value code
 {
-    <show text <my small font index> "Did anybody ask you what your function is?" 70 320>;
+    <show text <my small font index> "Did anybody ask you what your function is?" 90 320>;
     <show asking about function text for person (X:person)>;
 };
 
 let show explanation texts on proposing weapon exchange to anybody explanation=value code
 {
-    <show text <my small font index> "Did you propose anybody to exchange weapons?" 70 320>;
+    <show text <my small font index> "Did you propose anybody to exchange weapons?" 90 320>;
     <show proposing weapon exchange text to anybody for person (X:person)>;
 };
 
 let show explanation texts on proposing weapon exchange from anybody explanation=value code
 {
-    <show text <my small font index> "Did anybody propose you to exchange weapons?" 70 320>;
+    <show text <my small font index> "Did anybody propose you to exchange weapons?" 90 320>;
     <show proposing weapon exchange text from anybody for person (X:person)>;
 };
 
 let show explanation texts on god mode explanation= value code
 {
-    <show text <my small font index> "GOD MODE KNOWLEDGE" 70 320>;
+    <show text <my small font index> "GOD MODE KNOWLEDGE" 90 320>;
     <show god mode text for person (X:person)>;
     <show god mode text for place (X:place)>;
 };

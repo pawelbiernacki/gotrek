@@ -13,7 +13,7 @@ variable for all (X:notification_texts_range) show them:code;
 let for all (X:notification_texts_range) show them=value code
 {
     let current notification number = value integer [(X:notification_texts_range)];
-    <show text <my small font index> <notification text number <current notification number> of Gotrek> 60 
+    <show text <my small font index> <notification text number <current notification number> of Gotrek> 80 
         <notification text coordinate>>;
     <add "integer" <notification text coordinate> 16>;
     let notification text coordinate = <the add result "integer">;
@@ -24,9 +24,9 @@ variable show notifications on (X:compare_result):code;
 let show notifications on greater=value code
 {    
     <show image <notifications window image index> 50 50>;    
-    <show text <my large font index> <Gotrek result text> 60 60>;
+    <show text <my large font index> <Gotrek result text> 80 80>;
     
-    let notification text coordinate = value integer 92;
+    let notification text coordinate = value integer 112;
     
     <for all (X:notification_texts_range) show them>;
 };

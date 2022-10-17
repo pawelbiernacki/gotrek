@@ -99,7 +99,7 @@ let show god mode text for person (X:person)=value code
 {
     let current person=value person [(X:person)];
     execute <show text <my small font index> 
-        <god mode text for person <current person>> 70 
+        <god mode text for person <current person>> 90 
         <god mode text for person coordinate <current person>>>; 
 };
 
@@ -109,7 +109,7 @@ let show god mode text for place (X:place)=value code
 {
     let current place=value place [(X:place)];
     execute <show text <my small font index> 
-        <god mode text for place <current place>> 70 
+        <god mode text for place <current place>> 90 
         <god mode text for place coordinate <current place>>>; 
 };
 
