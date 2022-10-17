@@ -40,6 +40,7 @@ let do all the necessary stuff for the next move=value code
     <recalculate Gotrek equipment text>;
     <recalculate Gotrek points text>;
     <recalculate Gotrek guests text>;
+    <recalculate Gotrek secret text>;
     <recalculate god mode texts>;
     <recalculate asking about being a liar texts>;
     <recalculate asking about function texts>;
@@ -101,6 +102,7 @@ let on key down = value code
     execute <move current option number down if <the compare result>>;
     
     execute <recalculate arrow coordinate>;
+    let Gotrek result timer = value integer 0;
 };
 
 let on key up = value code
@@ -110,6 +112,7 @@ let on key up = value code
     execute <move current option number up if <the compare result>>;
     
     execute <recalculate arrow coordinate>;
+    let Gotrek result timer = value integer 0;
 };
 
 
