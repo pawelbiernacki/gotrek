@@ -34,6 +34,7 @@ type action={no_action,                             # does not depend on anythin
             
 type game_mode_type={title, game},
         possible_decisions_range=1..5,
+        notification_texts_range=1..20,
         places_range=1..5,
         persons_range=1..4,
         Gotrek_animation_range=1..10;

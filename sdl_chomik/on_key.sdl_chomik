@@ -58,6 +58,7 @@ let variable on key return in game mode title=value code
     <initialize the places>;
     <reset the persons>;
     <do all the necessary stuff for the next move>;
+    let Gotrek result timer=value integer 1000;    
 };
 
 let variable on key return in game mode game=value code

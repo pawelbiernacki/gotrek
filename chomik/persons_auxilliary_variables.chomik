@@ -16,4 +16,5 @@ variable current pattern:action,
         current action class:action_class,
         current information:information,
         current weapon:weapon,
-        current boolean:boolean;
+        current boolean:boolean,
+        current notification number:integer;

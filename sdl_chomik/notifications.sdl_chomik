@@ -1,11 +1,34 @@
 #!/usr/local/bin/sdl_chomik
 
+#
+# These texts form an "array" to be displayed on the notification window.
+#
+variable notification text number (X:notification_texts_range) of Gotrek:string;
+let notification text number (X:notification_texts_range) of Gotrek = value string " ";
+
+variable notification text coordinate:integer;
+
+variable for all (X:notification_texts_range) show them:code;
+
+let for all (X:notification_texts_range) show them=value code
+{
+    let current notification number = value integer [(X:notification_texts_range)];
+    <show text <my small font index> <notification text number <current notification number> of Gotrek> 60 
+        <notification text coordinate>>;
+    <add "integer" <notification text coordinate> 16>;
+    let notification text coordinate = <the add result "integer">;
+};
+
 
 variable show notifications on (X:compare_result):code;
 let show notifications on greater=value code
-{
+{    
     <show image <notifications window image index> 50 50>;    
     <show text <my large font index> <Gotrek result text> 60 60>;
+    
+    let notification text coordinate = value integer 92;
+    
+    <for all (X:notification_texts_range) show them>;
 };
 
 let show notifications on equal=value code {};
@@ -18,4 +41,30 @@ let show notifications=value code
     <show notifications on <the compare result>>;
 };
 
- 
+
+let notification text number 1 of Gotrek = value string "Welcome to Gotrek - a fantasy game implemented in sdl_chomik";
+let notification text number 3 of Gotrek = 
+    value string "Your name is Gotrek, you are a dwarf. You are located in one of 5 places.";
+    
+let notification text number 4 of Gotrek = 
+    value string "Apart from you there are some NPCs here: Gerrudir, Gwaigilion and Pregor.";
+    
+let notification text number 5 of Gotrek = value string "They all choose their decisions randomly. ";
+let notification text number 6 of Gotrek = value string "Every time you have a choice of 5 possible decisions generated for you. ";
+let notification text number 7 of Gotrek = value string "Feel free to choose the option that is most suitable for you. ";
+let notification text number 8 of Gotrek = value string "Your goal is to maximize the amount of points in the game. ";
+let notification text number 9 of Gotrek = value string "If you are a liar you are free to tell the NPCs the things ";
+let notification text number 10 of Gotrek = value string "that you do not really believe. ";
+let notification text number 11 of Gotrek = value string "You can move along the graph edges, depending on where you are. ";
+
+let notification text number 18 of Gotrek = value string "Press arrow keys (up/down) to select an option.";
+let notification text number 19 of Gotrek = value string "Press return to activate an option.";
+let notification text number 20 of Gotrek = value string "Press SPACE to show this message. ";
+
+variable clear notification texts:code;
+let clear notification texts=value code
+{
+    let notification text number (X:notification_texts_range) of Gotrek = value string " ";    
+};
+
+
