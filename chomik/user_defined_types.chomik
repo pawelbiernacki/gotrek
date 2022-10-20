@@ -82,6 +82,12 @@ expand(2);
 include "../chomik/successors.chomik"
 
 
+variable not (X:boolean):boolean;
+let not true=value boolean false;
+let not false=value boolean true;
+
+
+
 variable weapon bonus for (X:weapon):integer;
 let weapon bonus for no_weapon=value integer 0;
 let weapon bonus for axe=value integer 3;

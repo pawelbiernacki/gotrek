@@ -33,6 +33,7 @@ include "./on_game_mode.sdl_chomik"
 include "./gotrek_options.sdl_chomik"
 include "./gotrek_animation.sdl_chomik"
 include "./notifications.sdl_chomik"
+include "../chomik/skipping_gotrek_decisions.chomik"
 
 let variable game mode = value game_mode_type title;
 let Gotrek result timer = value integer 0;

@@ -52,7 +52,7 @@ let do all the necessary stuff for the next move=value code
 
 
 variable on key return in game mode (X:game_mode_type):code;
-let variable on key return in game mode title=value code
+let on key return in game mode title=value code
 {
     let variable game mode = value game_mode_type game;
     <initialize the persons>;
@@ -62,13 +62,26 @@ let variable on key return in game mode title=value code
     let Gotrek result timer=value integer 500;    # initial notification
 };
 
-let variable on key return in game mode game=value code
+
+variable repeat on key return as long as Gotrek does not have other possible decisions than no_action (X:integer):code;
+
+let repeat on key return as long as Gotrek does not have other possible decisions than no_action (X:integer)=value code
 {
-    <print "return pressed">;
     <make all the decisions>;
     <perform all the decisions>;  
     <move to the next game phase>;
     <do all the necessary stuff for the next move>;    
+    
+    <check whether all possible Gotrek decision are no_action>;
+    let the break flag = <not <result of the check whether all possible Gotrek decisions are no_action>>;
+};
+
+
+let on key return in game mode game=value code
+{
+    <print "return pressed">;    
+    <repeat on key return as long as Gotrek does not have other possible decisions than no_action (X:integer)>;
+    let the break flag = value boolean false;
 };
 
 

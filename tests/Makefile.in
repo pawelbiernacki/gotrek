@@ -407,7 +407,9 @@ TESTS = check_whether_we_can_fail.chomik \
 	check_what_Pregor_believes_Gotrek_has_asked_him_about_his_weapon.chomik \
 	check_what_Pregor_believes_Gotrek_has_asked_him_about_his_function.chomik \
 	check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik \
-	check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik
+	check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik \
+	check_skipping_Gotrek_decisions.chomik \
+	check_skipping_Gotrek_decisions2.chomik
 
 XFAIL_TESTS = check_whether_we_can_fail.chomik
 all: all-am
@@ -699,6 +701,20 @@ check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik.lo
 check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik.log: check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik
 	@p='check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik'; \
 	b='check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+check_skipping_Gotrek_decisions.chomik.log: check_skipping_Gotrek_decisions.chomik
+	@p='check_skipping_Gotrek_decisions.chomik'; \
+	b='check_skipping_Gotrek_decisions.chomik'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+check_skipping_Gotrek_decisions2.chomik.log: check_skipping_Gotrek_decisions2.chomik
+	@p='check_skipping_Gotrek_decisions2.chomik'; \
+	b='check_skipping_Gotrek_decisions2.chomik'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

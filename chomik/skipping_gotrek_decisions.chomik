@@ -1,0 +1,45 @@
+#!/usr/local/bin/sdl_chomik
+
+variable check whether all possible Gotrek decision are no_action: code;
+variable result of the check whether all possible Gotrek decisions are no_action:boolean;
+
+let result of the check whether all possible Gotrek decisions are no_action=value boolean false;
+
+variable assign the check result for Gotrek with false on (X:compare_result): code;
+let assign the check result for Gotrek with false on lower=value code 
+{
+    let result of the check whether all possible Gotrek decisions are no_action = value boolean false;
+    #<print "it is not equal on" <current action>>;
+};
+let assign the check result for Gotrek with false on greater=value code 
+{
+    let result of the check whether all possible Gotrek decisions are no_action = value boolean false;
+    #<print "it is not equal on" <current action>>;
+};
+let assign the check result for Gotrek with false on equal=value code 
+{
+    #<print "it is equal on" <current action>>;
+};
+
+
+
+
+variable assign the result with false if the possible Gotrek decision is no_action for (X:possible_decisions_range):code;
+let assign the result with false if the possible Gotrek decision is no_action for (X:possible_decisions_range)=value code
+{
+    let current possible decision index=value integer [(X:possible_decisions_range)];
+    let current pattern = value action no_action;
+    let current action = <Gotrek possible decision <current possible decision index>>;
+    <compare "action" <current action> <current pattern>>;
+    <assign the check result for Gotrek with false on <the compare result>>;
+};
+
+let check whether all possible Gotrek decision are no_action=value code
+{
+    let result of the check whether all possible Gotrek decisions are no_action = value boolean true;
+        
+    <assign the result with false if the possible Gotrek decision is no_action for (X:possible_decisions_range)>;
+};
+
+
+

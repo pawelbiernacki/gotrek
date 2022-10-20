@@ -1,0 +1,38 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/global_streams.chomik"
+include "../chomik/decisions_perform.chomik"
+include "../sdl_chomik/output_stringstream.sdl_chomik"
+include "../sdl_chomik/proposing_weapon_exchange_to_anybody_text.sdl_chomik"
+include "../sdl_chomik/on_gotrek_actions.sdl_chomik"
+include "../chomik/skipping_gotrek_decisions.chomik"
+
+variable fail if (X:comparison_result_type):code;
+let fail if lower = value code
+{
+    let the program return = value integer 1;
+};
+let fail if greater = value code
+{
+    let the program return = value integer 1;
+};
+let fail if equal = value code
+{
+    let the program return = value integer 0;
+};
+
+let location of Gotrek = value place Krakow;
+let location of Pregor = value place Krakow;
+let current person = value person Gotrek;
+let current guest = value person Pregor;
+let current option number = value integer 1;
+
+
+let Gotrek possible decision (X:possible_decisions_range)=value action no_action;
+let Gotrek possible decision 1=value action goto Warszawa;
+
+<check whether all possible Gotrek decision are no_action>;
+
+<compare "boolean" <result of the check whether all possible Gotrek decisions are no_action> false>;
+<fail if <the compare result>>;

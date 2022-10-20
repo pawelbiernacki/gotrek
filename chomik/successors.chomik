@@ -24,6 +24,7 @@ let asking phase successor=value game_phase_type answering phase;
 let answering phase successor=value game_phase_type moving phase;
 let moving phase successor=value game_phase_type asking phase;
 
+
  
 # this is for explanations
 let normal explanation successor = value explanation_mode_type asking about being a liar explanation;
