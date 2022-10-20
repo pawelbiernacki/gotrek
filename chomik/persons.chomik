@@ -13,6 +13,7 @@ include "../chomik/persons_update.chomik"
 include "../chomik/persons_reset.chomik"
 include "../chomik/actions_on_it_is_some_action.chomik"
 include "../chomik/actions_check_whether.chomik"
+include "../chomik/persons_decisions_classes.chomik"
 include "../chomik/persons_decisions_generate.chomik"
 
 

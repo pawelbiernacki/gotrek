@@ -1,0 +1,138 @@
+#!/usr/local/bin/chomik
+
+variable move to next current target on (X:compare_result):code;
+let variable move to next current target on lower = value code {};
+let variable move to next current target on greater = value code {};
+let variable move to next current target on equal = value code 
+{
+    let variable current target = <<current target> successor>;
+    #execute <print "we move to" <current target>>;
+};
+
+
+variable move to next current guest on (X:compare_result):code;
+let variable move to next current guest on lower = value code {};
+let variable move to next current guest on greater = value code {};
+let variable move to next current guest on equal = value code 
+{
+    let variable current guest = <<current guest> successor>;
+};
+
+
+variable iterate through all the places until you find a connected one (I:places_range):code;
+
+let variable iterate through all the places until you find a connected one (I:places_range)=value code
+{
+    execute <compare "boolean" <<current target> is connected with the current place> false>;
+    execute <move to next current target on <the compare result>>;
+};
+
+
+
+
+variable iterate through all the persons until you find a seen one (I:persons_range):code;
+
+let variable iterate through all the persons until you find a seen one (I:persons_range)=value code
+{
+    execute <compare "boolean" <<current guest> is seen by the current person> false>;
+    execute <move to next current guest on <the compare result>>;
+};
+
+
+
+variable generate possible decisions for the current person and action class (X:action_class):code;
+let variable generate possible decisions for the current person and action class actions that do not depend on anything=value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action no_action;
+};
+
+let variable generate possible decisions for the current person and action class actions that depend on a place=value code
+{    
+    #execute <print "find all connected places to" <current place>>;
+    
+    let variable (X:place) is connected with the current place=<(X:place) is connected with <current place>>;    
+    #execute <print "from" <current place> "one can go to" (X:place) <(X:place) is connected with the current place>>;
+
+    # begin from a randomly chosen place
+    let variable the read from stream source stream index = <my place generator index>;
+    execute <read from stream "place">;
+    let variable current target = <the read from stream result "place">;
+
+    #execute <print "we begin from" <current target>>;
+    execute <iterate through all the places until you find a connected one (ITERATION:places_range)>;
+    execute <print "we go to" <current target>>;
+    
+    let variable <current person> possible decision <current possible decision index> = value action goto <current target>;
+};
+
+
+
+variable generate possible decisions for the current person and actions subclass for proposals (X:action_depending_on_person_proposals_subclass):code;
+variable generate possible decisions for the current person and actions subclass for answers (X:action_depending_on_person_answers_subclass):code;
+variable generate possible decisions for the current person and actions subclass for others (X:action_depending_on_person_others_subclass):code;
+
+################################################
+# 
+# Here we define the "generate possible decisions for the current person and actions subclass for proposals".
+
+let variable generate possible decisions for the current person and actions subclass for proposals actions tell person that information=value code
+{
+    let variable the read from stream source stream index = <my information generator index>;
+    <read from stream "information">;
+    
+    let variable <current person> possible decision <current possible decision index> = value action tell <current guest> that <the read from stream result "information">;
+};
+let variable generate possible decisions for the current person and actions subclass for proposals actions ask person to action=value code
+{    
+    let variable the read from stream source stream index = <my action generator index>;
+    <read from stream "action">;    
+    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> to <the read from stream result "action">;
+};
+let variable generate possible decisions for the current person and actions subclass for proposals actions ask person what is his function=value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> what is his function;
+};
+let variable generate possible decisions for the current person and actions subclass for proposals actions ask person what is his weapon=value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> what is his weapon;
+};
+let variable generate possible decisions for the current person and actions subclass for proposals actions ask person whether he is a liar=value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> whether he is a liar;
+};
+let variable generate possible decisions for the current person and actions subclass for proposals actions propose person to exchange weapons=value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action propose <current guest> to exchange weapons;
+};
+
+
+################################################
+# 
+# Here we define the "generate possible decisions for the current person and actions subclass for answers".
+
+
+let variable generate possible decisions for the current person and actions subclass actions for answers answer person whether I am a liar=value code
+{
+    let variable the read from stream source stream index = <my action generator index>;
+    execute <read from stream "action">;
+    let variable <current person> possible decision <current possible decision index> = value action answer <current guest> whether I am a liar <the read from stream result "boolean">;
+};
+
+let generate possible decisions for the current person and actions subclass for answers actions accept person proposal to exchange weapons=value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action accept <current guest> proposal to exchange weapons;
+};
+
+################################################
+# 
+# Here we define the "generate possible decisions for the current person and actions subclass for others".
+
+let variable generate possible decisions for the current person and actions subclass for others actions attack person=value code
+{   
+    let variable <current person> possible decision <current possible decision index> = value action attack <current guest>;
+};
+
+let variable generate possible decisions for the current person and actions subclass for others actions tell person that information=value code
+{   
+    let variable <current person> possible decision <current possible decision index> = value action tell <current guest> that <current information>;
+};

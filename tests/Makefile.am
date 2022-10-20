@@ -1,5 +1,6 @@
 
 
+
 TESTS = check_whether_we_can_fail.chomik \
 	check_the_amount_of_informations.chomik \
 	check_the_amount_of_actions.chomik \

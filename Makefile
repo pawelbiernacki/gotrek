@@ -205,7 +205,7 @@ AUTOHEADER = ${SHELL} /home/pawelek/gotrek/missing autoheader
 AUTOMAKE = ${SHELL} /home/pawelek/gotrek/missing automake-1.16
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"gotrek\" -DPACKAGE_TARNAME=\"gotrek\" -DPACKAGE_VERSION=\"0.0.1\" -DPACKAGE_STRING=\"gotrek\ 0.0.1\" -DPACKAGE_BUGREPORT=\"pawel.f.biernacki@gmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"gotrek\" -DVERSION=\"0.0.1\"
+DEFS = -DPACKAGE_NAME=\"gotrek\" -DPACKAGE_TARNAME=\"gotrek\" -DPACKAGE_VERSION=\"0.0.2\" -DPACKAGE_STRING=\"gotrek\ 0.0.2\" -DPACKAGE_BUGREPORT=\"pawel.f.biernacki@gmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"gotrek\" -DVERSION=\"0.0.2\"
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
@@ -222,15 +222,15 @@ MKDIR_P = /usr/bin/mkdir -p
 PACKAGE = gotrek
 PACKAGE_BUGREPORT = pawel.f.biernacki@gmail.com
 PACKAGE_NAME = gotrek
-PACKAGE_STRING = gotrek 0.0.1
+PACKAGE_STRING = gotrek 0.0.2
 PACKAGE_TARNAME = gotrek
 PACKAGE_URL = 
-PACKAGE_VERSION = 0.0.1
+PACKAGE_VERSION = 0.0.2
 PATH_SEPARATOR = :
 SET_MAKE = 
 SHELL = /bin/sh
 STRIP = 
-VERSION = 0.0.1
+VERSION = 0.0.2
 abs_builddir = /home/pawelek/gotrek
 abs_srcdir = /home/pawelek/gotrek
 abs_top_builddir = /home/pawelek/gotrek
@@ -270,7 +270,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-SUBDIRS = chomik font image sdl_chomik tests
+SUBDIRS = chomik font image scripts sdl_chomik tests
 all: all-recursive
 
 .SUFFIXES:

@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([gotrek], [0.0.1], [pawel.f.biernacki@gmail.com])
+AC_INIT([gotrek], [0.0.2], [pawel.f.biernacki@gmail.com])
 AM_INIT_AUTOMAKE()
 
 # Checks for programs.
@@ -19,6 +19,7 @@ AC_CONFIG_FILES([Makefile
                  chomik/Makefile
                  font/Makefile
                  image/Makefile
+                 scripts/Makefile
                  sdl_chomik/Makefile
                  tests/Makefile])
 AC_OUTPUT

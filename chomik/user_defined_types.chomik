@@ -4,32 +4,56 @@ type person={Gotrek, Gwaigilion, Gerrudir, Pregor};
 type place={Krakow, Warszawa, Wroclaw, Poznan, Gdansk};
 type function={no_function,Czesnik, Krajczy, Skarbnik, Starosta, Kasztelan};
 type weapon={no_weapon, sword, axe};
+type tense={past,present,future};
 
 
-type information={(X:person) is in (Y:place),
-                    (X:person) has function (Y:function), 
-                    (X:person) has a (Y:weapon),                 
-                    (X:person) can see (Y:person),
-                    (X:person) can hear (Y:person),
-                    (X:person) has told (Y:person) that (Z:information),
-                    (X:person) has asked (Y:person) to (Z:action),
-                    (X:person) has asked (Y:person) what is his function,
-                    (X:person) has asked (Y:person) what is his weapon,
-                    (X:person) has asked (Y:person) whether he is a liar,                    
-                    (X:person) thinks that (Y:information),                    
-                    (X:person) is a liar};
+type information={  (X:person) is in (T:tense) in (Y:place),                    
+                    (X:person) has in (T:tense) function (Y:function),
+                    (X:person) has in (T:tense) weapon (Y:weapon),                    
+                    (X:person) can see in (T:tense) (Y:person),                    
+                    (X:person) is a liar,                    
+                    (X:person) tells in (T:tense) (Y:person) that (Z:information),
                     
-type action={no_action,                             # does not depend on anything
-            goto (X:place),                         # depends on a place (that must be connected)
-            tell (X:person) that (Y:information),   # depends on a person (that must be present)
-            ask (X:person) to (Y:action),           # depends on a person (that must be present)
-            ask (X:person) what is his function,    # ...
-            ask (X:person) what is his weapon,
-            ask (X:person) whether he is a liar,
-            answer (X:person) whether I am a liar (ANSWER:boolean),
-            attack (X:person),
-            propose (X:person) to exchange weapons,
-            accept (X:person) proposal to exchange weapons
+                    (X:person) asks in (T:tense) (Y:person) to (Z:action),                    
+                    (X:person) asks in (T:tense) (Y:person) what is in (T2:tense) (Z:person) function,                    
+                    (X:person) asks in (T:tense) (Y:person) what is in (T2:tense) (Z:person) weapon,                    
+                    (X:person) asks in (T:tense) (Y:person) whether (Z:person) is a liar,                    
+                    (X:person) proposes in (T:tense) (Y:person) to exchange weapons,                  
+                    
+                    (X:person) refuses in (T:tense) (Y:person) proposal to (PROPOSAL:action),
+                    (X:person) refuses in (T:tense) (Y:person) to reveal (Z:person) weapon,
+                    (X:person) refuses in (T:tense) (Y:person) to reveal (Z:person) function,                    
+                    (X:person) accepts in (T:tense) (Y:person) proposal to (PROPOSAL:action),                    
+                    (X:person) accepts in (T:tense) (Y:person) proposal to exchange weapons,                    
+                    (X:person) answers in (T:tense) (Y:person) that (Z:information),                    
+                    (X:person) thinks in (T:tense) that (Y:information),
+                    
+                    not (X:information)};
+                    
+type action={no_action,                                             # does not depend on anything
+
+            goto (X:place),                                         # depends on a place (that must be connected)
+            tell (X:person) that (Y:information),                   # depends on a person (that must be present)
+                        
+            
+            ask (X:person) to (Y:action),                           # depends on a person (that must be present)
+            ask (X:person) what is in (T:tense) (Y:person) function,    
+            ask (X:person) what is in (T:tense) (Y:person) weapon,
+            ask (X:person) whether (Y:person) is a liar,
+            propose (X:person) to exchange weapons,            
+            
+            answer (X:person) that (Y:person) is a liar is (ANSWER:boolean),
+            answer (X:person) that (Y:person) weapon is in (T:tense) (WEAPON:weapon) is (ANSWER:boolean),
+            answer (X:person) that (Y:person) function is in (T:tense) (FUNCTION:function) is (ANSWER:boolean),
+            accept (X:person) proposal to (PROPOSAL:action),
+            accept (X:person) proposal to exchange weapons,            
+            
+            refuse (X:person) proposal to (PROPOSAL:action),            
+            refuse (X:person) to reveal (Y:person) weapon,
+            refuse (X:person) to reveal (Y:person) function,
+            refuse (X:person) to reveal whether (Y:person) is a liar,
+            
+            attack (X:person)
             };
             
 type game_mode_type={title, game},
@@ -48,7 +72,10 @@ type action_class={ actions that do not depend on anything,
                     actions that depend on a person others};
 
                     
-# once we identified the random person present we can use this "subclass" to generate the actual actions
+# Once we identified the random person present we can use this "subclass" to generate the actual actions.
+# The term "subclass" has nothing to do with the "class" from the OOP. Instead, these enums identify
+# certain subsets of the action set.
+
 type action_depending_on_person_proposals_subclass={  
                                             actions ask person to action,
                                             actions ask person what is his function,
@@ -59,6 +86,12 @@ type action_depending_on_person_proposals_subclass={
                                             },
     action_depending_on_person_answers_subclass={
                                             actions answer person whether I am a liar,
+                                            actions answer person what is my weapon,
+                                            actions answer person what is my function,
+                                            actions accept person proposal to do action,
+                                            actions refuse person proposal to do action,
+                                            actions refuse person question to reveal my weapon,
+                                            actions refuse person question to reveal my function,
                                             actions accept person proposal to exchange weapons,
                                             actions attack person
                                             },
