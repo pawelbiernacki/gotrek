@@ -1,0 +1,35 @@
+#!/usr/local/bin/chomik
+
+# additional variables related with the types
+# they are used to store the order
+
+variable (X:place) successor:place;
+variable (X:person) successor:person;
+variable (X:explanation_mode_type) successor:explanation_mode_type;
+variable (X:game_phase_type) successor:game_phase_type;
+
+# these variables are used to have an order on the type place, person and game_phase_type, they are never modified
+let variable Krakow successor=value place Warszawa;
+let variable Warszawa successor=value place Wroclaw;
+let variable Wroclaw successor=value place Poznan;
+let variable Poznan successor=value place Gdansk;
+let variable Gdansk successor=value place Krakow;
+
+let variable Gotrek successor= value person Gwaigilion;
+let variable Gwaigilion successor = value person Gerrudir;
+let variable Gerrudir successor= value person Pregor;
+let variable Pregor successor= value person Gotrek;
+
+let asking phase successor=value game_phase_type answering phase;
+let answering phase successor=value game_phase_type moving phase;
+let moving phase successor=value game_phase_type asking phase;
+
+ 
+# this is for explanations
+let normal explanation successor = value explanation_mode_type asking about being a liar explanation;
+let asking about being a liar explanation successor = value explanation_mode_type asking about weapon explanation;
+let asking about weapon explanation successor = value explanation_mode_type asking about function explanation;
+let asking about function explanation successor = value explanation_mode_type proposing weapon exchange to anybody explanation;
+let proposing weapon exchange to anybody explanation successor = value explanation_mode_type proposing weapon exchange from anybody explanation;
+let proposing weapon exchange from anybody explanation successor = value explanation_mode_type god mode explanation;
+let god mode explanation successor = value explanation_mode_type normal explanation;

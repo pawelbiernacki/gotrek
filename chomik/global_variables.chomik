@@ -5,3 +5,5 @@ variable explanation mode: explanation_mode_type;
 
 let explanation mode = value explanation_mode_type normal explanation;
 
+variable game phase: game_phase_type;
+let game phase=value game_phase_type asking phase;

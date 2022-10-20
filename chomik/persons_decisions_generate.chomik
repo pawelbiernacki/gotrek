@@ -117,7 +117,7 @@ let generate possible decisions for the current person and actions subclass acti
 };
 
 
-let variable generate possible decisions for the current person and action class actions that depend on a person=value code
+let variable generate possible decisions for the current person and action class actions that depend on a person proposals=value code
 {
     let variable <current person> possible decision <current possible decision index> = value action no_action;
     execute <print "find all present persons">;
@@ -133,15 +133,124 @@ let variable generate possible decisions for the current person and action class
     execute <iterate through all the persons until you find a seen one (ITERATION:persons_range)>;
     
     
-    # choose randomly action_depending_on_person_subclass
-    let variable the read from stream source stream index = <my action_depending_on_person_subclass generator index>;
-    execute <read from stream "action_depending_on_person_subclass">;
-    execute <print "selected subclass" <the read from stream result "action_depending_on_person_subclass">>;
+    # choose randomly action_depending_on_person_proposals_subclass
+    let variable the read from stream source stream index = <my action_depending_on_person_proposals_subclass generator index>;
+    <read from stream "action_depending_on_person_proposals_subclass">;
+    <print "selected subclass" <the read from stream result "action_depending_on_person_proposals_subclass">>;
     
-    execute <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_subclass">>;
+    <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_proposals_subclass">>;
     
     <print "selected action for" <current person> "index" <current possible decision index> "is" <<current person> possible decision <current possible decision index>>>;
     
+};
+
+
+let variable generate possible decisions for the current person and action class actions that depend on a person answers=value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action no_action;
+    execute <print "find all present persons">;
+    
+    let variable (X:person) is seen by the current person=<<current person> can see (X:person)>;    
+
+    execute <print <current person> "can see" (X:person) "=" <(X:person) is seen by the current person>>;
+    
+    # begin from a randomly chosen person
+    let variable the read from stream source stream index = <my person generator index>;
+    execute <read from stream "person">;
+    let variable current guest = <the read from stream result "person">;    
+    execute <iterate through all the persons until you find a seen one (ITERATION:persons_range)>;
+    
+    
+    # choose randomly action_depending_on_person_answers_subclass
+    let variable the read from stream source stream index = <my action_depending_on_person_answers_subclass generator index>;
+    execute <read from stream "action_depending_on_person_answers_subclass">;
+    execute <print "selected subclass" <the read from stream result "action_depending_on_person_answers_subclass">>;
+    
+    execute <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_answers_subclass">>;
+    
+    <print "selected action for" <current person> "index" <current possible decision index> "is" <<current person> possible decision <current possible decision index>>>;
+    
+};
+
+
+
+
+let variable generate possible decisions for the current person and action class actions that depend on a person others=value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action no_action;
+    execute <print "find all present persons">;
+    
+    let variable (X:person) is seen by the current person=<<current person> can see (X:person)>;    
+
+    execute <print <current person> "can see" (X:person) "=" <(X:person) is seen by the current person>>;
+    
+    # begin from a randomly chosen person
+    let variable the read from stream source stream index = <my person generator index>;
+    execute <read from stream "person">;
+    let variable current guest = <the read from stream result "person">;    
+    execute <iterate through all the persons until you find a seen one (ITERATION:persons_range)>;
+    
+    
+    # choose randomly action_depending_on_person_others_subclass
+    let variable the read from stream source stream index = <my action_depending_on_person_others_subclass generator index>;
+    execute <read from stream "action_depending_on_person_others_subclass">;
+    execute <print "selected subclass" <the read from stream result "action_depending_on_person_others_subclass">>;
+    
+    execute <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_others_subclass">>;
+    
+    <print "selected action for" <current person> "index" <current possible decision index> "is" <<current person> possible decision <current possible decision index>>>;
+    
+};
+
+
+#
+# This code has been introduced to narrow down some action classes.
+#
+
+variable remove answering from the current action class (X:action_class):code;
+variable remove moving from the current action class (X:action_class):code;
+variable remove proposals from the current action class (X:action_class):code;
+
+
+let remove answering from the current action class (X:action_class)=value code {};
+let remove moving from the current action class (X:action_class)=value code {};
+let remove proposals from the current action class (X:action_class)=value code {};
+
+
+let remove proposals from the current action class actions that depend on a person proposals=value code
+{
+    let current action class = value action_class actions that do not depend on anything;
+};
+
+let remove moving from the current action class actions that depend on a place=value code
+{
+    let current action class = value action_class actions that do not depend on anything;
+};
+
+let remove answering from the current action class actions that depend on a person answers=value code
+{
+    let current action class = value action_class actions that do not depend on anything;
+};
+
+
+
+
+variable modify the current action class depending on the game phase (X:game_phase_type):code;
+let modify the current action class depending on the game phase asking phase=value code
+{
+    <remove answering from the current action class <current action class>>;
+    <remove moving from the current action class <current action class>>;
+};
+let modify the current action class depending on the game phase answering phase=value code
+{
+    <remove moving from the current action class <current action class>>;
+    <remove proposals from the current action class <current action class>>;
+};
+
+let modify the current action class depending on the game phase moving phase=value code
+{
+    <remove answering from the current action class <current action class>>;
+    <remove proposals from the current action class <current action class>>;
 };
 
 
@@ -152,16 +261,17 @@ let variable generate possible decisions for the current person (X:possible_deci
 
     let variable the read from stream source stream index = <my action_class generator index>;
     execute <read from stream "action_class">;
-    let current action class = <the read from stream result "action_class">;            
+    
+    let current action class = <the read from stream result "action_class">;    
+    <modify the current action class depending on the game phase <game phase>>;    
+    <print "current action class" <current action class>>;    
     
     
-    execute <print "current action class" <current action class>>;    
-    execute <generate possible decisions for the current person and action class <current action class>>;
-    
-    
-    execute <check whether <current person> possible decision <current possible decision index> is correct>;
+    <generate possible decisions for the current person and action class <current action class>>;
+        
+    <check whether <current person> possible decision <current possible decision index> is correct>;
             
-    execute <print <current person> "possible decision" <current possible decision index> "=" 
+    <print <current person> "possible decision" <current possible decision index> "=" 
         <<current person> possible decision <current possible decision index>>>;
 };
 

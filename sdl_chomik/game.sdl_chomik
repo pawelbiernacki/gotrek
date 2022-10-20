@@ -6,6 +6,7 @@ execute <print "A fantasy game written in sdl_chomik.">;
 execute <print "Vantaa 2022">;
 
 include "../chomik/user_defined_types.chomik"
+include "../chomik/game_phases.chomik"
 include "../chomik/global_variables.chomik"
 include "../chomik/global_streams.chomik"
 include "../chomik/persons.chomik"

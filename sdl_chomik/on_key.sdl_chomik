@@ -31,8 +31,8 @@ let do all the necessary stuff for the next move=value code
 {
     <update the persons>;
     <update the places>;
-    <generate (X:person) possible decisions>;    
-    <check whether (X:person) possible decision (Y:possible_decisions_range) is correct>;
+    <generate (X:person) possible decisions>;        
+    <check whether (X:person) possible decision (Y:possible_decisions_range) is correct>; # this check depends on the game phase
     <recalculate Gotrek choice options>;    
     let variable current option number = value integer 1;
     <recalculate arrow coordinate>;    
@@ -59,7 +59,7 @@ let variable on key return in game mode title=value code
     <initialize the places>;
     <reset the persons>;
     <do all the necessary stuff for the next move>;
-    let Gotrek result timer=value integer 1000;    
+    let Gotrek result timer=value integer 500;    # initial notification
 };
 
 let variable on key return in game mode game=value code
@@ -67,6 +67,7 @@ let variable on key return in game mode game=value code
     <print "return pressed">;
     <make all the decisions>;
     <perform all the decisions>;  
+    <move to the next game phase>;
     <do all the necessary stuff for the next move>;    
 };
 

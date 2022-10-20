@@ -21,8 +21,14 @@ let variable my action generator index = <the created stream index>;
 execute <create new input random enum stream "action_class">;
 let variable my action_class generator index = <the created stream index>;
 
-execute <create new input random enum stream "action_depending_on_person_subclass">;
-let variable my action_depending_on_person_subclass generator index = <the created stream index>;
+execute <create new input random enum stream "action_depending_on_person_proposals_subclass">;
+let variable my action_depending_on_person_proposals_subclass generator index = <the created stream index>;
+
+execute <create new input random enum stream "action_depending_on_person_answers_subclass">;
+let variable my action_depending_on_person_answers_subclass generator index = <the created stream index>;
+
+execute <create new input random enum stream "action_depending_on_person_others_subclass">;
+let variable my action_depending_on_person_others_subclass generator index = <the created stream index>;
 
 execute <create new input random enum stream "information">;
 let variable my information generator index = <the created stream index>;

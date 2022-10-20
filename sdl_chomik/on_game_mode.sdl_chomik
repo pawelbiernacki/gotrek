@@ -1,7 +1,6 @@
 #!/usr/local/bin/sdl_chomik
 
 
-
 variable on game mode (X:game_mode_type):code;
 let on game mode title = value code
 {
@@ -9,7 +8,7 @@ let on game mode title = value code
     execute <show image <chomik image index> 0 0>;    
     
     execute <show text <my large font index> "GOTREK" 100 100>;
-    execute <show text <my small font index> "by Pawel Biernacki <pawel.f.biernacki@gmail.com>" 100 140>;
+    execute <show text <my small font index> "by Pawel Biernacki" 100 140>;
     execute <show text <my small font index> "press return" 100 180>;    
 };
 
@@ -22,10 +21,7 @@ let on game mode game = value code
     <show image <map image index> 670 40>;
     <show image <chomik image index> 0 0>;
     
-    execute <show text <my small font index> 
-        <possible choice option number (X:possible_decisions_range) of Gotrek> 90 
-        <possible choice coordinate number (X:possible_decisions_range) of Gotrek>>; 
-
+    <show options texts>;
         
     <show text <my small font index> <Gotrek location text> 90 260>;
     <show text <my small font index> <Gotrek equipment text> 300 260>;
@@ -33,10 +29,12 @@ let on game mode game = value code
     <show text <my small font index> <Gotrek guests text> 90 276>;
     <show text <my small font index> <Gotrek secret text> 480 276>;
     
+    <show text <my small font index> <map <game phase> to its name> 90 300>;
     
-    execute <show explanation texts on <explanation mode>>;
     
-    execute <show image <arrow image index> 10 <arrow coordinate>>;
+    <show explanation texts on <explanation mode>>;
+    
+    <show image <arrow image index> 10 <arrow coordinate>>;
     
     #<show image <map Gotrek animated image index to image index <Gotrek animation frame index>> 90 140>;
 

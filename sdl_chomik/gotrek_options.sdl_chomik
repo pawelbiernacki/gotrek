@@ -152,3 +152,12 @@ let variable recalculate arrow coordinate = value code
     execute <subtract "integer" <arrow coordinate> 16>;
     let variable arrow coordinate = <the subtract result "integer">;
 };
+
+
+variable show options texts:code;
+let show options texts=value code
+{
+    <show text <my small font index> 
+        <possible choice option number (X:possible_decisions_range) of Gotrek> 90 
+        <possible choice coordinate number (X:possible_decisions_range) of Gotrek>>; 
+};
