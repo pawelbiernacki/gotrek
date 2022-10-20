@@ -1,5 +1,6 @@
 #!/usr/local/bin/sdl_chomik
 
+
 #
 # These texts form an "array" to be displayed on the notification window.
 #
@@ -7,6 +8,11 @@ variable notification text number (X:notification_texts_range) of Gotrek:string;
 let notification text number (X:notification_texts_range) of Gotrek = value string " ";
 
 variable notification text coordinate:integer;
+
+variable maximum notification time:integer; # this is used as a "constant", to set the timer for the notification
+
+let maximum notification time = value integer 200;
+
 
 variable for all (X:notification_texts_range) show them:code;
 
@@ -24,7 +30,6 @@ variable show notifications on (X:compare_result):code;
 let show notifications on greater=value code
 {    
     <show image <notifications window image index> 50 50>;    
-    <show text <my large font index> <Gotrek result text> 80 80>;
     
     let notification text coordinate = value integer 112;
     
@@ -61,10 +66,48 @@ let notification text number 18 of Gotrek = value string "Press arrow keys (up/d
 let notification text number 19 of Gotrek = value string "Press return to activate an option.";
 let notification text number 20 of Gotrek = value string "Press SPACE to show this message. ";
 
+variable position of the current notification text:integer;
+
+
 variable clear notification texts:code;
 let clear notification texts=value code
 {
     let notification text number (X:notification_texts_range) of Gotrek = value string " ";    
+    let position of the current notification text=value integer 1;
 };
 
+variable prepare printing to the notification texts:code;
+let prepare printing to the notification texts=value code
+{
+    <clear notification texts>;
+
+    let the print target stream index = <my output stringstream index>;
+    let the print end of line=value string "";    
+    let position of the current notification text=value integer 1;    
+    let the set to stream stream index = <my output stringstream index>;
+    <set to stream "">;
+};
+
+
+variable finish printing to the notification texts:code;
+let finish printing to the notification texts=value code
+{
+    let the print target stream index = value integer 0;
+    let the print end of line=value string "\n";
+};
+
+variable flush printing to the notification texts:code;
+let flush printing to the notification texts=value code
+{
+    let the get from stream stream index = <my output stringstream index>;
+    <get from stream>;
+    let notification text number <position of the current notification text> of Gotrek = <the get from stream result>;
+    
+    # increment the position
+    <add "integer" <position of the current notification text> 1>;
+    let position of the current notification text=<the add result "integer">;
+    
+    let the set to stream stream index = <my output stringstream index>;
+    <set to stream "">;
+};
 

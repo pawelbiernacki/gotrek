@@ -1,8 +1,8 @@
 #!/usr/local/bin/sdl_chomik
 
 
-variable Gotrek result text:string;
-let Gotrek result text=value string " ";
+#variable Gotrek result text:string;
+#let Gotrek result text=value string " ";
 
 variable Gotrek result timer:integer;
 let Gotrek result timer=value integer 100;

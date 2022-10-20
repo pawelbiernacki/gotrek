@@ -17,10 +17,12 @@ let resolve the fight lower=value code
             
     # check if current person is Gotrek
     <compare "person" <current person> Gotrek>;
+    let current other person for Gotrek=<current guest>;
     <notify Gotrek he has lost <the compare result>>;  
     
     # check if current guest is Gotrek
     <compare "person" <current guest> Gotrek>;
+    let current other person for Gotrek=<current person>;
     <notify Gotrek he has been attacked and won <the compare result>>;
     
 };
@@ -30,10 +32,12 @@ let resolve the fight equal=value code
     
     # check if current person is Gotrek
     <compare "person" <current person> Gotrek>;
+    let current other person for Gotrek=<current guest>;
     <notify Gotrek it is a draw <the compare result>>;            
     
     # check if current guest is Gotrek
     <compare "person" <current guest> Gotrek>;
+    let current other person for Gotrek=<current person>;
     <notify Gotrek he has been attacked and it is a draw <the compare result>>;    
 };
 
@@ -45,10 +49,12 @@ let resolve the fight greater= value code
 
     # check if current person is Gotrek
     <compare "person" <current person> Gotrek>;
+    let current other person for Gotrek=<current guest>;
     <notify Gotrek he has won <the compare result>>;    
     
     # check if current guest is Gotrek
     <compare "person" <current guest> Gotrek>;
+    let current other person for Gotrek=<current person>;
     <notify Gotrek he has been attacked and lost <the compare result>>;
 
 };
@@ -60,6 +66,7 @@ let resolve the proposal to exchange weapons=value code
 {
     # check if current guest is Gotrek
     <compare "person" <current guest> Gotrek>;
+    let current other person for Gotrek=<current person>;
     <notify Gotrek he has been proposed to exchange weapons <the compare result>>;
 };
 
@@ -68,6 +75,7 @@ variable resolve the acceptance of the proposal to exchange weapons:code;
 let resolve the acceptance of the proposal to exchange weapons=value code
 {
     <compare "person" <current person> Gotrek>;
+    let current other person for Gotrek=<current guest>;
     <notify Gotrek he has exchanged weapons <the compare result>>;
 };
 
