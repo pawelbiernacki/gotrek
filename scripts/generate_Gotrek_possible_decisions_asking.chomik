@@ -1,0 +1,31 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/game_phases.chomik"
+include "../chomik/global_variables.chomik"
+include "../chomik/global_streams.chomik"
+include "../chomik/persons.chomik"
+include "../chomik/places.chomik"
+
+<initialize the persons>;
+<initialize the places>;
+<reset the persons>;
+
+let location of Gotrek = value place Krakow;
+let location of Pregor = value place Krakow;
+let location of Gwaigilion = value place Krakow;
+let location of Gerrudir = value place Krakow;
+
+let current person = value person Gotrek;
+let game phase=value game_phase_type asking phase;
+
+<update the persons>;
+<update the places>;
+
+<generate Gotrek possible decisions>;
+
+<print "****************************************************">;
+
+<print <Gotrek possible decision (X:possible_decisions_range)>>;
+
+ 

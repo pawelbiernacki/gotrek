@@ -74,41 +74,47 @@ let variable check if Gotrek is going to ask (A:person) to (B:action)=value code
     execute <on Gotrek ask current guest to current action <the compare result>>;    
 };
 
-variable check if Gotrek is going to ask (A:person) what his function is:code;
-let variable check if Gotrek is going to ask (A:person) what his function is=value code
+variable check if Gotrek is going to ask (A:person) what (B:person) function is in (T:tense):code;
+let variable check if Gotrek is going to ask (A:person) what (B:person) function is in (T:tense)=value code
 {
-    let variable current guest = value place [(A:person)];
-    let variable current pattern = value action ask <current guest> what is his function;
-    execute <compare "action" <current possible decision> <current pattern>>;
-    execute <on Gotrek ask current guest what is his function <the compare result>>;    
+    let current guest = value place [(A:person)];
+    let current guest 2 = value place [(B:person)];
+    let current tense = value tense [(T:tense)];
+    let current pattern = value action ask <current guest> what is in <current tense> <current guest 2> function;
+    <compare "action" <current possible decision> <current pattern>>;
+    <on Gotrek ask current guest what is someone function <the compare result>>;    
 };
 
-variable check if Gotrek is going to ask (A:person) what his weapon is:code;
-let variable check if Gotrek is going to ask (A:person) what his weapon is=value code
+variable check if Gotrek is going to ask (A:person) what (B:person) weapon is in (T:tense):code;
+let variable check if Gotrek is going to ask (A:person) what (B:person) weapon is in (T:tense)=value code
 {
     let variable current guest = value place [(A:person)];
-    let variable current pattern = value action ask <current guest> what is his weapon;
-    execute <compare "action" <current possible decision> <current pattern>>;
-    execute <on Gotrek ask current guest what is his weapon <the compare result>>;
+    let current guest 2 = value place [(B:person)];
+    let current tense = value tense [(T:tense)];
+    let variable current pattern = value action ask <current guest> what is in <current tense> <current guest 2> weapon;
+    <compare "action" <current possible decision> <current pattern>>;
+    <on Gotrek ask current guest what is someone weapon <the compare result>>;
 };
 
-variable check if Gotrek is going to ask (A:person) whether he is a liar:code;
-let variable check if Gotrek is going to ask (A:person) whether he is a liar=value code
+variable check if Gotrek is going to ask (A:person) whether (B:person) is a liar:code;
+let variable check if Gotrek is going to ask (A:person) whether (B:person) is a liar=value code
 {
     let variable current guest = value place [(A:person)];                    
-    let variable current pattern = value action ask <current guest> whether he is a liar;
-    execute <compare "action" <current possible decision> <current pattern>>;
-    execute <on Gotrek ask current guest whether he is a liar <the compare result>>;
+    let current guest 2 = value place [(B:person)];
+    let variable current pattern = value action ask <current guest> whether <current guest 2> is a liar;
+    <compare "action" <current possible decision> <current pattern>>;
+    <on Gotrek ask current guest whether someone is a liar <the compare result>>;
 };
 
-variable check if Gotrek is going to answer (A:person) whether I am a liar (ANSWER:boolean):code;
-let variable check if Gotrek is going to answer (A:person) whether I am a liar (ANSWER:boolean)=value code
+variable check if Gotrek is going to answer (A:person) whether (B:person) is a liar (ANSWER:boolean):code;
+let variable check if Gotrek is going to answer (A:person) whether (B:person) is a liar (ANSWER:boolean)=value code
 {
     let variable current guest = value place [(A:person)];                    
     let variable current answer = value boolean [(ANSWER:boolean)];
-    let variable current pattern = value action answer <current guest> whether I am a liar <current answer>;
-    execute <compare "action" <current possible decision> <current pattern>>;
-    execute <on Gotrek answer current guest whether I am a liar <current answer> <the compare result>>;
+    let current guest 2 = value place [(B:person)];
+    let variable current pattern = value action answer <current guest> whether <current guest 2> is a liar <current answer>;
+    <compare "action" <current possible decision> <current pattern>>;
+    <on Gotrek answer current guest whether someone is a liar <current answer> <the compare result>>;
 };
 
 
@@ -119,21 +125,21 @@ let variable recalculate Gotrek choice option number (X:possible_decisions_range
     let variable current option number = value integer [(X:possible_decisions_range)];
     let variable current possible decision = value action <Gotrek possible decision <current option number>>;
     
-    execute <print "check how to translate Gotrek's decision" <current possible decision> "into text.">;    
+    <print "check how to translate Gotrek's decision" <current possible decision> "into text.">;    
     
-    execute <compare "action" <current possible decision> no_action>;
-    execute <on Gotrek no_action <the compare result>>;
+    <compare "action" <current possible decision> no_action>;
+    <on Gotrek no_action <the compare result>>;
     
-    execute <check if Gotrek is going to go to (A:place)>;
-    execute <check if Gotrek is going to attack (A:person)>;
+    <check if Gotrek is going to go to (A:place)>;
+    <check if Gotrek is going to attack (A:person)>;
     <check if Gotrek is going to propose (A:person) to exchange weapons>;
     <check if Gotrek is going to accept (A:person) proposal to exchange weapons>;
-    execute <check if Gotrek is going to tell (A:person) that (B:information)>;
-    execute <check if Gotrek is going to ask (A:person) to (B:action)>;
-    execute <check if Gotrek is going to ask (A:person) what his function is>;
-    execute <check if Gotrek is going to ask (A:person) what his weapon is>;
-    <check if Gotrek is going to ask (A:person) whether he is a liar>;
-    <check if Gotrek is going to answer (A:person) whether I am a liar (ANSWER:boolean)>;
+    <check if Gotrek is going to tell (A:person) that (B:information)>;
+    <check if Gotrek is going to ask (A:person) to (B:action)>;
+    <check if Gotrek is going to ask (A:person) what (B:person) function is in (T:tense)>;
+    <check if Gotrek is going to ask (A:person) what (B:person) weapon is in (T:tense)>;
+    <check if Gotrek is going to ask (A:person) whether (B:person) is a liar>;
+    <check if Gotrek is going to answer (A:person) whether (B:person) is a liar (ANSWER:boolean)>;
 };
 
 

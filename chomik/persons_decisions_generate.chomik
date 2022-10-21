@@ -28,7 +28,7 @@ let variable generate possible decisions for the current person and action class
     <read from stream "action_depending_on_person_proposals_subclass">;
     <print "selected subclass" <the read from stream result "action_depending_on_person_proposals_subclass">>;
     
-    <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_proposals_subclass">>;
+    <generate possible decisions for the current person and actions subclass for proposals <the read from stream result "action_depending_on_person_proposals_subclass">>;
     
     <print "selected action for" <current person> "index" <current possible decision index> "is" <<current person> possible decision <current possible decision index>>>;
     
@@ -56,7 +56,7 @@ let variable generate possible decisions for the current person and action class
     execute <read from stream "action_depending_on_person_answers_subclass">;
     execute <print "selected subclass" <the read from stream result "action_depending_on_person_answers_subclass">>;
     
-    execute <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_answers_subclass">>;
+    <generate possible decisions for the current person and actions subclass for answers <the read from stream result "action_depending_on_person_answers_subclass">>;
     
     <print "selected action for" <current person> "index" <current possible decision index> "is" <<current person> possible decision <current possible decision index>>>;
     
@@ -86,7 +86,7 @@ let variable generate possible decisions for the current person and action class
     execute <read from stream "action_depending_on_person_others_subclass">;
     execute <print "selected subclass" <the read from stream result "action_depending_on_person_others_subclass">>;
     
-    execute <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_others_subclass">>;
+    execute <generate possible decisions for the current person and actions subclass for others <the read from stream result "action_depending_on_person_others_subclass">>;
     
     <print "selected action for" <current person> "index" <current possible decision index> "is" <<current person> possible decision <current possible decision index>>>;
     

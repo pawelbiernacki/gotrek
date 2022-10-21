@@ -139,11 +139,11 @@ let variable on Gotrek ask current guest to current action equal = value code
     let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;        
 };
 
-
-variable on Gotrek ask current guest what is his function (Y:compare_result):code;
-let variable on Gotrek ask current guest what is his function lower = value code {};
-let variable on Gotrek ask current guest what is his function greater = value code {};
-let variable on Gotrek ask current guest what is his function equal = value code 
+# TODO - add tense
+variable on Gotrek ask current guest what is someone function (Y:compare_result):code;
+let variable on Gotrek ask current guest what is someone function lower = value code {};
+let variable on Gotrek ask current guest what is someone function greater = value code {};
+let variable on Gotrek ask current guest what is someone function equal = value code 
 {
     let variable the set to stream stream index = <my concatenating stream index>;
     execute <set to stream "">;
@@ -151,7 +151,7 @@ let variable on Gotrek ask current guest what is his function equal = value code
     let variable the print target stream index =  <the set to stream stream index>;
     let variable the print end of line = value string "";
     execute <print "I will ask" <from the Gotrek point of view who is <current guest>> 
-        <from the Gotrek point of view how to say what <current guest> function is> ".">;    
+        <from the Gotrek point of view how to say what <current guest 2> function is> ".">;    
     let variable the print target stream index = value integer 0;    # standard output
     let variable the print end of line = value string "\n";
 
@@ -162,10 +162,12 @@ let variable on Gotrek ask current guest what is his function equal = value code
     #execute <print "concatenation result" <the get from stream result>>;
 };
 
-variable on Gotrek ask current guest what is his weapon (Y:compare_result):code;
-let variable on Gotrek ask current guest what is his weapon lower = value code {};
-let variable on Gotrek ask current guest what is his weapon greater = value code {};
-let variable on Gotrek ask current guest what is his weapon equal = value code 
+
+# TODO - add tense
+variable on Gotrek ask current guest what is someone weapon (Y:compare_result):code;
+let variable on Gotrek ask current guest what is someone weapon lower = value code {};
+let variable on Gotrek ask current guest what is someone weapon greater = value code {};
+let variable on Gotrek ask current guest what is someone weapon equal = value code 
 {
     let variable the set to stream stream index = <my concatenating stream index>;
     execute <set to stream "">;
@@ -173,7 +175,7 @@ let variable on Gotrek ask current guest what is his weapon equal = value code
     let variable the print target stream index =  <the set to stream stream index>;
     let variable the print end of line = value string "";
     execute <print "I will ask" <from the Gotrek point of view who is <current guest>> 
-        <from the Gotrek point of view how to say what <current guest> weapon is> ".">;    
+        <from the Gotrek point of view how to say what <current guest 2> weapon is> ".">;    
         
     let variable the print target stream index = value integer 0;    # standard output
     let variable the print end of line = value string "\n";
@@ -186,10 +188,10 @@ let variable on Gotrek ask current guest what is his weapon equal = value code
 };
 
 
-variable on Gotrek ask current guest whether he is a liar (Y:compare_result):code;
-let variable on Gotrek ask current guest whether he is a liar lower = value code {};
-let variable on Gotrek ask current guest whether he is a liar greater = value code {};
-let variable on Gotrek ask current guest whether he is a liar equal = value code 
+variable on Gotrek ask current guest whether someone is a liar (Y:compare_result):code;
+let variable on Gotrek ask current guest whether someone is a liar lower = value code {};
+let variable on Gotrek ask current guest whether someone is a liar greater = value code {};
+let variable on Gotrek ask current guest whether someone is a liar equal = value code 
 {
     let variable the set to stream stream index = <my concatenating stream index>;
     execute <set to stream "">;
@@ -197,7 +199,7 @@ let variable on Gotrek ask current guest whether he is a liar equal = value code
     let variable the print target stream index =  <the set to stream stream index>;
     let variable the print end of line = value string "";
     execute <print "I will ask" <from the Gotrek point of view who is <current guest>> 
-        <from the Gotrek point of view how to say whether <current guest> is a liar> ".">;    
+        <from the Gotrek point of view how to say whether <current guest 2> is a liar> ".">;    
         
     let variable the print target stream index = value integer 0;    # standard output
     let variable the print end of line = value string "\n";
@@ -209,10 +211,10 @@ let variable on Gotrek ask current guest whether he is a liar equal = value code
     #execute <print "concatenation result" <the get from stream result>>;
 };
 
-variable on Gotrek answer current guest whether I am a liar (ANSWER:boolean) (Y:compare_result):code;
-let variable on Gotrek answer current guest whether I am a liar false lower=value code {};
-let variable on Gotrek answer current guest whether I am a liar false greater=value code {};
-let variable on Gotrek answer current guest whether I am a liar false equal=value code 
+variable on Gotrek answer current guest whether someone is a liar (ANSWER:boolean) (Y:compare_result):code;
+let variable on Gotrek answer current guest whether someone is a liar false lower=value code {};
+let variable on Gotrek answer current guest whether someone is a liar false greater=value code {};
+let variable on Gotrek answer current guest whether someone is a liar false equal=value code 
 {
     let variable the set to stream stream index = <my concatenating stream index>;
     execute <set to stream "">;
@@ -220,7 +222,7 @@ let variable on Gotrek answer current guest whether I am a liar false equal=valu
     let variable the print target stream index =  <the set to stream stream index>;
     let variable the print end of line = value string "";
     execute <print "I will answer" <from the Gotrek point of view who is <current guest>> 
-        <from the Gotrek point of view how to say that Gotrek is not a liar> ".">;    
+        <from the Gotrek point of view how to say that <current guest 2> is not a liar> ".">;    
         
     let variable the print target stream index = value integer 0;    # standard output
     let variable the print end of line = value string "\n";
@@ -230,9 +232,9 @@ let variable on Gotrek answer current guest whether I am a liar false equal=valu
     let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;    
 };
 
-let variable on Gotrek answer current guest whether I am a liar true lower=value code {};
-let variable on Gotrek answer current guest whether I am a liar true greater=value code {};
-let variable on Gotrek answer current guest whether I am a liar true equal=value code 
+let variable on Gotrek answer current guest whether someone is a liar true lower=value code {};
+let variable on Gotrek answer current guest whether someone is a liar true greater=value code {};
+let variable on Gotrek answer current guest whether someone is a liar true equal=value code 
 {
     let variable the set to stream stream index = <my concatenating stream index>;
     execute <set to stream "">;
@@ -240,7 +242,7 @@ let variable on Gotrek answer current guest whether I am a liar true equal=value
     let variable the print target stream index =  <the set to stream stream index>;
     let variable the print end of line = value string "";
     execute <print "I will answer" <from the Gotrek point of view who is <current guest>> 
-        <from the Gotrek point of view how to say that Gotrek is a liar> ".">;    
+        <from the Gotrek point of view how to say that <current guest 2> is a liar> ".">;    
         
     let variable the print target stream index = value integer 0;    # standard output
     let variable the print end of line = value string "\n";

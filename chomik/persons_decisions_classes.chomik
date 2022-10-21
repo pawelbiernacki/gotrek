@@ -88,21 +88,46 @@ let variable generate possible decisions for the current person and actions subc
     <read from stream "action">;    
     let variable <current person> possible decision <current possible decision index> = value action ask <current guest> to <the read from stream result "action">;
 };
-let variable generate possible decisions for the current person and actions subclass for proposals actions ask person what is his function=value code
+let variable generate possible decisions for the current person and actions subclass for proposals actions ask person what is someone function=value code
 {
-    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> what is his function;
+    let the read from stream source stream index = <my person generator index>;
+    <read from stream "person">;
+    
+    let the read from stream source stream index = <my tense generator index>;
+    <read from stream "tense">;
+
+    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> what is in <the read from stream result "tense"> <the read from stream result "person"> function;
 };
-let variable generate possible decisions for the current person and actions subclass for proposals actions ask person what is his weapon=value code
+let variable generate possible decisions for the current person and actions subclass for proposals actions ask person what is someone weapon=value code
 {
-    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> what is his weapon;
+    let the read from stream source stream index = <my person generator index>;
+    <read from stream "person">;
+
+    let the read from stream source stream index = <my tense generator index>;
+    <read from stream "tense">;
+    
+    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> what is in <the read from stream result "tense"> <the read from stream result "person"> weapon;
 };
-let variable generate possible decisions for the current person and actions subclass for proposals actions ask person whether he is a liar=value code
+let variable generate possible decisions for the current person and actions subclass for proposals actions ask person whether someone is a liar=value code
 {
-    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> whether he is a liar;
+    let the read from stream source stream index = <my person generator index>;
+    <read from stream "person">;
+    
+    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> whether <the read from stream result "person"> is a liar;
 };
 let variable generate possible decisions for the current person and actions subclass for proposals actions propose person to exchange weapons=value code
 {
     let variable <current person> possible decision <current possible decision index> = value action propose <current guest> to exchange weapons;
+};
+
+let variable generate possible decisions for the current person and actions subclass for proposals actions attack person=value code
+{   
+    let variable <current person> possible decision <current possible decision index> = value action attack <current guest>;
+};
+
+let variable generate possible decisions for the current person and actions subclass for proposals actions tell person that information=value code
+{   
+    let variable <current person> possible decision <current possible decision index> = value action tell <current guest> that <current information>;
 };
 
 
@@ -111,17 +136,32 @@ let variable generate possible decisions for the current person and actions subc
 # Here we define the "generate possible decisions for the current person and actions subclass for answers".
 
 
-let variable generate possible decisions for the current person and actions subclass actions for answers answer person whether I am a liar=value code
+let variable generate possible decisions for the current person and actions subclass actions for answers answer person whether someone is a liar=value code
 {
     let variable the read from stream source stream index = <my action generator index>;
-    execute <read from stream "action">;
-    let variable <current person> possible decision <current possible decision index> = value action answer <current guest> whether I am a liar <the read from stream result "boolean">;
+    <read from stream "action">;
+    
+    let the read from stream source stream index = <my person generator index>;
+    <read from stream "person">;
+    
+    let variable <current person> possible decision <current possible decision index> = value action answer <current guest> whether <the read from stream result "person"> is a liar is <the read from stream result "boolean">;
 };
 
 let generate possible decisions for the current person and actions subclass for answers actions accept person proposal to exchange weapons=value code
 {
     let variable <current person> possible decision <current possible decision index> = value action accept <current guest> proposal to exchange weapons;
 };
+
+let variable generate possible decisions for the current person and actions subclass for answers actions attack person=value code
+{   
+    let variable <current person> possible decision <current possible decision index> = value action attack <current guest>;
+};
+
+let variable generate possible decisions for the current person and actions subclass for answers actions tell person that information=value code
+{   
+    let variable <current person> possible decision <current possible decision index> = value action tell <current guest> that <current information>;
+};
+
 
 ################################################
 # 

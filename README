@@ -13,4 +13,4 @@ Gotrek requires "chomik" to be installed, chomik is available from:
 https://github.com/pawelbiernacki/chomik.git
 
 
-
+Type "make check" to run the tests (located in the folder tests).

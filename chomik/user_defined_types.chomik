@@ -78,22 +78,24 @@ type action_class={ actions that do not depend on anything,
 
 type action_depending_on_person_proposals_subclass={  
                                             actions ask person to action,
-                                            actions ask person what is his function,
-                                            actions ask person what is his weapon,
-                                            actions ask person whether he is a liar,
+                                            actions ask person what is someone function,
+                                            actions ask person what is someone weapon,
+                                            actions ask person whether someone is a liar,
                                             actions propose person to exchange weapons,
-                                            actions attack person
+                                            actions attack person,
+                                            actions tell person that information
                                             },
     action_depending_on_person_answers_subclass={
-                                            actions answer person whether I am a liar,
-                                            actions answer person what is my weapon,
-                                            actions answer person what is my function,
+                                            actions answer person whether someone is a liar,
+                                            actions answer person what is someone weapon,
+                                            actions answer person what is someone function,
                                             actions accept person proposal to do action,
                                             actions refuse person proposal to do action,
                                             actions refuse person question to reveal my weapon,
                                             actions refuse person question to reveal my function,
                                             actions accept person proposal to exchange weapons,
-                                            actions attack person
+                                            actions attack person,
+                                            actions tell person that information
                                             },
     action_depending_on_person_others_subclass={
                                             actions attack person,
@@ -126,6 +128,9 @@ let weapon bonus for no_weapon=value integer 0;
 let weapon bonus for axe=value integer 3;
 let weapon bonus for sword=value integer 4; # sword is a little better than axe
 
+
+# various mappings (enum to string)
+
 variable from the computer talking to Gotrek point of view who is (X:person):string;
 let from the computer talking to Gotrek point of view who is Gotrek=value string "yourself";
 let from the computer talking to Gotrek point of view who is Gwaigilion=value string "Gwaigilion";
@@ -139,22 +144,22 @@ let from the Gotrek point of view who is Gerrudir=value string "Gerrudir";
 let from the Gotrek point of view who is Pregor=value string "Pregor";
 
 variable from the Gotrek point of view how to say whether (X:person) is a liar:string;
-let from the Gotrek point of view how to say whether (X:person) is a liar=value string "whether he is a liar";
+let from the Gotrek point of view how to say whether (X:person) is a liar=value string "whether someone is a liar";
 let from the Gotrek point of view how to say whether Gotrek is a liar=value string "whether I am a liar";
 
 variable from the Gotrek point of view how to say that (X:person) is a liar:string;
-let from the Gotrek point of view how to say that (X:person) is a liar=value string "that he is a liar";
+let from the Gotrek point of view how to say that (X:person) is a liar=value string "that someone is a liar";
 let from the Gotrek point of view how to say that Gotrek is a liar=value string "that I am a liar";
 
 variable from the Gotrek point of view how to say that (X:person) is not a liar:string;
-let from the Gotrek point of view how to say that (X:person) is not a liar=value string "that he is not a liar";
+let from the Gotrek point of view how to say that (X:person) is not a liar=value string "that someone is not a liar";
 let from the Gotrek point of view how to say that Gotrek is not a liar=value string "that I am not a liar";
 
 
 variable from the Gotrek point of view how to say what (X:person) weapon is:string;
-let from the Gotrek point of view how to say what (X:person) weapon is=value string "what his weapon is";
+let from the Gotrek point of view how to say what (X:person) weapon is=value string "what someone weapon is";
 let from the Gotrek point of view how to say what Gotrek weapon is=value string "what my weapon is";
 
 variable from the Gotrek point of view how to say what (X:person) function is:string;
-let from the Gotrek point of view how to say what (X:person) function is=value string "what his function is";
+let from the Gotrek point of view how to say what (X:person) function is=value string "what someone function is";
 let from the Gotrek point of view how to say what Gotrek function is=value string "what my function is";

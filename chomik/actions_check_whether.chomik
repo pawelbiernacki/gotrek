@@ -63,42 +63,54 @@ let check whether current possible decision is accept (P:person) proposal to exc
     <on it is accept current guest proposal to exchange weapons <the compare result>>;
 };
 
-variable check whether current possible decision is answer (P:person) whether I am a liar (ANSWER:boolean):code;
-let check whether current possible decision is answer (P:person) whether I am a liar (ANSWER:boolean)=value code
+variable check whether current possible decision is answer (P:person) whether (P2:person) is a liar (ANSWER:boolean):code;
+let check whether current possible decision is answer (P:person) whether (P2:person) is a liar (ANSWER:boolean)=value code
 {
     let current guest=value person [(P:person)];   # the person we try to talk to
     let current answer=value boolean [(ANSWER:boolean)];    
+    let current guest 2=value person [(P2:person)];
+    
     let current pattern=value action answer <current guest> whether I am a liar <current answer>;
     <compare "action" <current possible decision> <current pattern>>;
-    <on it is answer current guest whether I am a liar <current answer> <the compare result>>;
+    <on it is answer current guest whether someone is a liar <current answer> <the compare result>>;
 };
 
 
 
-variable check whether current possible decision is ask (P:person) what is his function:code;
-let check whether current possible decision is ask (P:person) what is his function=value code
+variable check whether current possible decision is ask (P:person) what is in (T:tense) (P2:person) function:code;
+let check whether current possible decision is ask (P:person) what is in (T:tense) (P2:person) function=value code
 {
     let current guest=value person [(P:person)];   # the person we try to talk to
-    let current pattern=value action ask <current guest> what is his function;
+    let current tense=value tense [(T:tense)];
+    let current guest 2=value person [(P2:person)];
+    
+    let current pattern=value action ask <current guest> what is in <current tense> <current guest 2> function;
     <compare "action" <current possible decision> <current pattern>>;
-    <on it is ask current guest what is his function <the compare result>>;
+        
+    <on it is ask current guest what is someone function <the compare result>>;
 };
 
-variable check whether current possible decision is ask (P:person) what is his weapon:code;
-let check whether current possible decision is ask (P:person) what is his weapon=value code
+variable check whether current possible decision is ask (P:person) what is in (T:tense) (P2:person) weapon:code;
+let check whether current possible decision is ask (P:person) what is in (T:tense) (P2:person) weapon=value code
 {
     let current guest=value person [(P:person)];   # the person we try to talk to
-    let current pattern=value action ask <current guest> what is his weapon;
+    let current tense=value tense [(T:tense)];
+    let current guest 2=value person [(P2:person)];
+    
+    let current pattern=value action ask <current guest> what is in <current tense> <current guest 2> weapon;
     <compare "action" <current possible decision> <current pattern>>;
-    <on it is ask current guest what is his weapon <the compare result>>;
+    <on it is ask current guest what is someone weapon <the compare result>>;
 };
 
 
-variable check whether current possible decision is ask (P:person) whether he is a liar:code;
-let check whether current possible decision is ask (P:person) whether he is a liar=value code
+variable check whether current possible decision is ask (P:person) whether (P2:person) is a liar:code;
+let check whether current possible decision is ask (P:person) whether (P2:person) is a liar=value code
 {
     let current guest=value person [(P:person)];   # the person we try to talk to
-    let current pattern=value action ask <current guest> whether he is a liar;
+    let current guest 2=value person [(P2:person)];        
+    
+    let current pattern=value action ask <current guest> whether <current guest 2> is a liar;
+    
     <compare "action" <current possible decision> <current pattern>>;
     <on it is ask current guest whether he is a liar <the compare result>>;    
 };
@@ -149,16 +161,16 @@ let variable check whether (X:person) possible decision (Y:possible_decisions_ra
     <check whether current possible decision is propose (P:person) to exchange weapons>;
     
     # one cannot ask himself what his function is
-    <check whether current possible decision is ask (P:person) what is his function>;
+    <check whether current possible decision is ask (P:person) what is in (T:tense) (P2:person) function>;
     
     # one cannot ask himself what his weapon is
-    <check whether current possible decision is ask (P:person) what is his weapon>;
+    <check whether current possible decision is ask (P:person) what is in (T:tense) (P2:person) weapon>;
     
     # it makes no sense to ask oneself whether he is a liar
-    <check whether current possible decision is ask (P:person) whether he is a liar>;
+    <check whether current possible decision is ask (P:person) whether (P2:person) is a liar>;
     
-    # sometimes it makes no sense to answer oneself whether I am a liar
-    <check whether current possible decision is answer (P:person) whether I am a liar (ANSWER:boolean)>;
+    # sometimes it makes no sense to answer oneself whether someone is a liar
+    <check whether current possible decision is answer (P:person) whether (P2:person) is a liar (ANSWER:boolean)>;
     
     # one cannot accept his own proposal to exchange weapons
     <check whether current possible decision is accept (P:person) proposal to exchange weapons>;

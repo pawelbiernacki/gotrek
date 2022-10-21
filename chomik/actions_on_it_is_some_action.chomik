@@ -158,10 +158,10 @@ let on it is accept current guest proposal to exchange weapons equal = value cod
 };
 
 
-variable on it is ask current guest what is his function (X:compare_result_type):code;
-let on it is ask current guest what is his function lower = value code {};
-let on it is ask current guest what is his function greater = value code {};
-let on it is ask current guest what is his function equal = value code 
+variable on it is ask current guest what is someone function (X:compare_result_type):code;
+let on it is ask current guest what is someone function lower = value code {};
+let on it is ask current guest what is someone function greater = value code {};
+let on it is ask current guest what is someone function equal = value code 
 {
     # it makes no sense if current person equals current guest
     <compare "person" <current person> <current guest>>; 
@@ -169,10 +169,10 @@ let on it is ask current guest what is his function equal = value code
 };
 
 
-variable on it is ask current guest what is his weapon (X:compare_result_type):code;
-let on it is ask current guest what is his weapon lower = value code {};
-let on it is ask current guest what is his weapon greater = value code {};
-let on it is ask current guest what is his weapon equal = value code 
+variable on it is ask current guest what is someone weapon (X:compare_result_type):code;
+let on it is ask current guest what is someone weapon lower = value code {};
+let on it is ask current guest what is someone weapon greater = value code {};
+let on it is ask current guest what is someone weapon equal = value code 
 {
     # it makes no sense if current person equals current guest
     <compare "person" <current person> <current guest>>; 
@@ -180,20 +180,20 @@ let on it is ask current guest what is his weapon equal = value code
 };
 
 
-variable on it is ask current guest whether he is a liar (X:compare_result_type):code;
-let on it is ask current guest whether he is a liar lower = value code {};
-let on it is ask current guest whether he is a liar greater = value code {};
-let on it is ask current guest whether he is a liar equal = value code 
+variable on it is ask current guest whether someone is a liar (X:compare_result_type):code;
+let on it is ask current guest whether someone is a liar lower = value code {};
+let on it is ask current guest whether someone is a liar greater = value code {};
+let on it is ask current guest whether someone is a liar equal = value code 
 {
     # it makes no sense if current person equals current guest
     <compare "person" <current person> <current guest>>; 
     <on it is found but the current guest is equal the current person <the compare result>>;        
 };
 
-variable on it is answer current guest whether I am a liar (ANSWER:boolean) (X:compare_result_type):code;
-let on it is answer current guest whether I am a liar false lower = value code {};
-let on it is answer current guest whether I am a liar false greater = value code {};
-let on it is answer current guest whether I am a liar false equal = value code 
+variable on it is answer current guest whether someone is a liar (ANSWER:boolean) (X:compare_result_type):code;
+let on it is answer current guest whether someone is a liar false lower = value code {};
+let on it is answer current guest whether someone is a liar false greater = value code {};
+let on it is answer current guest whether someone is a liar false equal = value code 
 {
     # it makes no sense if current person equals current guest
     <compare "person" <current person> <current guest>>; 
@@ -204,9 +204,9 @@ let on it is answer current guest whether I am a liar false equal = value code
     <on it is found but the current guest has not asked <the compare result>>;        
 };
 
-let on it is answer current guest whether I am a liar true lower = value code {};
-let on it is answer current guest whether I am a liar true greater = value code {};
-let on it is answer current guest whether I am a liar true equal = value code 
+let on it is answer current guest whether someone is a liar true lower = value code {};
+let on it is answer current guest whether someone is a liar true greater = value code {};
+let on it is answer current guest whether someone is a liar true equal = value code 
 {
     # it makes no sense if current person equals current guest
     <compare "person" <current person> <current guest>>; 

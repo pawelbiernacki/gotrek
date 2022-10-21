@@ -36,6 +36,9 @@ let variable my information generator index = <the created stream index>;
 execute <create new input random enum stream "boolean">;
 let variable my boolean generator index = <the created stream index>;
 
+execute <create new input random enum stream "tense">;
+let my tense generator index = <the created stream index>;
+
 
 execute <create new input random number stream "integer" 1 10>;
 let variable my strength generator index = <the created stream index>;
