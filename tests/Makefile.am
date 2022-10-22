@@ -1,4 +1,5 @@
 
+EXTRA_DIST = *.chomik
 
 
 TESTS = check_whether_we_can_fail.chomik \
