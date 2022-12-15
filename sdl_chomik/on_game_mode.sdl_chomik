@@ -4,12 +4,12 @@
 variable on game mode (X:game_mode_type):code;
 let on game mode title = value code
 {
-    execute <show image <title image index> 0 0>;     
-    execute <show image <chomik image index> 0 0>;    
+    <show image <title image index> 0 0>;     
+    <show image <chomik image index> 0 0>;    
     
-    execute <show text <my large font index> "GOTREK" 100 100>;
-    execute <show text <my small font index> "by Pawel Biernacki" 100 140>;
-    execute <show text <my small font index> "press return" 100 180>;    
+    <my show text <my large font index> "GOTREK" 100 100>;
+    <my show text <my small font index> "by Pawel Biernacki" 100 140>;
+    <my show text <my small font index> "press return" 100 180>;    
 };
 
 let on game mode game = value code
@@ -23,13 +23,13 @@ let on game mode game = value code
     
     <show options texts>;
         
-    <show text <my small font index> <Gotrek location text> 90 260>;
-    <show text <my small font index> <Gotrek equipment text> 300 260>;
-    <show text <my small font index> <Gotrek points text> 480 260>;
-    <show text <my small font index> <Gotrek guests text> 90 276>;
-    <show text <my small font index> <Gotrek secret text> 480 276>;
+    <my show text <my small font index> <Gotrek location text> 90 260>;
+    <my show text <my small font index> <Gotrek equipment text> 300 260>;
+    <my show text <my small font index> <Gotrek points text> 480 260>;
+    <my show text <my small font index> <Gotrek guests text> 90 276>;
+    <my show text <my small font index> <Gotrek secret text> 480 276>;
     
-    <show text <my small font index> <map <game phase> to its name> 90 300>;
+    <my show text <my small font index> <map <game phase> to its name> 90 300>;
     
     
     <show explanation texts on <explanation mode>>;

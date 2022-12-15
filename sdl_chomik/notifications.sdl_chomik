@@ -4,8 +4,8 @@
 #
 # These texts form an "array" to be displayed on the notification window.
 #
-variable notification text number (X:notification_texts_range) of Gotrek:string;
-let notification text number (X:notification_texts_range) of Gotrek = value string " ";
+variable notification text number (R:notification_texts_range) of Gotrek:string;
+let notification text number (R:notification_texts_range) of Gotrek = value string " ";
 
 variable notification text coordinate:integer;
 
@@ -14,26 +14,26 @@ variable maximum notification time:integer; # this is used as a "constant", to s
 let maximum notification time = value integer 200;
 
 
-variable for all (X:notification_texts_range) show them:code;
+variable for all (R:notification_texts_range) show them:code;
 
-let for all (X:notification_texts_range) show them=value code
+let for all (R:notification_texts_range) show them=value code
 {
-    let current notification number = value integer [(X:notification_texts_range)];
-    <show text <my small font index> <notification text number <current notification number> of Gotrek> 80 
+    let current notification number = value integer [(R:notification_texts_range)];
+    <my show text <my small font index> <notification text number <current notification number> of Gotrek> 80 
         <notification text coordinate>>;
     <add "integer" <notification text coordinate> 16>;
     let notification text coordinate = <the add result "integer">;
 };
 
 
-variable show notifications on (X:compare_result):code;
+variable show notifications on (R:compare_result):code;
 let show notifications on greater=value code
 {    
     <show image <notifications window image index> 50 50>;    
     
     let notification text coordinate = value integer 112;
     
-    <for all (X:notification_texts_range) show them>;
+    <for all (R:notification_texts_range) show them>;
 };
 
 let show notifications on equal=value code {};
@@ -72,7 +72,7 @@ variable position of the current notification text:integer;
 variable clear notification texts:code;
 let clear notification texts=value code
 {
-    let notification text number (X:notification_texts_range) of Gotrek = value string " ";    
+    let notification text number (X:notification_texts_range) of Gotrek = value string "";    
     let position of the current notification text=value integer 1;
 };
 

@@ -94,21 +94,21 @@ let recalculate god mode texts=value code
     <for each place (X:place) make a god mode text>;
 };
 
-variable show god mode text for person (X:person):code;
-let show god mode text for person (X:person)=value code
+variable show god mode text for person (P:person):code;
+let show god mode text for person (P:person)=value code
 {
-    let current person=value person [(X:person)];
-    execute <show text <my small font index> 
+    let current person=value person [(P:person)];
+    <my show text <my small font index> 
         <god mode text for person <current person>> 90 
         <god mode text for person coordinate <current person>>>; 
 };
 
 
-variable show god mode text for place (X:place):code;
-let show god mode text for place (X:place)=value code
+variable show god mode text for place (P:place):code;
+let show god mode text for place (P:place)=value code
 {
-    let current place=value place [(X:place)];
-    execute <show text <my small font index> 
+    let current place=value place [(P:place)];
+    <my show text <my small font index> 
         <god mode text for place <current place>> 90 
         <god mode text for place coordinate <current place>>>; 
 };

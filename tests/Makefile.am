@@ -19,9 +19,11 @@ TESTS = check_whether_we_can_fail.chomik \
 	check_what_Pregor_believes_Gotrek_has_proposed_him_to_exchange_weapons.chomik \
 	check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik \
 	check_skipping_Gotrek_decisions.chomik \
-	check_skipping_Gotrek_decisions2.chomik
+	check_skipping_Gotrek_decisions2.chomik \
+	check_the_game_initialization.chomik
 	
 
-XFAIL_TESTS = check_whether_we_can_fail.chomik
+XFAIL_TESTS = check_whether_we_can_fail.chomik	\
+	check_the_game_initialization.chomik
 
 

@@ -52,7 +52,7 @@ let recalculate asking about weapon texts=value code
 variable show asking about weapon text for current person:code;
 let show asking about weapon text for current person=value code
 {
-    execute <show text <my small font index> 
+    <my show text <my small font index> 
         <asking about weapon text for person <current person>> 90 
         <asking about weapon text for person coordinate <current person>>>; 
 };

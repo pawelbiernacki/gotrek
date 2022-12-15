@@ -1,9 +1,15 @@
 #!/usr/local/bin/sdl_chomik
 
+
+#
+# There are several (5) options for Gotrek, the player chooses one of them.
+#
+
+
 variable current option number:integer;
 
 variable possible choice option number (X:possible_decisions_range) of Gotrek:string;
-let variable possible choice option number (X:possible_decisions_range) of Gotrek = value string " ";
+let variable possible choice option number (X:possible_decisions_range) of Gotrek = value string "";
 
 variable possible choice coordinate number (X:possible_decisions_range) of Gotrek:integer;
 let variable possible choice coordinate number 1 of Gotrek = value integer 50;
@@ -125,6 +131,7 @@ let variable recalculate Gotrek choice option number (X:possible_decisions_range
     let variable current option number = value integer [(X:possible_decisions_range)];
     let variable current possible decision = value action <Gotrek possible decision <current option number>>;
     
+    let the print end of line = value string "\n";
     <print "check how to translate Gotrek's decision" <current possible decision> "into text.">;    
     
     <compare "action" <current possible decision> no_action>;
@@ -163,7 +170,9 @@ let variable recalculate arrow coordinate = value code
 variable show options texts:code;
 let show options texts=value code
 {
-    <show text <my small font index> 
-        <possible choice option number (X:possible_decisions_range) of Gotrek> 90 
-        <possible choice coordinate number (X:possible_decisions_range) of Gotrek>>; 
+    <my show text <my small font index> 
+        <possible choice option number (DECISION:possible_decisions_range) of Gotrek>        
+        90 
+        <possible choice coordinate number (DECISION:possible_decisions_range) of Gotrek>
+        >; 
 };

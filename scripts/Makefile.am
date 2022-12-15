@@ -1,2 +1,2 @@
 
-EXTRA_DIST = *.chomik
+EXTRA_DIST = *.chomik *.sdl_chomik

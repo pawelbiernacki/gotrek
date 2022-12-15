@@ -1,0 +1,13 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/game_phases.chomik"
+include "../chomik/global_variables.chomik"
+include "../chomik/global_streams.chomik"
+include "../chomik/persons.chomik"
+include "../chomik/places.chomik"
+
+<initialize the persons>;
+<initialize the places>;
+<reset the persons>;
+

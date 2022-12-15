@@ -177,7 +177,7 @@ let variable check whether (X:person) possible decision (Y:possible_decisions_ra
     
     <replace decision by no action if it is illegal <the result of check whether current person possible decision is correct>>;
     
-    
+    let the print end of line=value string "\n";
     <print <current person> "decision" <current possible decision index> "is" <current possible decision> ": correct" 
         <the result of check whether current person possible decision is correct>
         >;    

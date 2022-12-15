@@ -49,7 +49,7 @@ let recalculate proposing weapon exchange to anybody texts=value code
 variable show proposing weapon exchange text to anybody for current person:code;
 let show proposing weapon exchange text to anybody for current person=value code
 {
-    execute <show text <my small font index> 
+    <my show text <my small font index> 
         <proposing weapon exchange to anybody text for person <current person>> 90 
         <proposing weapon exchange to anybody text for person coordinate <current person>>>; 
 };

@@ -1,0 +1,7 @@
+#!/usr/local/bin/chomik
+
+<print "hello">;
+let the print separator = value string " ";
+let the print end of line = value string "\n";
+<print "bye">;
+

@@ -1,0 +1,36 @@
+#!/usr/local/bin/sdl_chomik
+
+
+#
+# This code overrides 'show text ... ' from the sdl_chomik.
+# It checks whether the text to be shown is empty. If it is not - it is shown.
+#
+
+variable my show text on (C:compare_result):code;
+let my show text on lower=value code
+{
+    <show text <my current font> <my current text> <my current x> <my current y>>;
+};
+let my show text on equal=value code
+{    
+    #<show text <my current font> "" <my current x> <my current y>>;
+};
+let my show text on greater=value code
+{
+    <show text <my current font> <my current text> <my current x> <my current y>>;
+};
+
+
+
+variable my show text (FONT:integer) (TEXT:string) (X:integer) (Y:integer):code;
+
+let my show text (F:integer) (T:string) (X:integer) (Y:integer)=value code
+{
+    let my current font=value integer [(F:integer)];
+    let my current text=value string [(T:string)];
+    let my current x = value integer [(X:integer)];
+    let my current y = value integer [(Y:integer)];
+        
+    <compare "string" <my current text> "">;
+    <my show text on <the compare result>>;
+};

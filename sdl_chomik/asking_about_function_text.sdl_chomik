@@ -52,7 +52,7 @@ let recalculate asking about function texts=value code
 variable show asking about function text for current person:code;
 let show asking about function text for current person=value code
 {
-    execute <show text <my small font index> 
+    <my show text <my small font index> 
         <asking about function text for person <current person>> 90 
         <asking about function text for person coordinate <current person>>>; 
 };

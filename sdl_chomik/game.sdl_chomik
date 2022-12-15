@@ -1,9 +1,9 @@
 #!/usr/local/bin/sdl_chomik
 
-execute <print "Pawel Biernacki presents:">;
-execute <print "Gotrek">;
-execute <print "A fantasy game written in sdl_chomik.">;
-execute <print "Vantaa 2022">;
+<print "Pawel Biernacki presents:">;
+<print "Gotrek">;
+<print "A fantasy game written in sdl_chomik.">;
+<print "Vantaa 2022">;
 
 include "../chomik/user_defined_types.chomik"
 include "../chomik/game_phases.chomik"
@@ -34,6 +34,7 @@ include "./gotrek_options.sdl_chomik"
 include "./gotrek_animation.sdl_chomik"
 include "./notifications.sdl_chomik"
 include "../chomik/skipping_gotrek_decisions.chomik"
+include "./my_show_text.sdl_chomik"
 
 let variable game mode = value game_mode_type title;
 let Gotrek result timer = value integer 0;
@@ -45,4 +46,7 @@ let variable sdl loop body = value code
 
 <sdl loop>;
 
+let the print separator = value string " ";
+let the print end of line = value string "\n";
+<print "bye">;
 

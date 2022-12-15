@@ -1,0 +1,32 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/game_phases.chomik"
+include "../chomik/global_variables.chomik"
+include "../chomik/global_streams.chomik"
+include "../chomik/persons.chomik"
+include "../chomik/places.chomik"
+include "../sdl_chomik/output_stringstream.sdl_chomik"
+include "../sdl_chomik/gotrek_result_text.sdl_chomik"
+include "../chomik/decisions.chomik"
+include "../sdl_chomik/gotrek_location_text.sdl_chomik"
+include "../sdl_chomik/gotrek_equipment_text.sdl_chomik"
+include "../sdl_chomik/gotrek_points_text.sdl_chomik"
+include "../sdl_chomik/gotrek_guests_text.sdl_chomik"
+include "../sdl_chomik/gotrek_secret_text.sdl_chomik"
+include "../sdl_chomik/god_mode_text.sdl_chomik"
+include "../sdl_chomik/asking_about_being_a_liar_text.sdl_chomik"
+include "../sdl_chomik/asking_about_function_text.sdl_chomik"
+include "../sdl_chomik/asking_about_weapon_text.sdl_chomik"
+include "../sdl_chomik/proposing_weapon_exchange_to_anybody_text.sdl_chomik"
+include "../sdl_chomik/proposing_weapon_exchange_from_anybody_text.sdl_chomik"
+include "../sdl_chomik/show_explanation_texts.sdl_chomik"
+include "../sdl_chomik/on_key.sdl_chomik"
+include "../sdl_chomik/notifications.sdl_chomik"
+include "../chomik/skipping_gotrek_decisions.chomik"
+
+<initialize the persons>;
+<initialize the places>;
+<reset the persons>;
+
+let the program return = value integer 1;

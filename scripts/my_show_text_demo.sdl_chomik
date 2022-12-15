@@ -1,0 +1,17 @@
+#!/usr/local/bin/chomik
+
+include "../sdl_chomik/output_stringstream.sdl_chomik"
+include "../sdl_chomik/create_new_fonts.sdl_chomik"
+include "../sdl_chomik/create_new_images.sdl_chomik"
+include "../sdl_chomik/my_show_text.sdl_chomik"
+
+
+let sdl loop body = value code 
+{
+    <show image <title image index> 0 0>;
+    <show text <my large font index> "hello1" 100 0>;
+    <my show text <my large font index> "hello2" 100 32>;
+};
+
+<sdl loop>;
+

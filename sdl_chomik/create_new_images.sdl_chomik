@@ -122,8 +122,8 @@ let load Gotrek animation images other ten (X:integer)=value code
 
 
 
-<load Gotrek animation images first ten (X:integer)>;
-let the break flag=value boolean false;
+#<load Gotrek animation images first ten (X:integer)>;
+#let the break flag=value boolean false;
 
-<load Gotrek animation images other ten (X:integer)>;
+#<load Gotrek animation images other ten (X:integer)>;
 let the break flag=value boolean false;

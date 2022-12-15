@@ -7,6 +7,7 @@ let variable update the relationship between persons (X:person) (Y:person) = val
     let variable current person= value person [(X:person)];
     let variable current guest = value person [(Y:person)];
     
+    let the print end of line=value string "\n";
     <print "updating the relationship" <current person> "(" <location of <current guest>> ") with" <current person> "(" <location of <current guest>> ")">;
     
     
