@@ -9,161 +9,167 @@
 variable current option number:integer;
 
 variable possible choice option number (X:possible_decisions_range) of Gotrek:string;
-let variable possible choice option number (X:possible_decisions_range) of Gotrek = value string "";
+let possible choice option number (X:possible_decisions_range) of Gotrek = value string "";
 
 variable possible choice coordinate number (X:possible_decisions_range) of Gotrek:integer;
-let variable possible choice coordinate number 1 of Gotrek = value integer 50;
-let variable possible choice coordinate number 2 of Gotrek = value integer 66;
-let variable possible choice coordinate number 3 of Gotrek = value integer 82;
-let variable possible choice coordinate number 4 of Gotrek = value integer 98;
-let variable possible choice coordinate number 5 of Gotrek = value integer 114;
+let possible choice coordinate number 1 of Gotrek = value integer 50;
+let possible choice coordinate number 2 of Gotrek = value integer 66;
+let possible choice coordinate number 3 of Gotrek = value integer 82;
+let possible choice coordinate number 4 of Gotrek = value integer 98;
+let possible choice coordinate number 5 of Gotrek = value integer 114;
 
 include "./on_gotrek_actions.sdl_chomik"
 
 
 
 variable check if Gotrek is going to go to (X:place):code;
-let variable check if Gotrek is going to go to (X:place) = value code
+let check if Gotrek is going to go to (X:place) = value code
 {
-    let variable current target = value place [(X:place)];
-    let variable current pattern = value action goto <current target>;
-    execute <compare "action" <current possible decision> <current pattern>>;
-    execute <on Gotrek goto current target <the compare result>>;
+    let current target = value place [(X:place)];
+    let current action pattern = value action goto <current target>;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek goto current target <the compare result>>;
 };
 
 variable check if Gotrek is going to attack (X:person):code;
-let variable check if Gotrek is going to attack (X:person)=value code
+let check if Gotrek is going to attack (X:person)=value code
 {
-    let variable current guest = value place [(X:person)];
-    let variable current pattern = value action attack <current guest>;
-    execute <compare "action" <current possible decision> <current pattern>>;
-    execute <on Gotrek attack current guest <the compare result>>;
+    let current guest = value place [(X:person)];
+    let current action pattern = value action attack <current guest>;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek attack current guest <the compare result>>;
 };
 
 variable check if Gotrek is going to propose (A:person) to exchange weapons:code;
-let variable check if Gotrek is going to propose (A:person) to exchange weapons=value code
+let check if Gotrek is going to propose (A:person) to exchange weapons=value code
 {
-    let variable current guest = value place [(A:person)];
-    let variable current pattern = value action propose <current guest> to exchange weapons;
-    execute <compare "action" <current possible decision> <current pattern>>;
-    execute <on Gotrek propose current guest to exchange weapons <the compare result>>;
+    let current guest = value place [(A:person)];
+    let current action pattern = value action propose <current guest> to exchange weapons;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek propose current guest to exchange weapons <the compare result>>;
 };
 
 variable check if Gotrek is going to accept (A:person) proposal to exchange weapons:code;
 let check if Gotrek is going to accept (A:person) proposal to exchange weapons=value code
 {
-    let variable current guest = value place [(A:person)];
-    let variable current pattern = value action accept <current guest> proposal to exchange weapons;
-    execute <compare "action" <current possible decision> <current pattern>>;
-    execute <on Gotrek accept current guest proposal to exchange weapons <the compare result>>;
+    let current guest = value place [(A:person)];
+    let current action pattern = value action accept <current guest> proposal to exchange weapons;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek accept current guest proposal to exchange weapons <the compare result>>;
 };
 
 
 
 variable check if Gotrek is going to tell (A:person) that (B:information):code;
-let variable check if Gotrek is going to tell (A:person) that (B:information)=value code
+let check if Gotrek is going to tell (A:person) that (B:information)=value code
 {
-    let variable current guest = value place [(A:person)];
-    let variable current information = value information [(B:information)];
-    let variable current pattern = value action tell <current guest> that <current information>;
-    execute <compare "action" <current possible decision> <current pattern>>;
-    execute <on Gotrek tell current guest that current information <the compare result>>;    
+    let current guest = value place [(A:person)];
+    let current information = value information [(B:information)];
+    let current action pattern = value action tell <current guest> that <current information>;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek tell current guest that current information <the compare result>>;    
 };
 
 variable check if Gotrek is going to ask (A:person) to (B:action):code;
-let variable check if Gotrek is going to ask (A:person) to (B:action)=value code
+let check if Gotrek is going to ask (A:person) to (B:action)=value code
 {
-    let variable current guest = value place [(A:person)];
-    let variable current action = value information [(B:action)];
-    let variable current pattern = value action ask <current guest> to <current action>;
-    execute <compare "action" <current possible decision> <current pattern>>;
-    execute <on Gotrek ask current guest to current action <the compare result>>;    
+    let current guest = value place [(A:person)];
+    let current action = value action [(B:action)];
+    let current action pattern = value action ask <current guest> to <current action>;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek ask current guest to current action <the compare result>>;    
 };
 
-variable check if Gotrek is going to ask (A:person) what (B:person) function is in (T:tense):code;
-let variable check if Gotrek is going to ask (A:person) what (B:person) function is in (T:tense)=value code
+variable check if Gotrek is going to ask (A:person) what (B:person) function is:code;
+let check if Gotrek is going to ask (A:person) what (B:person) function is=value code
 {
     let current guest = value place [(A:person)];
     let current guest 2 = value place [(B:person)];
-    let current tense = value tense [(T:tense)];
-    let current pattern = value action ask <current guest> what is in <current tense> <current guest 2> function;
-    <compare "action" <current possible decision> <current pattern>>;
+    let current action pattern = value action ask <current guest> what is <current guest 2> function;
+    <compare "action" <current possible decision> <current action pattern>>;
     <on Gotrek ask current guest what is someone function <the compare result>>;    
 };
 
-variable check if Gotrek is going to ask (A:person) what (B:person) weapon is in (T:tense):code;
-let variable check if Gotrek is going to ask (A:person) what (B:person) weapon is in (T:tense)=value code
+variable check if Gotrek is going to ask (A:person) what (B:person) weapon is:code;
+let check if Gotrek is going to ask (A:person) what (B:person) weapon is=value code
 {
-    let variable current guest = value place [(A:person)];
+    let current guest = value place [(A:person)];
     let current guest 2 = value place [(B:person)];
-    let current tense = value tense [(T:tense)];
-    let variable current pattern = value action ask <current guest> what is in <current tense> <current guest 2> weapon;
-    <compare "action" <current possible decision> <current pattern>>;
+    let current action pattern = value action ask <current guest> what is <current guest 2> weapon;
+    <compare "action" <current possible decision> <current action pattern>>;
     <on Gotrek ask current guest what is someone weapon <the compare result>>;
 };
 
 variable check if Gotrek is going to ask (A:person) whether (B:person) is a liar:code;
-let variable check if Gotrek is going to ask (A:person) whether (B:person) is a liar=value code
+let check if Gotrek is going to ask (A:person) whether (B:person) is a liar=value code
 {
-    let variable current guest = value place [(A:person)];                    
+    let current guest = value place [(A:person)];                    
     let current guest 2 = value place [(B:person)];
-    let variable current pattern = value action ask <current guest> whether <current guest 2> is a liar;
-    <compare "action" <current possible decision> <current pattern>>;
+    let current action pattern = value action ask <current guest> whether <current guest 2> is a liar;
+    <compare "action" <current possible decision> <current action pattern>>;
     <on Gotrek ask current guest whether someone is a liar <the compare result>>;
 };
 
 variable check if Gotrek is going to answer (A:person) whether (B:person) is a liar (ANSWER:boolean):code;
-let variable check if Gotrek is going to answer (A:person) whether (B:person) is a liar (ANSWER:boolean)=value code
+let check if Gotrek is going to answer (A:person) whether (B:person) is a liar (ANSWER:boolean)=value code
 {
-    let variable current guest = value place [(A:person)];                    
-    let variable current answer = value boolean [(ANSWER:boolean)];
+    let current guest = value place [(A:person)];                    
+    let current answer = value boolean [(ANSWER:boolean)];
     let current guest 2 = value place [(B:person)];
-    let variable current pattern = value action answer <current guest> whether <current guest 2> is a liar <current answer>;
-    <compare "action" <current possible decision> <current pattern>>;
+    let current action pattern = value action answer <current guest> whether <current guest 2> is a liar <current answer>;
+    <compare "action" <current possible decision> <current action pattern>>;
     <on Gotrek answer current guest whether someone is a liar <current answer> <the compare result>>;
 };
 
 
 
 variable recalculate Gotrek choice option number (X:possible_decisions_range):code;
-let variable recalculate Gotrek choice option number (X:possible_decisions_range)=value code
+let recalculate Gotrek choice option number (X:possible_decisions_range)=value code
 {
-    let variable current option number = value integer [(X:possible_decisions_range)];
-    let variable current possible decision = value action <Gotrek possible decision <current option number>>;
+    let current option number = value integer [(X:possible_decisions_range)];
+    let current possible decision = value action <Gotrek possible decision <current option number>>;
     
     let the print end of line = value string "\n";
     <print "check how to translate Gotrek's decision" <current possible decision> "into text.">;    
     
-    <compare "action" <current possible decision> no_action>;
-    <on Gotrek no_action <the compare result>>;
     
-    <check if Gotrek is going to go to (A:place)>;
-    <check if Gotrek is going to attack (A:person)>;
-    <check if Gotrek is going to propose (A:person) to exchange weapons>;
-    <check if Gotrek is going to accept (A:person) proposal to exchange weapons>;
-    <check if Gotrek is going to tell (A:person) that (B:information)>;
-    <check if Gotrek is going to ask (A:person) to (B:action)>;
-    <check if Gotrek is going to ask (A:person) what (B:person) function is in (T:tense)>;
-    <check if Gotrek is going to ask (A:person) what (B:person) weapon is in (T:tense)>;
-    <check if Gotrek is going to ask (A:person) whether (B:person) is a liar>;
-    <check if Gotrek is going to answer (A:person) whether (B:person) is a liar (ANSWER:boolean)>;
+    let variable possible choice option number <current option number> of Gotrek = <Gotrek action text <current possible decision>>;
+    
+
+    
+    # WARNING! - the codes invoked below are outcommented, we rely on the generated translations
+    # parts of the runtime code can be removed
+    
+    #<compare "action" <current possible decision> no_action>;
+    #<on Gotrek no_action <the compare result>>;
+    
+    #<check if Gotrek is going to go to (A:place)>;
+    #<check if Gotrek is going to attack (A:person)>;
+    #<check if Gotrek is going to propose (A:person) to exchange weapons>;
+    #<check if Gotrek is going to accept (A:person) proposal to exchange weapons>;
+    #<check if Gotrek is going to tell (A:person) that (B:information)>;
+    #<check if Gotrek is going to ask (A:person) to (B:action)>;
+    #<check if Gotrek is going to ask (A:person) what (B:person) function is>;
+    #<check if Gotrek is going to ask (A:person) what (B:person) weapon is>;
+    #<check if Gotrek is going to ask (A:person) whether (B:person) is a liar>;
+    #<check if Gotrek is going to answer (A:person) whether (B:person) is a liar (ANSWER:boolean)>;
 };
 
 
 
 variable recalculate Gotrek choice options:code;
-let variable recalculate Gotrek choice options=value code
+let recalculate Gotrek choice options=value code
 {
-    execute <recalculate Gotrek choice option number (X:possible_decisions_range)>;
+    <recalculate Gotrek choice option number (X:possible_decisions_range)>;
 };
  
 variable recalculate arrow coordinate:code;
-let variable recalculate arrow coordinate = value code
+let recalculate arrow coordinate = value code
 {
-    let variable arrow coordinate = <possible choice coordinate number <current option number> of Gotrek>;    
+    let arrow coordinate = <possible choice coordinate number <current option number> of Gotrek>;    
     
-    execute <subtract "integer" <arrow coordinate> 16>;
-    let variable arrow coordinate = <the subtract result "integer">;
+    <subtract "integer" <arrow coordinate> 16>;
+    let arrow coordinate = <the subtract result "integer">;
 };
 
 

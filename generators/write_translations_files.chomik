@@ -1,0 +1,36 @@
+#!/usr/local/bin/chomik
+
+
+# This is not a standalone script, instead it should be included by the "create_translations.chomik".
+
+# here we create the list of actions and populate it with the data
+
+<create new output filestream "../generated/list_of_actions.chomik">;
+let my list of actions stream index = <the created stream index>;
+
+let the print target stream index = <my list of actions stream index>;
+let the print separator = value string "";
+
+<print "#!/usr/local/bin/chomik">;
+<print "let Gotrek action text " (A:action) "= value string \"" <Gotrek action text (A:action)> "\";">;
+<print "let action complexity " (A:action) "= value integer " <action complexity (A:action)> ";">;
+
+
+
+#
+# here we create the list of informations and populate it with the data
+
+<create new output filestream "../generated/list_of_informations.chomik">;
+let my list of informations stream index = <the created stream index>;
+
+let the print target stream index = <my list of informations stream index>;
+let the print separator = value string "";
+
+<print "#!/usr/local/bin/chomik">;
+<print "let Gotrek information text " (INFORMATION:information) "when talking to" (P:person) "= value string \"" <Gotrek information text (INFORMATION:information) when talking to (P:person)>"\";">;
+<print "let information complexity " (INFORMATION:information) "= value integer " <information complexity (INFORMATION:information)> ";">;
+
+let the print target stream index = value integer 0;
+let the print separator = value string " ";
+<print "done">;
+ 

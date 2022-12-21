@@ -7,3 +7,25 @@ let explanation mode = value explanation_mode_type normal explanation;
 
 variable game phase: game_phase_type;
 let game phase=value game_phase_type asking phase;
+
+
+# array of flags, for each action a boolean flag whether it has been translated
+variable (A:action) has been translated:boolean;
+let (A:action) has been translated=value boolean false;
+
+# for each information a boolean flag whether it has been translated, when talking to person P
+variable (I:information) has been translated when talking to (P:person):boolean;
+let (I:information) has been translated when talking to (P:person)=value boolean false;
+
+
+variable Gotrek action text (ACTION:action):string;
+let Gotrek action text (ACTION:action) = value string "";
+
+variable action complexity (ACTION:action):integer;
+let action complexity (ACTION:action) = value integer 0;
+
+variable Gotrek information text (INFORMATION:information) when talking to (P:person):string;
+let Gotrek information text (INFORMATION:information) when talking to (P:person) = value string "";
+
+variable information complexity (INFORMATION:information):integer;
+let information complexity (INFORMATION:information) = value integer 0;

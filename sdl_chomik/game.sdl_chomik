@@ -36,12 +36,21 @@ include "./notifications.sdl_chomik"
 include "../chomik/skipping_gotrek_decisions.chomik"
 include "./my_show_text.sdl_chomik"
 
-let variable game mode = value game_mode_type title;
+#
+# here we include the generated code !!!
+# please do not modify the generated code manually!
+include "../generated/list_of_actions.chomik"
+include "../generated/list_of_informations.chomik"
+
+
+#######################
+
+let game mode = value game_mode_type title;
 let Gotrek result timer = value integer 0;
 
-let variable sdl loop body = value code 
+let sdl loop body = value code 
 {
-    execute <on game mode <game mode>>;
+    <on game mode <game mode>>;
 };
 
 <sdl loop>;

@@ -1,16 +1,35 @@
 
 
 
-Gotrek is a fantasy text game written in sdl_chomik. sdl_chomik is an extension of the chomik language, providing some minimal API to the SDL2 and SDL2_image libraries.
-
-
-In order to run the project configure it first, and then type "make" in the main folder.
-
-Nothing is supposed to be installed. "make" runs the project.
+Gotrek is a fantasy text game written in sdl_chomik. 
+sdl_chomik is an extension of the chomik language, providing some minimal API to the SDL2 and SDL2_image libraries.
 
 Gotrek requires "chomik" to be installed, chomik is available from:
 
 https://github.com/pawelbiernacki/chomik.git
 
 
+In order to run the project configure it first, and then type "make" in the main folder.
+
+Nothing is supposed to be installed. "make" runs the project.
+
+
+
 Type "make check" to run the tests (located in the folder tests).
+
+Type "make generated-code" if you want to recreate the generated codes.
+WARNING! - Recreating the generated code can take a long time!
+
+
+Description of the folders:
+- chomik - the game sources written in the chomik language
+- font - the font resources
+- generated - the game sources written in the chomik language by the generators
+- generators - the scripts used only by the game developers to create the generated code
+- image - the image resources
+- scripts - the additional chomik/sdl_chomik scripts (not belonging to the game)
+- sdl_chomik - the game sources written in the sdl_chomik language
+- tests - the test scripts
+
+
+

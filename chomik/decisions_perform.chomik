@@ -167,99 +167,99 @@ let current person accepts current guest proposal to exchange weapons equal = va
 
 
 variable perform current person decision goto (A:place):code;
-let variable perform current person decision goto (A:place)=value code
+let perform current person decision goto (A:place)=value code
 {
-    let variable current decision = <decision of <current person>>;
-    let variable current place = value place [(A:place)];
-    let variable current pattern = value action goto <current place>;
+    let current decision = <decision of <current person>>;
+    let current place = value place [(A:place)];
+    let current action pattern = value action goto <current place>;
     
-    #execute <print "check whether" <current person> "decision" <current decision> "equals" <current pattern>>;
+    #<print "check whether" <current person> "decision" <current decision> "equals" <current action pattern>>;
         
-    execute <compare "action" <current decision> <current pattern>>;
-    execute <current person goto current place <the compare result>>;
+    <compare "action" <current decision> <current action pattern>>;
+    <current person goto current place <the compare result>>;
 };
 
 
 variable perform current person decision tell (A:person) that (B:information):code;
-let variable perform current person decision tell (A:person) that (B:information)=value code
+let perform current person decision tell (A:person) that (B:information)=value code
 {
-    let variable current decision = <decision of <current person>>;
-    let variable current guest = value person [(A:person)];
-    let variable current information = value place [(B:information)];
-    let variable current pattern = value action tell <current guest> that <current information>;
+    let current decision = <decision of <current person>>;
+    let current guest = value person [(A:person)];
+    let current information = value place [(B:information)];
+    let current action pattern = value action tell <current guest> that <current information>;
 
-    #execute <print "check whether" <current person> "decision" <current decision> "equals" <current pattern>>;    
+    #<print "check whether" <current person> "decision" <current decision> "equals" <current action pattern>>;    
     
-    execute <compare "action" <current decision> <current pattern>>;
-    execute <current person tells current guest that current information <the compare result>>;
+    <compare "action" <current decision> <current action pattern>>;
+    <current person tells current guest that current information <the compare result>>;
 };
 
 variable perform current person decision ask (A:person) to (B:action):code;
-let variable perform current person decision ask (A:person) to (B:action)=value code
+let perform current person decision ask (A:person) to (B:action)=value code
 {
-    let variable current decision = <decision of <current person>>;
-    let variable current guest = value person [(A:person)];
-    let variable current action = value action [(B:action)];
-    let variable current pattern = value action ask <current guest> to <current action>;
+    let current decision = <decision of <current person>>;
+    let current guest = value person [(A:person)];
+    let current action = value action [(B:action)];
+    let current action pattern = value action ask <current guest> to <current action>;
 
-    execute <compare "action" <current decision> <current pattern>>;
-    execute <current person asks current guest to current action <the compare result>>;    
+    <compare "action" <current decision> <current action pattern>>;
+    <current person asks current guest to current action <the compare result>>;    
 };
 
 variable perform current person decision ask (A:person) what is his function:code;
-let variable perform current person decision ask (A:person) what is his function=value code
+let perform current person decision ask (A:person) what is his function=value code
 {
-    let variable current decision = <decision of <current person>>;
-    let variable current guest = value person [(A:person)];
-    let variable current pattern = value action ask <current guest> what is his function;
+    let current decision = <decision of <current person>>;
+    let current guest = value person [(A:person)];
+    let current action pattern = value action ask <current guest> what is his function;
     
-    execute <compare "action" <current decision> <current pattern>>;
-    execute <current person asks current guest what is his function <the compare result>>;    
+    <compare "action" <current decision> <current action pattern>>;
+    <current person asks current guest what is his function <the compare result>>;    
 };
 
 variable perform current person decision ask (A:person) what is his weapon:code;
-let variable perform current person decision ask (A:person) what is his weapon=value code
+let perform current person decision ask (A:person) what is his weapon=value code
 {
-    let variable current decision = <decision of <current person>>;
-    let variable current guest = value person [(A:person)];
-    let variable current pattern = value action ask <current guest> what is his weapon;
+    let current decision = <decision of <current person>>;
+    let current guest = value person [(A:person)];
+    let current action pattern = value action ask <current guest> what is his weapon;
     
-    execute <compare "action" <current decision> <current pattern>>;
-    execute <current person asks current guest what is his weapon <the compare result>>;    
+    <compare "action" <current decision> <current action pattern>>;
+    <current person asks current guest what is his weapon <the compare result>>;    
 };
 
 variable perform current person decision ask (A:person) whether he is a liar:code;
-let variable perform current person decision ask (A:person) whether he is a liar=value code
+let perform current person decision ask (A:person) whether he is a liar=value code
 {
-    let variable current decision = <decision of <current person>>;
-    let variable current guest = value person [(A:person)];
-    let variable current pattern = value action ask <current guest> whether he is a liar;
+    let current decision = <decision of <current person>>;
+    let current guest = value person [(A:person)];
+    let current action pattern = value action ask <current guest> whether he is a liar;
     
-    execute <compare "action" <current decision> <current pattern>>;
-    execute <current person asks current guest whether he is a liar <the compare result>>;    
+    <compare "action" <current decision> <current action pattern>>;
+    <current person asks current guest whether he is a liar <the compare result>>;    
 };
 
 
 variable perform current person decision attack (A:person):code;
-let variable perform current person decision attack (A:person)=value code
+let perform current person decision attack (A:person)=value code
 {
-    let variable current decision = <decision of <current person>>;
-    let variable current guest = value person [(A:person)];
-    let variable current pattern = value action attack <current guest>;
+    let current decision = <decision of <current person>>;
+    let current guest = value person [(A:person)];
+    let current action pattern = value action attack <current guest>;
     
-    execute <compare "action" <current decision> <current pattern>>;
-    execute <current person attacks current guest <the compare result>>;    
+    <compare "action" <current decision> <current action pattern>>;
+    <current person attacks current guest <the compare result>>;    
 };
 
 
 variable perform current person decision propose (A:person) to exchange weapons:code;
-let variable perform current person decision propose (A:person) to exchange weapons=value code
+let perform current person decision propose (A:person) to exchange weapons=value code
 {
-    let variable current decision = <decision of <current person>>;
-    let variable current guest = value person [(A:person)];
-    let variable current pattern = value action propose <current guest> to exchange weapons;
+    let current decision = <decision of <current person>>;
+    let current guest = value person [(A:person)];
+    let current action pattern = value action propose <current guest> to exchange weapons;
             
-    <compare "action" <current decision> <current pattern>>;
+    <compare "action" <current decision> <current action pattern>>;
     <current person proposes current guest to exchange weapons <the compare result>>;    
 };
 
@@ -269,12 +269,12 @@ let perform current person decision accept (A:person) proposal to exchange weapo
 {
     let current decision = <decision of <current person>>;
     let current guest = value person [(A:person)];
-    let current pattern = value action accept <current guest> proposal to exchange weapons;
+    let current action pattern = value action accept <current guest> proposal to exchange weapons;
     
     <for each person <current person> make an asking about weapon text>;
     <for each person <current guest> make an asking about weapon text>;
 
-    <compare "action" <current decision> <current pattern>>;
+    <compare "action" <current decision> <current action pattern>>;
     <current person accepts current guest proposal to exchange weapons <the compare result>>;        
 };
 
@@ -284,12 +284,12 @@ let perform current person decision answer (A:person) whether I am a liar (ANSWE
     let current decision = <decision of <current person>>;
     let current guest = value person [(A:person)];
     let current answer = value boolean [(ANSWER:boolean)];    
-    let current pattern = value action answer <current guest> whether I am a liar <current answer>;
+    let current action pattern = value action answer <current guest> whether I am a liar <current answer>;
     
     <for each person <current person> make an asking about being a liar text>;
     <for each person <current guest> make an asking about being a liar text>;    
         
-    <compare "action" <current decision> <current pattern>>;
+    <compare "action" <current decision> <current action pattern>>;
     <current person answers current guest whether he is a liar <the compare result>>;
 };
 
@@ -297,27 +297,27 @@ variable perform decision for (X:person):code;
 let variable perform decision for (X:person)=value code
 {
     let variable current person = value person [(X:person)];
-    execute <print "perform decision for" <current person>>;
+    <print "perform decision for" <current person>>;
         
-    execute <perform current person decision goto (A:place)>;
-    execute <perform current person decision tell (A:person) that (B:information)>;
-    execute <perform current person decision ask (A:person) to (B:action)>;
-    execute <perform current person decision ask (A:person) what is his function>;
-    execute <perform current person decision ask (A:person) what is his weapon>;
-    execute <perform current person decision ask (A:person) whether he is a liar>;
-    execute <perform current person decision answer (A:person) whether I am a liar (ANSWER:boolean)>;
-    execute <perform current person decision attack (A:person)>;
+    <perform current person decision goto (A:place)>;
+    <perform current person decision tell (A:person) that (B:information)>;
+    <perform current person decision ask (A:person) to (B:action)>;
+    <perform current person decision ask (A:person) what is his function>;
+    <perform current person decision ask (A:person) what is his weapon>;
+    <perform current person decision ask (A:person) whether he is a liar>;
+    <perform current person decision answer (A:person) whether I am a liar (ANSWER:boolean)>;
+    <perform current person decision attack (A:person)>;
     
     
     let variable current person = value person [(X:person)];    
-    execute <perform current person decision propose (A:person) to exchange weapons>;
-    execute <perform current person decision accept (A:person) proposal to exchange weapons>;
+    <perform current person decision propose (A:person) to exchange weapons>;
+    <perform current person decision accept (A:person) proposal to exchange weapons>;
 };
 
 
 variable perform all the decisions:code;
 let variable perform all the decisions=value code
 {
-    execute <print "performing all the decisions">;    
-    execute <perform decision for (X:person)>;            
+    <print "performing all the decisions">;    
+    <perform decision for (X:person)>;            
 };

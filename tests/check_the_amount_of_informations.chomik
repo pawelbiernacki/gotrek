@@ -39,5 +39,5 @@ let fail if equal = value code
 };
 
 
-<compare "integer" <counter> 2188>;
+<compare "integer" <counter> 38972>;
 <fail if <the compare result>>;

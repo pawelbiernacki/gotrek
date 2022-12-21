@@ -18,6 +18,8 @@ AM_INIT_AUTOMAKE()
 AC_CONFIG_FILES([Makefile
                  chomik/Makefile
                  font/Makefile
+                 generated/Makefile
+                 generators/Makefile
                  image/Makefile
                  scripts/Makefile
                  sdl_chomik/Makefile

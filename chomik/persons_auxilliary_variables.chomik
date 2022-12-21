@@ -7,10 +7,12 @@ variable current person: person,
         current possible decision index:integer,
         current location:place,
         current possible decision:action,
+        current possible decision 2:action,
         current decision:action,
         current answer:boolean;
  
-variable current pattern:action,
+variable current action pattern:action,
+        current information pattern:information,
         current target:place,
         current guest:person,
         current guest 2:person,
@@ -19,5 +21,4 @@ variable current pattern:action,
         current information:information,
         current weapon:weapon,
         current boolean:boolean,
-        current notification number:integer,
-        current tense:tense;
+        current notification number:integer;

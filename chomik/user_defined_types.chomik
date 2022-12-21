@@ -1,34 +1,36 @@
 #!/usr/local/bin/chomik
 
+#
+# This script contains the heart of the game - the enumerations for all persons, places, functions, weapons AND informations + actions.
+#
+
+
 type person={Gotrek, Gwaigilion, Gerrudir, Pregor};
 type place={Krakow, Warszawa, Wroclaw, Poznan, Gdansk};
 type function={no_function,Czesnik, Krajczy, Skarbnik, Starosta, Kasztelan};
 type weapon={no_weapon, sword, axe};
-type tense={past,present,future};
 
 
-type information={  (X:person) is in (T:tense) in (Y:place),                    
-                    (X:person) has in (T:tense) function (Y:function),
-                    (X:person) has in (T:tense) weapon (Y:weapon),                    
-                    (X:person) can see in (T:tense) (Y:person),                    
+type information={  (X:person) is in (Y:place),                    
+                    (X:person) has function (Y:function),
+                    (X:person) has weapon (Y:weapon),                    
+                    (X:person) can see (Y:person),                    
                     (X:person) is a liar,                    
-                    (X:person) tells in (T:tense) (Y:person) that (Z:information),
+                    (X:person) has told (Y:person) that (Z:information),
                     
-                    (X:person) asks in (T:tense) (Y:person) to (Z:action),                    
-                    (X:person) asks in (T:tense) (Y:person) what is in (T2:tense) (Z:person) function,                    
-                    (X:person) asks in (T:tense) (Y:person) what is in (T2:tense) (Z:person) weapon,                    
-                    (X:person) asks in (T:tense) (Y:person) whether (Z:person) is a liar,                    
-                    (X:person) proposes in (T:tense) (Y:person) to exchange weapons,                  
+                    (X:person) has asked (Y:person) to (Z:action),                    
+                    (X:person) has asked (Y:person) what is (Z:person) function,                    
+                    (X:person) has asked (Y:person) what is (Z:person) weapon,                    
+                    (X:person) has asked (Y:person) whether (Z:person) is a liar,                    
+                    (X:person) has proposed (Y:person) to exchange weapons,                  
                     
-                    (X:person) refuses in (T:tense) (Y:person) proposal to (PROPOSAL:action),
-                    (X:person) refuses in (T:tense) (Y:person) to reveal (Z:person) weapon,
-                    (X:person) refuses in (T:tense) (Y:person) to reveal (Z:person) function,                    
-                    (X:person) accepts in (T:tense) (Y:person) proposal to (PROPOSAL:action),                    
-                    (X:person) accepts in (T:tense) (Y:person) proposal to exchange weapons,                    
-                    (X:person) answers in (T:tense) (Y:person) that (Z:information),                    
-                    (X:person) thinks in (T:tense) that (Y:information),
-                    
-                    not (X:information)};
+                    (X:person) has refused (Y:person) proposal to (PROPOSAL:action),
+                    (X:person) has refused (Y:person) to reveal (Z:person) weapon,
+                    (X:person) has refused (Y:person) to reveal (Z:person) function,                    
+                    (X:person) has accepted (Y:person) proposal to (PROPOSAL:action),                    
+                    (X:person) has accepted (Y:person) proposal to exchange weapons,                    
+                    (X:person) has answered (Y:person) that (Z:information),                    
+                    (X:person) thinks that (Y:information)};
                     
 type action={no_action,                                             # does not depend on anything
 
@@ -37,14 +39,14 @@ type action={no_action,                                             # does not d
                         
             
             ask (X:person) to (Y:action),                           # depends on a person (that must be present)
-            ask (X:person) what is in (T:tense) (Y:person) function,    
-            ask (X:person) what is in (T:tense) (Y:person) weapon,
+            ask (X:person) what is (Y:person) function,    
+            ask (X:person) what is (Y:person) weapon,
             ask (X:person) whether (Y:person) is a liar,
             propose (X:person) to exchange weapons,            
             
             answer (X:person) that (Y:person) is a liar is (ANSWER:boolean),
-            answer (X:person) that (Y:person) weapon is in (T:tense) (WEAPON:weapon) is (ANSWER:boolean),
-            answer (X:person) that (Y:person) function is in (T:tense) (FUNCTION:function) is (ANSWER:boolean),
+            answer (X:person) that (Y:person) weapon is (WEAPON:weapon) is (ANSWER:boolean),
+            answer (X:person) that (Y:person) function is (FUNCTION:function) is (ANSWER:boolean),
             accept (X:person) proposal to (PROPOSAL:action),
             accept (X:person) proposal to exchange weapons,            
             
@@ -133,12 +135,16 @@ let weapon bonus for sword=value integer 4; # sword is a little better than axe
 
 variable from the computer talking to Gotrek point of view who is (X:person):string;
 let from the computer talking to Gotrek point of view who is Gotrek=value string "yourself";
+
+# hardcoded - this should be done with the generators
 let from the computer talking to Gotrek point of view who is Gwaigilion=value string "Gwaigilion";
 let from the computer talking to Gotrek point of view who is Gerrudir=value string "Gerrudir";
 let from the computer talking to Gotrek point of view who is Pregor=value string "Pregor";
 
 variable from the Gotrek point of view who is (X:person):string;
 let from the Gotrek point of view who is Gotrek=value string "myself";
+
+# hardcoded - this should be done with the generators
 let from the Gotrek point of view who is Gwaigilion=value string "Gwaigilion";
 let from the Gotrek point of view who is Gerrudir=value string "Gerrudir";
 let from the Gotrek point of view who is Pregor=value string "Pregor";
@@ -158,8 +164,20 @@ let from the Gotrek point of view how to say that Gotrek is not a liar=value str
 
 variable from the Gotrek point of view how to say what (X:person) weapon is:string;
 let from the Gotrek point of view how to say what (X:person) weapon is=value string "what someone weapon is";
+
+# hardcoded - this should be done with the generators
+let from the Gotrek point of view how to say what Gerrudir weapon is=value string "what Gerrudir's weapon is";
+let from the Gotrek point of view how to say what Gwaigilion weapon is=value string "what Gwaigilion's weapon is";
+let from the Gotrek point of view how to say what Pregor weapon is=value string "what Pregor's weapon is";
+
 let from the Gotrek point of view how to say what Gotrek weapon is=value string "what my weapon is";
 
 variable from the Gotrek point of view how to say what (X:person) function is:string;
 let from the Gotrek point of view how to say what (X:person) function is=value string "what someone function is";
+
+# hardcoded - this should be done with the generators
+let from the Gotrek point of view how to say what Gerrudir function is=value string "what Gerrudir's function is";
+let from the Gotrek point of view how to say what Gwaigilion function is=value string "what Gwaigilion's function is";
+let from the Gotrek point of view how to say what Pregor function is=value string "what Pregor's function is";
+
 let from the Gotrek point of view how to say what Gotrek function is=value string "what my function is";

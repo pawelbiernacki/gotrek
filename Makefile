@@ -270,7 +270,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-SUBDIRS = chomik font image scripts sdl_chomik tests
+SUBDIRS = chomik font generated generators image scripts sdl_chomik tests
 all: all-recursive
 
 .SUFFIXES:
@@ -731,6 +731,9 @@ uninstall-am:
 
 size:
 	@find . -name "*.chomik" -o -name "*.sdl_chomik" -exec cat {} \; | wc
+
+generated-code:
+	@cd generators && $(MAKE) generated-code
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

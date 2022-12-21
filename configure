@@ -2323,7 +2323,7 @@ fi
 
 # Checks for library functions.
 
-ac_config_files="$ac_config_files Makefile chomik/Makefile font/Makefile image/Makefile scripts/Makefile sdl_chomik/Makefile tests/Makefile"
+ac_config_files="$ac_config_files Makefile chomik/Makefile font/Makefile generated/Makefile generators/Makefile image/Makefile scripts/Makefile sdl_chomik/Makefile tests/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3045,6 +3045,8 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "chomik/Makefile") CONFIG_FILES="$CONFIG_FILES chomik/Makefile" ;;
     "font/Makefile") CONFIG_FILES="$CONFIG_FILES font/Makefile" ;;
+    "generated/Makefile") CONFIG_FILES="$CONFIG_FILES generated/Makefile" ;;
+    "generators/Makefile") CONFIG_FILES="$CONFIG_FILES generators/Makefile" ;;
     "image/Makefile") CONFIG_FILES="$CONFIG_FILES image/Makefile" ;;
     "scripts/Makefile") CONFIG_FILES="$CONFIG_FILES scripts/Makefile" ;;
     "sdl_chomik/Makefile") CONFIG_FILES="$CONFIG_FILES sdl_chomik/Makefile" ;;

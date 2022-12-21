@@ -139,7 +139,6 @@ let variable on Gotrek ask current guest to current action equal = value code
     let variable possible choice option number <current option number> of Gotrek = <the get from stream result>;        
 };
 
-# TODO - add tense
 variable on Gotrek ask current guest what is someone function (Y:compare_result):code;
 let variable on Gotrek ask current guest what is someone function lower = value code {};
 let variable on Gotrek ask current guest what is someone function greater = value code {};
@@ -163,7 +162,6 @@ let variable on Gotrek ask current guest what is someone function equal = value 
 };
 
 
-# TODO - add tense
 variable on Gotrek ask current guest what is someone weapon (Y:compare_result):code;
 let variable on Gotrek ask current guest what is someone weapon lower = value code {};
 let variable on Gotrek ask current guest what is someone weapon greater = value code {};
