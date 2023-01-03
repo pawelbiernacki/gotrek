@@ -4,27 +4,27 @@
 # Here we generate all possible decisions for each person.
 # They are generated randomly (for all of them) depending on the game phase.
 # Then they are checked for sanity.
-# We do not simply take randomly an action, instead we check whether it makes sense to perform it depending on the game phase
+# We do not simply take randomly an action, instead we check whether it makes sense to perform it depending on the game phase.
 #
 
 let variable generate possible decisions for the current person and action class actions that depend on a person proposals=value code
 {
-    let variable <current person> possible decision <current possible decision index> = value action no_action;
-    execute <print "find all present persons">;
+    let <current person> possible decision <current possible decision index> = value action no_action;
+    <print "find all present persons">;
     
-    let variable (X:person) is seen by the current person=<<current person> can see (X:person)>;    
+    let (X:person) is seen by the current person=<<current person> can see (X:person)>;    
 
-    execute <print <current person> "can see" (X:person) "=" <(X:person) is seen by the current person>>;
+    <print <current person> "can see" (X:person) "=" <(X:person) is seen by the current person>>;
     
     # begin from a randomly chosen person
-    let variable the read from stream source stream index = <my person generator index>;
-    execute <read from stream "person">;
-    let variable current guest = <the read from stream result "person">;    
-    execute <iterate through all the persons until you find a seen one (ITERATION:persons_range)>;
+    let the read from stream source stream index = <my person generator index>;
+    <read from stream "person">;
+    let current guest = <the read from stream result "person">;    
+    <iterate through all the persons until you find a seen one (ITERATION:persons_range)>;
     
     
     # choose randomly action_depending_on_person_proposals_subclass
-    let variable the read from stream source stream index = <my action_depending_on_person_proposals_subclass generator index>;
+    let the read from stream source stream index = <my action_depending_on_person_proposals_subclass generator index>;
     <read from stream "action_depending_on_person_proposals_subclass">;
     
     let the print end of line=value string "\n";
@@ -157,21 +157,20 @@ let modify the current action class depending on the game phase moving phase=val
 };
 
 
-variable generate possible decisions for the current person (X:possible_decisions_range):code;
-let variable generate possible decisions for the current person (X:possible_decisions_range) = value code
+variable generate possible decisions for the current person (R:possible_decisions_range):code;
+let generate possible decisions for the current person (R:possible_decisions_range) = value code
 {
-    let variable current possible decision index = value integer [(X:possible_decisions_range)];
+    let current possible decision index = value integer [(R:possible_decisions_range)];
 
-    let variable the read from stream source stream index = <my action_class generator index>;
-    execute <read from stream "action_class">;
+    let the read from stream source stream index = <my action_class generator index>;
+    <read from stream "action_class">;
     
     let current action class = <the read from stream result "action_class">;    
     <modify the current action class depending on the game phase <game phase>>;    
         
     let the print end of line = value string "\n";
     <print "current action class" <current action class>>;    
-    
-    
+            
     <generate possible decisions for the current person and action class <current action class>>;
         
     <check whether <current person> possible decision <current possible decision index> is correct>;
@@ -184,11 +183,11 @@ let variable generate possible decisions for the current person (X:possible_deci
 
 variable generate (X:person) possible decisions:code;
 
-let variable generate (X:person) possible decisions = value code
+let generate (X:person) possible decisions = value code
 {
-    let variable current person = value person [(X:person)];    
-    let variable current place = <location of <current person>>;
-    execute <generate possible decisions for the current person (R:possible_decisions_range)>;
+    let current person = value person [(X:person)];    
+    let current place = <location of <current person>>;
+    <generate possible decisions for the current person (R:possible_decisions_range)>;
 };
 
  

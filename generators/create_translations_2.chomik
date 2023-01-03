@@ -1,0 +1,90 @@
+#!/usr/local/bin/chomik
+
+#
+# This script creates a file ../generated/list_of_actions.chomik and fills it with the actions.
+# For each action we have a boolean (whether it has been processed) and a string - the action's name when performed by Gotrek.
+
+# It also creates a file ../generated/list_of_informations.chomik and fills it with the informations.
+#
+# It also includes these files (i.e. their previous versions)
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/global_variables.chomik"
+include "../chomik/global_streams.chomik"
+include "process_translations_for_actions.chomik"
+
+
+
+variable calculate Gotrek action text for current possible decision (B:boolean):code;
+let calculate Gotrek action text for current possible decision true=value code {};
+let calculate Gotrek action text for current possible decision false=value code
+{
+    <compare "action" <current possible decision> no_action>;
+    <check if Gotrek is going to do nothing <the compare result>>;
+
+    <check if Gotrek is going to ask (A:person) to (B:action)>;
+    <check if Gotrek is going to accept (A:person) proposal to (B:action)>;
+    <check if Gotrek is going to refuse (A:person) proposal to (B:action)>;
+    <check if Gotrek is going to refuse (A:person) to reveal (B:person) weapon>;
+    <check if Gotrek is going to refuse (A:person) to reveal (B:person) function>;
+    <check if Gotrek is going to refuse (A:person) to reveal whether (B:person) is a liar>;
+};
+
+
+variable Gotrek calculation counter: integer;
+
+variable calculate Gotrek action text (ACTION:action):code;
+let calculate Gotrek action text (ACTION:action)=value code
+{
+    let current possible decision = value action [(ACTION:action)];
+    
+    <print "check how to translate Gotrek's decision" <current possible decision> "into text (" <Gotrek calculation counter> ").">;    
+        
+    <calculate Gotrek action text for current possible decision <<current possible decision> has been translated>>;
+            
+    <add "integer" <Gotrek calculation counter> 1>;
+    let Gotrek calculation counter = <the add result "integer">;    
+};
+
+
+
+
+include "process_translations_for_informations.chomik"
+
+
+variable calculate Gotrek information text (I:information) when talking to (P:person):code;
+let calculate Gotrek information text (I:information) when talking to (P:person)=value code
+{
+    let current information = value information [(I:information)];
+    let current guest = value person [(P:person)];
+    
+    <print "check how to translate information" <current information> "into text (" <Gotrek calculation counter> ").">;    
+    
+    <check if the current information is (A:person) has asked (B:person) to (C:action)>;
+    <check if the current information is (A:person) has refused (B:person) proposal to (PROPOSAL:action)>;
+    <check if the current information is (A:person) has accepted (B:person) proposal to (PROPOSAL:action)>;
+    <check if the current information is (A:person) has answered (B:person) that (C:information)>;
+    <check if the current information is (A:person) thinks that (B:information)>;
+
+    <add "integer" <Gotrek calculation counter> 1>;
+    let Gotrek calculation counter = <the add result "integer">;    
+};
+
+
+
+# here we include the previous versions of the files
+include "../generated/list_of_informations.chomik"
+include "../generated/list_of_actions.chomik"
+
+#
+# here we calculate the action names if done by Gotrek
+#
+let Gotrek calculation counter = value integer 1;
+<calculate Gotrek information text (INFORMATION:information) when talking to (PERSON:person)>;
+
+let Gotrek calculation counter = value integer 1;
+<calculate Gotrek action text (ACTION:action)>;
+
+
+include "write_translations_files.chomik"
+

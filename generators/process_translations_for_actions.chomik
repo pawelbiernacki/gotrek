@@ -9,7 +9,7 @@ let check if Gotrek is going to do nothing lower=value code {};
 let check if Gotrek is going to do nothing greater=value code {};
 let check if Gotrek is going to do nothing equal=value code 
 {
-    let Gotrek action text <current possible decision> = value string "I will wait.";
+    let Gotrek action text <current possible decision> = value string "wait";
     let <current possible decision> has been translated = value boolean true;
     let action complexity <current possible decision> = value integer 1;
 };
@@ -147,7 +147,7 @@ let on Gotrek ask current guest what is someone function equal = value code
     let Gotrek action text <current possible decision> = <the get from stream result>;    
 
     let <current possible decision> has been translated = value boolean true;
-    let action complexity <current possible decision> = value integer 1;
+    let action complexity <current possible decision> = value integer 2;
     
     <print "concatenation result" <the get from stream result>>;
 };
@@ -174,7 +174,7 @@ let on Gotrek ask current guest what is someone weapon equal = value code
     let Gotrek action text <current possible decision> = <the get from stream result>;    
 
     let <current possible decision> has been translated = value boolean true;
-    let action complexity <current possible decision> = value integer 1;
+    let action complexity <current possible decision> = value integer 2;
     
     <print "concatenation result" <the get from stream result>>;
 };
@@ -203,11 +203,103 @@ let on Gotrek ask current guest to do current possible decision 2 equal = value 
 
     let <current possible decision> has been translated = value boolean true;
         
-    <add "integer" <action complexity <current possible decision>> 1>;    
+    <add "integer" <action complexity <current possible decision 2>> 1>;    
     let action complexity <current possible decision> = <the add result "integer">;
     
     <print "concatenation result" <the get from stream result>>;    
 };
+
+
+
+variable on Gotrek accept current guest proposal to current possible decision 2 (Y:compare_result):code;
+let on Gotrek accept current guest proposal to current possible decision 2 lower = value code {};
+let on Gotrek accept current guest proposal to current possible decision 2 greater = value code {};
+let on Gotrek accept current guest proposal to current possible decision 2 equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print "I will accept " <from the Gotrek point of view who is <current guest>> " proposal to "
+        <Gotrek action text <current possible decision 2>> ".">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    let Gotrek action text <current possible decision> = <the get from stream result>;    
+
+    let <current possible decision> has been translated = value boolean true;
+        
+    <add "integer" <action complexity <current possible decision 2>> 1>;    
+    let action complexity <current possible decision> = <the add result "integer">;
+    
+    <print "concatenation result" <the get from stream result>>;    
+};
+
+
+
+variable on Gotrek refuse current guest proposal to current possible decision 2 (Y:compare_result):code;
+let on Gotrek refuse current guest proposal to current possible decision 2 lower = value code {};
+let on Gotrek refuse current guest proposal to current possible decision 2 greater = value code {};
+let on Gotrek refuse current guest proposal to current possible decision 2 equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print "I will refuse " <from the Gotrek point of view who is <current guest>> " proposal to "
+        <Gotrek action text <current possible decision 2>> ".">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    let Gotrek action text <current possible decision> = <the get from stream result>;    
+
+    let <current possible decision> has been translated = value boolean true;
+        
+    <add "integer" <action complexity <current possible decision 2>> 1>;    
+    let action complexity <current possible decision> = <the add result "integer">;
+    
+    <print "concatenation result" <the get from stream result>>;    
+};
+
+variable on Gotrek refuse current guest to reveal whether current guest 2 is a liar (Y:compare_result):code;
+let on Gotrek refuse current guest to reveal whether current guest 2 is a liar lower = value code {};
+let on Gotrek refuse current guest to reveal whether current guest 2 is a liar greater = value code {};
+let on Gotrek refuse current guest to reveal whether current guest 2 is a liar equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print "I will refuse " <from the Gotrek point of view who is <current guest>> " to reveal whether "
+        <from the Gotrek point of view who is <current guest 2>> " is a liar.">;    
+        
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    let Gotrek action text <current possible decision> = <the get from stream result>;    
+
+    let <current possible decision> has been translated = value boolean true;
+            
+    let action complexity <current possible decision> = value integer 2;
+    
+    <print "concatenation result" <the get from stream result>>;    
+};
+
 
 variable on Gotrek ask current guest whether current guest 2 is a liar (Y:compare_result):code;
 let on Gotrek ask current guest whether current guest 2 is a liar lower = value code {};
@@ -328,6 +420,64 @@ let on Gotrek answer current guest that current guest 2 function is current func
     <print "concatenation result" <the get from stream result>>;    
 };
 
+variable on Gotrek refuse current guest to reveal current guest 2 weapon (Y:compare_result):code;
+let on Gotrek refuse current guest to reveal current guest 2 weapon lower = value code {};
+let on Gotrek refuse current guest to reveal current guest 2 weapon greater = value code {};
+let on Gotrek refuse current guest to reveal current guest 2 weapon equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print "I will refuse " <from the Gotrek point of view who is <current guest>> " to reveal "
+        <from the Gotrek point of view who is <current guest 2>> "'s weapon.">;    
+        
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    let Gotrek action text <current possible decision> = <the get from stream result>;    
+
+    let <current possible decision> has been translated = value boolean true;
+            
+    let action complexity <current possible decision> = value integer 2;
+    
+    <print "concatenation result" <the get from stream result>>;    
+};
+
+variable on Gotrek refuse current guest to reveal current guest 2 function (Y:compare_result):code;
+let on Gotrek refuse current guest to reveal current guest 2 function lower = value code {};
+let on Gotrek refuse current guest to reveal current guest 2 function greater = value code {};
+let on Gotrek refuse current guest to reveal current guest 2 function equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print "I will refuse " <from the Gotrek point of view who is <current guest>> " to reveal "
+        <from the Gotrek point of view who is <current guest 2>> "'s function.">;    
+        
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    let Gotrek action text <current possible decision> = <the get from stream result>;    
+
+    let <current possible decision> has been translated = value boolean true;
+            
+    let action complexity <current possible decision> = value integer 2;
+    
+    <print "concatenation result" <the get from stream result>>;    
+};
+
 
 
 
@@ -373,6 +523,27 @@ let check if Gotrek is going to accept (A:person) proposal to exchange weapons=v
     <on Gotrek accept current guest proposal to exchange weapons <the compare result>>;
 };
 
+variable check if Gotrek is going to refuse (A:person) to reveal (B:person) weapon:code;
+let check if Gotrek is going to refuse (A:person) to reveal (B:person) weapon=value code
+{
+    let current guest = value place [(A:person)];
+    let current guest 2 = value place [(B:person)];
+    let current action pattern = value action refuse <current guest> to reveal <current guest 2> weapon;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek refuse current guest to reveal current guest 2 weapon <the compare result>>;    
+};
+
+variable check if Gotrek is going to refuse (A:person) to reveal (B:person) function:code;
+let check if Gotrek is going to refuse (A:person) to reveal (B:person) function=value code
+{
+    let current guest = value place [(A:person)];
+    let current guest 2 = value place [(B:person)];
+    let current action pattern = value action refuse <current guest> to reveal <current guest 2> function;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek refuse current guest to reveal current guest 2 function <the compare result>>;    
+};
+
+
 variable check if Gotrek is going to ask (A:person) what (B:person) function is:code;
 let check if Gotrek is going to ask (A:person) what (B:person) function is=value code
 {
@@ -402,6 +573,39 @@ let check if Gotrek is going to ask (A:person) to (B:action)=value code
     <compare "action" <current possible decision> <current action pattern>>;
     <on Gotrek ask current guest to do current possible decision 2 <the compare result>>;    
 };
+
+
+variable check if Gotrek is going to accept (A:person) proposal to (B:action):code;
+let check if Gotrek is going to accept (A:person) proposal to (B:action)=value code
+{
+    let current guest = value place [(A:person)];
+    let current possible decision 2 = value action [(B:action)];
+    let current action pattern = value action accept <current guest> proposal to <current possible decision 2>;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek accept current guest proposal to current possible decision 2 <the compare result>>;    
+};
+
+variable check if Gotrek is going to refuse (A:person) proposal to (B:action):code;
+let check if Gotrek is going to refuse (A:person) proposal to (B:action)=value code
+{
+    let current guest = value place [(A:person)];
+    let current possible decision 2 = value action [(B:action)];
+    let current action pattern = value action refuse <current guest> proposal to <current possible decision 2>;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek refuse current guest proposal to current possible decision 2 <the compare result>>;        
+};
+
+
+variable check if Gotrek is going to refuse (A:person) to reveal whether (B:person) is a liar:code;
+let check if Gotrek is going to refuse (A:person) to reveal whether (B:person) is a liar=value code
+{
+    let current guest = value place [(A:person)];
+    let current guest 2 = value place [(B:person)];
+    let current action pattern = value action refuse <current guest> to reveal whether <current guest 2> is a liar;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on Gotrek refuse current guest to reveal whether current guest 2 is a liar <the compare result>>;    
+};
+
 
 
 variable check if Gotrek is going to ask (A:person) whether (B:person) is a liar:code;
@@ -453,6 +657,7 @@ let check if Gotrek is going to answer (A:person) that (B:person) function is (F
     <compare "action" <current possible decision> <current action pattern>>;
     <on Gotrek answer current guest that current guest 2 function is current function is current response <the compare result>>;        
 };
+
 
 
 

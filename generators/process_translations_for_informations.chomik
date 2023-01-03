@@ -1,0 +1,800 @@
+#!/usr/local/bin/chomik
+
+# This is not a standalone script, it should be included by the create_translations_1.chomik.
+
+
+variable check if current information is current guest 2 has refused current guest 3 to reveal current guest 4 weapon (T:compare_result):code;
+let check if current information is current guest 2 has refused current guest 3 to reveal current guest 4 weapon lower = value code {};
+let check if current information is current guest 2 has refused current guest 3 to reveal current guest 4 weapon greater = value code {};
+let check if current information is current guest 2 has refused current guest 3 to reveal current guest 4 weapon equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print <from the Gotrek point of view who is <current guest 2>> " has refused " <from the Gotrek point of view who is <current guest 3>> " to reveal " 
+        <from the Gotrek point of view who is <current guest 4>> " weapon.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+    let information complexity <current information> = value integer 1;
+};
+
+
+
+variable check if current information is current guest 2 has asked current guest 3 whether current guest 4 is a liar (T:compare_result):code;
+let check if current information is current guest 2 has asked current guest 3 whether current guest 4 is a liar lower = value code {};
+let check if current information is current guest 2 has asked current guest 3 whether current guest 4 is a liar greater = value code {};
+let check if current information is current guest 2 has asked current guest 3 whether current guest 4 is a liar equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print <from the Gotrek point of view who is <current guest 2>> " has asked " <from the Gotrek point of view who is <current guest 3>> " whether " 
+        <from the Gotrek point of view who is <current guest 4>> " is a liar.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+    let information complexity <current information> = value integer 1;
+};
+
+
+
+variable check if current information is current guest 2 has asked current guest 3 what is current guest 4 weapon (T:compare_result):code;
+let check if current information is current guest 2 has asked current guest 3 what is current guest 4 weapon lower = value code {};
+let check if current information is current guest 2 has asked current guest 3 what is current guest 4 weapon greater = value code {};
+let check if current information is current guest 2 has asked current guest 3 what is current guest 4 weapon equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print <from the Gotrek point of view who is <current guest 2>> " has asked " <from the Gotrek point of view who is <current guest 3>> " what is " 
+        <from the Gotrek point of view who is <current guest 4>> "'s weapon.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+    let information complexity <current information> = value integer 1;
+};
+
+
+
+variable check if current information is current guest 2 is in current place (C:compare_result):code;
+let check if current information is current guest 2 is in current place lower = value code {};
+let check if current information is current guest 2 is in current place greater = value code {};
+let check if current information is current guest 2 is in current place equal = value code
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print <from the Gotrek point of view who is <current guest 2>> "is in" <current place> ".">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+    let information complexity <current information> = value integer 1;
+};
+
+
+variable check if current information is current guest 2 has current function (C:compare_result):code;
+let check if current information is current guest 2 has current function lower = value code {};
+let check if current information is current guest 2 has current function greater = value code {};
+let check if current information is current guest 2 has current function equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print <from the Gotrek point of view who is <current guest 2>> " has function " <current function> ".">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+    let information complexity <current information> = value integer 1;
+};
+
+
+
+variable check if current information is current guest 2 has current weapon (C:compare_result):code;
+let check if current information is current guest 2 has current weapon lower = value code {};
+let check if current information is current guest 2 has current weapon greater = value code {};
+let check if current information is current guest 2 has current weapon equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print <from the Gotrek point of view who is <current guest 2>> " has weapon " <current weapon> ".">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+    let information complexity <current information> = value integer 1;
+};
+
+
+variable check if current information is current guest 2 can see current guest 3 (C:compare_result):code;
+let check if current information is current guest 2 can see current guest 3 lower = value code {};
+let check if current information is current guest 2 can see current guest 3 greater = value code {};
+let check if current information is current guest 2 can see current guest 3 equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print <from the Gotrek point of view who is <current guest 2>> " can see " <from the Gotrek point of view who is <current guest 3>> ".">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+    let information complexity <current information> = value integer 1;
+};
+
+variable check if current information is current guest 2 is a liar (C:compare_result):code;
+let check if current information is current guest 2 is a liar lower = value code {};
+let check if current information is current guest 2 is a liar greater = value code {};
+let check if current information is current guest 2 is a liar equal = value code
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print <from the Gotrek point of view who is <current guest 2>> " is a liar.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+    let information complexity <current information> = value integer 1;
+};
+
+
+variable check if current information is current guest 2 has asked current guest 3 to current action (C:compare_result):code;
+let check if current information is current guest 2 has asked current guest 3 to current action lower = value code {};
+let check if current information is current guest 2 has asked current guest 3 to current action greater = value code {};
+let check if current information is current guest 2 has asked current guest 3 to current action equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has asked " 
+            <from the Gotrek point of view who is <current guest 3>> " to " <Gotrek action text <current action>> ".">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    <add "integer" <action complexity <current action>> 1>;    
+    let information complexity <current information> = <the add result "integer">;
+};
+
+
+variable check if current information is current guest 2 has asked current guest 3 what is current guest 4 function (C:compare_result):code;
+let check if current information is current guest 2 has asked current guest 3 what is current guest 4 function lower = value code {};
+let check if current information is current guest 2 has asked current guest 3 what is current guest 4 function greater = value code {};
+let check if current information is current guest 2 has asked current guest 3 what is current guest 4 function equal = value code
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has asked " <from the Gotrek point of view who is <current guest 3>> "what is " 
+            <from the Gotrek point of view who is <current guest 4>> "'s function.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+            
+    let information complexity <current information> = value integer 1;
+};
+
+variable check if current information is current guest 2 has asked what is current guest 3 weapon (C:compare_result):code;
+let check if current information is current guest 2 has asked what is current guest 3 weapon lower = value code {};
+let check if current information is current guest 2 has asked what is current guest 3 weapon greater = value code {};
+let check if current information is current guest 2 has asked what is current guest 3 weapon equal = value code
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has asked what is " 
+            <from the Gotrek point of view who is <current guest 3>> "'s weapon.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    let information complexity <current information> = value integer 1;
+};
+
+
+variable check if current information is current guest 2 has asked whether current guest 3 is a liar (C:compare_result):code;
+let check if current information is current guest 2 has asked whether current guest 3 is a liar lower = value code {};
+let check if current information is current guest 2 has asked whether current guest 3 is a liar greater = value code {};
+let check if current information is current guest 2 has asked whether current guest 3 is a liar equal = value code
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has asked whether " 
+            <from the Gotrek point of view who is <current guest 3>> " is a liar.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    let information complexity <current information> = value integer 1;
+};
+
+
+
+variable check if current information is current guest 2 has proposed current guest 3 to exchange weapons (C:compare_result):code;
+let check if current information is current guest 2 has proposed current guest 3 to exchange weapons lower = value code {};
+let check if current information is current guest 2 has proposed current guest 3 to exchange weapons greater = value code {};
+let check if current information is current guest 2 has proposed current guest 3 to exchange weapons equal = value code
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has proposed " 
+            <from the Gotrek point of view who is <current guest 3>> " to exchange weapons.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    let information complexity <current information> = value integer 2;
+};
+
+
+variable check if current information is current guest 2 has refused to reveal current guest 3 weapon (C:compare_result):code;
+let check if current information is current guest 2 has refused to reveal current guest 3 weapon lower = value code {};
+let check if current information is current guest 2 has refused to reveal current guest 3 weapon greater = value code {};
+let check if current information is current guest 2 has refused to reveal current guest 3 weapon equal = value code
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has refused to reveal " 
+            <from the Gotrek point of view who is <current guest 3>> "'s weapon.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    let information complexity <current information> = value integer 2;
+};
+
+
+variable check if current information is current guest 2 has refused current guest 3 to reveal current guest 4 function (T:compare_result):code;
+let check if current information is current guest 2 has refused current guest 3 to reveal current guest 4 function lower = value code {};
+let check if current information is current guest 2 has refused current guest 3 to reveal current guest 4 function greater = value code {};
+let check if current information is current guest 2 has refused current guest 3 to reveal current guest 4 function equal = value code
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has refused " <from the Gotrek point of view who is <current guest 3>> " to reveal " 
+            <from the Gotrek point of view who is <current guest 4>> "'s function.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    let information complexity <current information> = value integer 2;
+};
+
+
+variable check if current information is current guest 2 has refused to reveal current guest 3 function (T:compare_result):code;
+let check if current information is current guest 2 has refused to reveal current guest 3 function lower = value code {};
+let check if current information is current guest 2 has refused to reveal current guest 3 function greater = value code {};
+let check if current information is current guest 2 has refused to reveal current guest 3 function equal = value code
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has refused to reveal " 
+            <from the Gotrek point of view who is <current guest 3>> "'s function.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    let information complexity <current information> = value integer 2;
+};
+
+variable check if current information is current guest 2 has accepted current guest 3 proposal to exchange weapons (C:compare_result):code;
+let check if current information is current guest 2 has accepted current guest 3 proposal to exchange weapons lower = value code {};
+let check if current information is current guest 2 has accepted current guest 3 proposal to exchange weapons greater = value code {};
+let check if current information is current guest 2 has accepted current guest 3 proposal to exchange weapons equal = value code
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has accepted " 
+            <from the Gotrek point of view who is <current guest 3>> "'s proposal to exchange weapons.">;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    let information complexity <current information> = value integer 2;
+};
+
+variable check if current information is current guest 2 has refused current guest 3 proposal to current action (C:compare_result):code;
+let check if current information is current guest 2 has refused current guest 3 proposal to current action lower=value code {};
+let check if current information is current guest 2 has refused current guest 3 proposal to current action greater=value code {};
+let check if current information is current guest 2 has refused current guest 3 proposal to current action equal=value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has refused " 
+            <from the Gotrek point of view who is <current guest 3>> "'s proposal to " <Gotrek action text <current action>>>;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    <add "integer" <action complexity <current action>> 1>;
+    let information complexity <current information> = <the add result "integer">;
+};
+
+variable check if current information is current guest 2 has accepted current guest 3 proposal to current action (C:compare_result):code;
+let check if current information is current guest 2 has accepted current guest 3 proposal to current action lower=value code {};
+let check if current information is current guest 2 has accepted current guest 3 proposal to current action greater=value code {};
+let check if current information is current guest 2 has accepted current guest 3 proposal to current action equal=value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has accepted " 
+            <from the Gotrek point of view who is <current guest 3>> "'s proposal to " <Gotrek action text <current action>>>;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    <add "integer" <action complexity <current action>> 1>;
+    let information complexity <current information> = <the add result "integer">;
+};
+
+variable check if current information is current guest 2 has answered current guest 3 that current information 2 (C:compare_result):code;
+let check if current information is current guest 2 has answered current guest 3 that current information 2 lower = value code {};
+let check if current information is current guest 2 has answered current guest 3 that current information 2 greater = value code {};
+let check if current information is current guest 2 has answered current guest 3 that current information 2 equal = value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " has answered " 
+            <from the Gotrek point of view who is <current guest 3>> " that " <Gotrek information text <current information 2>>>;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    <add "integer" <information complexity <current information 2>> 1>;
+    let information complexity <current information> = <the add result "integer">;
+};
+
+variable check if current information is current guest 2 thinks that current information 2 (C:compare_result):code;
+let check if current information is current guest 2 thinks that current information 2 lower=value code {};
+let check if current information is current guest 2 thinks that current information 2 greater=value code {};
+let check if current information is current guest 2 thinks that current information 2 equal=value code 
+{
+    let the set to stream stream index = <my concatenating stream index>;
+    <set to stream "">;
+    
+    let the print target stream index =  <the set to stream stream index>;
+    let the print end of line = value string "";
+    let the print separator = value string "";
+    <print  <from the Gotrek point of view who is <current guest 2>> " thinks that " <Gotrek information text <current information 2>>>;    
+    let the print target stream index = value integer 0;    # standard output
+    let the print end of line = value string "\n";
+    let the print separator = value string " ";
+
+    let the get from stream stream index = <the set to stream stream index>;
+    <get from stream>;
+    
+    let Gotrek information text <current information> when talking to <current guest> = <the get from stream result>;
+        
+    let <current information> has been translated when talking to <current guest> = value boolean true;
+        
+    <add "integer" <information complexity <current information 2>> 1>;
+    let information complexity <current information> = <the add result "integer">;
+};
+
+
+
+variable check if the current information is (A:person) is in (B:place):code;
+let check if the current information is (A:person) is in (B:place)=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current place = value place [(B:place)];
+    let current information pattern = value information <current guest 2> is in <current place>;
+
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 is in current place <the compare result>>;    
+};
+
+
+
+variable check if the current information is (A:person) has function (B:function):code;
+let check if the current information is (A:person) has function (B:function)=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current function = value function [(B:function)];
+    let current information pattern = value information <current guest 2> has function <current function>;
+    
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has current function <the compare result>>;
+};
+
+
+variable check if the current information is (A:person) has weapon (B:weapon):code;
+let check if the current information is (A:person) has weapon (B:weapon) = value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current weapon = value weapon [(B:weapon)];
+    let current information pattern = value information <current guest 2> has weapon <current weapon>;
+    
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has current weapon <the compare result>>;    
+};
+
+
+variable check if the current information is (A:person) can see (B:person):code;
+let check if the current information is (A:person) can see (B:person) = value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current information pattern = value information <current guest 2> can see <current guest 3>;
+    
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 can see current guest 3 <the compare result>>;    
+};
+
+variable check if the current information is (A:person) is a liar:code;
+
+let check if the current information is (A:person) is a liar = value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current information pattern = value information <current guest 2> is a liar;
+    
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 is a liar <the compare result>>;    
+};
+
+
+variable check if the current information is (A:person) has asked (B:person) to (C:action):code;
+let check if the current information is (A:person) has asked (B:person) to (C:action)=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current action = value action [(C:action)];    
+    let current information pattern = value information <current guest 2> has asked <current guest 3> to <current action>;
+
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has asked current guest 3 to current action <the compare result>>;        
+};
+
+variable check if the current information is (A:person) has asked (B:person) what is (C:person) function:code;
+let check if the current information is (A:person) has asked (B:person) what is (C:person) function=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current guest 4 = value person [(C:person)];
+    
+    let current information pattern = value information <current guest 2> has asked <current guest 3> what is <current guest 4> function;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has asked current guest 3 what is current guest 4 function <the compare result>>;        
+};
+
+
+variable check if the current information is (A:person) has asked (B:person) what is (C:person) weapon:code;
+let check if the current information is (A:person) has asked (B:person) what is (C:person) weapon=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current guest 4 = value person [(C:person)];
+    let current information pattern = value information <current guest 2> has asked <current guest 3> what is <current guest 4> weapon;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has asked current guest 3 what is current guest 4 weapon <the compare result>>;        
+};
+
+variable check if the current information is (A:person) has asked whether (B:person) is a liar:code;
+let check if the current information is (A:person) has asked whether (B:person) is a liar=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current information pattern = value information <current guest 2> has asked whether <current guest 3> is a liar;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has asked whether current guest 3 is a liar <the compare result>>;        
+};
+
+
+variable check if the current information is (A:person) has proposed (B:person) to exchange weapons:code;
+let check if the current information is (A:person) has proposed (B:person) to exchange weapons=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current information pattern = value information <current guest 2> has proposed <current guest 3> to exchange weapons;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has proposed current guest 3 to exchange weapons <the compare result>>;        
+};
+
+variable check if the current information is (A:person) has refused to reveal (B:person) weapon:code;
+let check if the current information is (A:person) has refused to reveal (B:person) weapon=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current information pattern = value information <current guest 2> has refused to reveal <current guest 3> weapon;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has refused to reveal current guest 3 weapon <the compare result>>;        
+};
+
+variable check if the current information is (A:person) has refused (B:person) to reveal (C:person) function:code;
+let check if the current information is (A:person) has refused (B:person) to reveal (C:person) function=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current guest 4 = value person [(C:person)];
+    
+    let current information pattern = value information <current guest 2> has refused <current guest 3> to reveal <current guest 4> function;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has refused current guest 3 to reveal current guest 4 function <the compare result>>;        
+};
+
+variable check if the current information is (A:person) has accepted (B:person) proposal to exchange weapons:code;
+let check if the current information is (A:person) has accepted (B:person) proposal to exchange weapons=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current information pattern = value information <current guest 2> has accepted <current guest 3> proposal to exchange weapons;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has accepted current guest 3 proposal to exchange weapons <the compare result>>;        
+};
+
+variable check if the current information is (A:person) has refused (B:person) proposal to (PROPOSAL:action):code;
+let check if the current information is (A:person) has refused (B:person) proposal to (PROPOSAL:action)=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current action = value action [(PROPOSAL:action)];
+    let current information pattern = value information <current guest 2> has refused <current guest 3> proposal to <current action>;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has refused current guest 3 proposal to current action <the compare result>>;        
+};
+
+
+variable check if the current information is (A:person) has accepted (B:person) proposal to (PROPOSAL:action):code;
+let check if the current information is (A:person) has accepted (B:person) proposal to (PROPOSAL:action)=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current action = value action [(PROPOSAL:action)];
+    let current information pattern = value information <current guest 2> has accepted <current guest 3> proposal to <current action>;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has accepted current guest 3 proposal to current action <the compare result>>;        
+};
+
+
+variable check if the current information is (A:person) has answered (B:person) that (C:information):code;
+let check if the current information is (A:person) has answered (B:person) that (C:information)=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current information 2 = value information [(C:information)];
+    let current information pattern = value information <current guest 2> has answered <current guest 3> that <current information 2>;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has answered current guest 3 that current information 2 <the compare result>>;        
+};
+
+
+variable check if the current information is (A:person) thinks that (B:information):code;
+let check if the current information is (A:person) thinks that (B:information)=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current information 2 = value information [(B:information)];
+    let current information pattern = value information <current guest 2> thinks that <current information 2>;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 thinks that current information 2 <the compare result>>;        
+};
+
+variable check if the current information is (A:person) has asked (B:person) whether (C:person) is a liar:code;
+let check if the current information is (A:person) has asked (B:person) whether (C:person) is a liar=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current guest 4 = value person [(C:person)];    
+    let current information pattern = value information <current guest 2> has asked <current guest 3> whether <current guest 4> is a liar;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has asked current guest 3 whether current guest 4 is a liar <the compare result>>;        
+};
+
+
+variable check if the current information is (A:person) has refused (B:person) to reveal (C:person) weapon:code;
+let check if the current information is (A:person) has refused (B:person) to reveal (C:person) weapon=value code
+{
+    let current guest 2 = value person [(A:person)];
+    let current guest 3 = value person [(B:person)];
+    let current guest 4 = value person [(C:person)];    
+    let current information pattern = value information <current guest 2> has refused <current guest 3> to reveal <current guest 4> weapon;
+    <compare "information" <current information> <current information pattern>>;
+    <check if current information is current guest 2 has refused current guest 3 to reveal current guest 4 weapon <the compare result>>;        
+};

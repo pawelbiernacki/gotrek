@@ -12,6 +12,7 @@ let the print target stream index = <my list of actions stream index>;
 let the print separator = value string "";
 
 <print "#!/usr/local/bin/chomik">;
+<print "# This code has been generated, do not modify it, please">;
 <print "let Gotrek action text " (A:action) "= value string \"" <Gotrek action text (A:action)> "\";">;
 <print "let action complexity " (A:action) "= value integer " <action complexity (A:action)> ";">;
 
@@ -27,6 +28,7 @@ let the print target stream index = <my list of informations stream index>;
 let the print separator = value string "";
 
 <print "#!/usr/local/bin/chomik">;
+<print "# This code has been generated, do not modify it, please">;
 <print "let Gotrek information text " (INFORMATION:information) "when talking to" (P:person) "= value string \"" <Gotrek information text (INFORMATION:information) when talking to (P:person)>"\";">;
 <print "let information complexity " (INFORMATION:information) "= value integer " <information complexity (INFORMATION:information)> ";">;
 

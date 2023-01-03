@@ -7,6 +7,12 @@ include "../chomik/global_streams.chomik"
 include "../chomik/persons.chomik"
 include "../chomik/places.chomik"
 
+#
+# here we include the generated code !!!
+# please do not modify the generated code manually!
+include "../generated/list_of_actions.chomik"
+include "../generated/list_of_informations.chomik"
+
 <initialize the persons>;
 <initialize the places>;
 <reset the persons>;
@@ -24,3 +30,7 @@ let game phase=value game_phase_type moving phase;
 
 <print <Gotrek possible decision (X:possible_decisions_range)>>;
 
+<print "****************************************************">;
+
+<print <Gotrek action text <Gotrek possible decision (X:possible_decisions_range)>>>;
+ 

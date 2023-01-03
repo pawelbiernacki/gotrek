@@ -1,5 +1,10 @@
 #!/usr/local/bin/chomik
 
+#
+# Here we have "generate possible decisions ..." codes.
+#
+
+
 variable move to next current target on (X:compare_result):code;
 let variable move to next current target on lower = value code {};
 let variable move to next current target on greater = value code {};
@@ -28,8 +33,6 @@ let variable iterate through all the places until you find a connected one (I:pl
 };
 
 
-
-
 variable iterate through all the persons until you find a seen one (I:persons_range):code;
 
 let variable iterate through all the persons until you find a seen one (I:persons_range)=value code
@@ -41,11 +44,19 @@ let variable iterate through all the persons until you find a seen one (I:person
 
 
 variable generate possible decisions for the current person and action class (X:action_class):code;
+
+#
+# This code assigns to the appropriate possible decision a "no_action" action (i.e. "wait").
+#
 let variable generate possible decisions for the current person and action class actions that do not depend on anything=value code
 {
     let variable <current person> possible decision <current possible decision index> = value action no_action;
 };
 
+
+#
+# This code assigns to the appropriate possible decision a "goto X" action (for X being a random place connected to the current place).
+#
 let variable generate possible decisions for the current person and action class actions that depend on a place=value code
 {    
     #execute <print "find all connected places to" <current place>>;
@@ -67,7 +78,50 @@ let variable generate possible decisions for the current person and action class
 
 
 
-variable generate possible decisions for the current person and actions subclass for proposals (X:action_depending_on_person_proposals_subclass):code;
+# The code family:
+#
+# generate possible decisions for the current person and actions subclass for proposals given the information complexity (X:compare_result)
+#
+# is used to assign the current person possible decision depending on the information complexity.
+#
+
+variable generate possible decisions for the current person and actions subclass for proposals given the information complexity (X:compare_result):code;
+let generate possible decisions for the current person and actions subclass for proposals given the information complexity lower = value code
+{    
+    let <current person> possible decision <current possible decision index> = value action tell <current guest> that <current information>;
+};
+let generate possible decisions for the current person and actions subclass for proposals given the information complexity equal = value code 
+{
+    let <current person> possible decision <current possible decision index> = value action no_action;
+};
+let generate possible decisions for the current person and actions subclass for proposals given the information complexity greater = value code 
+{
+    let <current person> possible decision <current possible decision index> = value action no_action;
+};
+
+# The code family:
+#
+# generate possible decisions for the current person and actions subclass for proposals given the action complexity (X:compare_result)
+#
+# is used to assign the current person possible decision depending on the action complexity
+#
+variable generate possible decisions for the current person and actions subclass for proposals given the action complexity (X:compare_result):code;
+let generate possible decisions for the current person and actions subclass for proposals given the action complexity lower = value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> to <current action>;
+};
+let generate possible decisions for the current person and actions subclass for proposals given the action complexity equal = value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action no_action;
+};
+let generate possible decisions for the current person and actions subclass for proposals given the action complexity greater = value code
+{
+    let variable <current person> possible decision <current possible decision index> = value action no_action;
+};
+
+
+
+variable     (X:action_depending_on_person_proposals_subclass):code;
 variable generate possible decisions for the current person and actions subclass for answers (X:action_depending_on_person_answers_subclass):code;
 variable generate possible decisions for the current person and actions subclass for others (X:action_depending_on_person_others_subclass):code;
 
@@ -75,25 +129,23 @@ variable generate possible decisions for the current person and actions subclass
 # 
 # Here we define the "generate possible decisions for the current person and actions subclass for proposals".
 
-let variable generate possible decisions for the current person and actions subclass for proposals actions tell person that information=value code
-{
-    let variable the read from stream source stream index = <my information generator index>;
-    <read from stream "information">;
-    
-    let variable <current person> possible decision <current possible decision index> = value action tell <current guest> that <the read from stream result "information">;
-};
 let variable generate possible decisions for the current person and actions subclass for proposals actions ask person to action=value code
 {    
-    let variable the read from stream source stream index = <my action generator index>;
+    let the read from stream source stream index = <my action generator index>;
     <read from stream "action">;    
-    let variable <current person> possible decision <current possible decision index> = value action ask <current guest> to <the read from stream result "action">;
+    let current action = <the read from stream result "action">;
+    
+    # we have to exclude the actions that are too complex
+    let current action complexity = <action complexity <current action>>;
+    
+    <compare "integer" <current action complexity> <max complexity>>;
+    <generate possible decisions for the current person and actions subclass given the action complexity <compare result "integer">>;    
 };
 let variable generate possible decisions for the current person and actions subclass for proposals actions ask person what is someone function=value code
 {
     let the read from stream source stream index = <my person generator index>;
     <read from stream "person">;
     
-
     let variable <current person> possible decision <current possible decision index> = value action ask <current guest> what is <the read from stream result "person"> function;
 };
 let variable generate possible decisions for the current person and actions subclass for proposals actions ask person what is someone weapon=value code
@@ -122,7 +174,13 @@ let variable generate possible decisions for the current person and actions subc
 
 let variable generate possible decisions for the current person and actions subclass for proposals actions tell person that information=value code
 {   
-    let variable <current person> possible decision <current possible decision index> = value action tell <current guest> that <current information>;
+    # we have to exclude the informations that are too complex
+    let current information complexity = <information complexity <current information>>;
+    
+    <print "current information complexity equals " <current information complexity>>;    
+    
+    <compare "integer" <current information complexity> <max complexity>>;
+    <generate possible decisions for the current person and actions subclass for proposals given the information complexity <compare result "integer">>;
 };
 
 
@@ -133,9 +191,9 @@ let variable generate possible decisions for the current person and actions subc
 
 let variable generate possible decisions for the current person and actions subclass actions for answers answer person whether someone is a liar=value code
 {
-    let variable the read from stream source stream index = <my action generator index>;
-    <read from stream "action">;
-    
+    let the read from stream source stream index = <my boolean generator index>;
+    <read from stream "boolean">;
+
     let the read from stream source stream index = <my person generator index>;
     <read from stream "person">;
     
@@ -154,7 +212,13 @@ let variable generate possible decisions for the current person and actions subc
 
 let variable generate possible decisions for the current person and actions subclass for answers actions tell person that information=value code
 {   
-    let variable <current person> possible decision <current possible decision index> = value action tell <current guest> that <current information>;
+    # we have to exclude the informations that are too complex
+    let current information complexity = <information complexity <current information>>;
+    
+    <print "current information complexity equals " <current information complexity>>;    
+    
+    <compare "integer" <current information complexity> <max complexity>>;
+    <generate possible decisions for the current person and actions subclass for proposals given the information complexity <compare result "integer">>;    
 };
 
 
@@ -169,5 +233,11 @@ let variable generate possible decisions for the current person and actions subc
 
 let variable generate possible decisions for the current person and actions subclass for others actions tell person that information=value code
 {   
-    let variable <current person> possible decision <current possible decision index> = value action tell <current guest> that <current information>;
+    # we have to exclude the informations that are too complex
+    let current information complexity = <information complexity <current information>>;
+    
+    <print "current information complexity equals " <current information complexity>>;    
+    
+    <compare "integer" <current information complexity> <max complexity>>;
+    <generate possible decisions for the current person and actions subclass for proposals given the information complexity <compare result "integer">>;    
 };

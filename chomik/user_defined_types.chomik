@@ -115,6 +115,9 @@ type explanation_mode_type = {
                                                                                         
 expand(2);
 
+variable max complexity:integer;
+let max complexity = value integer 2; # it should correspond with the expand() parameter, i.e. the recursion depth for the enum types
+
 
 include "../chomik/successors.chomik"
 
