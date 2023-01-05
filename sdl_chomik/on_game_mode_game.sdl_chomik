@@ -1,17 +1,5 @@
 #!/usr/local/bin/sdl_chomik
 
-
-variable on game mode (X:game_mode_type):code;
-let on game mode title = value code
-{
-    <show image <title image index> 0 0>;     
-    <show image <chomik image index> 0 0>;    
-    
-    <my show text <my large font index> "GOTREK" 100 100>;
-    <my show text <my small font index> "by Pawel Biernacki" 100 140>;
-    <my show text <my small font index> "press return" 100 180>;    
-};
-
 let on game mode game = value code
 {
     <show image <background image index> 0 0>;     
