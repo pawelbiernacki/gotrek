@@ -38,6 +38,7 @@ let do all the necessary stuff for the next move=value code
     <recalculate arrow coordinate>;    
     <recalculate Gotrek location text>;
     <recalculate Gotrek equipment text>;
+    <recalculate Gotrek function text>;
     <recalculate Gotrek points text>;
     <recalculate Gotrek guests text>;
     <recalculate Gotrek secret text>;

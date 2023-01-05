@@ -1,0 +1,24 @@
+#!/usr/local/bin/sdl_chomik
+
+variable Gotrek function text:string;
+
+variable recalculate Gotrek function text:code;
+let recalculate Gotrek function text=value code
+{
+    let the set to stream stream index=<my output stringstream index>;
+    <set to stream "">;
+    
+    let the print target stream index = <my output stringstream index>;
+    let the print end of line = value string "";
+    <print "You are a" <function of Gotrek>>;
+        
+    let the print target stream index = value integer 0; # standard output
+    let the print end of line = value string "\n";
+    
+    let the get from stream stream index = <my output stringstream index>;
+    <get from stream>;
+    
+    let Gotrek function text=<the get from stream result>;    
+};
+
+

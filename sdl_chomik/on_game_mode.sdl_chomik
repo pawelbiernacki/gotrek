@@ -23,11 +23,12 @@ let on game mode game = value code
     
     <show options texts>;
         
-    <my show text <my small font index> <Gotrek location text> 90 260>;
-    <my show text <my small font index> <Gotrek equipment text> 300 260>;
-    <my show text <my small font index> <Gotrek points text> 480 260>;
-    <my show text <my small font index> <Gotrek guests text> 90 276>;
-    <my show text <my small font index> <Gotrek secret text> 480 276>;
+    <my show text <my small font index> <Gotrek location text> 90 250>;
+    <my show text <my small font index> <Gotrek equipment text> 300 250>;
+    <my show text <my small font index> <Gotrek points text> 480 250>;
+    <my show text <my small font index> <Gotrek guests text> 90 266>;
+    <my show text <my small font index> <Gotrek secret text> 480 266>;
+    <my show text <my small font index> <Gotrek function text> 90 282>;
     
     <my show text <my small font index> <map <game phase> to its name> 90 300>;
     
