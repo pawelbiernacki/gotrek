@@ -70,9 +70,9 @@ let check whether current possible decision is answer (P:person) whether (P2:per
     let current answer=value boolean [(ANSWER:boolean)];    
     let current guest 2=value person [(P2:person)];
     
-    let current action pattern=value action answer <current guest> whether I am a liar <current answer>;
+    let current action pattern=value action answer <current guest> whether <current guest 2> is a liar <current answer>;
     <compare "action" <current possible decision> <current action pattern>>;
-    <on it is answer current guest whether someone is a liar <current answer> <the compare result>>;
+    <on it is answer current guest whether current guest 2 is a liar <current answer> <the compare result>>;
 };
 
 
@@ -124,6 +124,7 @@ let variable replace decision by no action if it is illegal false=value code
     let variable <current person> possible decision <current possible decision index> = value action no_action;
 };
 
+
 variable check whether (X:person) possible decision (Y:possible_decisions_range) is correct:code;
 let variable check whether (X:person) possible decision (Y:possible_decisions_range) is correct=value code
 {
@@ -141,38 +142,34 @@ let variable check whether (X:person) possible decision (Y:possible_decisions_ra
     # initialize the auxilliary variable current possible decision
     let variable current possible decision = <<current person> possible decision <current possible decision index>>;
     
+
+    <check whether current possible decision is propose (P:person) to exchange weapons>;
+    <check whether current possible decision is ask (P:person) what is (P2:person) function>;
+    <check whether current possible decision is ask (P:person) what is (P2:person) weapon>;
+    <check whether current possible decision is ask (P:person) whether (P2:person) is a liar>;
+    <check whether current possible decision is answer (P:person) whether (P2:person) is a liar (ANSWER:boolean)>;
+    <check whether current possible decision is accept (P:person) proposal to exchange weapons>;
+    <check whether current possible decision is answer (P:person) that (P2:person) weapon is (W:weapon) is (ANSWER:boolean)>;
+    <check whether current possible decision is answer (P:person) that (P2:person) function is (F:function) is (ANSWER:boolean)>;
+    <check whether current possible decision is refuse (P:person) to reveal (P2:person) function>;
+    <check whether current possible decision is refuse (P:person) to reveal (P2:person) weapon>;
+    
+    
     
     
     # goto (A:place) is legal only if the current location is connected with the target        
-    execute <check whether current possible decision is goto (P:place)>;
+    <check whether current possible decision is goto (P:place)>;
             
     # tell (A:person) that (Y:information) is legal only if current person can see A
-    execute <check whether current possible decision is tell (A:person) (B:information)>;    
+    <check whether current possible decision is tell (A:person) (B:information)>;    
 
     # ask (A:person) to (B:action) is legal only if current person can see A    
-    execute <check whether current possible decision is ask (A:person) to (B:action)>;
+    <check whether current possible decision is ask (A:person) to (B:action)>;
     
     # attack (A:person) is legal only if current person can see A
-    execute <check whether current possible decision is attack (P:person)>;
-    
-    # one cannot propose to exchange weapons to himself
-    <check whether current possible decision is propose (P:person) to exchange weapons>;
-    
-    # one cannot ask himself what his function is
-    <check whether current possible decision is ask (P:person) what is (P2:person) function>;
-    
-    # one cannot ask himself what his weapon is
-    <check whether current possible decision is ask (P:person) what is (P2:person) weapon>;
-    
-    # it makes no sense to ask oneself whether he is a liar
-    <check whether current possible decision is ask (P:person) whether (P2:person) is a liar>;
-    
-    # sometimes it makes no sense to answer oneself whether someone is a liar
-    <check whether current possible decision is answer (P:person) whether (P2:person) is a liar (ANSWER:boolean)>;
-    
-    # one cannot accept his own proposal to exchange weapons
-    <check whether current possible decision is accept (P:person) proposal to exchange weapons>;
-    
+    <check whether current possible decision is attack (P:person)>;
+
+    <replace decision by no action if it is illegal <person <current person> action <current possible decision> is correct>>;
     <replace decision by no action if it is illegal <the result of check whether current person possible decision is correct>>;
     
     let the print end of line=value string "\n";

@@ -20,7 +20,8 @@ TESTS = check_whether_we_can_fail.chomik \
 	check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik \
 	check_skipping_Gotrek_decisions.chomik \
 	check_skipping_Gotrek_decisions2.chomik \
-	check_the_game_initialization.chomik
+	check_the_game_initialization.chomik \
+	check_whether_Gotrek_can_attack_Gotrek.chomik
 	
 
 XFAIL_TESTS = check_whether_we_can_fail.chomik	\

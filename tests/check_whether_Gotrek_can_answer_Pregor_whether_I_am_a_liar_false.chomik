@@ -25,8 +25,8 @@ let the result of check whether current person possible decision is correct = va
 let location of Gotrek = value place Krakow;
 let location of Pregor = value place Krakow;
 
-let Gotrek possible decision 1 = value action answer Pregor whether I am a liar false;
-let Gotrek thinks that Pregor has asked him whether he is a liar = value boolean false; # Pregor did not ask, so Gotrek cannot answer
+let Gotrek possible decision 1 = value action answer Pregor whether Gotrek is a liar false;
+let Gotrek thinks that Pregor has asked Gotrek whether Gotrek is a liar = value boolean false; # Pregor did not ask, so Gotrek cannot answer
 let is Gotrek a liar=value boolean false;                                               # even though he is not a liar
 
 <check whether Gotrek possible decision 1 is correct>;

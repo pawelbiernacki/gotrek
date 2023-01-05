@@ -411,7 +411,8 @@ TESTS = check_whether_we_can_fail.chomik \
 	check_Gotrek_proposes_Pregor_to_exchange_weapons.chomik \
 	check_skipping_Gotrek_decisions.chomik \
 	check_skipping_Gotrek_decisions2.chomik \
-	check_the_game_initialization.chomik
+	check_the_game_initialization.chomik \
+	check_whether_Gotrek_can_attack_Gotrek.chomik
 
 XFAIL_TESTS = check_whether_we_can_fail.chomik	\
 	check_the_game_initialization.chomik
@@ -726,6 +727,13 @@ check_skipping_Gotrek_decisions2.chomik.log: check_skipping_Gotrek_decisions2.ch
 check_the_game_initialization.chomik.log: check_the_game_initialization.chomik
 	@p='check_the_game_initialization.chomik'; \
 	b='check_the_game_initialization.chomik'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+check_whether_Gotrek_can_attack_Gotrek.chomik.log: check_whether_Gotrek_can_attack_Gotrek.chomik
+	@p='check_whether_Gotrek_can_attack_Gotrek.chomik'; \
+	b='check_whether_Gotrek_can_attack_Gotrek.chomik'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

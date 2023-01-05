@@ -1,5 +1,6 @@
 #!/usr/local/bin/chomik
 
+
 include "../chomik/user_defined_types.chomik"
 include "../chomik/game_phases.chomik"
 include "../chomik/global_variables.chomik"
@@ -24,20 +25,25 @@ let location of Gwaigilion = value place Krakow;
 let location of Gerrudir = value place Krakow;
 
 let current person = value person Gotrek;
-let game phase=value game_phase_type answering phase;
+let game phase=value game_phase_type asking phase;
 
 <update the persons>;
 <update the places>;
 
-<generate Gotrek possible decisions>;
+<print <person Gotrek action attackGotrek is correct>>;
 
-<print "****************************************************">;
+variable on false return 0 else 1 (X:boolean):code;
+let on false return 0 else 1 false=value code
+{
+    let the program return = value integer 0;    
+};
+let on false return 0 else 1 true=value code
+{
+    let the program return = value integer 1;    
+};
 
-<print <Gotrek possible decision (X:possible_decisions_range)>>;
 
-<print "****************************************************">;
+<on false return 0 else 1 <person Gotrek action attackGotrek is correct>>;
 
-<print <Gotrek action text <Gotrek possible decision (X:possible_decisions_range)>>>;
- 
- 
- 
+
+

@@ -1,0 +1,337 @@
+#!/usr/local/bin/chomik
+
+#
+# This script generates 
+#
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/global_variables.chomik"
+include "../chomik/global_streams.chomik"
+include "../generated/list_of_actions.chomik"
+
+
+variable on it is found but the current guest is equal the current person (X:compare_result_type):code;
+let variable on it is found but the current guest is equal the current person lower = value code {};
+let variable on it is found but the current guest is equal the current person greater = value code {};
+let variable on it is found but the current guest is equal the current person equal = value code
+{
+    let the result of check whether current person possible decision is correct=value boolean false;
+};
+
+variable on it is propose current guest to exchange weapons (X:compare_result_type):code;
+let on it is propose current guest to exchange weapons lower = value code {};
+let on it is propose current guest to exchange weapons greater = value code {};
+let on it is propose current guest to exchange weapons equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+
+variable on it is ask current guest what is someone function (X:compare_result_type):code;
+let on it is ask current guest what is someone function lower = value code {};
+let on it is ask current guest what is someone function greater = value code {};
+let on it is ask current guest what is someone function equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+
+
+variable on it is ask current guest what is someone weapon (X:compare_result_type):code;
+let on it is ask current guest what is someone weapon lower = value code {};
+let on it is ask current guest what is someone weapon greater = value code {};
+let on it is ask current guest what is someone weapon equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+
+variable on it is ask current guest whether someone is a liar (X:compare_result_type):code;
+let on it is ask current guest whether someone is a liar lower = value code {};
+let on it is ask current guest whether someone is a liar greater = value code {};
+let on it is ask current guest whether someone is a liar equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+
+
+variable on it is answer current guest whether someone is a liar (ANSWER:boolean) (X:compare_result_type):code;
+let on it is answer current guest whether someone is a liar false lower = value code {};
+let on it is answer current guest whether someone is a liar false greater = value code {};
+let on it is answer current guest whether someone is a liar false equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;            
+};
+
+let on it is answer current guest whether someone is a liar true lower = value code {};
+let on it is answer current guest whether someone is a liar true greater = value code {};
+let on it is answer current guest whether someone is a liar true equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;        
+};
+
+
+variable on it is accept current guest proposal to exchange weapons (X:compare_result_type):code;
+let on it is accept current guest proposal to exchange weapons lower = value code {};
+let on it is accept current guest proposal to exchange weapons greater = value code {};
+let on it is accept current guest proposal to exchange weapons equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;    
+};
+
+
+variable on it is answer current guest that current guest 2 weapon is current weapon is current answer (X:compare_result_type):code;
+let on it is answer current guest that current guest 2 weapon is current weapon is current answer lower = value code {};
+let on it is answer current guest that current guest 2 weapon is current weapon is current answer greater = value code {};
+let on it is answer current guest that current guest 2 weapon is current weapon is current answer equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;    
+};
+
+variable on it is answer current guest that current guest 2 function is current function is current answer (X:compare_result_type):code;
+let on it is answer current guest that current guest 2 function is current function is current answer lower = value code {};
+let on it is answer current guest that current guest 2 function is current function is current answer greater = value code {};
+let on it is answer current guest that current guest 2 function is current function is current answer equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;    
+};
+
+variable on it is refuse current guest to reveal current guest 2 function (X:compare_result_type):code;
+let on it is refuse current guest to reveal current guest 2 function lower = value code {};
+let on it is refuse current guest to reveal current guest 2 function greater = value code {};
+let on it is refuse current guest to reveal current guest 2 function equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;    
+};
+
+
+variable on it is refuse current guest to reveal current guest 2 weapon (X:compare_result_type):code;
+let on it is refuse current guest to reveal current guest 2 weapon lower = value code {};
+let on it is refuse current guest to reveal current guest 2 weapon greater = value code {};
+let on it is refuse current guest to reveal current guest 2 weapon equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;    
+};
+
+variable on it is attack current guest (X:compare_result_type):code;
+let on it is attack current guest lower = value code {};
+let on it is attack current guest greater = value code {};
+let on it is attack current guest equal = value code 
+{
+    # it makes no sense if current person equals current guest
+    <compare "person" <current person> <current guest>>; 
+    <on it is found but the current guest is equal the current person <the compare result>>;    
+};
+
+
+
+variable check whether current possible decision is propose (P:person) to exchange weapons:code;
+let check whether current possible decision is propose (P:person) to exchange weapons=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current action pattern=value action propose <current guest> to exchange weapons;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on it is propose current guest to exchange weapons <the compare result>>;
+};
+
+variable check whether current possible decision is ask (P:person) what is (P2:person) function:code;
+let check whether current possible decision is ask (P:person) what is (P2:person) function=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current guest 2=value person [(P2:person)];
+    
+    let current action pattern=value action ask <current guest> what is <current guest 2> function;
+    <compare "action" <current possible decision> <current action pattern>>;
+        
+    <on it is ask current guest what is someone function <the compare result>>;
+};
+
+variable check whether current possible decision is ask (P:person) what is (P2:person) weapon:code;
+let check whether current possible decision is ask (P:person) what is (P2:person) weapon=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current guest 2=value person [(P2:person)];
+    
+    let current action pattern=value action ask <current guest> what is <current guest 2> weapon;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on it is ask current guest what is someone weapon <the compare result>>;
+};
+
+variable check whether current possible decision is ask (P:person) whether (P2:person) is a liar:code;
+let check whether current possible decision is ask (P:person) whether (P2:person) is a liar=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current guest 2=value person [(P2:person)];        
+    
+    let current action pattern=value action ask <current guest> whether <current guest 2> is a liar;
+    
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on it is ask current guest whether someone is a liar <the compare result>>;    
+};
+
+
+variable check whether current possible decision is answer (P:person) whether (P2:person) is a liar (ANSWER:boolean):code;
+let check whether current possible decision is answer (P:person) whether (P2:person) is a liar (ANSWER:boolean)=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current answer=value boolean [(ANSWER:boolean)];    
+    let current guest 2=value person [(P2:person)];
+    
+    let current action pattern=value action answer <current guest> whether <current guest 2> is a liar <current answer>;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on it is answer current guest whether someone is a liar <current answer> <the compare result>>;
+};
+
+
+
+variable check whether current possible decision is accept (P:person) proposal to exchange weapons:code;
+let check whether current possible decision is accept (P:person) proposal to exchange weapons=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current action pattern=value action accept <current guest> proposal to exchange weapons;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on it is accept current guest proposal to exchange weapons <the compare result>>;
+};
+
+
+variable check whether current possible decision is answer (P:person) that (P2:person) weapon is (W:weapon) is (ANSWER:boolean):code;
+
+let check whether current possible decision is answer (P:person) that (P2:person) weapon is (W:weapon) is (ANSWER:boolean)=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current guest 2= value person [(P2:person)];
+    let current weapon = value weapon [(W:weapon)];
+    let current answer = value boolean [(ANSWER:boolean)];
+    
+    let current action pattern=value action answer <current guest> that <current guest 2> weapon is <current weapon> is <current answer>;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on it is answer current guest that current guest 2 weapon is current weapon is current answer <the compare result>>;
+};
+
+variable check whether current possible decision is answer (P:person) that (P2:person) function is (F:function) is (ANSWER:boolean):code;
+
+let check whether current possible decision is answer (P:person) that (P2:person) function is (F:function) is (ANSWER:boolean)=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current guest 2= value person [(P2:person)];
+    let current function = value function [(F:function)];
+    let current answer = value boolean [(ANSWER:boolean)];
+    
+    let current action pattern=value action answer <current guest> that <current guest 2> function is <current function> is <current answer>;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on it is answer current guest that current guest 2 function is current function is current answer <the compare result>>;
+};
+
+
+variable check whether current possible decision is refuse (P:person) to reveal (P2:person) function:code;
+let check whether current possible decision is refuse (P:person) to reveal (P2:person) function=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current guest 2= value person [(P2:person)];
+    
+    let current action pattern=value action refuse <current guest> to reveal <current guest 2> function;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on it is refuse current guest to reveal current guest 2 function <the compare result>>;    
+};
+
+
+variable check whether current possible decision is refuse (P:person) to reveal (P2:person) weapon:code;
+let check whether current possible decision is refuse (P:person) to reveal (P2:person) weapon=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current guest 2= value person [(P2:person)];
+    
+    let current action pattern=value action refuse <current guest> to reveal <current guest 2> weapon;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on it is refuse current guest to reveal current guest 2 weapon <the compare result>>;    
+};
+
+variable check whether current possible decision is attack (P:person):code;
+let check whether current possible decision is attack (P:person)=value code
+{
+    let current guest=value person [(P:person)];   # the person we try to talk to
+    let current action pattern=value action attack <current guest>;
+    <compare "action" <current possible decision> <current action pattern>>;
+    <on it is attack current guest <the compare result>>;    
+};
+
+
+
+
+variable for person (A:person) action (B:action) is correct:boolean;
+let for person (A:person) action (B:action) is correct = value boolean true;
+
+let check whether (X:person) possible decision (Y:action) is correct=value code
+{
+    let current person = value person [(X:person)];
+    let current possible decision = value action [(Y:action)];
+    
+    let the result of check whether current person possible decision is correct=value boolean true;    
+    
+    
+    # one cannot attack himself
+    <check whether current possible decision is attack (P:person)>;
+    
+    # one cannot propose to exchange weapons to himself
+    <check whether current possible decision is propose (P:person) to exchange weapons>;
+    
+    # one cannot ask himself what his function is
+    <check whether current possible decision is ask (P:person) what is (P2:person) function>;
+    
+    # one cannot ask himself what his weapon is
+    <check whether current possible decision is ask (P:person) what is (P2:person) weapon>;
+    
+    # it makes no sense to ask oneself whether he is a liar
+    <check whether current possible decision is ask (P:person) whether (P2:person) is a liar>;
+    
+    # sometimes it makes no sense to answer oneself whether someone is a liar
+    <check whether current possible decision is answer (P:person) whether (P2:person) is a liar (ANSWER:boolean)>;
+    
+    # one cannot accept his own proposal to exchange weapons
+    <check whether current possible decision is accept (P:person) proposal to exchange weapons>;
+    
+    <check whether current possible decision is answer (P:person) that (P2:person) weapon is (W:weapon) is (ANSWER:boolean)>;
+    <check whether current possible decision is answer (P:person) that (P2:person) function is (F:function) is (ANSWER:boolean)>;
+    <check whether current possible decision is refuse (P:person) to reveal (P2:person) function>;
+    <check whether current possible decision is refuse (P:person) to reveal (P2:person) weapon>;
+    
+    
+    let for person <current person> action <current possible decision> is correct = <the result of check whether current person possible decision is correct>;    
+};
+
+
+
+<check whether (X:person) possible decision (Y:action) is correct>;
+
+
+
+<create new output filestream "../generated/list_of_correctness_info.chomik">;
+let my list of correctness info stream index = <the created stream index>;
+
+let the print target stream index = <my list of correctness info stream index>;
+let the print separator = value string "";
+
+<print "#!/usr/local/bin/chomik">;
+<print "# This code has been generated, do not modify it, please">;
+<print "let person " (A:person) " action " (B:action) " is correct = value boolean " <for person (A:person) action (B:action) is correct > ";">;
+
+

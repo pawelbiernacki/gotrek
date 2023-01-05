@@ -12,6 +12,7 @@ include "../chomik/places.chomik"
 # please do not modify the generated code manually!
 include "../generated/list_of_actions.chomik"
 include "../generated/list_of_informations.chomik"
+include "../generated/list_of_correctness_info.chomik"
 
 <initialize the persons>;
 <initialize the places>;
