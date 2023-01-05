@@ -1,0 +1,11 @@
+Chomik
+    filter remove_matches ^\s*#
+    filter remove_inline #.*$
+    extension chomik
+    3rd_gen_scale 3.81	
+SDL_Chomik
+    filter remove_matches ^\s*#
+    filter remove_inline #.*$
+    extension sdl_chomik
+    3rd_gen_scale 3.81
+

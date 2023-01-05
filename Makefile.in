@@ -732,6 +732,9 @@ uninstall-am:
 size:
 	@find . -name "*.*chomik" -exec cat {} \; | wc
 
+cloc:
+	@cloc -read-lang-def=lang.txt .
+
 generated-code-1:
 	@cd generators && $(MAKE) generated-code-1
 
