@@ -412,7 +412,9 @@ TESTS = check_whether_we_can_fail.chomik \
 	check_skipping_Gotrek_decisions.chomik \
 	check_skipping_Gotrek_decisions2.chomik \
 	check_the_game_initialization.chomik \
-	check_whether_Gotrek_can_attack_Gotrek.chomik
+	check_whether_Gotrek_can_attack_Gotrek.chomik \
+	check_whether_Pregor_helps_Gotrek_against_Gerrudir_1.chomik \
+	check_whether_Pregor_helps_Gotrek_against_Gerrudir_2.chomik
 
 XFAIL_TESTS = check_whether_we_can_fail.chomik	\
 	check_the_game_initialization.chomik
@@ -734,6 +736,20 @@ check_the_game_initialization.chomik.log: check_the_game_initialization.chomik
 check_whether_Gotrek_can_attack_Gotrek.chomik.log: check_whether_Gotrek_can_attack_Gotrek.chomik
 	@p='check_whether_Gotrek_can_attack_Gotrek.chomik'; \
 	b='check_whether_Gotrek_can_attack_Gotrek.chomik'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+check_whether_Pregor_helps_Gotrek_against_Gerrudir_1.chomik.log: check_whether_Pregor_helps_Gotrek_against_Gerrudir_1.chomik
+	@p='check_whether_Pregor_helps_Gotrek_against_Gerrudir_1.chomik'; \
+	b='check_whether_Pregor_helps_Gotrek_against_Gerrudir_1.chomik'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+check_whether_Pregor_helps_Gotrek_against_Gerrudir_2.chomik.log: check_whether_Pregor_helps_Gotrek_against_Gerrudir_2.chomik
+	@p='check_whether_Pregor_helps_Gotrek_against_Gerrudir_2.chomik'; \
+	b='check_whether_Pregor_helps_Gotrek_against_Gerrudir_2.chomik'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

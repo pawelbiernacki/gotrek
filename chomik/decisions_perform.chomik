@@ -78,12 +78,97 @@ include "../chomik/notify_gotrek.chomik"
 include "../chomik/resolve_the_events.chomik"
 
 
+
+
+variable help the person:code;
+let help the person = value code
+{
+    <add "integer" <efficiency of helpers> <strength of <current person who can help>>>;
+    let efficiency of helpers = <the add result "integer">;
+    <print <current person who can help> "is helping" <current person who is being helped>>;
+};
+
+
+variable increase the efficiency of helpers 
+        (HELPER_IS_DIFFERENT_THAN_HELPED:compare_result) 
+        (HELPER_IS_DIFFERENT_THAN_ENEMY:compare_result) 
+        (HELPER_CAN_SEE_THE_HELPED:boolean)
+        (HELPER_HAS_THE_SAME_FUNCTION_AS_THE_HELPED:compare_result):code;
+        
+let increase the efficiency of helpers (HELPER_IS_DIFFERENT_THAN_HELPED:compare_result) 
+        (HELPER_IS_DIFFERENT_THAN_ENEMY:compare_result) 
+        (HELPER_CAN_SEE_THE_HELPED:boolean)
+        (HELPER_HAS_THE_SAME_FUNCTION_AS_THE_HELPED:compare_result) = value code {};        
+        
+let increase the efficiency of helpers lower greater true equal = value code { <help the person>; };
+let increase the efficiency of helpers greater greater true equal = value code { <help the person>; };
+let increase the efficiency of helpers lower lower true equal = value code { <help the person>; };
+let increase the efficiency of helpers greater lower true equal = value code { <help the person>; };
+
+
+
+
+
+
+variable help the person from (H:person):code;
+let help the person from (H:person)=value code
+{
+    let current person who can help = value person [(H:person)];
+    
+    # check that the helper is different from the person being helped
+    <compare "person" <current person who is being helped> <current person who can help>>;            
+    let information whether the helper is not the person being helped = <the compare result>;    
+    
+    # check that the helper is different from the person we are helping against
+    <compare "person" <current person against whom we help> <current person who can help>>;
+    let information whether the helper is not the person against whom we help = <the compare result>;
+    
+    # check that the helper can see the person being helped
+    let information whether the helper can see the person being helped = <<current person who can help> can see <current person who is being helped>>;    
+    
+    # check that the function of the helper is the same as the function of the person being helped
+    <compare "function" <function of <current person who is being helped>> <function of <current person who can help>>>;    
+    let information whether the helper has the same function as the person being helped = <the compare result>;
+        
+        
+    <print "for" <current person who is being helped> "and" <current person against whom we help> 
+        "and helper" <current person who can help> "the informations are:"
+        <information whether the helper is not the person being helped> " "
+        <information whether the helper is not the person against whom we help> " "
+        <information whether the helper can see the person being helped> " "
+        <information whether the helper has the same function as the person being helped> >;
+        
+    <increase the efficiency of helpers 
+        <information whether the helper is not the person being helped> 
+        <information whether the helper is not the person against whom we help>
+        <information whether the helper can see the person being helped> 
+        <information whether the helper has the same function as the person being helped>>;
+    
+};
+
+
+
+variable calculate the efficiency of the (P:person) helpers against (Q:person):code;
+let calculate the efficiency of the (P:person) helpers against (Q:person)=value code
+{
+    let current person who is being helped = value person [(P:person)];
+    let current person against whom we help = value person [(Q:person)];
+    
+    let efficiency of helpers = value integer 0;
+        
+    <help the person from (HELPER:person)>;
+};
+
+
+
 variable current person attacks current guest (X:compare_result):code;
 let variable current person attacks current guest lower = value code {};
 let variable current person attacks current guest greater = value code {};
 let variable current person attacks current guest equal = value code 
 {
-    execute <print <current person> "attacks" <current guest>>;
+    <print <current person> "attacks" <current guest>>;
+    
+    
     
     # calculate the efficiency of both fighters    
     
@@ -91,6 +176,7 @@ let variable current person attacks current guest equal = value code
     let the read from stream source stream index = <my efficiency bonus generator index>;
     <read from stream "integer">;            
     let current efficiency bonus = <the read from stream result "integer">;
+    let efficiency of helpers = value integer 0;
         
     <print <current person> "uses" <weapon of <current person>>>;
     
@@ -100,11 +186,18 @@ let variable current person attacks current guest equal = value code
             
     <add "integer" <strength of <current person>> <current efficiency bonus>>;
     let efficiency of <current person>=<the add result "integer">;
+    
+    <calculate the efficiency of the <current person> helpers against <current guest>>;    
+    <add "integer" <efficiency of <current person>> <efficiency of helpers>>;
+    let efficiency of <current person>=<the add result "integer">;
+    
+    
         
     
     # now current guest
     <read from stream "integer">; 
     let current efficiency bonus = <the read from stream result "integer">;
+    let efficiency of helpers = value integer 0;
         
     <print <current guest> "uses" <weapon of <current guest>>>;
     
@@ -113,6 +206,12 @@ let variable current person attacks current guest equal = value code
             
     <add "integer" <strength of <current guest>> <current efficiency bonus>>;
     let efficiency of <current guest>=<the add result "integer">;
+
+    <calculate the efficiency of the <current guest> helpers against <current person>>;    
+    <add "integer" <efficiency of <current guest>> <efficiency of helpers>>;
+    let efficiency of <current guest>=<the add result "integer">;
+    
+    
     
     # now compare the efficiencies of both fighters
     <compare "integer" <efficiency of <current person>> <efficiency of <current guest>>>;

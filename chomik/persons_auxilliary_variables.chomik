@@ -25,3 +25,13 @@ variable current action pattern:action,
         current weapon name:string,
         current boolean:boolean,
         current notification number:integer;
+
+variable efficiency of (P:person):integer, efficiency of helpers:integer;
+
+variable current person who is being helped:person, 
+            current person who can help:person, 
+            current person against whom we help:person,
+            information whether the helper is not the person being helped:compare_result,
+            information whether the helper is not the person against whom we help:compare_result,
+            information whether the helper has the same function as the person being helped:boolean,
+            information whether the helper can see the person being helped:boolean;
