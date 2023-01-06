@@ -10,7 +10,7 @@ let recalculate Gotrek points text=value code
     
     let the print target stream index = <my output stringstream index>;
     let the print end of line = value string "";
-    <print "You have " <points of Gotrek> "points" >;
+    <print "You have " <points of Gotrek> "gp" >;
         
     let the print target stream index = value integer 0; # standard output
     let the print end of line = value string "\n";
