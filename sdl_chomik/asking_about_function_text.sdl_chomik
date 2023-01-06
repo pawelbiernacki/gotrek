@@ -20,8 +20,8 @@ let make an asking about function text for current person 2=value code
     let the print target stream index = <my output stringstream index>;
     let the print end of line = value string "";
     <print <current person 2> 
-        "thinks that you have asked him:" <<current person 2> thinks that Gotrek has asked him what is his function> 
-        "/you think that he asked you:" <Gotrek thinks that <current person 2> has asked him what is his function>>;
+        "thinks that you have asked him:" <<current person 2> thinks that Gotrek has asked <current person 2> what is <current person 2> function> 
+        "/you think that he asked you:" <Gotrek thinks that <current person 2> has asked Gotrek what is Gotrek function>>;
         
     let the print target stream index = value integer 0; # standard output
     let the print end of line = value string "\n";

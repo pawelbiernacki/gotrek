@@ -4,8 +4,7 @@ variable reset the persons:code;
 
 let variable reset the persons=value code
 {
-    let variable decision of (X:person)=value action no_action;
-    
+    let variable decision of (X:person)=value action no_action;    
     execute <print (X:person) "decision is" <decision of (X:person)>>;    
 };
  

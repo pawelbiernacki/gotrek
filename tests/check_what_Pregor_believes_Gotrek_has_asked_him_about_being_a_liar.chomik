@@ -26,11 +26,11 @@ let current guest = value person Pregor;
 let current option number = value integer 1;
 
 # initially Pregor does not believe Gotrek asked him about being a liar
-let <current guest> thinks that <current person> has asked him whether he is a liar = value boolean false;
+let <current guest> thinks that <current person> has asked <current guest> whether <current guest> is a liar = value boolean false;
 
 <current person asks current guest whether he is a liar equal>;
 
-<print "Pregor believes Gotrek asked him about being a liar=" <<current guest> thinks that <current person> has asked him whether he is a liar>>;
+<print "Pregor believes Gotrek asked Pregor whether Gotrek a liar=" <<current guest> thinks that <current person> has asked <current guest> whether <current person> is a liar>>;
 
-<compare "boolean" <<current guest> thinks that <current person> has asked him whether he is a liar> true>;
+<compare "boolean" <<current guest> thinks that <current person> has asked <current guest> whether <current person> is a liar> true>;
 <fail if <the compare result>>;

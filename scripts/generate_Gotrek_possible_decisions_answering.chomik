@@ -29,6 +29,11 @@ let game phase=value game_phase_type answering phase;
 <update the persons>;
 <update the places>;
 
+let (X:person) thinks that (Y:person) has asked (X:person) whether (X:person) is a liar = value boolean true;
+let (X:person) thinks that (Y:person) has asked (X:person) what is (X:person) function = value boolean true;
+let (X:person) thinks that (Y:person) has asked (X:person) what is (X:person) weapon = value boolean true;
+
+
 <generate Gotrek possible decisions>;
 
 <print "****************************************************">;
@@ -38,6 +43,20 @@ let game phase=value game_phase_type answering phase;
 <print "****************************************************">;
 
 <print <Gotrek action text <Gotrek possible decision (X:possible_decisions_range)>>>;
- 
- 
- 
+
+
+
+variable check the Gotrek action text (X:possible_decisions_range):code;
+let check the Gotrek action text (X:possible_decisions_range)=value code
+{
+    let current possible decision index = value integer [(X:possible_decisions_range)];    
+    
+    let the get is defined result = value boolean true;    
+    <get is defined Gotrek action text <Gotrek possible decision <current possible decision index>>>;  
+    
+    <print "the result of get is defined=" <the get is defined result>>;        
+};
+
+<check the Gotrek action text (X:possible_decisions_range)>;
+
+

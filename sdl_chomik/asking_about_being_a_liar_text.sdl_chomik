@@ -21,8 +21,8 @@ let make an asking about being a liar text for current person 2=value code
     let the print target stream index = <my output stringstream index>;
     let the print end of line = value string "";
     <print <current person 2> 
-        "thinks that you have asked him:" <<current person 2> thinks that Gotrek has asked him whether he is a liar> 
-        "/you think that he asked you:" <Gotrek thinks that <current person> has asked him whether he is a liar>>;
+        "thinks that you have asked him:" <<current person 2> thinks that Gotrek has asked <current person 2> whether <current person 2> is a liar> 
+        "/you think that he asked you:" <Gotrek thinks that <current person 2> has asked Gotrek whether <current person 2> is a liar>>;
         
     let the print target stream index = value integer 0; # standard output
     let the print end of line = value string "\n";

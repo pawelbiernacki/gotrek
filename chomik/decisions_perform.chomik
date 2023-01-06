@@ -2,22 +2,22 @@
 
 
 variable current person goto current place (X:compare_result):code;
-let variable current person goto current place lower=value code {};
-let variable current person goto current place greater=value code {};
-let variable current person goto current place equal=value code 
+let current person goto current place lower=value code {};
+let current person goto current place greater=value code {};
+let current person goto current place equal=value code 
 {
-    let variable location of <current person>=<current place>;
+    let location of <current person>=<current place>;
     
-    execute <print <current person> "has moved to" <location of <current person>>>;
+    <print <current person> "has moved to" <location of <current person>>>;
     
-    let variable decision of <current person>=value action no_action;    
+    let decision of <current person>=value action no_action;    
 };
 
 
 variable current person tells current guest that current information (X:compare_result):code;
-let variable current person tells current guest that current information lower = value code {};
-let variable current person tells current guest that current information greater = value code {};
-let variable current person tells current guest that current information equal = value code 
+let current person tells current guest that current information lower = value code {};
+let current person tells current guest that current information greater = value code {};
+let current person tells current guest that current information equal = value code 
 {
     <print <current person> "tells" <current guest> "that" <current information>>;
     
@@ -26,9 +26,9 @@ let variable current person tells current guest that current information equal =
 
 
 variable current person asks current guest to current action (X:compare_result):code;
-let variable current person asks current guest to current action lower = value code {};
-let variable current person asks current guest to current action greater = value code {};
-let variable current person asks current guest to current action equal = value code 
+let current person asks current guest to current action lower = value code {};
+let current person asks current guest to current action greater = value code {};
+let current person asks current guest to current action equal = value code 
 {
     execute <print <current person> "asks" <current guest> "to" <current action>>;
     
@@ -36,41 +36,41 @@ let variable current person asks current guest to current action equal = value c
 };
 
 
-variable current person asks current guest what is his function (X:compare_result):code;
-let variable current person asks current guest what is his function lower = value code {};
-let variable current person asks current guest what is his function greater = value code {};
-let variable current person asks current guest what is his function equal = value code 
+variable current person asks current guest what is current guest 2 function (X:compare_result):code;
+let current person asks current guest what is current guest 2 function lower = value code {};
+let current person asks current guest what is current guest 2 function greater = value code {};
+let current person asks current guest what is current guest 2 function equal = value code 
 {
-    execute <print <current person> "asks" <current guest> "what is his function">;
+    <print <current person> "asks" <current guest> "what is" <current guest 2> "function">;
     
-    let <current guest> thinks that <current person> has asked him what is his function=value boolean true;
+    let <current guest> thinks that <current person> has asked <current guest> what is <current guest 2> function=value boolean true;
     
     let variable decision of <current person>=value action no_action;
 };
 
 
-variable current person asks current guest what is his weapon (X:compare_result):code;
-let variable current person asks current guest what is his weapon lower = value code {};
-let variable current person asks current guest what is his weapon greater = value code {};
-let variable current person asks current guest what is his weapon equal = value code 
+variable current person asks current guest what is current guest 2 weapon (X:compare_result):code;
+let current person asks current guest what is current guest 2 weapon lower = value code {};
+let current person asks current guest what is current guest 2 weapon greater = value code {};
+let current person asks current guest what is current guest 2 weapon equal = value code 
 {
-    execute <print <current person> "asks" <current guest> "what is his weapon">;
+    <print <current person> "asks" <current guest> "what is his weapon">;
     
-    let <current guest> thinks that <current person> has asked him what is his weapon=value boolean true;
+    let <current guest> thinks that <current person> has asked <current guest> what is <current guest 2> weapon=value boolean true;
     
-    let variable decision of <current person>=value action no_action;
+    let decision of <current person>=value action no_action;
 };
 
-variable current person asks current guest whether he is a liar (X:compare_result):code;
-let variable current person asks current guest whether he is a liar lower = value code {};
-let variable current person asks current guest whether he is a liar greater = value code {};
-let variable current person asks current guest whether he is a liar equal = value code 
+
+variable current person asks current guest whether current guest 2 is a liar (X:compare_result):code;
+let variable current person asks current guest whether current guest 2 is a liar lower = value code {};
+let variable current person asks current guest whether current guest 2 is a liar greater = value code {};
+let variable current person asks current guest whether current guest 2 is a liar equal = value code 
 {
-    execute <print <current person> "asks" <current guest> "whether he is a liar">;
+    execute <print <current person> "asks" <current guest> "whether" <current guest 2> "is a liar">;
     
-    let <current guest> thinks that <current person> has asked him whether he is a liar = value boolean true;
-    
-    
+    let <current guest> thinks that <current person> has asked <current guest> whether <current guest 2> is a liar = value boolean true;
+        
     let variable decision of <current person>=value action no_action;
 };
 
@@ -242,14 +242,13 @@ let current person accepts current guest proposal to exchange weapons greater = 
 let current person accepts current guest proposal to exchange weapons equal = value code 
 {
     <print <current person> "(" <weapon of <current person>> ") accepts" <current guest> "(" <weapon of <current guest>> ") proposal to exchange weapons">;
-    
-    
+        
     # here we exchange the weapons
     let current weapon=<weapon of <current person>>;
     let weapon of <current person>=<weapon of <current guest>>;
     let weapon of <current guest>=<current weapon>;
 
-    let variable <current person> thinks that <current guest> has proposed him to exchange weapons=value boolean false;    
+    let variable <current person> thinks that <current guest> has proposed <current person> to exchange weapons=value boolean false;    
     
     <print <current person> "exchanges weapons with" <current guest>>;
     
@@ -305,37 +304,40 @@ let perform current person decision ask (A:person) to (B:action)=value code
     <current person asks current guest to current action <the compare result>>;    
 };
 
-variable perform current person decision ask (A:person) what is his function:code;
-let perform current person decision ask (A:person) what is his function=value code
+variable perform current person decision ask (A:person) what is (B:person) function:code;
+let perform current person decision ask (A:person) what is (B:person) function=value code
 {
     let current decision = <decision of <current person>>;
     let current guest = value person [(A:person)];
-    let current action pattern = value action ask <current guest> what is his function;
+    let current guest 2 = value person [(B:person)];
+    let current action pattern = value action ask <current guest> what is <current guest 2> function;
     
     <compare "action" <current decision> <current action pattern>>;
-    <current person asks current guest what is his function <the compare result>>;    
+    <current person asks current guest what is current guest 2 function <the compare result>>;    
 };
 
-variable perform current person decision ask (A:person) what is his weapon:code;
-let perform current person decision ask (A:person) what is his weapon=value code
+variable perform current person decision ask (A:person) what is (B:person) weapon:code;
+let perform current person decision ask (A:person) what is (B:person) weapon=value code
 {
     let current decision = <decision of <current person>>;
     let current guest = value person [(A:person)];
-    let current action pattern = value action ask <current guest> what is his weapon;
+    let current guest 2 = value person [(B:person)];    
+    let current action pattern = value action ask <current guest> what is <current guest 2> weapon;
     
     <compare "action" <current decision> <current action pattern>>;
-    <current person asks current guest what is his weapon <the compare result>>;    
+    <current person asks current guest what is current guest 2 weapon <the compare result>>;    
 };
 
-variable perform current person decision ask (A:person) whether he is a liar:code;
-let perform current person decision ask (A:person) whether he is a liar=value code
+variable perform current person decision ask (A:person) whether (B:person) is a liar:code;
+let perform current person decision ask (A:person) whether (B:person) is a liar=value code
 {
     let current decision = <decision of <current person>>;
     let current guest = value person [(A:person)];
-    let current action pattern = value action ask <current guest> whether he is a liar;
+    let current guest 2 = value person [(B:person)];    
+    let current action pattern = value action ask <current guest> whether <current guest 2> is a liar;
     
     <compare "action" <current decision> <current action pattern>>;
-    <current person asks current guest whether he is a liar <the compare result>>;    
+    <current person asks current guest whether current guest 2 is a liar <the compare result>>;    
 };
 
 
@@ -377,19 +379,20 @@ let perform current person decision accept (A:person) proposal to exchange weapo
     <current person accepts current guest proposal to exchange weapons <the compare result>>;        
 };
 
-variable perform current person decision answer (A:person) whether I am a liar (ANSWER:boolean):code;
-let perform current person decision answer (A:person) whether I am a liar (ANSWER:boolean)=value code
+variable perform current person decision answer (A:person) whether (B:person) is a liar (ANSWER:boolean):code;
+let perform current person decision answer (A:person) whether (B:person) is a liar (ANSWER:boolean)=value code
 {
     let current decision = <decision of <current person>>;
     let current guest = value person [(A:person)];
+    let current guest 2 = value person [(B:person)];
     let current answer = value boolean [(ANSWER:boolean)];    
-    let current action pattern = value action answer <current guest> whether I am a liar <current answer>;
+    let current action pattern = value action answer <current guest> whether <current guest 2> is a liar <current answer>;
     
     <for each person <current person> make an asking about being a liar text>;
     <for each person <current guest> make an asking about being a liar text>;    
         
     <compare "action" <current decision> <current action pattern>>;
-    <current person answers current guest whether he is a liar <the compare result>>;
+    <current person answers current guest whether current guest 2 is a liar <the compare result>>;
 };
 
 variable perform decision for (X:person):code;
@@ -401,10 +404,10 @@ let variable perform decision for (X:person)=value code
     <perform current person decision goto (A:place)>;
     <perform current person decision tell (A:person) that (B:information)>;
     <perform current person decision ask (A:person) to (B:action)>;
-    <perform current person decision ask (A:person) what is his function>;
-    <perform current person decision ask (A:person) what is his weapon>;
-    <perform current person decision ask (A:person) whether he is a liar>;
-    <perform current person decision answer (A:person) whether I am a liar (ANSWER:boolean)>;
+    <perform current person decision ask (A:person) what is (B:person) function>;
+    <perform current person decision ask (A:person) what is (B:person) weapon>;
+    <perform current person decision ask (A:person) whether (B:person) is a liar>;
+    <perform current person decision answer (A:person) whether (B:person) is a liar (ANSWER:boolean)>;
     <perform current person decision attack (A:person)>;
     
     

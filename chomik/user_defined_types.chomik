@@ -77,6 +77,7 @@ type action_class={ actions that do not depend on anything,
 # Once we identified the random person present we can use this "subclass" to generate the actual actions.
 # The term "subclass" has nothing to do with the "class" from the OOP. Instead, these enums identify
 # certain subsets of the action set.
+# Note that for example "actions attack person" belongs simultaneusly to multiple subclasses.
 
 type action_depending_on_person_proposals_subclass={  
                                             actions ask person to action,
@@ -93,8 +94,8 @@ type action_depending_on_person_proposals_subclass={
                                             actions answer person what is someone function,
                                             actions accept person proposal to do action,
                                             actions refuse person proposal to do action,
-                                            actions refuse person question to reveal my weapon,
-                                            actions refuse person question to reveal my function,
+                                            actions refuse person question to reveal someone weapon,
+                                            actions refuse person question to reveal someone function,
                                             actions accept person proposal to exchange weapons,
                                             actions attack person,
                                             actions tell person that information

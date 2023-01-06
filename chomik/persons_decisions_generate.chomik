@@ -1,7 +1,7 @@
 #!/usr/local/bin/chomik
 
 #
-# Here we generate all possible decisions for each person.
+# Here we generate possible decisions for each person.
 # They are generated randomly (for all of them) depending on the game phase.
 # Then they are checked for sanity.
 # We do not simply take randomly an action, instead we check whether it makes sense to perform it depending on the game phase.
@@ -32,7 +32,7 @@ let variable generate possible decisions for the current person and action class
     
     <print "selected subclass" <the read from stream result "action_depending_on_person_proposals_subclass">>;
     
-    <generate possible decisions for the current person and actions subclass for proposals <the read from stream result "action_depending_on_person_proposals_subclass">>;
+    <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_proposals_subclass">>;
     
     let the print end of line=value string "\n";    
     <print "selected action for" <current person> "index" <current possible decision index> "is" <<current person> possible decision <current possible decision index>>>;
@@ -40,30 +40,30 @@ let variable generate possible decisions for the current person and action class
 };
 
 
-let variable generate possible decisions for the current person and action class actions that depend on a person answers=value code
+let generate possible decisions for the current person and action class actions that depend on a person answers=value code
 {
-    let variable <current person> possible decision <current possible decision index> = value action no_action;
-    execute <print "find all present persons">;
+    let <current person> possible decision <current possible decision index> = value action no_action;
+    <print "find all present persons">;
     
-    let variable (X:person) is seen by the current person=<<current person> can see (X:person)>;    
+    let (X:person) is seen by the current person=<<current person> can see (X:person)>;    
 
-    execute <print <current person> "can see" (X:person) "=" <(X:person) is seen by the current person>>;
+    <print <current person> "can see" (X:person) "=" <(X:person) is seen by the current person>>;
     
     # begin from a randomly chosen person
-    let variable the read from stream source stream index = <my person generator index>;
-    execute <read from stream "person">;
-    let variable current guest = <the read from stream result "person">;    
-    execute <iterate through all the persons until you find a seen one (ITERATION:persons_range)>;
+    let the read from stream source stream index = <my person generator index>;
+    <read from stream "person">;
+    let current guest = <the read from stream result "person">;    
+    <iterate through all the persons until you find a seen one (ITERATION:persons_range)>;
     
     
     # choose randomly action_depending_on_person_answers_subclass
-    let variable the read from stream source stream index = <my action_depending_on_person_answers_subclass generator index>;
-    execute <read from stream "action_depending_on_person_answers_subclass">;
+    let the read from stream source stream index = <my action_depending_on_person_answers_subclass generator index>;
+    <read from stream "action_depending_on_person_answers_subclass">;
     
     let the print end of line=value string "\n";    
-    execute <print "selected subclass" <the read from stream result "action_depending_on_person_answers_subclass">>;
+    <print "selected subclass" <the read from stream result "action_depending_on_person_answers_subclass">>;
     
-    <generate possible decisions for the current person and actions subclass for answers <the read from stream result "action_depending_on_person_answers_subclass">>;
+    <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_answers_subclass">>;
     
     
     let the print end of line=value string "\n";    
@@ -97,7 +97,7 @@ let variable generate possible decisions for the current person and action class
     let the print end of line=value string "\n";
     execute <print "selected subclass" <the read from stream result "action_depending_on_person_others_subclass">>;
     
-    execute <generate possible decisions for the current person and actions subclass for others <the read from stream result "action_depending_on_person_others_subclass">>;
+    execute <generate possible decisions for the current person and actions subclass <the read from stream result "action_depending_on_person_others_subclass">>;
     
     
     let the print end of line=value string "\n";    

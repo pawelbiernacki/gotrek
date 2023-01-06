@@ -23,14 +23,16 @@ let location of Gotrek = value place Krakow;
 let location of Pregor = value place Krakow;
 let current person = value person Gotrek;
 let current guest = value person Pregor;
+let current guest 2 = value person Pregor;
+
 let current option number = value integer 1;
 
 # initially Pregor does not believe Gotrek asked him about his weapon
-let <current guest> thinks that <current person> has asked him what is his weapon = value boolean false;
+let <current guest> thinks that <current person> has asked <current guest> what is <current guest 2> weapon = value boolean false;
 
-<current person asks current guest what is his weapon equal>;
+<current person asks current guest what is current guest 2 weapon equal>;
 
-<print "Pregor believes Gotrek asked him what is his weapon=" <<current guest> thinks that <current person> has asked him what is his weapon>>;
+<print "Pregor believes Gotrek asked him what is his weapon=" <<current guest> thinks that <current person> has asked <current guest> what is <current guest 2> weapon>>;
 
-<compare "boolean" <<current guest> thinks that <current person> has asked him what is his weapon> true>;
+<compare "boolean" <<current guest> thinks that <current person> has asked <current guest> what is <current guest 2> weapon> true>;
 <fail if <the compare result>>;

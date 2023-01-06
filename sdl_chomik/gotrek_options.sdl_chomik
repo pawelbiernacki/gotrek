@@ -122,6 +122,16 @@ let check if Gotrek is going to answer (A:person) whether (B:person) is a liar (
 };
 
 
+variable assign possible choice option for the current option number of Gotrek (A:boolean):code;
+let assign possible choice option for the current option number of Gotrek false = value code
+{
+    let possible choice option number <current option number> of Gotrek = value string "error";
+};
+let assign possible choice option for the current option number of Gotrek true = value code
+{
+    let possible choice option number <current option number> of Gotrek = <Gotrek action text <current possible decision>>;
+};
+
 
 variable recalculate Gotrek choice option number (X:possible_decisions_range):code;
 let recalculate Gotrek choice option number (X:possible_decisions_range)=value code
@@ -132,10 +142,15 @@ let recalculate Gotrek choice option number (X:possible_decisions_range)=value c
     let the print end of line = value string "\n";
     <print "check how to translate Gotrek's decision" <current possible decision> "into text.">;    
     
+    let the get is defined result = value boolean true;
+    <get is defined Gotrek action text <current possible decision>>; # this is a new "get" predefined in chomik...
+                                                                    # it sets the boolean flag "the get is defined result" to false if Gotrek action text ... 
+                                                                    # is not in memory    
     
-    let variable possible choice option number <current option number> of Gotrek = <Gotrek action text <current possible decision>>;
+        
+    <assign possible choice option for the current option number of Gotrek <the get is defined result>>;
     
-
+    
     
     # WARNING! - the codes invoked below are outcommented, we rely on the generated translations
     # parts of the runtime code can be removed

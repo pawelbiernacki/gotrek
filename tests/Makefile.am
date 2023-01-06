@@ -23,7 +23,8 @@ TESTS = check_whether_we_can_fail.chomik \
 	check_the_game_initialization.chomik \
 	check_whether_Gotrek_can_attack_Gotrek.chomik \
 	check_whether_Pregor_helps_Gotrek_against_Gerrudir_1.chomik \
-	check_whether_Pregor_helps_Gotrek_against_Gerrudir_2.chomik
+	check_whether_Pregor_helps_Gotrek_against_Gerrudir_2.chomik \
+	check_whether_the_weapon_exchange_works.chomik
 	
 
 XFAIL_TESTS = check_whether_we_can_fail.chomik	\

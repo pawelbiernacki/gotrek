@@ -1,22 +1,23 @@
 #!/usr/local/bin/chomik
 
 
-variable initialize the relationship (X:person) (Y:person):code;
+variable initialize the relationship (X:person) (Y:person) (Z:person):code;
 
-let variable initialize the relationship (X:person) (Y:person) = value code
+let initialize the relationship (X:person) (Y:person) (Z:person) = value code
 {
-    let variable current person = value person [(X:person)];
-    let variable current guest = value person [(Y:person)];
+    let current person = value person [(X:person)];
+    let current guest = value person [(Y:person)];
+    let current guest 2 = value person [(Z:person)];
 
-    let <current person> thinks that <current guest> has proposed him to exchange weapons=value boolean false;
-    let <current person> thinks that <current guest> has asked him whether he is a liar=value boolean false;
-    let <current person> thinks that <current guest> has asked him what is his function=value boolean false;
-    let <current person> thinks that <current guest> has asked him what is his weapon=value boolean false;
+    let <current person> thinks that <current guest> has proposed <current guest 2> to exchange weapons=value boolean false;
+    let <current person> thinks that <current guest> has asked <current person> whether <current guest 2> is a liar=value boolean false;
+    let <current person> thinks that <current guest> has asked <current person> what is <current guest 2> function=value boolean false;
+    let <current person> thinks that <current guest> has asked <current person> what is <current guest 2> weapon=value boolean false;
     
-    execute <compare "person" <current person> <current guest>>;
-    execute <everyone likes himself <current person> <the compare result>>;
+    <compare "person" <current person> <current guest>>;
+    <everyone likes himself <current person> <the compare result>>;
     
-    execute <print "relationship" <current person> <current guest>>;
-    execute <print <current person> "likes" <current guest> "=" <<current person> likes <current guest>>>;            
+    <print "relationship" <current person> <current guest>>;
+    <print <current person> "likes" <current guest> "=" <<current person> likes <current guest>>>;            
 };
  
