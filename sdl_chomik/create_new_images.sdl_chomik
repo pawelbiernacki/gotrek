@@ -43,9 +43,6 @@ let notifications window image index = <the created image index>;
 
 variable Gotrek animated image index (X:integer): integer;
 
-variable load Gotrek animation images first ten (X:integer):code;
-variable load Gotrek animation images other ten (X:integer):code;
-
 variable map Gotrek animated image index to image index (X:Gotrek_animation_range):integer;
 
 
@@ -61,39 +58,11 @@ let stop iteration if greater=value code
 };
 
 
-let load Gotrek animation images first ten (X:integer)=value code
+
+let load Gotrek animation images (X:integer)=value code
 {
     let image index = value integer [(X:integer)];
-        
-    <add "integer" <image index> 1>;
-    let image index = <the add result "integer">;
-
-    let the set to stream stream index=<my output stringstream index>;
-    <set to stream "">;
-    
-    let the print target stream index = <my output stringstream index>;
-    let the print end of line = value string "";
-    let the print separator = value string "";
-    <print "../image/000" <image index> ".png">;
-        
-    let the print target stream index = value integer 0; # standard output
-    let the print end of line = value string "\n";
-    let the print separator = value string " ";
-    
-    let the get from stream stream index = <my output stringstream index>;
-    <get from stream>;
-    
-    execute <create new image <the get from stream result>>;
-    let map Gotrek animated image index to image index <image index> = <the created image index>;
-        
-    <compare "integer" <image index> 9>;
-    <stop iteration if <the compare result>>;
-};
-
-
-let load Gotrek animation images other ten (X:integer)=value code
-{
-    let image index = value integer [(X:integer)];
+    let image number = <image index>;
         
     <add "integer" <image index> 10>;
     let image index = <the add result "integer">;
@@ -104,7 +73,7 @@ let load Gotrek animation images other ten (X:integer)=value code
     let the print target stream index = <my output stringstream index>;
     let the print end of line = value string "";
     let the print separator = value string "";
-    <print "../image/00" <image index> ".png">;
+    <print "../image/animation/gotrek/" <current weapon name> "/00" <image index> ".png">;
         
     let the print target stream index = value integer 0; # standard output
     let the print end of line = value string "\n";
@@ -113,17 +82,26 @@ let load Gotrek animation images other ten (X:integer)=value code
     let the get from stream stream index = <my output stringstream index>;
     <get from stream>;
     
-    execute <create new image <the get from stream result>>;
-    let map Gotrek animated image index to image index <image index> = <the created image index>;
+    <create new image <the get from stream result>>;
+    let map Gotrek animated image index to image index <current weapon> <image number> = <the created image index>;
         
-    <compare "integer" <image index> 20>;
+    <compare "integer" <image index> 50>;
     <stop iteration if <the compare result>>;
 };
 
-
-
-#<load Gotrek animation images first ten (X:integer)>;
-#let the break flag=value boolean false;
-
-#<load Gotrek animation images other ten (X:integer)>;
+let current weapon = value weapon axe;
+let current weapon name = value string "axe";
+<load Gotrek animation images (X:integer)>;
 let the break flag=value boolean false;
+
+let current weapon = value weapon hammer;
+let current weapon name = value string "hammer";
+<load Gotrek animation images (X:integer)>;
+let the break flag=value boolean false;
+
+let current weapon = value weapon sword;
+let current weapon name = value string "sword";
+<load Gotrek animation images (X:integer)>;
+let the break flag=value boolean false;
+
+

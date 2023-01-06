@@ -8,7 +8,7 @@
 type person={Gotrek, Gwaigilion, Gerrudir, Pregor};
 type place={Krakow, Warszawa, Wroclaw, Poznan, Gdansk};
 type function={no_function,Czesnik, Krajczy, Skarbnik, Starosta, Kasztelan};
-type weapon={no_weapon, sword, axe};
+type weapon={hammer, sword, axe};
 
 
 type information={  (X:person) is in (Y:place),                    
@@ -64,7 +64,7 @@ type game_mode_type={title, game},
         notification_texts_range=1..20,
         places_range=1..5,
         persons_range=1..4,
-        Gotrek_animation_range=1..10;
+        Gotrek_animation_range=0..40;
         
         
 type action_class={ actions that do not depend on anything, 
@@ -129,7 +129,7 @@ let not false=value boolean true;
 
 
 variable weapon bonus for (X:weapon):integer;
-let weapon bonus for no_weapon=value integer 0;
+let weapon bonus for hammer=value integer 3;
 let weapon bonus for axe=value integer 3;
 let weapon bonus for sword=value integer 4; # sword is a little better than axe
 

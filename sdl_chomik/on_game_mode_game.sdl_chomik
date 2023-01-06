@@ -25,7 +25,7 @@ let on game mode game = value code
     
     <show image <arrow image index> 10 <arrow coordinate>>;
     
-    #<show image <map Gotrek animated image index to image index <Gotrek animation frame index>> 90 140>;
+    <show image <map Gotrek animated image index to image index <weapon of Gotrek> <Gotrek animation frame index>> 650 200>;
 
     <show notifications>;    
         

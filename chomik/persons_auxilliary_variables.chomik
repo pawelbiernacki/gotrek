@@ -22,5 +22,6 @@ variable current action pattern:action,
         current information:information,
         current information complexity:integer,
         current weapon:weapon,
+        current weapon name:string,
         current boolean:boolean,
         current notification number:integer;

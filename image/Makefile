@@ -189,7 +189,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-EXTRA_DIST = *.png
+EXTRA_DIST = *.png animation/gotrek/sword/*.png animation/gotrek/axe/*.png animation/gotrek/hammer/*.png
 all: all-am
 
 .SUFFIXES:
