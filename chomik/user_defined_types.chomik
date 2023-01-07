@@ -188,3 +188,13 @@ let from the Gotrek point of view how to say what Gwaigilion function is=value s
 let from the Gotrek point of view how to say what Pregor function is=value string "what Pregor's function is";
 
 let from the Gotrek point of view how to say what Gotrek function is=value string "what my function is";
+
+# hardcoded - this should be done with the generators
+variable function text (F:function):string;
+let function text no_function = value string "";
+let function text Czesnik = value string "Czesnik";
+let function text Krajczy = value string "Krajczy";
+let function text Skarbnik = value string "Skarbnik";
+let function text Starosta = value string "Starosta";
+let function text Kasztelan = value string "Kasztelan";
+

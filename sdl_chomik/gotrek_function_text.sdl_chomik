@@ -2,6 +2,19 @@
 
 variable Gotrek function text:string;
 
+
+variable recalculate Gotrek function text depending on function (F:function):code;
+let recalculate Gotrek function text depending on function (F:function)=value code 
+{
+    <print "You are a" <function text <function of Gotrek>>>;
+};
+let recalculate Gotrek function text depending on function no_function=value code 
+{
+    <print "You have no function.">;
+};
+
+
+
 variable recalculate Gotrek function text:code;
 let recalculate Gotrek function text=value code
 {
@@ -10,7 +23,8 @@ let recalculate Gotrek function text=value code
     
     let the print target stream index = <my output stringstream index>;
     let the print end of line = value string "";
-    <print "You are a" <function of Gotrek>>;
+        
+    <recalculate Gotrek function text depending on function <function of Gotrek>>;
         
     let the print target stream index = value integer 0; # standard output
     let the print end of line = value string "\n";

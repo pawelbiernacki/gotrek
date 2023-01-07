@@ -31,9 +31,10 @@ let make a god mode text for current person=value code
 
     let the print target stream index = <my output stringstream index>;
     let the print end of line = value string "";
-    <print <current person> "is in" <location of <current person>> 
+    <print <function text <function of <current person>>> <current person> "is in" <location of <current person>> 
         ", can see him" <Gotrek can see <current person>> 
-        ", has" <points of <current person>> "gp">;
+        ", has" <points of <current person>> 
+        "gp, strength " <strength of <current person>>>;
         
     let the print target stream index = value integer 0; # standard output
     let the print end of line = value string "\n";
