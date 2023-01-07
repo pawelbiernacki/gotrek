@@ -1,6 +1,30 @@
 #!/usr/local/bin/chomik
 
 
+variable current person pays a bribe:code;
+let current person pays a bribe = value code
+{
+    let points of <current person> = value integer 0;
+    let variable the read from stream source stream index = <my function generator index>;
+    <read from stream "function">;
+    let variable function of <current person> = <the read from stream result "function">;    
+    <print "you payed a bribe and became" <function of <current person>>>;
+};
+
+
+variable if we moved to Warszawa and have more than 10 points then (A:compare_result) (B:compare_result):code;
+let if we moved to Warszawa and have more than 10 points then (A:compare_result) (B:compare_result) = value code {};
+
+let if we moved to Warszawa and have more than 10 points then equal equal = value code 
+{
+    <current person pays a bribe>;
+};
+let if we moved to Warszawa and have more than 10 points then equal greater = value code 
+{
+    <current person pays a bribe>;
+};
+
+
 variable current person goto current place (X:compare_result):code;
 let current person goto current place lower=value code {};
 let current person goto current place greater=value code {};
@@ -10,6 +34,19 @@ let current person goto current place equal=value code
     
     <print <current person> "has moved to" <location of <current person>>>;
     
+    # if we have moved to Warszawa and have more than 10 points then
+    # 1. we get a new random function
+    # 2. we pay all the points as a bribe
+    <compare "place" <location of <current person>> Warszawa>;
+    let we moved to Warszawa compare result = <the compare result>;
+    
+    <compare "integer" <points of <current person>> 10>;
+    let we can afford the bribe compare result = <the compare result>;
+    
+    <if we moved to Warszawa and have more than 10 points then 
+            <we moved to Warszawa compare result> 
+            <we can afford the bribe compare result>>;
+        
     let decision of <current person>=value action no_action;    
 };
 

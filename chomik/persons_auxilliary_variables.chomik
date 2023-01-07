@@ -38,4 +38,6 @@ variable current person who is being helped:person,
 
 variable Gotrek should be notified:boolean,
     why should Gotrek be notified:string,
-    helper bonus:integer;
+    helper bonus:integer,
+    we moved to Warszawa compare result:compare_result,
+    we can afford the bribe compare result:compare_result;
