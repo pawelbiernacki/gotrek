@@ -34,11 +34,20 @@ let assign the result with false if the possible Gotrek decision is no_action fo
     <assign the check result for Gotrek with false on <the compare result>>;
 };
 
+
+variable assign the result with false if Gotrek should be notified (A:boolean):code;
+let assign the result with false if Gotrek should be notified false=value code {};
+let assign the result with false if Gotrek should be notified true=value code 
+{
+    let result of the check whether all possible Gotrek decisions are no_action = value boolean false;
+};
+
 let check whether all possible Gotrek decision are no_action=value code
 {
     let result of the check whether all possible Gotrek decisions are no_action = value boolean true;
         
     <assign the result with false if the possible Gotrek decision is no_action for (X:possible_decisions_range)>;
+    <assign the result with false if Gotrek should be notified <Gotrek should be notified>>;
 };
 
 
