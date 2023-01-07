@@ -79,11 +79,8 @@ let clear notification texts=value code
 variable prepare printing to the notification texts:code;
 let prepare printing to the notification texts=value code
 {
-    <clear notification texts>;
-
     let the print target stream index = <my output stringstream index>;
     let the print end of line=value string "";    
-    let position of the current notification text=value integer 1;    
     let the set to stream stream index = <my output stringstream index>;
     <set to stream "">;
 };
@@ -110,4 +107,14 @@ let flush printing to the notification texts=value code
     let the set to stream stream index = <my output stringstream index>;
     <set to stream "">;
 };
+
+
+variable notify Gotrek if he should be notified (SHOULD:boolean):code;
+let notify Gotrek if he should be notified false=value code {};
+let notify Gotrek if he should be notified true=value code
+{    
+    let Gotrek result timer=<maximum notification time>;
+    <print "Gotrek should be notified because <why should Gotrek be notified>>;
+};
+
 

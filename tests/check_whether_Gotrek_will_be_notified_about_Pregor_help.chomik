@@ -1,0 +1,73 @@
+#!/usr/local/bin/chomik
+
+include "../chomik/user_defined_types.chomik"
+include "../chomik/global_variables.chomik"
+include "../chomik/global_streams.chomik"
+include "../chomik/persons.chomik"
+include "../chomik/places.chomik"
+include "../chomik/decisions_perform.chomik"
+
+variable fail if (X:comparison_result_type):code;
+let fail if lower = value code
+{
+    let the program return = value integer 1;
+};
+let fail if greater = value code
+{
+    let the program return = value integer 1;
+};
+let fail if equal = value code
+{
+    let the program return = value integer 0;
+};
+
+let the result of check whether current person possible decision is correct = value boolean false;
+
+let location of Gotrek = value place Krakow;
+let location of Pregor = value place Krakow;
+let location of Gerrudir = value place Krakow;
+let location of Gwaigilion = value place Warszawa;
+
+let function of Gotrek = value function Czesnik;
+let function of Pregor = value function Czesnik;
+let function of Gerrudir = value function Skarbnik;
+let function of Gwaigilion = value function Kasztelan;
+
+let strength of Gotrek = value integer 10;
+let strength of Pregor = value integer 100;
+let strength of Gerrudir = value integer 10;
+let strength of Gwaigilion = value integer 10;
+
+let weapon of Gotrek = value weapon sword;
+let weapon of Pregor = value weapon sword;
+let weapon of Gerrudir = value weapon sword;
+let weapon of Gwaigilion = value weapon sword;
+
+let points of (P:person) = value integer 0;
+
+<update the persons>;
+
+let current person = value person Gotrek;
+let current guest = value person Gerrudir;
+
+<current person attacks current guest equal>;
+
+
+variable check that Gotrek will be notified (C:compare_result):code;
+let check that Gotrek will be notified greater = value code 
+{ 
+    let the program return = value integer 1; 
+};
+let check that Gotrek will be notified equal = value code 
+{ 
+    let the program return = value integer 0; 
+};
+let check that Gotrek will be notified lower = value code 
+{ 
+    let the program return = value integer 1; 
+};
+
+
+<compare "boolean" <Gotrek should be notified> true>;
+<check that Gotrek will be notified <the compare result>>;
+

@@ -84,8 +84,11 @@ variable help the person:code;
 let help the person = value code
 {
     <add "integer" <efficiency of helpers> <strength of <current person who can help>>>;
-    let efficiency of helpers = <the add result "integer">;
-    <print <current person who can help> "is helping" <current person who is being helped>>;
+    let helper bonus = <the add result "integer">;        
+    let efficiency of helpers = <helper bonus>;
+    <print <current person who can help> "is helping" <current person who is being helped> "adding" <helper bonus>>;
+    
+    <resolve the help>;
 };
 
 
@@ -180,9 +183,8 @@ let variable current person attacks current guest equal = value code
         
     <print <current person> "uses" <weapon of <current person>>>;
     
-    <add "integer" <current efficiency bonus> <weapon bonus for <weapon of <current person>>>>;
-    let current efficiency bonus = <the add result "integer">;    
-    
+    <add "integer" <current efficiency bonus> <weapon bonus for <weapon of <current person>> against <weapon of <current guest>>>>;
+    let current efficiency bonus = <the add result "integer">;        
             
     <add "integer" <strength of <current person>> <current efficiency bonus>>;
     let efficiency of <current person>=<the add result "integer">;
@@ -200,10 +202,7 @@ let variable current person attacks current guest equal = value code
     let efficiency of helpers = value integer 0;
         
     <print <current guest> "uses" <weapon of <current guest>>>;
-    
-    <add "integer" <current efficiency bonus> <weapon bonus for <weapon of <current guest>>>>;
-    let current efficiency bonus = <the add result "integer">;    
-            
+                
     <add "integer" <strength of <current guest>> <current efficiency bonus>>;
     let efficiency of <current guest>=<the add result "integer">;
 
@@ -400,6 +399,7 @@ let variable perform decision for (X:person)=value code
 {
     let variable current person = value person [(X:person)];
     <print "perform decision for" <current person>>;
+    
         
     <perform current person decision goto (A:place)>;
     <perform current person decision tell (A:person) that (B:information)>;
@@ -408,18 +408,21 @@ let variable perform decision for (X:person)=value code
     <perform current person decision ask (A:person) what is (B:person) weapon>;
     <perform current person decision ask (A:person) whether (B:person) is a liar>;
     <perform current person decision answer (A:person) whether (B:person) is a liar (ANSWER:boolean)>;
-    <perform current person decision attack (A:person)>;
-    
-    
-    let variable current person = value person [(X:person)];    
+    <perform current person decision attack (A:person)>;    
     <perform current person decision propose (A:person) to exchange weapons>;
-    <perform current person decision accept (A:person) proposal to exchange weapons>;
+    <perform current person decision accept (A:person) proposal to exchange weapons>;    
 };
 
 
 variable perform all the decisions:code;
 let variable perform all the decisions=value code
 {
+    let Gotrek should be notified = value boolean false;
+    let why should Gotrek be notified = value string "";
+    <clear notification texts>;
+    
     <print "performing all the decisions">;    
     <perform decision for (X:person)>;            
+    
+    <notify Gotrek if he should be notified <Gotrek should be notified>>;
 };

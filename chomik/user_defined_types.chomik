@@ -129,10 +129,13 @@ let not false=value boolean true;
 
 
 
-variable weapon bonus for (X:weapon):integer;
-let weapon bonus for hammer=value integer 3;
-let weapon bonus for axe=value integer 3;
-let weapon bonus for sword=value integer 4; # sword is a little better than axe
+variable weapon bonus for (X:weapon) against (Y:weapon):integer;
+
+let weapon bonus for (X:weapon) against (Y:weapon)=value integer 0;
+
+let weapon bonus for hammer against axe=value integer 5;
+let weapon bonus for axe against sword=value integer 5;
+let weapon bonus for sword against hammer=value integer 5; 
 
 
 # various mappings (enum to string)

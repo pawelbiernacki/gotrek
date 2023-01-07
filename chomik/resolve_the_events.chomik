@@ -80,3 +80,16 @@ let resolve the acceptance of the proposal to exchange weapons=value code
 };
 
  
+variable resolve the help:code;
+let resolve the help=value code
+{
+    <compare "person" <current person who is being helped> Gotrek>;
+    let current other person for Gotrek=<current person who can help>;
+    <notify Gotrek he has been helped by current other person for Gotrek <the compare result>>;
+
+    <compare "person" <current person against whom we help> Gotrek>;
+    let current other person for Gotrek=<current person who can help>;
+    <notify Gotrek against him has been helped by current other person for Gotrek <the compare result>>;    
+};
+
+

@@ -8,7 +8,8 @@ let notify Gotrek he has lost equal=value code
     <print "You have lost.">; <flush printing to the notification texts>;
     <finish printing to the notification texts>;
     
-    let Gotrek result timer=<maximum notification time>;    
+    let Gotrek should be notified = value boolean true;
+    let why should Gotrek be notified = value string "because Gotrek lost the fight";
 };
 
 let notify Gotrek he has lost lower=value code {};
@@ -22,7 +23,8 @@ let notify Gotrek he has won equal=value code
     <print "You have won against " <current other person for Gotrek> ".">; <flush printing to the notification texts>;
     <finish printing to the notification texts>;
     
-    let Gotrek result timer=<maximum notification time>;    
+    let Gotrek should be notified = value boolean true;
+    let why should Gotrek be notified = value string "because Gotrek won the fight";
 };
 let notify Gotrek he has won lower=value code {};
 let notify Gotrek he has won greater=value code {};
@@ -35,7 +37,8 @@ let notify Gotrek it is a draw equal=value code
     <print "Your fight with" <current other person for Gotrek> "is a draw.">; <flush printing to the notification texts>;
     <finish printing to the notification texts>;
     
-    let Gotrek result timer=<maximum notification time>;    
+    let Gotrek should be notified = value boolean true;
+    let why should Gotrek be notified = value string "because Gotrek was fighting and had a draw";
 };
 let notify Gotrek it is a draw lower=value code {};
 let notify Gotrek it is a draw greater=value code {};
@@ -52,7 +55,8 @@ let notify Gotrek he has been attacked and won equal=value code
     <print "You have been attacked by " <current other person for Gotrek> "and won.">; <flush printing to the notification texts>;
     <finish printing to the notification texts>;
         
-    let Gotrek result timer=<maximum notification time>;    
+    let Gotrek should be notified = value boolean true;
+    let why should Gotrek be notified = value string "because Gotrek was attacked and won";
 };
 
 let notify Gotrek he has been attacked and it is a draw lower=value code {};
@@ -63,7 +67,8 @@ let notify Gotrek he has been attacked and it is a draw equal=value code
     <print "You have been attacked by" <current other person for Gotrek> "and it is a draw.">; <flush printing to the notification texts>;
     <finish printing to the notification texts>;
     
-    let Gotrek result timer=<maximum notification time>;    
+    let Gotrek should be notified = value boolean true;
+    let why should Gotrek be notified = value string "because Gotrek was attacked and it was a draw";
 };
 
 let notify Gotrek he has been attacked and lost lower=value code {};
@@ -74,7 +79,8 @@ let notify Gotrek he has been attacked and lost equal=value code
     <print "You have been attacked by" <current other person for Gotrek> "and lost.">; <flush printing to the notification texts>;
     <finish printing to the notification texts>;
     
-    let Gotrek result timer=<maximum notification time>;    
+    let Gotrek should be notified = value boolean true;
+    let why should Gotrek be notified = value string "because Gotrek was attacked and he lost";
 };
 
 
@@ -87,7 +93,8 @@ let notify Gotrek he has been proposed to exchange weapons equal=value code
     <print "You have been proposed to exchange weapons by" <current other person for Gotrek> ".">; <flush printing to the notification texts>;
     <finish printing to the notification texts>;
     
-    let Gotrek result timer=<maximum notification time>;    
+    let Gotrek should be notified = value boolean true;
+    let why should Gotrek be notified = value string "because Gotrek has been proposed to exchange weapons";
 };
 
 
@@ -100,8 +107,34 @@ let notify Gotrek he has exchanged weapons equal=value code
     <print "You have exchanged weapons with" <current other person for Gotrek> ".">; <flush printing to the notification texts>;
     <finish printing to the notification texts>;
     
-    let Gotrek result timer=<maximum notification time>;    
+    let Gotrek should be notified = value boolean true;
+    let why should Gotrek be notified = value string "because Gotrek has exchanged weapons";
+};
+
+variable notify Gotrek he has been helped by current other person for Gotrek (X:compare_result):code;
+let notify Gotrek he has been helped by current other person for Gotrek lower = value code {};
+let notify Gotrek he has been helped by current other person for Gotrek greater = value code {};
+let notify Gotrek he has been helped by current other person for Gotrek equal = value code 
+{
+    <prepare printing to the notification texts>;
+    <print "You have been helped by" <current other person for Gotrek> "who added" <helper bonus> "points.">; <flush printing to the notification texts>;
+    <finish printing to the notification texts>;
+    
+    let Gotrek should be notified = value boolean true;    
+    let why should Gotrek be notified = value string "because Gotrek has been helped";
+};
+
+variable notify Gotrek against him has been helped by current other person for Gotrek (X:compare_result):code;
+let notify Gotrek against him has been helped by current other person for Gotrek lower = value code {};
+let notify Gotrek against him has been helped by current other person for Gotrek greater = value code {};
+let notify Gotrek against him has been helped by current other person for Gotrek equal = value code 
+{
+    <prepare printing to the notification texts>;
+    <print "You have been also attacked by " <current other person for Gotrek> "who added" <helper bonus> "points.">; <flush printing to the notification texts>;
+    <finish printing to the notification texts>;
+    
+    let Gotrek should be notified = value boolean true;    
+    let why should Gotrek be notified = value string "because Gotrek was attacked by a helper";
 };
 
 
- 

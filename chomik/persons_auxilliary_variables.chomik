@@ -35,3 +35,7 @@ variable current person who is being helped:person,
             information whether the helper is not the person against whom we help:compare_result,
             information whether the helper has the same function as the person being helped:boolean,
             information whether the helper can see the person being helped:boolean;
+
+variable Gotrek should be notified:boolean,
+    why should Gotrek be notified:string,
+    helper bonus:integer;
