@@ -1,0 +1,22 @@
+#!/usr/local/bin/sdl_chomik
+
+let on game mode end won = value code
+{
+    <show image <background image index> 0 0>;     
+    <show image <chomik image index> 0 0>;
+    
+    <my show text <my large font index> "Game Over" 90 250>;
+    
+    <my show text <my large font index> "You won!!!" 90 300>;    
+};
+ 
+let on game mode end lost = value code
+{
+    <show image <background image index> 0 0>;     
+    <show image <chomik image index> 0 0>;
+    
+    <my show text <my large font index> "Game Over" 90 250>;
+    
+    <my show text <my large font index> "You lost!!!" 90 300>;    
+};
+ 

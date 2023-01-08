@@ -13,4 +13,4 @@ variable map (X:game_phase_type) to its name:string;
 let map asking phase to its name=value string "You can now tell something or ask for something.";
 let map answering phase to its name=value string "You can now tell something or answer.";
 let map moving phase to its name=value string "You can now move.";
-
+let map game terminated phase to its name=value string "We have the winner!";

@@ -83,6 +83,7 @@ let variable on it is goto current target greater = value code {};
 let variable on it is goto current target equal = value code 
 {
     #execute <print "yes, the action" <current possible decision> "is goto" <current target>>;
+    <print "compare boolean 1">;
     execute <compare "boolean" <<current location> is connected with <current target>> false>;
     execute <on it is goto current target but it is not connected <the compare result>>;
 };
@@ -94,6 +95,7 @@ let variable on it is tell current guest current information greater = value cod
 let variable on it is tell current guest current information equal = value code 
 {
     #execute <print "yes, the action" <current possible decision> "is tell" <current guest> that <current information>>;        
+    <print "compare boolean 2">;
     execute <compare "boolean" <<current person> can see <current guest>> false>;
     execute <on it is tell current guest current information but the current guest is not seen <the compare result>>;
     
@@ -109,6 +111,7 @@ let variable on it is ask current guest current action greater = value code {};
 let variable on it is ask current guest current action equal = value code 
 {
     #execute <print "yes, the action" <current possible decision> "is ask" <current guest> to <current action>>;        
+    <print "compare boolean 3">;
     execute <compare "boolean" <<current person> can see <current guest>> false>;
     execute <on it is ask current guest current action but the current guest is not seen <the compare result>>;
     
@@ -123,6 +126,7 @@ let variable on it is attack current guest greater = value code {};
 let variable on it is attack current guest equal = value code
 {
     #execute <print "yes, the action" <current possible decision> "is attack" <current guest>>;        
+    <print "compare boolean 4">;
     execute <compare "boolean" <<current person> can see <current guest>> false>;
     execute <on it is attack current guest but the current guest is not seen <the compare result>>;
     
@@ -152,7 +156,8 @@ let on it is accept current guest proposal to exchange weapons equal = value cod
     <on it is found but the current guest is equal the current person <the compare result>>;
     
     # it also makes no sense if current person does not think it has been proposed exchange by the current guest
-    <compare "boolean" <<current person> thinks that <current guest> has proposed him to exchange weapons> false>;
+    <print "compare boolean 5">;
+    <compare "boolean" <<current person> thinks that <current guest> has proposed <current person> to exchange weapons> false>;
     <on it is found but the current guest has not proposed the exchange <the compare result>>;
     
 };
@@ -200,6 +205,7 @@ let on it is answer current guest whether current guest 2 is a liar false equal 
     <on it is found but the current guest is equal the current person <the compare result>>;        
     
     # it also makes no sense if current person does not think it has been asked by the current guest
+    <print "compare boolean 6">;
     <compare "boolean" <<current person> thinks that <current guest> has asked <current person> whether <current guest 2> is a liar> false>;
     <on it is found but the current guest has not asked <the compare result>>;        
 };
@@ -213,10 +219,12 @@ let on it is answer current guest whether current guest 2 is a liar true equal =
     #<on it is found but the current guest is equal the current person <the compare result>>;        
         
     # it also makes no sense if current person does not think it has been asked by the current guest
+    <print "compare boolean 7">;
     <compare "boolean" <<current person> thinks that <current guest> has asked <current person> whether <current guest 2> is a liar> false>;
     <on it is found but the current guest has not asked <the compare result>>; 
     
     # it is also impossible if the current person is not a liar, because he cannot admit he is a liar then
+    <print "compare boolean 8">;
     <compare "boolean" <is <current person> a liar> false>;
     <on it is found but the current person is not a liar and so cannot say he is <the compare result>>;
     

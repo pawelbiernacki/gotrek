@@ -32,11 +32,13 @@ include "./show_explanation_texts.sdl_chomik"
 include "./on_key.sdl_chomik"
 include "./on_game_mode_title.sdl_chomik"
 include "./on_game_mode_game.sdl_chomik"
+include "./on_game_mode_end.sdl_chomik"
 include "./gotrek_options.sdl_chomik"
 include "./gotrek_animation.sdl_chomik"
 include "./notifications.sdl_chomik"
 include "../chomik/skipping_gotrek_decisions.chomik"
 include "./my_show_text.sdl_chomik"
+include "../chomik/end_of_the_game.chomik"
 
 #
 # here we include the generated code !!!

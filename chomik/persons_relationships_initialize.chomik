@@ -1,9 +1,9 @@
 #!/usr/local/bin/chomik
 
 
-variable initialize the relationship (X:person) (Y:person) (Z:person):code;
+variable initialize the relationship between persons (X:person) (Y:person) (Z:person):code;
 
-let initialize the relationship (X:person) (Y:person) (Z:person) = value code
+let initialize the relationship between persons (X:person) (Y:person) (Z:person) = value code
 {
     let current person = value person [(X:person)];
     let current guest = value person [(Y:person)];
@@ -21,3 +21,14 @@ let initialize the relationship (X:person) (Y:person) (Z:person) = value code
     <print <current person> "likes" <current guest> "=" <<current person> likes <current guest>>>;            
 };
  
+variable initialize the relationship between persons and functions (P:person) (F:function):code;
+
+let initialize the relationship between persons and functions (P:person) (F:function) = value code
+{
+    let current person = value person [(P:person)];
+    let current function = value function [(F:function)];
+    
+    let <current person> has been a <current function> = value boolean false;
+    
+    <print "relationship" <current person> "has been" <current function> "=" <<current person> has been <current function>>>;    
+};

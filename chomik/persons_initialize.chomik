@@ -66,6 +66,9 @@ let variable initialize the persons= value code
     let variable (X:person) likes (Y:person) = value boolean false;
     let variable (X:person) dislikes (Y:person) = value boolean false;    
         
-    <initialize the relationship (X:person) (Y:person) (Z:person)>;
+    <initialize the relationship between persons (A:person) (B:person) (C:person)>;
+    <initialize the relationship between persons and functions (A:person) (B:function)>;
     <initialize the persons informations relationships (X:person) (Y:information) (V:boolean)>;
+    
+    let variable (X:person) has been a no_function = value boolean true;            
 };

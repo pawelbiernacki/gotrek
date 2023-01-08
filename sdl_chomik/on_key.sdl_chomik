@@ -30,6 +30,7 @@ variable do all the necessary stuff for the next move:code;
 let do all the necessary stuff for the next move=value code
 {
     <update the persons>;
+    <check whether there is a winner>;
     <update the places>;
     <generate (X:person) possible decisions>;        
     <check whether (X:person) possible decision (Y:possible_decisions_range) is correct>; # this check depends on the game phase

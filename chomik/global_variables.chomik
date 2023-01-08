@@ -29,3 +29,10 @@ let Gotrek information text (INFORMATION:information) when talking to (P:person)
 
 variable information complexity (INFORMATION:information):integer;
 let information complexity (INFORMATION:information) = value integer 0;
+
+variable game terminated flag:boolean;
+let game terminated flag = value boolean false;
+
+variable winner:person;
+
+

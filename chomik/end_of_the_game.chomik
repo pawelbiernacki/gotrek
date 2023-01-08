@@ -1,0 +1,78 @@
+#!/usr/local/bin/chomik
+
+
+
+# Here we have codes determining whether we achieved the end of the game, i.e.
+# if there is the first person that has had all the functions.
+
+variable flag whether the current person has been all the functions:boolean;
+
+variable check whether the current person has been (B:boolean):code;
+let check whether the current person has been false = value code 
+{ 
+    let flag whether the current person has been all the functions = value boolean false;     
+    <print "no, he is not been" <current function>>;
+};
+let check whether the current person has been been true = value code {};
+
+
+variable assign the game mode depending on (C:compare_result):code;
+let assign the game mode depending on lower = value code
+{
+    let game mode = value game_mode_type end lost;
+};
+let assign the game mode depending on greater = value code
+{
+    let game mode = value game_mode_type end lost;
+};
+let assign the game mode depending on equal = value code
+{
+    let game mode = value game_mode_type end won;
+};
+
+
+
+variable check whether the current person has had all functions (B:boolean):code;
+let check whether the current person has had all functions false = value code {};
+
+let check whether the current person has had all functions true = value code 
+{
+    let game terminated flag = value boolean true;
+    let winner = <current person>;
+    let game phase = value game_phase_type game terminated phase;
+    
+    <compare "person" <current person> Gotrek>;
+    <assign the game mode depending on <the compare result>>;
+            
+    <print "game terminated! the winner is" <winner>>;
+};
+
+
+variable check whether the current person has had a function (F:function):code;
+let check whether the current person has had a function (F:function)=value code
+{
+    let current function = value function [(F:function)];
+    <check whether the current person has been <<current person> has been a <current function>>>;
+};
+
+
+variable check whether (P:person) is a winner:code;
+let check whether (P:person) is a winner=value code
+{
+    let current person = value person [(P:person)];
+    
+    <print "check whether" <current person> "is a winner">;    
+    
+    let flag whether the current person has been all the functions = value boolean true;
+    <check whether the current person has had a function (F:function)>;    
+    <check whether the current person has had all functions <flag whether the current person has been all the functions>>;
+};
+
+
+variable check whether there is a winner:code;
+
+let check whether there is a winner=value code
+{
+    <print "check whether there is a winner">;
+    <check whether (P:person) is a winner>;
+};

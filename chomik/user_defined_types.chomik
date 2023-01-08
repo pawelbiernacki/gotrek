@@ -58,8 +58,8 @@ type action={no_action,                                             # does not d
             attack (X:person)
             };
             
-type game_mode_type={title, game},
-    game_phase_type={asking phase, answering phase, moving phase},
+type game_mode_type={title, game, end won, end lost},
+    game_phase_type={asking phase, answering phase, moving phase, game terminated phase},
         possible_decisions_range=1..5,
         notification_texts_range=1..20,
         places_range=1..5,

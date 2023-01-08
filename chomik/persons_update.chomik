@@ -2,11 +2,12 @@
 
 variable update the persons:code;
 
-let variable update the persons = value code
+let update the persons = value code
 {
-    let variable (X:person) can see (Y:person) = value boolean false;
-    let variable (X:person) can hear (Y:person) = value boolean false;
-    execute <update the relationship between persons (X:person) (Y:person)>;
+    let (X:person) can see (Y:person) = value boolean false;
+    let (X:person) can hear (Y:person) = value boolean false;
+    <update the relationship between persons (X:person) (Y:person)>;    
+    <update the relationship between persons and functions (A:person) (F:function)>;
 };
 
  

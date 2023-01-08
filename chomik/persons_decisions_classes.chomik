@@ -28,17 +28,19 @@ variable iterate through all the places until you find a connected one (I:places
 
 let variable iterate through all the places until you find a connected one (I:places_range)=value code
 {
-    execute <compare "boolean" <<current target> is connected with the current place> false>;
-    execute <move to next current target on <the compare result>>;
+    <print "compare boolean 9">;
+    <compare "boolean" <<current target> is connected with the current place> false>;
+    <move to next current target on <the compare result>>;
 };
 
 
 variable iterate through all the persons until you find a seen one (I:persons_range):code;
 
-let variable iterate through all the persons until you find a seen one (I:persons_range)=value code
+let iterate through all the persons until you find a seen one (I:persons_range)=value code
 {
-    execute <compare "boolean" <<current guest> is seen by the current person> false>;
-    execute <move to next current guest on <the compare result>>;
+    <print "compare boolean 10">;
+    <compare "boolean" <<current guest> is seen by the current person> false>;
+    <move to next current guest on <the compare result>>;
 };
 
 

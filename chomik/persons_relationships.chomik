@@ -13,3 +13,8 @@ variable (X:person) thinks that (Y:person) has proposed (Z:person) to exchange w
 variable (X:person) thinks that (Y:person) has asked (Z:person) whether (S:person) is a liar:boolean;
 variable (X:person) thinks that (Y:person) has asked (Z:person) what is (S:person) function:boolean;
 variable (X:person) thinks that (Y:person) has asked (Z:person) what is (S:person) weapon:boolean;
+
+
+# these attributes are related to the persons and functions
+variable (X:person) has been a (F:function):boolean;
+

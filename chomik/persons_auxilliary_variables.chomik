@@ -24,7 +24,8 @@ variable current action pattern:action,
         current weapon:weapon,
         current weapon name:string,
         current boolean:boolean,
-        current notification number:integer;
+        current notification number:integer,
+        current function:function;
 
 variable efficiency of (P:person):integer, efficiency of helpers:integer;
 

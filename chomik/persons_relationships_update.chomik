@@ -24,4 +24,23 @@ let variable update the relationship between persons (X:person) (Y:person) = val
     
 };
 
+
+variable if the current person function is current function then remember that he has been it (C:compare_result):code;
+let if the current person function is current function then remember that he has been it lower = value code {};
+let if the current person function is current function then remember that he has been it greater = value code {};
+let if the current person function is current function then remember that he has been it equal = value code 
+{
+    let <current person> has been a <current function> = value boolean true;
+    <print <current person> "has been a" <current function> "=" <<current person> has been a <current function>>>;
+};
+
  
+variable update the relationship between persons and functions (A:person) (F:function):code;
+let update the relationship between persons and functions (A:person) (F:function)=value code
+{
+    let current person = value person [(A:person)];
+    let current function = value function [(F:function)];
+    
+    <compare "function" <current function> <function of <current person>>>;
+    <if the current person function is current function then remember that he has been it <the compare result>>;
+};
