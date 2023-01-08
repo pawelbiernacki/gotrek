@@ -57,14 +57,23 @@ let notification text number 4 of Gotrek =
 let notification text number 5 of Gotrek = value string "They all choose their decisions randomly. ";
 let notification text number 6 of Gotrek = value string "Every time you have a choice of 5 possible decisions generated for you. ";
 let notification text number 7 of Gotrek = value string "Feel free to choose the option that is most suitable for you. ";
-let notification text number 8 of Gotrek = value string "Your goal is to maximize the amount of points in the game. ";
-let notification text number 9 of Gotrek = value string "If you are a liar you are free to tell the NPCs the things ";
-let notification text number 10 of Gotrek = value string "that you do not really believe. ";
-let notification text number 11 of Gotrek = value string "You can move along the graph edges, depending on where you are. ";
+let notification text number 8 of Gotrek = value string "Your goal is to achieve all the possible functions in any order, ";
+let notification text number 9 of Gotrek = value string "i.e. to become Starosta, Czesnik, Skarbnik, Kasztelan and Krajczy. ";
 
-let notification text number 18 of Gotrek = value string "Press arrow keys (up/down) to select an option.";
-let notification text number 19 of Gotrek = value string "Press return to activate an option.";
-let notification text number 20 of Gotrek = value string "Press SPACE to show this message. ";
+let notification text number 11 of Gotrek = value string "You have a chance to achieve a new function when you go to Warszawa";
+let notification text number 12 of Gotrek = value string "with at least 10 gold pieces in your pocket. Then you will pay a bribe";
+let notification text number 13 of Gotrek = value string "and get a random function. ";
+let notification text number 14 of Gotrek = value string "You win (and the game terminates) when you have had all the functions.";
+let notification text number 15 of Gotrek = value string "You loose if anybody does this faster than you.";
+let notification text number 16 of Gotrek = value string "Whenever you win a fight you get 1 gp.";
+
+let notification text number 18 of Gotrek = value string "If you are a liar you are free to tell the NPCs the things ";
+let notification text number 19 of Gotrek = value string "that you do not really believe. ";
+let notification text number 20 of Gotrek = value string "You can move along the graph edges, depending on where you are. ";
+
+let notification text number 22 of Gotrek = value string "Press arrow keys (up/down) to select an option.";
+let notification text number 23 of Gotrek = value string "Press return to activate an option.";
+let notification text number 24 of Gotrek = value string "Press SPACE to show this message. ";
 
 variable position of the current notification text:integer;
 

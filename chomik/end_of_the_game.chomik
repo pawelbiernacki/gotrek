@@ -11,7 +11,7 @@ variable check whether the current person has been (B:boolean):code;
 let check whether the current person has been false = value code 
 { 
     let flag whether the current person has been all the functions = value boolean false;     
-    <print "no, he is not been" <current function>>;
+    <print "no, he has not been" <current function>>;
 };
 let check whether the current person has been been true = value code {};
 
